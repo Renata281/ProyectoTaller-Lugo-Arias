@@ -16,5 +16,6 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
             InitializeComponent();
         }
+
     }
 }
