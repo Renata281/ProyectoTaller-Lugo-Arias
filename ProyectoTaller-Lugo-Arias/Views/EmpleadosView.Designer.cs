@@ -43,6 +43,8 @@
             lEmpleado_In = new Label();
             dgvEmpleado_In = new DataGridView();
             tpNuevoCliente = new TabPage();
+            bCancelar = new Button();
+            bAgregar = new Button();
             comboBox1 = new ComboBox();
             textBox8 = new TextBox();
             textBox7 = new TextBox();
@@ -55,8 +57,6 @@
             lDni = new Label();
             lApellido = new Label();
             lNombre = new Label();
-            bAgregar = new Button();
-            bCancelar = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -97,10 +97,10 @@
             // lEmpleados
             // 
             lEmpleados.AutoSize = true;
-            lEmpleados.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lEmpleados.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lEmpleados.Location = new Point(326, 105);
             lEmpleados.Name = "lEmpleados";
-            lEmpleados.Size = new Size(114, 30);
+            lEmpleados.Size = new Size(119, 30);
             lEmpleados.TabIndex = 0;
             lEmpleados.Text = "Empleados";
             // 
@@ -123,7 +123,7 @@
             tpTodos.Location = new Point(4, 24);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(792, 286);
+            tpTodos.Size = new Size(792, 443);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             tpTodos.UseVisualStyleBackColor = true;
@@ -132,9 +132,9 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 62);
+            dataGridView1.Location = new Point(3, 66);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(786, 221);
+            dataGridView1.Size = new Size(786, 374);
             dataGridView1.TabIndex = 4;
             // 
             // lTodosEmpleados
@@ -154,7 +154,7 @@
             tpActivos.Location = new Point(4, 24);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(792, 286);
+            tpActivos.Size = new Size(792, 443);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             tpActivos.UseVisualStyleBackColor = true;
@@ -163,9 +163,9 @@
             // 
             dgvEmpleadosAct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleadosAct.Dock = DockStyle.Bottom;
-            dgvEmpleadosAct.Location = new Point(3, 62);
+            dgvEmpleadosAct.Location = new Point(3, 65);
             dgvEmpleadosAct.Name = "dgvEmpleadosAct";
-            dgvEmpleadosAct.Size = new Size(786, 221);
+            dgvEmpleadosAct.Size = new Size(786, 375);
             dgvEmpleadosAct.TabIndex = 3;
             // 
             // lEmpleadoAct
@@ -185,7 +185,7 @@
             tpInactivos.Location = new Point(4, 24);
             tpInactivos.Name = "tpInactivos";
             tpInactivos.Padding = new Padding(3);
-            tpInactivos.Size = new Size(792, 286);
+            tpInactivos.Size = new Size(792, 443);
             tpInactivos.TabIndex = 2;
             tpInactivos.Text = "Inactivos";
             tpInactivos.UseVisualStyleBackColor = true;
@@ -204,9 +204,9 @@
             // 
             dgvEmpleado_In.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvEmpleado_In.Dock = DockStyle.Bottom;
-            dgvEmpleado_In.Location = new Point(3, 62);
+            dgvEmpleado_In.Location = new Point(3, 69);
             dgvEmpleado_In.Name = "dgvEmpleado_In";
-            dgvEmpleado_In.Size = new Size(786, 221);
+            dgvEmpleado_In.Size = new Size(786, 371);
             dgvEmpleado_In.TabIndex = 0;
             // 
             // tpNuevoCliente
@@ -232,6 +232,26 @@
             tpNuevoCliente.TabIndex = 3;
             tpNuevoCliente.Text = "Nuevo Empleado";
             tpNuevoCliente.UseVisualStyleBackColor = true;
+            // 
+            // bCancelar
+            // 
+            bCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bCancelar.Location = new Point(415, 398);
+            bCancelar.Name = "bCancelar";
+            bCancelar.Size = new Size(78, 35);
+            bCancelar.TabIndex = 15;
+            bCancelar.Text = "Cancelar";
+            bCancelar.UseVisualStyleBackColor = true;
+            // 
+            // bAgregar
+            // 
+            bAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            bAgregar.Location = new Point(262, 398);
+            bAgregar.Name = "bAgregar";
+            bAgregar.Size = new Size(78, 35);
+            bAgregar.TabIndex = 14;
+            bAgregar.Text = "Agregar";
+            bAgregar.UseVisualStyleBackColor = true;
             // 
             // comboBox1
             // 
@@ -335,26 +355,6 @@
             lNombre.Size = new Size(68, 21);
             lNombre.TabIndex = 0;
             lNombre.Text = "Nombre";
-            // 
-            // bAgregar
-            // 
-            bAgregar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bAgregar.Location = new Point(262, 398);
-            bAgregar.Name = "bAgregar";
-            bAgregar.Size = new Size(78, 35);
-            bAgregar.TabIndex = 14;
-            bAgregar.Text = "Agregar";
-            bAgregar.UseVisualStyleBackColor = true;
-            // 
-            // bCancelar
-            // 
-            bCancelar.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            bCancelar.Location = new Point(415, 398);
-            bCancelar.Name = "bCancelar";
-            bCancelar.Size = new Size(78, 35);
-            bCancelar.TabIndex = 15;
-            bCancelar.Text = "Cancelar";
-            bCancelar.UseVisualStyleBackColor = true;
             // 
             // EmpleadosView
             // 
