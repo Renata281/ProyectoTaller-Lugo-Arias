@@ -16,5 +16,12 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
             InitializeComponent();
         }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
+
+
 }

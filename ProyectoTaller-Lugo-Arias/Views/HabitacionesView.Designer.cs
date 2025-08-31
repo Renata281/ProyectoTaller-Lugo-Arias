@@ -29,19 +29,24 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label1 = new Label();
             BBuscar = new Button();
             BNotificaciones = new Button();
-            label1 = new Label();
             label2 = new Label();
             panel2 = new Panel();
-            label3 = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
+            dataGridView1 = new DataGridView();
+            habitacion = new DataGridViewTextBoxColumn();
+            tipo = new DataGridViewTextBoxColumn();
+            columna3 = new DataGridViewTextBoxColumn();
+            Estado = new DataGridViewTextBoxColumn();
+            editar = new DataGridViewImageColumn();
+            eliminar = new DataGridViewImageColumn();
             tabPage2 = new TabPage();
             tabPage3 = new TabPage();
             tabPage4 = new TabPage();
-            dataGridView1 = new DataGridView();
-            lista = new DataGridViewTextBoxColumn();
+            label3 = new Label();
             panel1.SuspendLayout();
             panel2.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -58,6 +63,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(657, 32);
             panel1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 10);
+            label1.Name = "label1";
+            label1.Size = new Size(121, 15);
+            label1.TabIndex = 2;
+            label1.Text = "Buscar habitaciones...";
             // 
             // BBuscar
             // 
@@ -79,16 +93,6 @@
             BNotificaciones.TabIndex = 2;
             BNotificaciones.Text = "Notificaciones";
             BNotificaciones.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(3, 10);
-            label1.Name = "label1";
-            label1.Size = new Size(121, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Buscar habitaciones...";
-            label1.Click += this.label1_Click;
             // 
             // label2
             // 
@@ -112,17 +116,7 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(885, 501);
             panel2.TabIndex = 4;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(64, 64, 64);
-            label3.Location = new Point(306, 131);
-            label3.Name = "label3";
-            label3.Size = new Size(248, 30);
-            label3.TabIndex = 0;
-            label3.Text = "Gestión de habitaciones";
+            panel2.Paint += panel2_Paint;
             // 
             // tabControl1
             // 
@@ -147,12 +141,60 @@
             tabPage1.Text = "Todas";
             tabPage1.UseVisualStyleBackColor = true;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { habitacion, tipo, columna3, Estado, editar, eliminar });
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(826, 240);
+            dataGridView1.TabIndex = 4;
+            // 
+            // habitacion
+            // 
+            habitacion.HeaderText = "Habitación";
+            habitacion.Name = "habitacion";
+            // 
+            // tipo
+            // 
+            tipo.HeaderText = "Tipo";
+            tipo.Name = "tipo";
+            // 
+            // columna3
+            // 
+            columna3.HeaderText = "Estado";
+            columna3.Name = "columna3";
+            // 
+            // Estado
+            // 
+            Estado.HeaderText = "Huéspedes";
+            Estado.Name = "Estado";
+            // 
+            // editar
+            // 
+            editar.HeaderText = "";
+            editar.Image = Properties.Resources.editar;
+            editar.Name = "editar";
+            editar.Resizable = DataGridViewTriState.True;
+            editar.SortMode = DataGridViewColumnSortMode.Automatic;
+            editar.Width = 30;
+            // 
+            // eliminar
+            // 
+            eliminar.HeaderText = "";
+            eliminar.Image = Properties.Resources.eliminar;
+            eliminar.Name = "eliminar";
+            eliminar.Resizable = DataGridViewTriState.True;
+            eliminar.SortMode = DataGridViewColumnSortMode.Automatic;
+            eliminar.Width = 30;
+            // 
             // tabPage2
             // 
             tabPage2.Location = new Point(4, 24);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(279, 72);
+            tabPage2.Size = new Size(832, 246);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Disponibles";
             tabPage2.UseVisualStyleBackColor = true;
@@ -161,7 +203,7 @@
             // 
             tabPage3.Location = new Point(4, 24);
             tabPage3.Name = "tabPage3";
-            tabPage3.Size = new Size(279, 72);
+            tabPage3.Size = new Size(832, 246);
             tabPage3.TabIndex = 2;
             tabPage3.Text = "Ocupadas";
             tabPage3.UseVisualStyleBackColor = true;
@@ -170,25 +212,21 @@
             // 
             tabPage4.Location = new Point(4, 24);
             tabPage4.Name = "tabPage4";
-            tabPage4.Size = new Size(279, 72);
+            tabPage4.Size = new Size(832, 246);
             tabPage4.TabIndex = 3;
             tabPage4.Text = "Mantenimiento";
             tabPage4.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // label3
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { lista });
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(836, 250);
-            dataGridView1.TabIndex = 4;
-            dataGridView1.CellContentClick += this.dataGridView1_CellContentClick;
-            // 
-            // lista
-            // 
-            lista.HeaderText = "Lista de habitaciones";
-            lista.Name = "lista";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(64, 64, 64);
+            label3.Location = new Point(306, 131);
+            label3.Name = "label3";
+            label3.Size = new Size(248, 30);
+            label3.TabIndex = 0;
+            label3.Text = "Gestión de habitaciones";
             // 
             // HabitacionesView
             // 
@@ -225,6 +263,11 @@
         private TabPage tabPage3;
         private TabPage tabPage4;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn lista;
+        private DataGridViewTextBoxColumn habitacion;
+        private DataGridViewTextBoxColumn tipo;
+        private DataGridViewTextBoxColumn columna3;
+        private DataGridViewTextBoxColumn Estado;
+        private DataGridViewImageColumn editar;
+        private DataGridViewImageColumn eliminar;
     }
 }
