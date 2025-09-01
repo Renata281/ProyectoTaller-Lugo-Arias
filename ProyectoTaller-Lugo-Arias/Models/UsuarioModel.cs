@@ -15,7 +15,6 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private int dni;
         private int telefono;
         private string email;
-        private string direccion;
         private byte[] password;
         private int id_cargo;
         private string cargo_descripcion;
