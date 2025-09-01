@@ -21,6 +21,16 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
 
         }
+
+        private void BNotificaciones_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 
