@@ -221,7 +221,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.FromArgb(64, 64, 64);
+            label3.ForeColor = Color.Black;
             label3.Location = new Point(306, 131);
             label3.Name = "label3";
             label3.Size = new Size(248, 30);
