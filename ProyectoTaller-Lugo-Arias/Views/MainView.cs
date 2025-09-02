@@ -29,5 +29,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public event EventHandler ShowHabitacionesView;
         public event EventHandler ShowTipoHabitacionView;
 
+        private void bEmpleados_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bTipoHabitacion_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

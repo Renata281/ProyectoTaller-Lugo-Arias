@@ -80,17 +80,21 @@
             // 
             // textBox1
             // 
+            textBox1.BackColor = SystemColors.Control;
+            textBox1.BorderStyle = BorderStyle.None;
             textBox1.Location = new Point(22, 37);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(534, 23);
+            textBox1.Size = new Size(534, 16);
             textBox1.TabIndex = 1;
             // 
             // lMotorEmpleados
             // 
             lMotorEmpleados.AutoSize = true;
-            lMotorEmpleados.Location = new Point(31, 19);
+            lMotorEmpleados.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lMotorEmpleados.ForeColor = Color.DarkSlateGray;
+            lMotorEmpleados.Location = new Point(22, 17);
             lMotorEmpleados.Name = "lMotorEmpleados";
-            lMotorEmpleados.Size = new Size(98, 15);
+            lMotorEmpleados.Size = new Size(112, 17);
             lMotorEmpleados.TabIndex = 0;
             lMotorEmpleados.Text = "Buscar Empleado";
             // 
@@ -98,6 +102,7 @@
             // 
             lEmpleados.AutoSize = true;
             lEmpleados.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lEmpleados.ForeColor = Color.DarkSlateGray;
             lEmpleados.Location = new Point(326, 105);
             lEmpleados.Name = "lEmpleados";
             lEmpleados.Size = new Size(119, 30);
@@ -118,6 +123,7 @@
             // 
             // tpTodos
             // 
+            tpTodos.BackColor = SystemColors.Control;
             tpTodos.Controls.Add(dataGridView1);
             tpTodos.Controls.Add(lTodosEmpleados);
             tpTodos.Location = new Point(4, 24);
@@ -126,7 +132,6 @@
             tpTodos.Size = new Size(792, 443);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
-            tpTodos.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -149,6 +154,7 @@
             // 
             // tpActivos
             // 
+            tpActivos.BackColor = SystemColors.Control;
             tpActivos.Controls.Add(dgvEmpleadosAct);
             tpActivos.Controls.Add(lEmpleadoAct);
             tpActivos.Location = new Point(4, 24);
@@ -157,7 +163,6 @@
             tpActivos.Size = new Size(792, 443);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
-            tpActivos.UseVisualStyleBackColor = true;
             // 
             // dgvEmpleadosAct
             // 
@@ -180,6 +185,7 @@
             // 
             // tpInactivos
             // 
+            tpInactivos.BackColor = SystemColors.Control;
             tpInactivos.Controls.Add(lEmpleado_In);
             tpInactivos.Controls.Add(dgvEmpleado_In);
             tpInactivos.Location = new Point(4, 24);
@@ -188,7 +194,6 @@
             tpInactivos.Size = new Size(792, 443);
             tpInactivos.TabIndex = 2;
             tpInactivos.Text = "Inactivos";
-            tpInactivos.UseVisualStyleBackColor = true;
             // 
             // lEmpleado_In
             // 
@@ -211,6 +216,7 @@
             // 
             // tpNuevoCliente
             // 
+            tpNuevoCliente.BackColor = SystemColors.Control;
             tpNuevoCliente.Controls.Add(bCancelar);
             tpNuevoCliente.Controls.Add(bAgregar);
             tpNuevoCliente.Controls.Add(comboBox1);
@@ -231,7 +237,6 @@
             tpNuevoCliente.Size = new Size(792, 443);
             tpNuevoCliente.TabIndex = 3;
             tpNuevoCliente.Text = "Nuevo Empleado";
-            tpNuevoCliente.UseVisualStyleBackColor = true;
             // 
             // bCancelar
             // 
@@ -360,6 +365,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(796, 607);
             Controls.Add(tabControl1);
             Controls.Add(lEmpleados);

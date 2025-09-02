@@ -41,6 +41,7 @@
             // 
             // panel1
             // 
+            panel1.BackColor = Color.DarkSlateGray;
             panel1.Controls.Add(bSalir);
             panel1.Controls.Add(bTipoHabitacion);
             panel1.Controls.Add(bHabitaciones);
@@ -56,71 +57,106 @@
             // 
             // bSalir
             // 
-            bSalir.Location = new Point(0, 274);
+            bSalir.BackColor = Color.CadetBlue;
+            bSalir.FlatAppearance.BorderSize = 0;
+            bSalir.FlatStyle = FlatStyle.Flat;
+            bSalir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bSalir.ForeColor = SystemColors.InactiveCaption;
+            bSalir.Location = new Point(0, 397);
             bSalir.Name = "bSalir";
             bSalir.Size = new Size(192, 41);
             bSalir.TabIndex = 6;
             bSalir.Text = "Salir";
-            bSalir.UseVisualStyleBackColor = true;
+            bSalir.UseVisualStyleBackColor = false;
             // 
             // bTipoHabitacion
             // 
-            bTipoHabitacion.Location = new Point(0, 227);
+            bTipoHabitacion.BackColor = Color.CadetBlue;
+            bTipoHabitacion.FlatAppearance.BorderSize = 0;
+            bTipoHabitacion.FlatStyle = FlatStyle.Flat;
+            bTipoHabitacion.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bTipoHabitacion.ForeColor = SystemColors.InactiveCaption;
+            bTipoHabitacion.Location = new Point(0, 300);
             bTipoHabitacion.Name = "bTipoHabitacion";
             bTipoHabitacion.Size = new Size(192, 41);
             bTipoHabitacion.TabIndex = 5;
             bTipoHabitacion.Text = "Tipo de Habitación";
-            bTipoHabitacion.UseVisualStyleBackColor = true;
+            bTipoHabitacion.UseVisualStyleBackColor = false;
+            bTipoHabitacion.Click += bTipoHabitacion_Click;
             // 
             // bHabitaciones
             // 
-            bHabitaciones.Location = new Point(0, 180);
+            bHabitaciones.BackColor = Color.CadetBlue;
+            bHabitaciones.FlatAppearance.BorderSize = 0;
+            bHabitaciones.FlatStyle = FlatStyle.Flat;
+            bHabitaciones.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bHabitaciones.ForeColor = SystemColors.InactiveCaption;
+            bHabitaciones.Location = new Point(0, 241);
             bHabitaciones.Name = "bHabitaciones";
             bHabitaciones.Size = new Size(192, 41);
             bHabitaciones.TabIndex = 4;
             bHabitaciones.Text = "Habitaciones";
-            bHabitaciones.UseVisualStyleBackColor = true;
+            bHabitaciones.UseVisualStyleBackColor = false;
             // 
             // bReservas
             // 
-            bReservas.Location = new Point(0, 133);
+            bReservas.BackColor = Color.CadetBlue;
+            bReservas.FlatAppearance.BorderSize = 0;
+            bReservas.FlatStyle = FlatStyle.Flat;
+            bReservas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bReservas.ForeColor = SystemColors.InactiveCaption;
+            bReservas.Location = new Point(0, 180);
             bReservas.Name = "bReservas";
             bReservas.Size = new Size(192, 41);
             bReservas.TabIndex = 3;
             bReservas.Text = "Reservas";
-            bReservas.UseVisualStyleBackColor = true;
+            bReservas.UseVisualStyleBackColor = false;
             // 
             // bClientes
             // 
-            bClientes.Location = new Point(0, 86);
+            bClientes.BackColor = Color.CadetBlue;
+            bClientes.FlatAppearance.BorderSize = 0;
+            bClientes.FlatStyle = FlatStyle.Flat;
+            bClientes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bClientes.ForeColor = SystemColors.InactiveCaption;
+            bClientes.Location = new Point(0, 123);
             bClientes.Name = "bClientes";
             bClientes.Size = new Size(192, 41);
             bClientes.TabIndex = 2;
             bClientes.Text = "Clientes";
-            bClientes.UseVisualStyleBackColor = true;
+            bClientes.UseVisualStyleBackColor = false;
             // 
             // lNombreHotel
             // 
             lNombreHotel.AutoSize = true;
-            lNombreHotel.Location = new Point(73, 10);
+            lNombreHotel.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lNombreHotel.ForeColor = SystemColors.InactiveCaption;
+            lNombreHotel.Location = new Point(58, 11);
             lNombreHotel.Name = "lNombreHotel";
-            lNombreHotel.Size = new Size(43, 15);
+            lNombreHotel.Size = new Size(71, 25);
             lNombreHotel.TabIndex = 1;
             lNombreHotel.Text = "HOTEL";
             // 
             // bEmpleados
             // 
-            bEmpleados.Location = new Point(0, 39);
+            bEmpleados.BackColor = Color.CadetBlue;
+            bEmpleados.FlatAppearance.BorderSize = 0;
+            bEmpleados.FlatStyle = FlatStyle.Flat;
+            bEmpleados.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bEmpleados.ForeColor = SystemColors.InactiveCaption;
+            bEmpleados.Location = new Point(0, 67);
             bEmpleados.Name = "bEmpleados";
             bEmpleados.Size = new Size(192, 41);
             bEmpleados.TabIndex = 0;
             bEmpleados.Text = "Empleados";
-            bEmpleados.UseVisualStyleBackColor = true;
+            bEmpleados.UseVisualStyleBackColor = false;
+            bEmpleados.Click += bEmpleados_Click;
             // 
             // MainView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(panel1);
             Name = "MainView";
