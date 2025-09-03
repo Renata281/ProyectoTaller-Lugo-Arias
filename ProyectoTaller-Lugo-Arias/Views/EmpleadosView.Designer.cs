@@ -44,7 +44,7 @@
             dgvEmpleado_In = new DataGridView();
             tpNuevoCliente = new TabPage();
             bCancelar = new Button();
-            bAgregar = new Button();
+            bGuardar = new Button();
             comboBox1 = new ComboBox();
             textBox8 = new TextBox();
             textBox7 = new TextBox();
@@ -237,7 +237,7 @@
             // 
             tpNuevoCliente.BackColor = SystemColors.Control;
             tpNuevoCliente.Controls.Add(bCancelar);
-            tpNuevoCliente.Controls.Add(bAgregar);
+            tpNuevoCliente.Controls.Add(bGuardar);
             tpNuevoCliente.Controls.Add(comboBox1);
             tpNuevoCliente.Controls.Add(textBox8);
             tpNuevoCliente.Controls.Add(textBox7);
@@ -271,19 +271,19 @@
             bCancelar.Text = "Cancelar";
             bCancelar.UseVisualStyleBackColor = false;
             // 
-            // bAgregar
+            // bGuardar
             // 
-            bAgregar.BackColor = Color.DarkSlateGray;
-            bAgregar.FlatAppearance.BorderSize = 0;
-            bAgregar.FlatStyle = FlatStyle.Flat;
-            bAgregar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bAgregar.ForeColor = SystemColors.InactiveBorder;
-            bAgregar.Location = new Point(246, 425);
-            bAgregar.Name = "bAgregar";
-            bAgregar.Size = new Size(100, 35);
-            bAgregar.TabIndex = 14;
-            bAgregar.Text = "Agregar";
-            bAgregar.UseVisualStyleBackColor = false;
+            bGuardar.BackColor = Color.DarkSlateGray;
+            bGuardar.FlatAppearance.BorderSize = 0;
+            bGuardar.FlatStyle = FlatStyle.Flat;
+            bGuardar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bGuardar.ForeColor = SystemColors.InactiveBorder;
+            bGuardar.Location = new Point(246, 425);
+            bGuardar.Name = "bGuardar";
+            bGuardar.Size = new Size(100, 35);
+            bGuardar.TabIndex = 14;
+            bGuardar.Text = "Guardar";
+            bGuardar.UseVisualStyleBackColor = false;
             // 
             // comboBox1
             // 
@@ -495,7 +495,7 @@
         private DataGridView dataGridView1;
         private Label lTodosEmpleados;
         private Button bCancelar;
-        private Button bAgregar;
+        private Button bGuardar;
         private Button bBuscar;
         private Button button1;
         private Button button2;
