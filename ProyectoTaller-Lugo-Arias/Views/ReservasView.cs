@@ -17,5 +17,19 @@ namespace ProyectoTaller_Lugo_Arias.Views
             InitializeComponent();
         }
 
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void bCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lNuevaReserva_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
