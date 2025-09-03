@@ -603,9 +603,9 @@
             lMotorEmpleados.ForeColor = Color.DarkSlateGray;
             lMotorEmpleados.Location = new Point(28, 9);
             lMotorEmpleados.Name = "lMotorEmpleados";
-            lMotorEmpleados.Size = new Size(112, 17);
+            lMotorEmpleados.Size = new Size(100, 17);
             lMotorEmpleados.TabIndex = 1;
-            lMotorEmpleados.Text = "Buscar Empleado";
+            lMotorEmpleados.Text = "Buscar Reserva";
             // 
             // textBox4
             // 
