@@ -57,6 +57,10 @@
             lDni = new Label();
             lApellido = new Label();
             lNombre = new Label();
+            bBuscar = new Button();
+            bNuevo = new Button();
+            bEliminar = new Button();
+            bEditar = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -70,6 +74,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(bBuscar);
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(lMotorEmpleados);
             panel1.Dock = DockStyle.Top;
@@ -126,6 +131,9 @@
             // tpTodos
             // 
             tpTodos.BackColor = SystemColors.Control;
+            tpTodos.Controls.Add(bEditar);
+            tpTodos.Controls.Add(bEliminar);
+            tpTodos.Controls.Add(bNuevo);
             tpTodos.Controls.Add(dataGridView1);
             tpTodos.Controls.Add(lTodosEmpleados);
             tpTodos.Location = new Point(4, 30);
@@ -140,10 +148,10 @@
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 70);
+            dataGridView1.Dock = DockStyle.Left;
+            dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(777, 421);
+            dataGridView1.Size = new Size(641, 488);
             dataGridView1.TabIndex = 4;
             // 
             // lTodosEmpleados
@@ -392,6 +400,42 @@
             lNombre.TabIndex = 0;
             lNombre.Text = "Nombre";
             // 
+            // bBuscar
+            // 
+            bBuscar.Location = new Point(573, 33);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 2;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
+            // 
+            // bNuevo
+            // 
+            bNuevo.Location = new Point(663, 58);
+            bNuevo.Name = "bNuevo";
+            bNuevo.Size = new Size(99, 31);
+            bNuevo.TabIndex = 5;
+            bNuevo.Text = "Nuevo";
+            bNuevo.UseVisualStyleBackColor = true;
+            // 
+            // bEliminar
+            // 
+            bEliminar.Location = new Point(663, 171);
+            bEliminar.Name = "bEliminar";
+            bEliminar.Size = new Size(99, 31);
+            bEliminar.TabIndex = 6;
+            bEliminar.Text = "Eliminar";
+            bEliminar.UseVisualStyleBackColor = true;
+            // 
+            // bEditar
+            // 
+            bEditar.Location = new Point(663, 113);
+            bEditar.Name = "bEditar";
+            bEditar.Size = new Size(99, 31);
+            bEditar.TabIndex = 7;
+            bEditar.Text = "Editar";
+            bEditar.UseVisualStyleBackColor = true;
+            // 
             // EmpleadosView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -452,5 +496,11 @@
         private Label lTodosEmpleados;
         private Button bCancelar;
         private Button bAgregar;
+        private Button bBuscar;
+        private Button button1;
+        private Button button2;
+        private Button bNuevo;
+        private Button bEditar;
+        private Button bEliminar;
     }
 }
