@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            textBox1 = new TextBox();
+            bBuscar = new Button();
+            txtSearch = new TextBox();
             lMotorEmpleados = new Label();
             lEmpleados = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
+            bEditar = new Button();
+            bEliminar = new Button();
+            bNuevo = new Button();
             dataGridView1 = new DataGridView();
             lTodosEmpleados = new Label();
             tpActivos = new TabPage();
@@ -43,24 +47,24 @@
             lEmpleado_In = new Label();
             dgvEmpleado_In = new DataGridView();
             tpNuevoCliente = new TabPage();
+            tbUsername = new TextBox();
+            lUserName = new Label();
+            tbPass = new TextBox();
+            lPass = new Label();
             bCancelar = new Button();
             bGuardar = new Button();
-            comboBox1 = new ComboBox();
-            textBox8 = new TextBox();
-            textBox7 = new TextBox();
-            textBox6 = new TextBox();
-            textBox5 = new TextBox();
-            textBox2 = new TextBox();
+            cbCargo = new ComboBox();
+            tbApellido = new TextBox();
+            tbDni = new TextBox();
+            tbEmail = new TextBox();
+            tbTelefono = new TextBox();
+            tbNombre = new TextBox();
             lCargo = new Label();
             lTelefono = new Label();
             lEmail = new Label();
             lDni = new Label();
             lApellido = new Label();
             lNombre = new Label();
-            bBuscar = new Button();
-            bNuevo = new Button();
-            bEliminar = new Button();
-            bEditar = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -75,22 +79,31 @@
             // panel1
             // 
             panel1.Controls.Add(bBuscar);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(lMotorEmpleados);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(791, 85);
+            panel1.Size = new Size(791, 72);
             panel1.TabIndex = 0;
             // 
-            // textBox1
+            // bBuscar
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Location = new Point(22, 37);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(534, 16);
-            textBox1.TabIndex = 1;
+            bBuscar.Location = new Point(573, 33);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 2;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = SystemColors.Control;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Location = new Point(22, 37);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(534, 16);
+            txtSearch.TabIndex = 1;
             // 
             // lMotorEmpleados
             // 
@@ -142,6 +155,33 @@
             tpTodos.Size = new Size(783, 494);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
+            // 
+            // bEditar
+            // 
+            bEditar.Location = new Point(663, 113);
+            bEditar.Name = "bEditar";
+            bEditar.Size = new Size(99, 31);
+            bEditar.TabIndex = 7;
+            bEditar.Text = "Editar";
+            bEditar.UseVisualStyleBackColor = true;
+            // 
+            // bEliminar
+            // 
+            bEliminar.Location = new Point(663, 171);
+            bEliminar.Name = "bEliminar";
+            bEliminar.Size = new Size(99, 31);
+            bEliminar.TabIndex = 6;
+            bEliminar.Text = "Eliminar";
+            bEliminar.UseVisualStyleBackColor = true;
+            // 
+            // bNuevo
+            // 
+            bNuevo.Location = new Point(663, 58);
+            bNuevo.Name = "bNuevo";
+            bNuevo.Size = new Size(99, 31);
+            bNuevo.TabIndex = 5;
+            bNuevo.Text = "Nuevo";
+            bNuevo.UseVisualStyleBackColor = true;
             // 
             // dataGridView1
             // 
@@ -236,14 +276,18 @@
             // tpNuevoCliente
             // 
             tpNuevoCliente.BackColor = SystemColors.Control;
+            tpNuevoCliente.Controls.Add(tbUsername);
+            tpNuevoCliente.Controls.Add(lUserName);
+            tpNuevoCliente.Controls.Add(tbPass);
+            tpNuevoCliente.Controls.Add(lPass);
             tpNuevoCliente.Controls.Add(bCancelar);
             tpNuevoCliente.Controls.Add(bGuardar);
-            tpNuevoCliente.Controls.Add(comboBox1);
-            tpNuevoCliente.Controls.Add(textBox8);
-            tpNuevoCliente.Controls.Add(textBox7);
-            tpNuevoCliente.Controls.Add(textBox6);
-            tpNuevoCliente.Controls.Add(textBox5);
-            tpNuevoCliente.Controls.Add(textBox2);
+            tpNuevoCliente.Controls.Add(cbCargo);
+            tpNuevoCliente.Controls.Add(tbApellido);
+            tpNuevoCliente.Controls.Add(tbDni);
+            tpNuevoCliente.Controls.Add(tbEmail);
+            tpNuevoCliente.Controls.Add(tbTelefono);
+            tpNuevoCliente.Controls.Add(tbNombre);
             tpNuevoCliente.Controls.Add(lCargo);
             tpNuevoCliente.Controls.Add(lTelefono);
             tpNuevoCliente.Controls.Add(lEmail);
@@ -257,6 +301,44 @@
             tpNuevoCliente.TabIndex = 3;
             tpNuevoCliente.Text = "Nuevo Empleado";
             // 
+            // tbUsername
+            // 
+            tbUsername.BackColor = SystemColors.Control;
+            tbUsername.Location = new Point(430, 182);
+            tbUsername.Name = "tbUsername";
+            tbUsername.Size = new Size(319, 29);
+            tbUsername.TabIndex = 19;
+            // 
+            // lUserName
+            // 
+            lUserName.AutoSize = true;
+            lUserName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lUserName.ForeColor = Color.DarkSlateGray;
+            lUserName.Location = new Point(430, 158);
+            lUserName.Name = "lUserName";
+            lUserName.Size = new Size(130, 21);
+            lUserName.TabIndex = 18;
+            lUserName.Text = "Nombre Usuario";
+            // 
+            // tbPass
+            // 
+            tbPass.BackColor = SystemColors.Control;
+            tbPass.Location = new Point(430, 325);
+            tbPass.Name = "tbPass";
+            tbPass.Size = new Size(319, 29);
+            tbPass.TabIndex = 17;
+            // 
+            // lPass
+            // 
+            lPass.AutoSize = true;
+            lPass.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lPass.ForeColor = Color.DarkSlateGray;
+            lPass.Location = new Point(430, 301);
+            lPass.Name = "lPass";
+            lPass.Size = new Size(92, 21);
+            lPass.TabIndex = 16;
+            lPass.Text = "Contraseña";
+            // 
             // bCancelar
             // 
             bCancelar.BackColor = SystemColors.InactiveCaption;
@@ -264,7 +346,7 @@
             bCancelar.FlatStyle = FlatStyle.Flat;
             bCancelar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bCancelar.ForeColor = Color.DarkSlateGray;
-            bCancelar.Location = new Point(418, 425);
+            bCancelar.Location = new Point(640, 431);
             bCancelar.Name = "bCancelar";
             bCancelar.Size = new Size(103, 35);
             bCancelar.TabIndex = 15;
@@ -278,68 +360,68 @@
             bGuardar.FlatStyle = FlatStyle.Flat;
             bGuardar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bGuardar.ForeColor = SystemColors.InactiveBorder;
-            bGuardar.Location = new Point(246, 425);
+            bGuardar.Location = new Point(521, 431);
             bGuardar.Name = "bGuardar";
             bGuardar.Size = new Size(100, 35);
             bGuardar.TabIndex = 14;
             bGuardar.Text = "Guardar";
             bGuardar.UseVisualStyleBackColor = false;
             // 
-            // comboBox1
+            // cbCargo
             // 
-            comboBox1.BackColor = SystemColors.Control;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(223, 375);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(319, 29);
-            comboBox1.TabIndex = 13;
+            cbCargo.BackColor = SystemColors.Control;
+            cbCargo.FormattingEnabled = true;
+            cbCargo.Location = new Point(430, 115);
+            cbCargo.Name = "cbCargo";
+            cbCargo.Size = new Size(319, 29);
+            cbCargo.TabIndex = 13;
             // 
-            // textBox8
+            // tbApellido
             // 
-            textBox8.BackColor = SystemColors.Control;
-            textBox8.Location = new Point(223, 130);
-            textBox8.Name = "textBox8";
-            textBox8.Size = new Size(319, 29);
-            textBox8.TabIndex = 12;
+            tbApellido.BackColor = SystemColors.Control;
+            tbApellido.Location = new Point(51, 182);
+            tbApellido.Name = "tbApellido";
+            tbApellido.Size = new Size(319, 29);
+            tbApellido.TabIndex = 12;
             // 
-            // textBox7
+            // tbDni
             // 
-            textBox7.BackColor = SystemColors.Control;
-            textBox7.Location = new Point(223, 191);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(319, 29);
-            textBox7.TabIndex = 11;
+            tbDni.BackColor = SystemColors.Control;
+            tbDni.Location = new Point(51, 254);
+            tbDni.Name = "tbDni";
+            tbDni.Size = new Size(319, 29);
+            tbDni.TabIndex = 11;
             // 
-            // textBox6
+            // tbEmail
             // 
-            textBox6.BackColor = SystemColors.Control;
-            textBox6.Location = new Point(223, 252);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(319, 29);
-            textBox6.TabIndex = 10;
+            tbEmail.BackColor = SystemColors.Control;
+            tbEmail.Location = new Point(430, 254);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(319, 29);
+            tbEmail.TabIndex = 10;
             // 
-            // textBox5
+            // tbTelefono
             // 
-            textBox5.BackColor = SystemColors.Control;
-            textBox5.Location = new Point(223, 315);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(319, 29);
-            textBox5.TabIndex = 9;
+            tbTelefono.BackColor = SystemColors.Control;
+            tbTelefono.Location = new Point(51, 325);
+            tbTelefono.Name = "tbTelefono";
+            tbTelefono.Size = new Size(319, 29);
+            tbTelefono.TabIndex = 9;
             // 
-            // textBox2
+            // tbNombre
             // 
-            textBox2.BackColor = SystemColors.Control;
-            textBox2.Location = new Point(223, 71);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(319, 29);
-            textBox2.TabIndex = 6;
+            tbNombre.BackColor = SystemColors.Control;
+            tbNombre.Location = new Point(51, 115);
+            tbNombre.Name = "tbNombre";
+            tbNombre.Size = new Size(319, 29);
+            tbNombre.TabIndex = 6;
             // 
             // lCargo
             // 
             lCargo.AutoSize = true;
             lCargo.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lCargo.ForeColor = Color.DarkSlateGray;
-            lCargo.Location = new Point(224, 351);
+            lCargo.Location = new Point(424, 91);
             lCargo.Name = "lCargo";
             lCargo.Size = new Size(54, 21);
             lCargo.TabIndex = 5;
@@ -350,7 +432,7 @@
             lTelefono.AutoSize = true;
             lTelefono.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lTelefono.ForeColor = Color.DarkSlateGray;
-            lTelefono.Location = new Point(223, 291);
+            lTelefono.Location = new Point(52, 301);
             lTelefono.Name = "lTelefono";
             lTelefono.Size = new Size(74, 21);
             lTelefono.TabIndex = 4;
@@ -361,7 +443,7 @@
             lEmail.AutoSize = true;
             lEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lEmail.ForeColor = Color.DarkSlateGray;
-            lEmail.Location = new Point(223, 228);
+            lEmail.Location = new Point(430, 230);
             lEmail.Name = "lEmail";
             lEmail.Size = new Size(48, 21);
             lEmail.TabIndex = 3;
@@ -372,7 +454,7 @@
             lDni.AutoSize = true;
             lDni.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lDni.ForeColor = Color.DarkSlateGray;
-            lDni.Location = new Point(223, 167);
+            lDni.Location = new Point(51, 230);
             lDni.Name = "lDni";
             lDni.Size = new Size(38, 21);
             lDni.TabIndex = 2;
@@ -383,7 +465,7 @@
             lApellido.AutoSize = true;
             lApellido.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lApellido.ForeColor = Color.DarkSlateGray;
-            lApellido.Location = new Point(224, 106);
+            lApellido.Location = new Point(51, 158);
             lApellido.Name = "lApellido";
             lApellido.Size = new Size(72, 21);
             lApellido.TabIndex = 1;
@@ -394,47 +476,11 @@
             lNombre.AutoSize = true;
             lNombre.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lNombre.ForeColor = Color.DarkSlateGray;
-            lNombre.Location = new Point(223, 47);
+            lNombre.Location = new Point(52, 91);
             lNombre.Name = "lNombre";
             lNombre.Size = new Size(71, 21);
             lNombre.TabIndex = 0;
             lNombre.Text = "Nombre";
-            // 
-            // bBuscar
-            // 
-            bBuscar.Location = new Point(573, 33);
-            bBuscar.Name = "bBuscar";
-            bBuscar.Size = new Size(75, 23);
-            bBuscar.TabIndex = 2;
-            bBuscar.Text = "Buscar";
-            bBuscar.UseVisualStyleBackColor = true;
-            // 
-            // bNuevo
-            // 
-            bNuevo.Location = new Point(663, 58);
-            bNuevo.Name = "bNuevo";
-            bNuevo.Size = new Size(99, 31);
-            bNuevo.TabIndex = 5;
-            bNuevo.Text = "Nuevo";
-            bNuevo.UseVisualStyleBackColor = true;
-            // 
-            // bEliminar
-            // 
-            bEliminar.Location = new Point(663, 171);
-            bEliminar.Name = "bEliminar";
-            bEliminar.Size = new Size(99, 31);
-            bEliminar.TabIndex = 6;
-            bEliminar.Text = "Eliminar";
-            bEliminar.UseVisualStyleBackColor = true;
-            // 
-            // bEditar
-            // 
-            bEditar.Location = new Point(663, 113);
-            bEditar.Name = "bEditar";
-            bEditar.Size = new Size(99, 31);
-            bEditar.TabIndex = 7;
-            bEditar.Text = "Editar";
-            bEditar.UseVisualStyleBackColor = true;
             // 
             // EmpleadosView
             // 
@@ -469,7 +515,7 @@
 
         private Panel panel1;
         private Label lEmpleados;
-        private TextBox textBox1;
+        private TextBox txtSearch;
         private Label lMotorEmpleados;
         private TabControl tabControl1;
         private TabPage tpTodos;
@@ -484,12 +530,12 @@
         private Label lCargo;
         private Label lEmpleado_In;
         private DataGridView dgvEmpleado_In;
-        private ComboBox comboBox1;
-        private TextBox textBox8;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private TextBox textBox5;
-        private TextBox textBox2;
+        private ComboBox cbCargo;
+        private TextBox tbApellido;
+        private TextBox tbDni;
+        private TextBox tbEmail;
+        private TextBox tbTelefono;
+        private TextBox tbNombre;
         private Label lEmpleadoAct;
         private DataGridView dgvEmpleadosAct;
         private DataGridView dataGridView1;
@@ -502,5 +548,9 @@
         private Button bNuevo;
         private Button bEditar;
         private Button bEliminar;
+        private Label lPass;
+        private TextBox tbPass;
+        private TextBox tbUsername;
+        private Label lUserName;
     }
 }
