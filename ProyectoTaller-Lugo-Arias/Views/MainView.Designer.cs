@@ -155,8 +155,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(928, 450);
             Controls.Add(panel1);
+            IsMdiContainer = true;
             Name = "MainView";
             Text = "MainView";
             panel1.ResumeLayout(false);

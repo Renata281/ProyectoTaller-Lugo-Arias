@@ -35,6 +35,7 @@
             lEmpleados = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
+            bCerrar = new Button();
             bEditar = new Button();
             bEliminar = new Button();
             bNuevo = new Button();
@@ -89,6 +90,7 @@
             // 
             // bBuscar
             // 
+            bBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             bBuscar.Location = new Point(573, 33);
             bBuscar.Name = "bBuscar";
             bBuscar.Size = new Size(75, 23);
@@ -98,6 +100,7 @@
             // 
             // txtSearch
             // 
+            txtSearch.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txtSearch.BackColor = SystemColors.Control;
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Location = new Point(22, 37);
@@ -144,6 +147,7 @@
             // tpTodos
             // 
             tpTodos.BackColor = SystemColors.Control;
+            tpTodos.Controls.Add(bCerrar);
             tpTodos.Controls.Add(bEditar);
             tpTodos.Controls.Add(bEliminar);
             tpTodos.Controls.Add(bNuevo);
@@ -156,8 +160,19 @@
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
+            // bCerrar
+            // 
+            bCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            bCerrar.Location = new Point(663, 446);
+            bCerrar.Name = "bCerrar";
+            bCerrar.Size = new Size(99, 31);
+            bCerrar.TabIndex = 8;
+            bCerrar.Text = "Cerrar";
+            bCerrar.UseVisualStyleBackColor = true;
+            // 
             // bEditar
             // 
+            bEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             bEditar.Location = new Point(663, 113);
             bEditar.Name = "bEditar";
             bEditar.Size = new Size(99, 31);
@@ -167,6 +182,7 @@
             // 
             // bEliminar
             // 
+            bEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             bEliminar.Location = new Point(663, 171);
             bEliminar.Name = "bEliminar";
             bEliminar.Size = new Size(99, 31);
@@ -176,6 +192,7 @@
             // 
             // bNuevo
             // 
+            bNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             bNuevo.Location = new Point(663, 58);
             bNuevo.Name = "bNuevo";
             bNuevo.Size = new Size(99, 31);
@@ -185,10 +202,10 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Left;
             dataGridView1.Location = new Point(3, 3);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(641, 488);
@@ -552,5 +569,6 @@
         private TextBox tbPass;
         private TextBox tbUsername;
         private Label lUserName;
+        private Button bCerrar;
     }
 }

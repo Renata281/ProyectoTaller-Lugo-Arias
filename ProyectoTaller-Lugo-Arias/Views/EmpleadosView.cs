@@ -25,6 +25,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
             InitializeComponent();
             asociarYgenerarVistaEventos();
             tabControl1.TabPages.Remove(tpNuevoCliente); // Oculta la pestaña "Nuevo CLiente"
+            bCerrar.Click += delegate { this.Close(); };
         }
 
         private void asociarYgenerarVistaEventos()
@@ -172,6 +173,28 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public void SetEmpleadoListBindingSource(BindingSource empleadoList)
         {
             dataGridView1.DataSource = empleadoList;
+        }
+
+        //abre una unica instancia del formulario
+        private static EmpleadosView instance;
+        public static EmpleadosView GetInstance(Form parentContainer)
+        {
+            if(instance == null || instance.IsDisposed)
+            {
+                instance = new EmpleadosView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if(instance.WindowState == FormWindowState.Minimized)
+                {
+                    instance.WindowState = FormWindowState.Normal; 
+                }
+                instance.BringToFront();
+            }
+            return instance;
         }
 
     }

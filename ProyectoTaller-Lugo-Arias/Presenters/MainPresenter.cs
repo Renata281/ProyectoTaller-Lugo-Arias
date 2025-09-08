@@ -47,7 +47,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void OnShowEmpleadosView(object? sender, EventArgs e)
         {
-            IEmpleadosView view = new EmpleadosView();
+            IEmpleadosView view = EmpleadosView.GetInstance((MainView) mainView);
             IUsuarioRepositorio repositorio = new UsuarioRepositorio(sqlConnectionString);
             new EmpleadoPresenter(view, repositorio);
         }
