@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using ProyectoTaller_Lugo_Arias.Models;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.Data.SqlClient;
-using System.Data;
-using ProyectoTaller_Lugo_Arias.Models;
+using System.Windows.Input;
 
 namespace ProyectoTaller_Lugo_Arias.Repositories
 {
@@ -76,6 +77,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
         public IEnumerable<UsuarioModel> GetByValue(string valorBusqueda)
         {
             var usuariosList = new List<UsuarioModel>();
+            int usuarioId = int.TryParse(valorBusqueda, out var id) ? id : 0;
+            string usuarioNombre = valorBusqueda;
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
@@ -83,7 +86,10 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
                 command.Connection = connection;
                 command.CommandText = @"SELECT * FROM Usuarios
                                       WHERE id_usuario=@id or nombre like @nombre+'%' 
-                                      ORDER BY id_usuario DESC "; 
+                                      ORDER BY id_usuario DESC ";
+
+                command.Parameters.Add("@id", SqlDbType.Int).Value = usuarioId;
+                command.Parameters.Add("@name", SqlDbType.NVarChar).Value = usuarioNombre;
 
                 using (var reader = command.ExecuteReader())
                 {

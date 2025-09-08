@@ -82,7 +82,6 @@
             bTipoHabitacion.TabIndex = 5;
             bTipoHabitacion.Text = "Tipo de Habitación";
             bTipoHabitacion.UseVisualStyleBackColor = false;
-            bTipoHabitacion.Click += bTipoHabitacion_Click;
             // 
             // bHabitaciones
             // 
@@ -150,7 +149,6 @@
             bEmpleados.TabIndex = 0;
             bEmpleados.Text = "Empleados";
             bEmpleados.UseVisualStyleBackColor = false;
-            bEmpleados.Click += bEmpleados_Click;
             // 
             // MainView
             // 

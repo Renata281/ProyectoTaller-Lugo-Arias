@@ -12,6 +12,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
 {
     public partial class MainView : Form, IMainView
     {
+        // Inicializar los eventos con delegados vacíos para evitar CS8618
+        public event EventHandler ShowEmpleadosView = delegate { };
+        public event EventHandler ShowClientesView = delegate { };
+        public event EventHandler ShowReservasView = delegate { };
+        public event EventHandler ShowHabitacionesView = delegate { };
+        public event EventHandler ShowTipoHabitacionView = delegate { };
+        public event EventHandler ShowSalir = delegate { };
+
         public MainView()
         {
             InitializeComponent();
@@ -21,22 +29,6 @@ namespace ProyectoTaller_Lugo_Arias.Views
             bHabitaciones.Click += delegate { ShowHabitacionesView?.Invoke(this, EventArgs.Empty); };
             bTipoHabitacion.Click += delegate { ShowTipoHabitacionView?.Invoke(this, EventArgs.Empty); };
             bSalir.Click += delegate { Application.Exit(); };
-        }
-
-        public event EventHandler ShowEmpleadosView;
-        public event EventHandler ShowClientesView;
-        public event EventHandler ShowReservasView;
-        public event EventHandler ShowHabitacionesView;
-        public event EventHandler ShowTipoHabitacionView;
-
-        private void bEmpleados_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bTipoHabitacion_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
