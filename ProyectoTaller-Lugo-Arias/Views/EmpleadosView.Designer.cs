@@ -47,7 +47,7 @@
             tpInactivos = new TabPage();
             lEmpleado_In = new Label();
             dgvEmpleado_In = new DataGridView();
-            tpNuevoCliente = new TabPage();
+            tpNuevoEmpleado = new TabPage();
             tbUsername = new TextBox();
             lUserName = new Label();
             tbPass = new TextBox();
@@ -74,7 +74,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvEmpleadosAct).BeginInit();
             tpInactivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado_In).BeginInit();
-            tpNuevoCliente.SuspendLayout();
+            tpNuevoEmpleado.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
@@ -135,7 +135,7 @@
             tabControl1.Controls.Add(tpTodos);
             tabControl1.Controls.Add(tpActivos);
             tabControl1.Controls.Add(tpInactivos);
-            tabControl1.Controls.Add(tpNuevoCliente);
+            tabControl1.Controls.Add(tpNuevoEmpleado);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(0, 150);
@@ -290,33 +290,33 @@
             dgvEmpleado_In.Size = new Size(777, 423);
             dgvEmpleado_In.TabIndex = 0;
             // 
-            // tpNuevoCliente
+            // tpNuevoEmpleado
             // 
-            tpNuevoCliente.BackColor = SystemColors.Control;
-            tpNuevoCliente.Controls.Add(tbUsername);
-            tpNuevoCliente.Controls.Add(lUserName);
-            tpNuevoCliente.Controls.Add(tbPass);
-            tpNuevoCliente.Controls.Add(lPass);
-            tpNuevoCliente.Controls.Add(bCancelar);
-            tpNuevoCliente.Controls.Add(bGuardar);
-            tpNuevoCliente.Controls.Add(cbCargo);
-            tpNuevoCliente.Controls.Add(tbApellido);
-            tpNuevoCliente.Controls.Add(tbDni);
-            tpNuevoCliente.Controls.Add(tbEmail);
-            tpNuevoCliente.Controls.Add(tbTelefono);
-            tpNuevoCliente.Controls.Add(tbNombre);
-            tpNuevoCliente.Controls.Add(lCargo);
-            tpNuevoCliente.Controls.Add(lTelefono);
-            tpNuevoCliente.Controls.Add(lEmail);
-            tpNuevoCliente.Controls.Add(lDni);
-            tpNuevoCliente.Controls.Add(lApellido);
-            tpNuevoCliente.Controls.Add(lNombre);
-            tpNuevoCliente.Location = new Point(4, 30);
-            tpNuevoCliente.Name = "tpNuevoCliente";
-            tpNuevoCliente.Padding = new Padding(3);
-            tpNuevoCliente.Size = new Size(783, 494);
-            tpNuevoCliente.TabIndex = 3;
-            tpNuevoCliente.Text = "Nuevo Empleado";
+            tpNuevoEmpleado.BackColor = SystemColors.Control;
+            tpNuevoEmpleado.Controls.Add(tbUsername);
+            tpNuevoEmpleado.Controls.Add(lUserName);
+            tpNuevoEmpleado.Controls.Add(tbPass);
+            tpNuevoEmpleado.Controls.Add(lPass);
+            tpNuevoEmpleado.Controls.Add(bCancelar);
+            tpNuevoEmpleado.Controls.Add(bGuardar);
+            tpNuevoEmpleado.Controls.Add(cbCargo);
+            tpNuevoEmpleado.Controls.Add(tbApellido);
+            tpNuevoEmpleado.Controls.Add(tbDni);
+            tpNuevoEmpleado.Controls.Add(tbEmail);
+            tpNuevoEmpleado.Controls.Add(tbTelefono);
+            tpNuevoEmpleado.Controls.Add(tbNombre);
+            tpNuevoEmpleado.Controls.Add(lCargo);
+            tpNuevoEmpleado.Controls.Add(lTelefono);
+            tpNuevoEmpleado.Controls.Add(lEmail);
+            tpNuevoEmpleado.Controls.Add(lDni);
+            tpNuevoEmpleado.Controls.Add(lApellido);
+            tpNuevoEmpleado.Controls.Add(lNombre);
+            tpNuevoEmpleado.Location = new Point(4, 30);
+            tpNuevoEmpleado.Name = "tpNuevoEmpleado";
+            tpNuevoEmpleado.Padding = new Padding(3);
+            tpNuevoEmpleado.Size = new Size(783, 494);
+            tpNuevoEmpleado.TabIndex = 3;
+            tpNuevoEmpleado.Text = "Nuevo Empleado";
             // 
             // tbUsername
             // 
@@ -522,8 +522,8 @@
             tpInactivos.ResumeLayout(false);
             tpInactivos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado_In).EndInit();
-            tpNuevoCliente.ResumeLayout(false);
-            tpNuevoCliente.PerformLayout();
+            tpNuevoEmpleado.ResumeLayout(false);
+            tpNuevoEmpleado.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -538,7 +538,7 @@
         private TabPage tpTodos;
         private TabPage tpActivos;
         private TabPage tpInactivos;
-        private TabPage tpNuevoCliente;
+        private TabPage tpNuevoEmpleado;
         private Label lNombre;
         private Label lTelefono;
         private Label lEmail;

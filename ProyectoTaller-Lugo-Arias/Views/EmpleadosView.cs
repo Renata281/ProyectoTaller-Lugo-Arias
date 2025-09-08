@@ -24,7 +24,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
             InitializeComponent();
             asociarYgenerarVistaEventos();
-            tabControl1.TabPages.Remove(tpNuevoCliente); // Oculta la pestaña "Nuevo CLiente"
+            tabControl1.TabPages.Remove(tpNuevoEmpleado); // Oculta la pestaña "Nuevo CLiente"
             bCerrar.Click += delegate { this.Close(); };
         }
 
@@ -46,6 +46,55 @@ namespace ProyectoTaller_Lugo_Arias.Views
             };
 
             //agregar
+            bNuevo.Click += delegate {
+                AgregarEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Add(tpNuevoEmpleado); // Muestra la pestaña "Nuevo empleado"
+                tabControl1.TabPages.Remove(tpTodos); // Oculta la pestaña "todos"
+                tabControl1.TabPages.Remove(tpActivos); // Oculta la pestaña "Activos"
+                tabControl1.TabPages.Remove(tpInactivos); // Oculta la pestaña "Inactivos"
+                tpNuevoEmpleado.Text = "Agregar nuevo empleado";
+
+            };
+            //editar
+            bEditar.Click += delegate {
+                EditarEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Add(tpNuevoEmpleado); // Muestra la pestaña "Nuevo empleado"
+                tabControl1.TabPages.Remove(tpTodos); // Oculta la pestaña "todos"
+                tabControl1.TabPages.Remove(tpActivos); // Oculta la pestaña "Activos"
+                tabControl1.TabPages.Remove(tpInactivos); // Oculta la pestaña "Inactivos"
+                tpNuevoEmpleado.Text = "Editar empleado";
+            };
+            //eliminar
+            bEliminar.Click += delegate
+            {
+                var result = MessageBox.Show("¿Esta seguro que desea eliminar un empleado?", "Warning", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    EliminarEvent?.Invoke(this, EventArgs.Empty);
+                    MessageBox.Show(Mensaje);
+                }
+            };
+            //guardar
+            bGuardar.Click += delegate {
+                GuardarEvent?.Invoke(this, EventArgs.Empty);
+                //si guarda correctamente ejecuta el if
+                if (isNuevo)
+                {
+                    tabControl1.TabPages.Remove(tpNuevoEmpleado); // Oculta la pestaña "Nuevo empleado"
+                    tabControl1.TabPages.Add(tpTodos); // Muestra la pestaña "todos"
+                    tabControl1.TabPages.Add(tpActivos); // Muestra la pestaña "Activos"
+                    tabControl1.TabPages.Add(tpInactivos); // Muestra la pestaña "Inactivos"
+                }
+                MessageBox.Show(Mensaje);
+            };
+            //cancelar
+            bCancelar.Click += delegate {
+                CancelarEvent?.Invoke(this, EventArgs.Empty);
+                tabControl1.TabPages.Remove(tpNuevoEmpleado); // Oculta la pestaña "Nuevo empleado"
+                tabControl1.TabPages.Add(tpTodos); // Muestra la pestaña "todos"
+                tabControl1.TabPages.Add(tpActivos); // Muestra la pestaña "Activos"
+                tabControl1.TabPages.Add(tpInactivos); // Muestra la pestaña "Inactivos"
+            };
         }
 
         //propiedades
