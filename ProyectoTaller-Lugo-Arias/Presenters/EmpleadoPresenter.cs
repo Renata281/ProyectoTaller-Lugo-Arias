@@ -61,27 +61,98 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void CancelarAction(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
         }
 
         private void GuardarEmpleado(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            int idUsuario, dni, telefono;
+            int.TryParse(this.view.Id_usuario, out idUsuario);
+            int.TryParse(this.view.Dni, out dni);
+            int.TryParse(this.view.Telefono, out telefono);
+
+            var model = new UsuarioModel();
+            model.Id_usuario = idUsuario;
+            model.Nombre = view.Nombre;
+            model.Apellido = view.Apellido;
+            model.Dni = dni;
+            model.Telefono = telefono;
+            model.Email = view.Email;
+            model.Password = !string.IsNullOrWhiteSpace(this.view.Password)
+                ? Convert.FromBase64String(this.view.Password)
+                : Array.Empty<byte>(); // Solución: usar un array vacío en vez de null
+            model.Id_cargo = Convert.ToInt32(this.view.Id_cargo);
+            try
+            {
+                new Common.ModelDataValidation().Validate(model);
+                if(view.IsEditar) //editar
+                {
+                    usuarioRepositorio.Edit(model);
+                    view.Mensaje = "Empleado editado correctamente";
+                }
+                else //nuevo
+                {
+                    usuarioRepositorio.Add(model);
+                    view.Mensaje = "Empleado agregado correctamente";
+                }
+                view.IsNuevo = true;
+                LoadAllEmpleadosList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsNuevo = false;
+                view.Mensaje = ex.Message;
+            }
+        }
+
+        private void CleanViewFields()
+        {
+            view.Id_usuario = "0";
+            view.Nombre =" ";
+            view.Apellido = " ";
+            view.Dni = "0";
+            view.Telefono = "0";
+            view.Email = " ";
+            view.Password = " ";
+            view.Id_cargo = "0";
         }
 
         private void DeleteSelectedEmpleado(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var empleado = (UsuarioModel)empleadosBindingSource.Current;
+                usuarioRepositorio.Delete(empleado.Id_usuario);
+                view.IsNuevo = true;
+                view.Mensaje = "Empleado eliminado correctamente";
+                LoadAllEmpleadosList();
+            }
+            catch (Exception ex)
+            {
+                view.IsNuevo = false;
+                view.Mensaje = "Ocurrio un error, no se pudo eliminar al empleado";
+            }
         }
 
         private void LoadSelectedEmpleadoToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var empleado = (UsuarioModel)empleadosBindingSource.Current;
+            
+            view.Id_usuario = empleado.Id_usuario.ToString();
+            view.Nombre = empleado.Nombre;
+            view.Apellido = empleado.Apellido;
+            view.Dni = empleado.Dni.ToString();
+            view.Telefono = empleado.Telefono.ToString();
+            view.Email = empleado.Email;
+            view.Password = empleado.Password != null ? Convert.ToBase64String(empleado.Password) : string.Empty;
+            view.Id_cargo = empleado.Id_cargo.ToString();
+            view.IsEditar = true;
         }
 
         private void AgregarEmpleado(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            view.IsEditar = false;
         }
 
         

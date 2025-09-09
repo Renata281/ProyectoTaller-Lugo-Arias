@@ -22,17 +22,60 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
         //metodos
         public void Add(UsuarioModel usuario)
         {
-            throw new NotImplementedException();
+            using(var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into Usuarios values(@nombre, @apellido, @dni, @telefono, @email, @password, @id_cargo, @cargo_descripcion )";
+                command.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = usuario.Nombre;
+                command.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = usuario.Apellido;
+                command.Parameters.Add("@dni", SqlDbType.Int).Value = usuario.Dni;
+                command.Parameters.Add("@telefono", SqlDbType.Int).Value = usuario.Telefono;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = usuario.Email;
+                command.Parameters.Add("@password", SqlDbType.VarBinary).Value = usuario.Password;
+                command.Parameters.Add("@id_cargo", SqlDbType.Int).Value = usuario.Id_cargo;
+                command.Parameters.Add("@cargo_descripcion", SqlDbType.NVarChar).Value = usuario.Cargo_descripcion;
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
-        }
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "delete from Usuarios where id_usuario=@id ";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
 
+            }
+        }
         public void Edit(UsuarioModel usuario)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update Usuarios 
+                                      set Usuarios_nombre = @nombre,Usuarios_apellido = @apellido,Usuarios_dni = @dni,Usuarios_telefono = @telefono,Usuarios_email = @email,Usuarios_pass = @password,Usuarios_id_cargo = @id_cargo,Usuarios_cargo_descripcion = @cargo_descripcion
+                                      where Usuarios_id_usuario =@id";
+                command.Parameters.Add("@nombre", SqlDbType.NVarChar).Value = usuario.Nombre;
+                command.Parameters.Add("@apellido", SqlDbType.NVarChar).Value = usuario.Apellido;
+                command.Parameters.Add("@dni", SqlDbType.Int).Value = usuario.Dni;
+                command.Parameters.Add("@telefono", SqlDbType.Int).Value = usuario.Telefono;
+                command.Parameters.Add("@email", SqlDbType.NVarChar).Value = usuario.Email;
+                command.Parameters.Add("@password", SqlDbType.VarBinary).Value = usuario.Password;
+                command.Parameters.Add("@id_cargo", SqlDbType.Int).Value = usuario.Id_cargo;
+                command.Parameters.Add("@cargo_descripcion", SqlDbType.NVarChar).Value = usuario.Cargo_descripcion;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = usuario.Id_usuario;
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public IEnumerable<UsuarioModel> GetAll()
