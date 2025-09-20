@@ -27,7 +27,9 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void OnShowTipoHabitacionView(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            ITipoHabitacionView view = TipoHabitacionView.GetInstance((MainView) mainView);
+            ITipoHabitacionRepositorio tipoHabitacionRepositorio = new TipoHabitacionRepositorio(sqlConnectionString);
+            new TipoHabitacionPresenter(view, tipoHabitacionRepositorio);
         }
 
         private void OnShowHabitacionesView(object? sender, EventArgs e)
@@ -37,7 +39,14 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void OnShowReservasView(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            IReservasView view = ReservasView.GetInstance((MainView) mainView);
+            IReservaRepositorio reservaRepositorio = new ReservaRepositorio(sqlConnectionString);
+           /* IClienteRepositorio clienteRepositorio = new ClienteRepositorio(sqlConnectionString);
+            IHabitacionRepositorio habitacionRepositorio = new HabitacionRepositorio(sqlConnectionString);
+            IPagoRepositorio pagoRepositorio = new PagoRepositorio(sqlConnectionString);
+            new ReservaPresenter(view, reservaRepositorio, clienteRepositorio, habitacionRepositorio, pagoRepositorio);
+           */
+            new ReservaPresenter(view, reservaRepositorio);
         }
 
         private void OnShowClientesView(object? sender, EventArgs e)
@@ -48,8 +57,9 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private void OnShowEmpleadosView(object? sender, EventArgs e)
         {
             IEmpleadosView view = EmpleadosView.GetInstance((MainView) mainView);
+            ICargoRepositorio cargoRepositorio = new CargoRepositorio(sqlConnectionString);
             IUsuarioRepositorio repositorio = new UsuarioRepositorio(sqlConnectionString);
-            new EmpleadoPresenter(view, repositorio);
+            new EmpleadoPresenter(view, repositorio, cargoRepositorio);
         }
     }
 }

@@ -48,8 +48,6 @@
             lEmpleado_In = new Label();
             dgvEmpleado_In = new DataGridView();
             tpNuevoEmpleado = new TabPage();
-            tbUsername = new TextBox();
-            lUserName = new Label();
             tbPass = new TextBox();
             lPass = new Label();
             bCancelar = new Button();
@@ -85,12 +83,11 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(791, 72);
+            panel1.Size = new Size(790, 72);
             panel1.TabIndex = 0;
             // 
             // bBuscar
             // 
-            bBuscar.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             bBuscar.Location = new Point(573, 33);
             bBuscar.Name = "bBuscar";
             bBuscar.Size = new Size(75, 23);
@@ -105,7 +102,7 @@
             txtSearch.BorderStyle = BorderStyle.None;
             txtSearch.Location = new Point(22, 37);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(534, 16);
+            txtSearch.Size = new Size(533, 16);
             txtSearch.TabIndex = 1;
             // 
             // lMotorEmpleados
@@ -124,7 +121,7 @@
             lEmpleados.AutoSize = true;
             lEmpleados.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lEmpleados.ForeColor = Color.DarkSlateGray;
-            lEmpleados.Location = new Point(326, 105);
+            lEmpleados.Location = new Point(326, 86);
             lEmpleados.Name = "lEmpleados";
             lEmpleados.Size = new Size(138, 32);
             lEmpleados.TabIndex = 0;
@@ -138,10 +135,10 @@
             tabControl1.Controls.Add(tpNuevoEmpleado);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 150);
+            tabControl1.Location = new Point(0, 128);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(791, 528);
+            tabControl1.Size = new Size(790, 454);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -293,8 +290,6 @@
             // tpNuevoEmpleado
             // 
             tpNuevoEmpleado.BackColor = SystemColors.Control;
-            tpNuevoEmpleado.Controls.Add(tbUsername);
-            tpNuevoEmpleado.Controls.Add(lUserName);
             tpNuevoEmpleado.Controls.Add(tbPass);
             tpNuevoEmpleado.Controls.Add(lPass);
             tpNuevoEmpleado.Controls.Add(bCancelar);
@@ -314,33 +309,14 @@
             tpNuevoEmpleado.Location = new Point(4, 30);
             tpNuevoEmpleado.Name = "tpNuevoEmpleado";
             tpNuevoEmpleado.Padding = new Padding(3);
-            tpNuevoEmpleado.Size = new Size(783, 494);
+            tpNuevoEmpleado.Size = new Size(782, 420);
             tpNuevoEmpleado.TabIndex = 3;
             tpNuevoEmpleado.Text = "Nuevo Empleado";
-            // 
-            // tbUsername
-            // 
-            tbUsername.BackColor = SystemColors.Control;
-            tbUsername.Location = new Point(430, 182);
-            tbUsername.Name = "tbUsername";
-            tbUsername.Size = new Size(319, 29);
-            tbUsername.TabIndex = 19;
-            // 
-            // lUserName
-            // 
-            lUserName.AutoSize = true;
-            lUserName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lUserName.ForeColor = Color.DarkSlateGray;
-            lUserName.Location = new Point(430, 158);
-            lUserName.Name = "lUserName";
-            lUserName.Size = new Size(130, 21);
-            lUserName.TabIndex = 18;
-            lUserName.Text = "Nombre Usuario";
             // 
             // tbPass
             // 
             tbPass.BackColor = SystemColors.Control;
-            tbPass.Location = new Point(430, 325);
+            tbPass.Location = new Point(430, 230);
             tbPass.Name = "tbPass";
             tbPass.Size = new Size(319, 29);
             tbPass.TabIndex = 17;
@@ -350,7 +326,7 @@
             lPass.AutoSize = true;
             lPass.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lPass.ForeColor = Color.DarkSlateGray;
-            lPass.Location = new Point(430, 301);
+            lPass.Location = new Point(430, 199);
             lPass.Name = "lPass";
             lPass.Size = new Size(92, 21);
             lPass.TabIndex = 16;
@@ -363,7 +339,7 @@
             bCancelar.FlatStyle = FlatStyle.Flat;
             bCancelar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bCancelar.ForeColor = Color.DarkSlateGray;
-            bCancelar.Location = new Point(640, 431);
+            bCancelar.Location = new Point(636, 367);
             bCancelar.Name = "bCancelar";
             bCancelar.Size = new Size(103, 35);
             bCancelar.TabIndex = 15;
@@ -377,7 +353,7 @@
             bGuardar.FlatStyle = FlatStyle.Flat;
             bGuardar.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bGuardar.ForeColor = SystemColors.InactiveBorder;
-            bGuardar.Location = new Point(521, 431);
+            bGuardar.Location = new Point(511, 367);
             bGuardar.Name = "bGuardar";
             bGuardar.Size = new Size(100, 35);
             bGuardar.TabIndex = 14;
@@ -386,9 +362,11 @@
             // 
             // cbCargo
             // 
+            cbCargo.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            cbCargo.AutoCompleteSource = AutoCompleteSource.ListItems;
             cbCargo.BackColor = SystemColors.Control;
             cbCargo.FormattingEnabled = true;
-            cbCargo.Location = new Point(430, 115);
+            cbCargo.Location = new Point(430, 68);
             cbCargo.Name = "cbCargo";
             cbCargo.Size = new Size(319, 29);
             cbCargo.TabIndex = 13;
@@ -396,7 +374,7 @@
             // tbApellido
             // 
             tbApellido.BackColor = SystemColors.Control;
-            tbApellido.Location = new Point(51, 182);
+            tbApellido.Location = new Point(55, 150);
             tbApellido.Name = "tbApellido";
             tbApellido.Size = new Size(319, 29);
             tbApellido.TabIndex = 12;
@@ -404,7 +382,7 @@
             // tbDni
             // 
             tbDni.BackColor = SystemColors.Control;
-            tbDni.Location = new Point(51, 254);
+            tbDni.Location = new Point(52, 230);
             tbDni.Name = "tbDni";
             tbDni.Size = new Size(319, 29);
             tbDni.TabIndex = 11;
@@ -412,7 +390,7 @@
             // tbEmail
             // 
             tbEmail.BackColor = SystemColors.Control;
-            tbEmail.Location = new Point(430, 254);
+            tbEmail.Location = new Point(430, 150);
             tbEmail.Name = "tbEmail";
             tbEmail.Size = new Size(319, 29);
             tbEmail.TabIndex = 10;
@@ -420,7 +398,7 @@
             // tbTelefono
             // 
             tbTelefono.BackColor = SystemColors.Control;
-            tbTelefono.Location = new Point(51, 325);
+            tbTelefono.Location = new Point(55, 309);
             tbTelefono.Name = "tbTelefono";
             tbTelefono.Size = new Size(319, 29);
             tbTelefono.TabIndex = 9;
@@ -428,7 +406,7 @@
             // tbNombre
             // 
             tbNombre.BackColor = SystemColors.Control;
-            tbNombre.Location = new Point(51, 115);
+            tbNombre.Location = new Point(55, 68);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(319, 29);
             tbNombre.TabIndex = 6;
@@ -438,7 +416,7 @@
             lCargo.AutoSize = true;
             lCargo.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lCargo.ForeColor = Color.DarkSlateGray;
-            lCargo.Location = new Point(424, 91);
+            lCargo.Location = new Point(430, 35);
             lCargo.Name = "lCargo";
             lCargo.Size = new Size(54, 21);
             lCargo.TabIndex = 5;
@@ -449,7 +427,7 @@
             lTelefono.AutoSize = true;
             lTelefono.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lTelefono.ForeColor = Color.DarkSlateGray;
-            lTelefono.Location = new Point(52, 301);
+            lTelefono.Location = new Point(53, 276);
             lTelefono.Name = "lTelefono";
             lTelefono.Size = new Size(74, 21);
             lTelefono.TabIndex = 4;
@@ -460,7 +438,7 @@
             lEmail.AutoSize = true;
             lEmail.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lEmail.ForeColor = Color.DarkSlateGray;
-            lEmail.Location = new Point(430, 230);
+            lEmail.Location = new Point(430, 117);
             lEmail.Name = "lEmail";
             lEmail.Size = new Size(48, 21);
             lEmail.TabIndex = 3;
@@ -471,7 +449,7 @@
             lDni.AutoSize = true;
             lDni.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lDni.ForeColor = Color.DarkSlateGray;
-            lDni.Location = new Point(51, 230);
+            lDni.Location = new Point(55, 199);
             lDni.Name = "lDni";
             lDni.Size = new Size(38, 21);
             lDni.TabIndex = 2;
@@ -482,7 +460,7 @@
             lApellido.AutoSize = true;
             lApellido.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lApellido.ForeColor = Color.DarkSlateGray;
-            lApellido.Location = new Point(51, 158);
+            lApellido.Location = new Point(55, 117);
             lApellido.Name = "lApellido";
             lApellido.Size = new Size(72, 21);
             lApellido.TabIndex = 1;
@@ -493,7 +471,7 @@
             lNombre.AutoSize = true;
             lNombre.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lNombre.ForeColor = Color.DarkSlateGray;
-            lNombre.Location = new Point(52, 91);
+            lNombre.Location = new Point(55, 35);
             lNombre.Name = "lNombre";
             lNombre.Size = new Size(71, 21);
             lNombre.TabIndex = 0;
@@ -504,7 +482,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(791, 678);
+            ClientSize = new Size(790, 582);
             Controls.Add(tabControl1);
             Controls.Add(lEmpleados);
             Controls.Add(panel1);
@@ -567,8 +545,6 @@
         private Button bEliminar;
         private Label lPass;
         private TextBox tbPass;
-        private TextBox tbUsername;
-        private Label lUserName;
         private Button bCerrar;
     }
 }

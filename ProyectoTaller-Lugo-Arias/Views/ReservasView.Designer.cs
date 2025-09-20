@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            textBox4 = new TextBox();
+            lMotorEmpleados = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
@@ -84,8 +86,6 @@
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
-            lMotorEmpleados = new Label();
-            textBox4 = new TextBox();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -106,8 +106,28 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(783, 69);
+            panel1.Size = new Size(785, 69);
             panel1.TabIndex = 0;
+            // 
+            // textBox4
+            // 
+            textBox4.BackColor = SystemColors.Control;
+            textBox4.BorderStyle = BorderStyle.None;
+            textBox4.Location = new Point(28, 29);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(534, 16);
+            textBox4.TabIndex = 2;
+            // 
+            // lMotorEmpleados
+            // 
+            lMotorEmpleados.AutoSize = true;
+            lMotorEmpleados.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lMotorEmpleados.ForeColor = Color.DarkSlateGray;
+            lMotorEmpleados.Location = new Point(28, 9);
+            lMotorEmpleados.Name = "lMotorEmpleados";
+            lMotorEmpleados.Size = new Size(100, 17);
+            lMotorEmpleados.TabIndex = 1;
+            lMotorEmpleados.Text = "Buscar Reserva";
             // 
             // label1
             // 
@@ -128,10 +148,10 @@
             tabControl1.Controls.Add(tpNuevaReserva);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 121);
+            tabControl1.Location = new Point(0, 111);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(783, 508);
+            tabControl1.Size = new Size(785, 508);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -142,7 +162,7 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(775, 474);
+            tpTodos.Size = new Size(777, 474);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
@@ -153,9 +173,9 @@
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4, dataGridViewTextBoxColumn12 });
             dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 71);
+            dataGridView3.Location = new Point(3, 107);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(769, 364);
+            dataGridView3.Size = new Size(771, 364);
             dataGridView3.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn7
@@ -242,11 +262,10 @@
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1, dataGridViewButtonColumn2, dataGridViewTextBoxColumn6 });
             dataGridView2.Dock = DockStyle.Bottom;
-            dataGridView2.Location = new Point(3, 65);
+            dataGridView2.Location = new Point(3, 101);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(769, 370);
             dataGridView2.TabIndex = 3;
-            dataGridView2.CellContentClick += dataGridView2_CellContentClick;
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -298,7 +317,7 @@
             tpFinalizados.Location = new Point(4, 30);
             tpFinalizados.Name = "tpFinalizados";
             tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(775, 474);
+            tpFinalizados.Size = new Size(777, 474);
             tpFinalizados.TabIndex = 2;
             tpFinalizados.Text = "Finalizados";
             // 
@@ -309,9 +328,9 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumnaNroReserva, ColumnaClienteDNI, ColumnaHabitacion, ColumnaIngreso, ColumnaSalida, ColumnaEditar, ColumnaEliminar, ColumnaEstado });
             dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 76);
+            dataGridView1.Location = new Point(3, 112);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(769, 359);
+            dataGridView1.Size = new Size(771, 359);
             dataGridView1.TabIndex = 2;
             // 
             // ColumnaNroReserva
@@ -388,7 +407,7 @@
             tpNuevaReserva.Location = new Point(4, 30);
             tpNuevaReserva.Name = "tpNuevaReserva";
             tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(775, 474);
+            tpNuevaReserva.Size = new Size(777, 474);
             tpNuevaReserva.TabIndex = 3;
             tpNuevaReserva.Text = "Nueva Reserva";
             // 
@@ -489,7 +508,6 @@
             bCancelar.TabIndex = 11;
             bCancelar.Text = "Cancelar";
             bCancelar.UseVisualStyleBackColor = false;
-            bCancelar.Click += bCancelar_Click;
             // 
             // bCalcularPrecio
             // 
@@ -594,27 +612,6 @@
             lNuevaReserva.Size = new Size(140, 25);
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nueva Reserva";
-            lNuevaReserva.Click += lNuevaReserva_Click;
-            // 
-            // lMotorEmpleados
-            // 
-            lMotorEmpleados.AutoSize = true;
-            lMotorEmpleados.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lMotorEmpleados.ForeColor = Color.DarkSlateGray;
-            lMotorEmpleados.Location = new Point(28, 9);
-            lMotorEmpleados.Name = "lMotorEmpleados";
-            lMotorEmpleados.Size = new Size(100, 17);
-            lMotorEmpleados.TabIndex = 1;
-            lMotorEmpleados.Text = "Buscar Reserva";
-            // 
-            // textBox4
-            // 
-            textBox4.BackColor = SystemColors.Control;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(28, 29);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(534, 16);
-            textBox4.TabIndex = 2;
             // 
             // ReservasView
             // 

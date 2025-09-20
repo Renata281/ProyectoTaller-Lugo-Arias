@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using ProyectoTaller_Lugo_Arias.Models;
 using ProyectoTaller_Lugo_Arias.Views;
+using System.Security.Cryptography;
 
 namespace ProyectoTaller_Lugo_Arias.Presenters
 {
@@ -16,7 +17,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private BindingSource empleadosBindingSource;
         private IEnumerable<UsuarioModel> empleadosList;
 
-        public EmpleadoPresenter(IEmpleadosView view, IUsuarioRepositorio usuarioRepositorio)
+        public EmpleadoPresenter(IEmpleadosView view, IUsuarioRepositorio usuarioRepositorio, ICargoRepositorio cargoRepositorio)
         {
             this.empleadosBindingSource = new BindingSource();
             this.view = view;
@@ -29,12 +30,15 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.view.GuardarEvent += GuardarEmpleado;
             this.view.CancelarEvent += CancelarAction;
 
+            this.view.SetCargosListComboBox(cargoRepositorio.GetAll());
+
             //establecer el origen de datos del enlace
             this.view.SetEmpleadoListBindingSource(empleadosBindingSource);
             //cargar datos de la tabla empleados
             LoadAllEmpleadosList();
             //mostrar la vista
             this.view.Show();
+
 
         }
 
@@ -66,24 +70,24 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void GuardarEmpleado(object? sender, EventArgs e)
         {
-            int idUsuario, dni, telefono;
+            int idUsuario;
             int.TryParse(this.view.Id_usuario, out idUsuario);
-            int.TryParse(this.view.Dni, out dni);
-            int.TryParse(this.view.Telefono, out telefono);
 
             var model = new UsuarioModel();
-            model.Id_usuario = idUsuario;
-            model.Nombre = view.Nombre;
-            model.Apellido = view.Apellido;
-            model.Dni = dni;
-            model.Telefono = telefono;
-            model.Email = view.Email;
-            model.Password = !string.IsNullOrWhiteSpace(this.view.Password)
-                ? Convert.FromBase64String(this.view.Password)
-                : Array.Empty<byte>(); // Solución: usar un array vacío en vez de null
-            model.Id_cargo = Convert.ToInt32(this.view.Id_cargo);
+            
             try
             {
+                model.Id_usuario = idUsuario;
+                model.Nombre = view.Nombre;
+                model.Apellido = view.Apellido;
+                model.Dni = view.Dni;
+                model.Telefono = view.Telefono;
+                model.Email = view.Email;
+                model.Password = !string.IsNullOrWhiteSpace(this.view.Password)
+                    ? HashPassword(this.view.Password)
+                    : Array.Empty<byte>();
+                model.Id_cargo = view.Id_cargo;
+
                 new Common.ModelDataValidation().Validate(model);
                 if(view.IsEditar) //editar
                 {
@@ -106,16 +110,25 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             }
         }
 
+        private static byte[] HashPassword(string password)
+        {
+            using (SHA512 sha512 = SHA512.Create())
+            {
+                byte[] bytes = sha512.ComputeHash(Encoding.UTF8.GetBytes(password));
+                return bytes;
+            }
+        }
+
         private void CleanViewFields()
         {
             view.Id_usuario = "0";
             view.Nombre =" ";
             view.Apellido = " ";
-            view.Dni = "0";
-            view.Telefono = "0";
+            view.Dni = 0;
+            view.Telefono = 0;
             view.Email = " ";
             view.Password = " ";
-            view.Id_cargo = "0";
+            view.Id_cargo = 1;
         }
 
         private void DeleteSelectedEmpleado(object? sender, EventArgs e)
@@ -142,11 +155,11 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Id_usuario = empleado.Id_usuario.ToString();
             view.Nombre = empleado.Nombre;
             view.Apellido = empleado.Apellido;
-            view.Dni = empleado.Dni.ToString();
-            view.Telefono = empleado.Telefono.ToString();
+            view.Dni = empleado.Dni;
+            view.Telefono = empleado.Telefono;
             view.Email = empleado.Email;
             view.Password = empleado.Password != null ? Convert.ToBase64String(empleado.Password) : string.Empty;
-            view.Id_cargo = empleado.Id_cargo.ToString();
+            view.Id_cargo = empleado.Id_cargo;
             view.IsEditar = true;
         }
 

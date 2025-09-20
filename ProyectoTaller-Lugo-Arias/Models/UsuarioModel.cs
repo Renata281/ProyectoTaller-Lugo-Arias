@@ -21,7 +21,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private byte[] password;
         private int id_cargo;
         private string cargo_descripcion;
-        private string estado; //activo o inactivo
+        private string estado;
 
 
         [DisplayName("ID Usuario")]
@@ -85,9 +85,10 @@ namespace ProyectoTaller_Lugo_Arias.Models
             set => cargo_descripcion = value;
         }
 
-        public string Estado { 
+        public string Estado {
             get => estado;
             set => estado = value;
         }
+
     }
 }

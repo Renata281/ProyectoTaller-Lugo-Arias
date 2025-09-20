@@ -57,7 +57,7 @@
             // 
             // bSalir
             // 
-            bSalir.BackColor = Color.CadetBlue;
+            bSalir.BackColor = Color.Teal;
             bSalir.FlatAppearance.BorderSize = 0;
             bSalir.FlatStyle = FlatStyle.Flat;
             bSalir.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -71,7 +71,7 @@
             // 
             // bTipoHabitacion
             // 
-            bTipoHabitacion.BackColor = Color.CadetBlue;
+            bTipoHabitacion.BackColor = Color.Teal;
             bTipoHabitacion.FlatAppearance.BorderSize = 0;
             bTipoHabitacion.FlatStyle = FlatStyle.Flat;
             bTipoHabitacion.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -85,7 +85,7 @@
             // 
             // bHabitaciones
             // 
-            bHabitaciones.BackColor = Color.CadetBlue;
+            bHabitaciones.BackColor = Color.Teal;
             bHabitaciones.FlatAppearance.BorderSize = 0;
             bHabitaciones.FlatStyle = FlatStyle.Flat;
             bHabitaciones.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -99,7 +99,7 @@
             // 
             // bReservas
             // 
-            bReservas.BackColor = Color.CadetBlue;
+            bReservas.BackColor = Color.Teal;
             bReservas.FlatAppearance.BorderSize = 0;
             bReservas.FlatStyle = FlatStyle.Flat;
             bReservas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -113,7 +113,7 @@
             // 
             // bClientes
             // 
-            bClientes.BackColor = Color.CadetBlue;
+            bClientes.BackColor = Color.Teal;
             bClientes.FlatAppearance.BorderSize = 0;
             bClientes.FlatStyle = FlatStyle.Flat;
             bClientes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -138,7 +138,7 @@
             // 
             // bEmpleados
             // 
-            bEmpleados.BackColor = Color.CadetBlue;
+            bEmpleados.BackColor = Color.Teal;
             bEmpleados.FlatAppearance.BorderSize = 0;
             bEmpleados.FlatStyle = FlatStyle.Flat;
             bEmpleados.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);

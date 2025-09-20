@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Navigation;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Data.SqlClient;
+using System.Configuration;
+using ProyectoTaller_Lugo_Arias.Models;
 
 namespace ProyectoTaller_Lugo_Arias.Views
 {
@@ -18,6 +21,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         private string mensaje;
         private bool isNuevo;
         private bool isEditar;
+        private string id_usuario_seleccionado;
 
         //constructor
         public EmpleadosView()
@@ -46,7 +50,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
             };
 
             //agregar
-            bNuevo.Click += delegate {
+            bNuevo.Click += delegate
+            {
                 AgregarEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Add(tpNuevoEmpleado); // Muestra la pestaña "Nuevo empleado"
                 tabControl1.TabPages.Remove(tpTodos); // Oculta la pestaña "todos"
@@ -56,7 +61,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
             };
             //editar
-            bEditar.Click += delegate {
+            bEditar.Click += delegate
+            {
                 EditarEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Add(tpNuevoEmpleado); // Muestra la pestaña "Nuevo empleado"
                 tabControl1.TabPages.Remove(tpTodos); // Oculta la pestaña "todos"
@@ -75,7 +81,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 }
             };
             //guardar
-            bGuardar.Click += delegate {
+            bGuardar.Click += delegate
+            {
                 GuardarEvent?.Invoke(this, EventArgs.Empty);
                 //si guarda correctamente ejecuta el if
                 if (isNuevo)
@@ -88,7 +95,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 MessageBox.Show(Mensaje);
             };
             //cancelar
-            bCancelar.Click += delegate {
+            bCancelar.Click += delegate
+            {
                 CancelarEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Remove(tpNuevoEmpleado); // Oculta la pestaña "Nuevo empleado"
                 tabControl1.TabPages.Add(tpTodos); // Muestra la pestaña "todos"
@@ -98,12 +106,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         }
 
         //propiedades
-        public string Id_usuario
-        {
-            get { return tbUsername.Text; }
-            set { tbUsername.Text = value; }
-        }
-
+       
         public string Nombre
         {
             get { return tbNombre.Text; }
@@ -119,16 +122,16 @@ namespace ProyectoTaller_Lugo_Arias.Views
         // Reemplazar las propiedades Dni y Telefono para que sean de tipo string, como exige la interfaz.
         // Agregar los setters para Cargo_descripcion y Estado, como exige la interfaz.
 
-        public string Dni
+        public int Dni
         {
-            get { return tbDni.Text; }
-            set { tbDni.Text = value; }
+            get { return int.Parse(tbDni.Text); }
+            set { tbDni.Text = value.ToString(); }
         }
 
-        public string Telefono
+        public int Telefono
         {
-            get { return tbTelefono.Text; }
-            set { tbTelefono.Text = value; }
+            get { return int.Parse(tbTelefono.Text); }
+            set { tbTelefono.Text = value.ToString(); }
         }
 
         public string Email
@@ -142,28 +145,20 @@ namespace ProyectoTaller_Lugo_Arias.Views
             get { return tbPass.Text; }
             set { tbPass.Text = value; }
         }
-
-        public string Id_cargo
+        
+        public int Id_cargo
         {
             get
             {
                 // Si SelectedValue es null, devuelve string.Empty
-                return cbCargo.SelectedValue?.ToString() ?? string.Empty;
+                return (cbCargo.SelectedValue != null) ? (int)cbCargo.SelectedValue : 0;
             }
             set
             {
-                // Intenta convertir el string a int si es posible, para asignar SelectedValue
-                if (int.TryParse(value, out int intValue))
-                {
-                    cbCargo.SelectedValue = intValue;
-                }
-                else
-                {
-                    cbCargo.SelectedValue = value;
-                }
+                cbCargo.SelectedValue = value;
             }
         }
-
+        
         public string Cargo_descripcion
         {
             get
@@ -212,6 +207,11 @@ namespace ProyectoTaller_Lugo_Arias.Views
             set { mensaje = value; }
         }
 
+        public string Id_usuario {
+            get { return id_usuario_seleccionado; }
+            set { id_usuario_seleccionado = value; }
+        }
+
         public event EventHandler BuscarEvent;
         public event EventHandler AgregarEvent;
         public event EventHandler EditarEvent;
@@ -222,13 +222,17 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public void SetEmpleadoListBindingSource(BindingSource empleadoList)
         {
             dataGridView1.DataSource = empleadoList;
+            if (dataGridView1.Columns.Contains("password"))
+            {
+                dataGridView1.Columns["password"].Visible = false;
+            }
         }
 
         //abre una unica instancia del formulario
         private static EmpleadosView instance;
         public static EmpleadosView GetInstance(Form parentContainer)
         {
-            if(instance == null || instance.IsDisposed)
+            if (instance == null || instance.IsDisposed)
             {
                 instance = new EmpleadosView();
                 instance.MdiParent = parentContainer;
@@ -237,14 +241,29 @@ namespace ProyectoTaller_Lugo_Arias.Views
             }
             else
             {
-                if(instance.WindowState == FormWindowState.Minimized)
+                if (instance.WindowState == FormWindowState.Minimized)
                 {
-                    instance.WindowState = FormWindowState.Normal; 
+                    instance.WindowState = FormWindowState.Normal;
                 }
                 instance.BringToFront();
             }
             return instance;
         }
 
+        public void SetCargosListComboBox(IEnumerable<CargoModel> cargoList)
+        {
+            //limpia el combobox
+            cbCargo.DataSource = null;
+            cbCargo.Items.Clear();
+
+            //crea una lista de pares clave-valor (id_cargo, descripcion), para mostrar la descripcion pero guardar el id
+            var cargo = cargoList.Select(c => new KeyValuePair<int, string>(c.Id_cargo, c.Cargo_descripcion)).ToList();
+
+            //enlazamos la lista al combobox
+            cbCargo.DataSource = new BindingSource(cargo, null);
+
+            cbCargo.DisplayMember = "Value"; // lo que se muestra en el combobox
+            cbCargo.ValueMember = "Key"; // lo que se guarda (id_cargo)
+        }
     }
 }

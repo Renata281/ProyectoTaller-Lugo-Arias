@@ -7,24 +7,16 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller_Lugo_Arias.Views
 {
-    public interface IEmpleadosView
+    public interface ITipoHabitacionView
     {
         //campos
-        string Id_usuario { get; set; }
-        string Nombre { get; set; }
-        string Apellido { get; set; }
-        int Dni { get; set; }
-        int Telefono { get; set; }
-        string Email { get; set; }
-        string Password { get; set; }
-        int Id_cargo { get; set; }
+        string tipo { get; set; }
+        string Descripcion { get; set; }
 
-        string Cargo_descripcion { get; set; }
         string Buscar { get; set; }
         bool IsEditar { get; set; }
         bool IsNuevo { get; set; }
         string Mensaje { get; set; }
-
 
         //eventos
         event EventHandler BuscarEvent;
@@ -34,12 +26,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         event EventHandler GuardarEvent;
         event EventHandler CancelarEvent;
 
-        void SetCargosListComboBox(IEnumerable<CargoModel> cargoList);
-
-
-        // conecta la interfaz de usuario con una fuente de datos
-        void SetEmpleadoListBindingSource(BindingSource empleadoList);
+        void SetTipoHabitacionListBindingSource(BindingSource tipoHabitacionList);
         void Show();
-
     }
 }
