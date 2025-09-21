@@ -69,12 +69,11 @@
             bCancelar = new Button();
             bGuardar = new Button();
             tbDescripcion = new TextBox();
-            tbCamas = new TextBox();
             tbNombre = new TextBox();
             lDescripcion = new Label();
-            lCantCamas = new Label();
             label2 = new Label();
             label1 = new Label();
+            bBuscar = new Button();
             panel1.SuspendLayout();
             tNuevaHabitación.SuspendLayout();
             tTodos.SuspendLayout();
@@ -90,6 +89,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(bBuscar);
             panel1.Controls.Add(lBuscarTipoHabit);
             panel1.Controls.Add(tbBuscarTipoHabit);
             panel1.Dock = DockStyle.Top;
@@ -389,10 +389,8 @@
             tNuevaHabit.Controls.Add(bCancelar);
             tNuevaHabit.Controls.Add(bGuardar);
             tNuevaHabit.Controls.Add(tbDescripcion);
-            tNuevaHabit.Controls.Add(tbCamas);
             tNuevaHabit.Controls.Add(tbNombre);
             tNuevaHabit.Controls.Add(lDescripcion);
-            tNuevaHabit.Controls.Add(lCantCamas);
             tNuevaHabit.Controls.Add(label2);
             tNuevaHabit.Controls.Add(label1);
             tNuevaHabit.Location = new Point(4, 30);
@@ -408,7 +406,7 @@
             bCancelar.FlatAppearance.BorderSize = 0;
             bCancelar.FlatStyle = FlatStyle.Flat;
             bCancelar.ForeColor = Color.DarkSlateGray;
-            bCancelar.Location = new Point(623, 374);
+            bCancelar.Location = new Point(365, 323);
             bCancelar.Name = "bCancelar";
             bCancelar.Size = new Size(92, 36);
             bCancelar.TabIndex = 8;
@@ -421,7 +419,7 @@
             bGuardar.FlatAppearance.BorderSize = 0;
             bGuardar.FlatStyle = FlatStyle.Flat;
             bGuardar.ForeColor = SystemColors.InactiveBorder;
-            bGuardar.Location = new Point(506, 374);
+            bGuardar.Location = new Point(235, 323);
             bGuardar.Name = "bGuardar";
             bGuardar.Size = new Size(92, 36);
             bGuardar.TabIndex = 7;
@@ -431,24 +429,16 @@
             // tbDescripcion
             // 
             tbDescripcion.BackColor = SystemColors.ButtonHighlight;
-            tbDescripcion.Location = new Point(30, 254);
+            tbDescripcion.Location = new Point(220, 172);
             tbDescripcion.Multiline = true;
             tbDescripcion.Name = "tbDescripcion";
             tbDescripcion.Size = new Size(252, 98);
             tbDescripcion.TabIndex = 6;
             // 
-            // tbCamas
-            // 
-            tbCamas.BackColor = SystemColors.ButtonHighlight;
-            tbCamas.Location = new Point(30, 176);
-            tbCamas.Name = "tbCamas";
-            tbCamas.Size = new Size(252, 29);
-            tbCamas.TabIndex = 5;
-            // 
             // tbNombre
             // 
             tbNombre.BackColor = SystemColors.ButtonHighlight;
-            tbNombre.Location = new Point(30, 103);
+            tbNombre.Location = new Point(220, 95);
             tbNombre.Name = "tbNombre";
             tbNombre.Size = new Size(252, 29);
             tbNombre.TabIndex = 4;
@@ -458,29 +448,18 @@
             lDescripcion.AutoSize = true;
             lDescripcion.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lDescripcion.ForeColor = Color.DarkSlateGray;
-            lDescripcion.Location = new Point(30, 231);
+            lDescripcion.Location = new Point(220, 149);
             lDescripcion.Name = "lDescripcion";
             lDescripcion.Size = new Size(89, 20);
             lDescripcion.TabIndex = 3;
             lDescripcion.Text = "Descripción";
-            // 
-            // lCantCamas
-            // 
-            lCantCamas.AutoSize = true;
-            lCantCamas.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lCantCamas.ForeColor = Color.DarkSlateGray;
-            lCantCamas.Location = new Point(30, 153);
-            lCantCamas.Name = "lCantCamas";
-            lCantCamas.Size = new Size(137, 20);
-            lCantCamas.TabIndex = 2;
-            lCantCamas.Text = "Cantidad de camas";
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.ForeColor = Color.DarkSlateGray;
-            label2.Location = new Point(30, 80);
+            label2.Location = new Point(220, 72);
             label2.Name = "label2";
             label2.Size = new Size(66, 20);
             label2.TabIndex = 1;
@@ -496,6 +475,15 @@
             label1.Size = new Size(81, 25);
             label1.TabIndex = 0;
             label1.Text = "Detalles";
+            // 
+            // bBuscar
+            // 
+            bBuscar.Location = new Point(640, 44);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 3;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
             // 
             // TipoHabitacionView
             // 
@@ -571,12 +559,11 @@
         private DataGridViewButtonColumn dataGridViewButtonColumn5;
         private DataGridViewButtonColumn dataGridViewButtonColumn6;
         private Label lDescripcion;
-        private Label lCantCamas;
         private Label label2;
         private Button bCancelar;
         private Button bGuardar;
         private TextBox tbDescripcion;
-        private TextBox tbCamas;
         private TextBox tbNombre;
+        private Button bBuscar;
     }
 }

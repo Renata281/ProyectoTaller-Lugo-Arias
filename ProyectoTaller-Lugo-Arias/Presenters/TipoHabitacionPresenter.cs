@@ -38,7 +38,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void LoadAllTipoHabitacionList()
         {
-            throw new NotImplementedException();
+            tipoHabitacionList = tipoHabitacionRepositorio.GetAll();
+            tipoHabitacionBindingSource.DataSource = tipoHabitacionList; //establece el origen de datos del enlace
         }
 
         private void CancelarAction(object? sender, EventArgs e)
