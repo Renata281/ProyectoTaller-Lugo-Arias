@@ -217,7 +217,6 @@
             lReservasAct.Size = new Size(227, 25);
             lReservasAct.TabIndex = 4;
             lReservasAct.Text = "Habitaciones Disponibles";
-            lReservasAct.Click += this.lReservasAct_Click;
             // 
             // tpFinalizados
             // 

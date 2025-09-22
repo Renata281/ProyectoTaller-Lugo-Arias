@@ -148,10 +148,10 @@
             tabControl1.Controls.Add(tpNuevaReserva);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 111);
+            tabControl1.Location = new Point(0, 137);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(785, 508);
+            tabControl1.Size = new Size(785, 482);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -162,7 +162,7 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(777, 474);
+            tpTodos.Size = new Size(777, 448);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
@@ -173,9 +173,9 @@
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4, dataGridViewTextBoxColumn12 });
             dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 66);
+            dataGridView3.Location = new Point(3, 70);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(771, 405);
+            dataGridView3.Size = new Size(771, 375);
             dataGridView3.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn7

@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositories;
 using ProyectoTaller_Lugo_Arias.Views;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,8 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller_Lugo_Arias.Repositorio
 {
-    public class HabitacionRepositorio : BaseRepository, IHabitacionRepositorio
+    public class HabitacionRepositorio : BaseRepositorio, IHabitacionRepositorio
     {
-        private object command;
-        private object sqlDbType;
 
         //constructor
         public HabitacionRepositorio(string connectionString)
@@ -42,37 +41,39 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         {
                             var habitacion = new HabitacionesModels();
     
-    // Lee los datos por nombre de columna, es más seguro y legible
-    habitacion.Nro_habitacion = (int)reader["Nro_habitacion"];
-    habitacion.Cant_camas = (int)reader["Cant_camas"];
+                            // Lee los datos por nombre de columna, es más seguro y legible
+                              habitacion.Nro_habitacion = (int)reader["Nro_habitacion"];
+                              habitacion.Cant_camas = (int)reader["Cant_camas"];
 
-    // Usa una validación para evitar errores de conversión con valores nulos
-    if (reader["Precio_unitario"] != DBNull.Value)
-    {
-        // Si la propiedad es float, usa Convert.ToSingle()
-        // Si la propiedad es decimal, usa Convert.ToDecimal()
-        habitacion.Precio_unitario = Convert.ToSingle(reader["Precio_unitario"]);
-    }
-    else
-    {
-        // Si el valor es nulo en la base de datos, asigna 0 o el valor por defecto que necesites
-        habitacion.Precio_unitario = 0;
-    }
+                             // Usa una validación para evitar errores de conversión con valores nulos
+                             if (reader["Precio_unitario"] != DBNull.Value)
+                              {
+                              // Si la propiedad es float, usa Convert.ToSingle()
+                              // Si la propiedad es decimal, usa Convert.ToDecimal()
+                               habitacion.Precio_unitario = Convert.ToSingle(reader["Precio_unitario"]);
+                              }
+                                else
+                                {
+                                   // Si el valor es nulo en la base de datos, asigna 0 o el valor por defecto que necesites
+                                    habitacion.Precio_unitario = 0;
+                                    }
 
-    habitacion.Descripcion = reader["Descripcion"].ToString();
-    habitacion.Tipo = reader["Tipo"].ToString();
-    habitacion.Id_piso = (int)reader["Id_piso"];
-    habitacion.Id_estado = (int)reader["Id_estado"];
+                                habitacion.Descripcion = reader["Descripcion"].ToString();
+                                habitacion.Tipo = reader["Tipo"].ToString();
+                                habitacion.Id_piso = (int)reader["Id_piso"];
+                                habitacion.Id_estado = (int)reader["Id_estado"];
     
-    habList.Add(habitacion);
+                                habList.Add(habitacion);
                         }
                     }
                 }
             }
-            return habList;
+                                return habList;
         }
         public void Add(HabitacionesModels habitacionesModels)
         {
+            throw new NotImplementedException();
+            /*
             using (var connection = new SqlConnection(connectionString))
             {
 
@@ -87,10 +88,12 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     command.ExecuteNonQuery();
                 }
             }
+            */
         }
 
         public void Delete(int id)
         {
+            /*
             using (var connection = new SqlConnection(connectionString))
             {
 
@@ -102,10 +105,13 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     command.ExecuteNonQuery();
                 }
             }
+            */
+            throw new NotImplementedException();
         }
 
         public void Edit(HabitacionesModels habitacionesModels)
         {
+            /*
             using (var connection = new SqlConnection(connectionString))
             {
 
@@ -120,6 +126,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     command.ExecuteNonQuery();
                 }
             }
+            */
+            throw new NotImplementedException();
         }
 
       
@@ -153,14 +161,5 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             return habList;
         }
 
-        public IEnumerable<HabitacionesModels> GetValue(int value)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<HabitacionesModels> GetValue()
-        {
-            throw new NotImplementedException();
-        }
     }
 }

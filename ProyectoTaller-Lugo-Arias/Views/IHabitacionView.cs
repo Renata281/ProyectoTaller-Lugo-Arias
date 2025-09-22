@@ -7,7 +7,7 @@ using ProyectoTaller_Lugo_Arias.Models;
 
 namespace ProyectoTaller_Lugo_Arias.View
 {
-    public interface IHabitacionesView 
+    public interface IHabitacionView 
     {
         String Nro_habitacion { get; set; }
         String Cant_camas { get; set; }
@@ -32,8 +32,7 @@ namespace ProyectoTaller_Lugo_Arias.View
 
         //metodos 
         void SetListaHabitacionesBindingSourse(BindingSource listaHab);
-        void mostrar();
-        void SetListaHabitacionesBindingSourse(object habitacionBindingSource);
+        void SetListaHabitacionBindingSourse(BindingSource habitacionBindingSource);
         void Show();
     }
 }
