@@ -39,6 +39,9 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
         // conecta la interfaz de usuario con una fuente de datos
         void SetEmpleadoListBindingSource(BindingSource empleadoList);
+        void SetEmpleadoListBindingSourceActive(BindingSource empleadoList);
+        void SetEmpleadoListBindingSourceInactive(BindingSource empleadoList);
+
         void Show();
 
     }

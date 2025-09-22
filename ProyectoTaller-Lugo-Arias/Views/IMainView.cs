@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using ProyectoTaller_Lugo_Arias.Models;
 
 namespace ProyectoTaller_Lugo_Arias.Views
 {
@@ -13,5 +14,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
         event EventHandler ShowReservasView;
         event EventHandler ShowHabitacionesView;
         event EventHandler ShowTipoHabitacionView;
+        void Show();
+        void Close();
+        UsuarioModel CurrentUser { get; set; }
     }
 }

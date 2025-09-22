@@ -66,8 +66,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
             set => email = value;
         }
 
-        [Required(ErrorMessage = "La contraseña es obligatoria.")]
-        [MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
+       
         public byte[] Password {
             get => password;
             set => password = value;
@@ -90,5 +89,20 @@ namespace ProyectoTaller_Lugo_Arias.Models
             set => estado = value;
         }
 
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (Id_usuario == 0)
+            {
+                if (Password == null || Password.Length == 0)
+                {
+                    yield return new ValidationResult("La contraseña es obligatoria.", new[] { nameof(Password) });
+                }
+                else if (Password.Length < 8)
+                {
+                    yield return new ValidationResult("La contraseña debe tener al menos 8 caracteres.", new[] { nameof(Password) });
+                }
+            }
+        }
     }
 }

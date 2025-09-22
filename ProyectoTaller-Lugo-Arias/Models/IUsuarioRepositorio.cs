@@ -14,10 +14,16 @@ namespace ProyectoTaller_Lugo_Arias.Models
 
         //retorna todos los usuarios
         IEnumerable<UsuarioModel> GetAll();
+        IEnumerable<UsuarioModel> GetAllActive();
+        IEnumerable<UsuarioModel> GetAllInactive();
+
         //retorna un usuario por su id
         UsuarioModel GetById(int id);
 
         //retorna un usuario
         IEnumerable<UsuarioModel> GetByValue(string valorBusqueda); //buscador
+        UsuarioModel Login(string email, string password);
+
+
     }
 }

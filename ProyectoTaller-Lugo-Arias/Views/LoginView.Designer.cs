@@ -28,80 +28,76 @@
         /// </summary>
         private void InitializeComponent()
         {
-            lNombre = new Label();
-            tbNombre = new TextBox();
-            lContraseña = new Label();
+            lCorreo = new Label();
+            lPass = new Label();
+            tbCorreo = new TextBox();
             tbPass = new TextBox();
-            bIniciarSesion = new Button();
+            bLogin = new Button();
             SuspendLayout();
             // 
-            // lNombre
+            // lCorreo
             // 
-            lNombre.AutoSize = true;
-            lNombre.BackColor = Color.Transparent;
-            lNombre.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lNombre.ForeColor = Color.DarkSlateGray;
-            lNombre.Location = new Point(26, 161);
-            lNombre.Name = "lNombre";
-            lNombre.Size = new Size(71, 21);
-            lNombre.TabIndex = 0;
-            lNombre.Text = "Nombre";
-            lNombre.Click += label1_Click;
+            lCorreo.AutoSize = true;
+            lCorreo.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lCorreo.ForeColor = Color.DarkSlateGray;
+            lCorreo.Location = new Point(25, 181);
+            lCorreo.Name = "lCorreo";
+            lCorreo.Size = new Size(70, 25);
+            lCorreo.TabIndex = 0;
+            lCorreo.Text = "Correo";
             // 
-            // tbNombre
+            // lPass
             // 
-            tbNombre.BackColor = SystemColors.Control;
-            tbNombre.BorderStyle = BorderStyle.None;
-            tbNombre.Location = new Point(26, 185);
-            tbNombre.Name = "tbNombre";
-            tbNombre.Size = new Size(203, 16);
-            tbNombre.TabIndex = 1;
+            lPass.AutoSize = true;
+            lPass.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lPass.ForeColor = Color.DarkSlateGray;
+            lPass.Location = new Point(25, 250);
+            lPass.Name = "lPass";
+            lPass.Size = new Size(109, 25);
+            lPass.TabIndex = 1;
+            lPass.Text = "Contraseña";
             // 
-            // lContraseña
+            // tbCorreo
             // 
-            lContraseña.AutoSize = true;
-            lContraseña.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lContraseña.ForeColor = Color.DarkSlateGray;
-            lContraseña.Location = new Point(26, 223);
-            lContraseña.Name = "lContraseña";
-            lContraseña.Size = new Size(92, 21);
-            lContraseña.TabIndex = 2;
-            lContraseña.Text = "Contraseña";
+            tbCorreo.BackColor = SystemColors.InactiveBorder;
+            tbCorreo.Location = new Point(25, 209);
+            tbCorreo.Name = "tbCorreo";
+            tbCorreo.Size = new Size(211, 23);
+            tbCorreo.TabIndex = 2;
             // 
             // tbPass
             // 
-            tbPass.BackColor = SystemColors.Control;
-            tbPass.BorderStyle = BorderStyle.None;
-            tbPass.Location = new Point(26, 247);
+            tbPass.BackColor = SystemColors.InactiveBorder;
+            tbPass.Location = new Point(25, 278);
             tbPass.Name = "tbPass";
-            tbPass.Size = new Size(203, 16);
+            tbPass.PasswordChar = '*';
+            tbPass.Size = new Size(211, 23);
             tbPass.TabIndex = 3;
             // 
-            // bIniciarSesion
+            // bLogin
             // 
-            bIniciarSesion.BackColor = Color.DarkSlateGray;
-            bIniciarSesion.FlatAppearance.BorderSize = 0;
-            bIniciarSesion.FlatStyle = FlatStyle.Flat;
-            bIniciarSesion.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bIniciarSesion.ForeColor = SystemColors.InactiveCaption;
-            bIniciarSesion.Location = new Point(26, 310);
-            bIniciarSesion.Name = "bIniciarSesion";
-            bIniciarSesion.Size = new Size(203, 35);
-            bIniciarSesion.TabIndex = 4;
-            bIniciarSesion.Text = "Iniciar sesión";
-            bIniciarSesion.UseVisualStyleBackColor = false;
+            bLogin.BackColor = Color.DarkSlateGray;
+            bLogin.FlatStyle = FlatStyle.Flat;
+            bLogin.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bLogin.ForeColor = SystemColors.InactiveCaption;
+            bLogin.Location = new Point(60, 338);
+            bLogin.Name = "bLogin";
+            bLogin.Size = new Size(131, 34);
+            bLogin.TabIndex = 4;
+            bLogin.Text = "Iniciar Sesión";
+            bLogin.UseVisualStyleBackColor = false;
             // 
             // LoginView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(255, 386);
-            Controls.Add(bIniciarSesion);
+            ClientSize = new Size(263, 450);
+            Controls.Add(bLogin);
             Controls.Add(tbPass);
-            Controls.Add(lContraseña);
-            Controls.Add(tbNombre);
-            Controls.Add(lNombre);
+            Controls.Add(tbCorreo);
+            Controls.Add(lPass);
+            Controls.Add(lCorreo);
             Name = "LoginView";
             Text = "LoginView";
             ResumeLayout(false);
@@ -110,10 +106,10 @@
 
         #endregion
 
-        private Label lNombre;
-        private TextBox tbNombre;
-        private Label lContraseña;
+        private Label lCorreo;
+        private Label lPass;
+        private TextBox tbCorreo;
         private TextBox tbPass;
-        private Button bIniciarSesion;
+        private Button bLogin;
     }
 }

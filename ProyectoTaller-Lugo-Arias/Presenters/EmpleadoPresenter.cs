@@ -14,14 +14,29 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         //campos
         private IEmpleadosView view;
         private IUsuarioRepositorio usuarioRepositorio;
+        //binding source para enlazar datos entre la vista y el modelo
         private BindingSource empleadosBindingSource;
         private IEnumerable<UsuarioModel> empleadosList;
+        private BindingSource empleadosBindingSourceActived;
+        private IEnumerable<UsuarioModel> empleadosListActived;
+        private BindingSource empleadosBindingSourceDeleted;
+        private IEnumerable<UsuarioModel> empleadosListDeleted;
 
         public EmpleadoPresenter(IEmpleadosView view, IUsuarioRepositorio usuarioRepositorio, ICargoRepositorio cargoRepositorio)
         {
-            this.empleadosBindingSource = new BindingSource();
+           
             this.view = view;
             this.usuarioRepositorio = usuarioRepositorio;
+            this.empleadosBindingSource = new BindingSource();
+            this.empleadosBindingSourceActived = new BindingSource();
+            this.empleadosBindingSourceDeleted = new BindingSource();
+            this.view.SetEmpleadoListBindingSource(empleadosBindingSource);
+            this.view.SetEmpleadoListBindingSourceActive(empleadosBindingSourceActived);
+            this.view.SetEmpleadoListBindingSourceInactive(empleadosBindingSourceDeleted);
+
+
+            //cargar datos de la tabla empleados
+            LoadAllEmpleadosList();
             // suscribir eventos de la vista a los manejadores de eventos
             this.view.BuscarEvent += BuscarEmpleado;
             this.view.AgregarEvent += AgregarEmpleado;
@@ -32,10 +47,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
             this.view.SetCargosListComboBox(cargoRepositorio.GetAll());
 
-            //establecer el origen de datos del enlace
-            this.view.SetEmpleadoListBindingSource(empleadosBindingSource);
-            //cargar datos de la tabla empleados
-            LoadAllEmpleadosList();
+            
             //mostrar la vista
             this.view.Show();
 
@@ -47,21 +59,31 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             empleadosList = usuarioRepositorio.GetAll();
             empleadosBindingSource.DataSource = empleadosList; //establece el origen de datos del enlace
 
+            empleadosListActived = usuarioRepositorio.GetAllActive();
+            empleadosBindingSourceActived.DataSource = empleadosListActived;
+
+            empleadosListDeleted = usuarioRepositorio.GetAllInactive();
+            empleadosBindingSourceDeleted.DataSource = empleadosListDeleted;
+
         }
 
         private void BuscarEmpleado(object? sender, EventArgs e)
         {
             bool emptyValue = string.IsNullOrWhiteSpace(this.view.Buscar);
-            if(emptyValue == false)
+
+            if (!emptyValue)
             {
                 empleadosList = usuarioRepositorio.GetByValue(this.view.Buscar);
             }
             else
             {
                 empleadosList = usuarioRepositorio.GetAll();
-                empleadosBindingSource.DataSource = empleadosList;
             }
+
+            empleadosBindingSource.DataSource = empleadosList;
         }
+
+
 
         private void CancelarAction(object? sender, EventArgs e)
         {
@@ -74,7 +96,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             int.TryParse(this.view.Id_usuario, out idUsuario);
 
             var model = new UsuarioModel();
-            
+
             try
             {
                 model.Id_usuario = idUsuario;
@@ -83,22 +105,39 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                 model.Dni = view.Dni;
                 model.Telefono = view.Telefono;
                 model.Email = view.Email;
-                model.Password = !string.IsNullOrWhiteSpace(this.view.Password)
-                    ? HashPassword(this.view.Password)
-                    : Array.Empty<byte>();
                 model.Id_cargo = view.Id_cargo;
 
-                new Common.ModelDataValidation().Validate(model);
-                if(view.IsEditar) //editar
+                // **Lógica clave para el campo contraseña**
+                if (view.IsEditar) // Lógica de Edición
                 {
+                    if (!string.IsNullOrWhiteSpace(this.view.Password))
+                    {
+                        // Si el usuario ingresó una nueva contraseña, la hashea
+                        model.Password = HashPassword(this.view.Password);
+                    }
+                    else
+                    {
+                        // Si la contraseña está vacía, no la hashea y el repositorio debe saber cómo manejarlo
+                        model.Password = null;
+                    }
+
+                    new Common.ModelDataValidation().Validate(model);
+
+                    // Llama al repositorio para editar. El repositorio debe manejar el caso de 'password' nulo.
                     usuarioRepositorio.Edit(model);
                     view.Mensaje = "Empleado editado correctamente";
                 }
-                else //nuevo
+                else // Lógica de Nuevo Empleado
                 {
+                    // La contraseña es obligatoria para un nuevo empleado
+                    model.Password = HashPassword(this.view.Password);
+
+                    new Common.ModelDataValidation().Validate(model);
+
                     usuarioRepositorio.Add(model);
                     view.Mensaje = "Empleado agregado correctamente";
                 }
+
                 view.IsNuevo = true;
                 LoadAllEmpleadosList();
                 CleanViewFields();

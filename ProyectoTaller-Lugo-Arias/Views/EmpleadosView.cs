@@ -49,6 +49,11 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 }
             };
 
+            txtSearch.TextChanged += (s, e) =>
+            {
+                BuscarEvent?.Invoke(this, EventArgs.Empty);
+            };
+
             //agregar
             bNuevo.Click += delegate
             {
@@ -106,7 +111,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         }
 
         //propiedades
-       
+
         public string Nombre
         {
             get { return tbNombre.Text; }
@@ -145,7 +150,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
             get { return tbPass.Text; }
             set { tbPass.Text = value; }
         }
-        
+
         public int Id_cargo
         {
             get
@@ -158,7 +163,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 cbCargo.SelectedValue = value;
             }
         }
-        
+
         public string Cargo_descripcion
         {
             get
@@ -207,7 +212,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
             set { mensaje = value; }
         }
 
-        public string Id_usuario {
+        public string Id_usuario
+        {
             get { return id_usuario_seleccionado; }
             set { id_usuario_seleccionado = value; }
         }
@@ -225,6 +231,24 @@ namespace ProyectoTaller_Lugo_Arias.Views
             if (dataGridView1.Columns.Contains("password"))
             {
                 dataGridView1.Columns["password"].Visible = false;
+            }
+        }
+
+        public void SetEmpleadoListBindingSourceActive(BindingSource empleadoList)
+        {
+            dgvEmpleadosAct.DataSource = empleadoList;
+            if (dgvEmpleadosAct.Columns.Contains("password"))
+            {
+                dgvEmpleadosAct.Columns["password"].Visible = false;
+            }
+        }
+
+        public void SetEmpleadoListBindingSourceInactive(BindingSource empleadoList)
+        {
+            dgvEmpleado_In.DataSource = empleadoList;
+            if (dgvEmpleado_In.Columns.Contains("password"))
+            {
+                dgvEmpleado_In.Columns["password"].Visible = false;
             }
         }
 
@@ -265,5 +289,6 @@ namespace ProyectoTaller_Lugo_Arias.Views
             cbCargo.DisplayMember = "Value"; // lo que se muestra en el combobox
             cbCargo.ValueMember = "Key"; // lo que se guarda (id_cargo)
         }
+
     }
 }
