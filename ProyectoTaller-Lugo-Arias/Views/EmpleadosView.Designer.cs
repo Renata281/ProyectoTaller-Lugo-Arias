@@ -64,7 +64,6 @@
             lDni = new Label();
             lApellido = new Label();
             lNombre = new Label();
-            dataGridView2 = new DataGridView();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -74,7 +73,6 @@
             tpInactivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado_In).BeginInit();
             tpNuevoEmpleado.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -119,6 +117,7 @@
             // 
             // lEmpleados
             // 
+            lEmpleados.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lEmpleados.AutoSize = true;
             lEmpleados.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lEmpleados.ForeColor = Color.DarkSlateGray;
@@ -127,19 +126,20 @@
             lEmpleados.Size = new Size(138, 32);
             lEmpleados.TabIndex = 0;
             lEmpleados.Text = "Empleados";
+            lEmpleados.TextAlign = ContentAlignment.TopCenter;
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tpTodos);
             tabControl1.Controls.Add(tpActivos);
             tabControl1.Controls.Add(tpInactivos);
             tabControl1.Controls.Add(tpNuevoEmpleado);
-            tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 164);
+            tabControl1.Location = new Point(0, 155);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(790, 418);
+            tabControl1.Size = new Size(790, 427);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -223,7 +223,6 @@
             // tpActivos
             // 
             tpActivos.BackColor = SystemColors.Control;
-            tpActivos.Controls.Add(dataGridView2);
             tpActivos.Controls.Add(dgvEmpleadosAct);
             tpActivos.Controls.Add(lEmpleadoAct);
             tpActivos.Location = new Point(4, 30);
@@ -235,13 +234,13 @@
             // 
             // dgvEmpleadosAct
             // 
+            dgvEmpleadosAct.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmpleadosAct.BackgroundColor = SystemColors.InactiveCaption;
             dgvEmpleadosAct.BorderStyle = BorderStyle.None;
             dgvEmpleadosAct.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleadosAct.Dock = DockStyle.Bottom;
-            dgvEmpleadosAct.Location = new Point(3, -38);
+            dgvEmpleadosAct.Location = new Point(0, 66);
             dgvEmpleadosAct.Name = "dgvEmpleadosAct";
-            dgvEmpleadosAct.Size = new Size(776, 419);
+            dgvEmpleadosAct.Size = new Size(786, 280);
             dgvEmpleadosAct.TabIndex = 3;
             // 
             // lEmpleadoAct
@@ -280,13 +279,13 @@
             // 
             // dgvEmpleado_In
             // 
+            dgvEmpleado_In.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgvEmpleado_In.BackgroundColor = SystemColors.InactiveCaption;
             dgvEmpleado_In.BorderStyle = BorderStyle.None;
             dgvEmpleado_In.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvEmpleado_In.Dock = DockStyle.Bottom;
-            dgvEmpleado_In.Location = new Point(3, -42);
+            dgvEmpleado_In.Location = new Point(0, 64);
             dgvEmpleado_In.Name = "dgvEmpleado_In";
-            dgvEmpleado_In.Size = new Size(776, 423);
+            dgvEmpleado_In.Size = new Size(786, 291);
             dgvEmpleado_In.TabIndex = 0;
             // 
             // tpNuevoEmpleado
@@ -311,7 +310,7 @@
             tpNuevoEmpleado.Location = new Point(4, 30);
             tpNuevoEmpleado.Name = "tpNuevoEmpleado";
             tpNuevoEmpleado.Padding = new Padding(3);
-            tpNuevoEmpleado.Size = new Size(782, 384);
+            tpNuevoEmpleado.Size = new Size(782, 393);
             tpNuevoEmpleado.TabIndex = 3;
             tpNuevoEmpleado.Text = "Nuevo Empleado";
             // 
@@ -479,21 +478,12 @@
             lNombre.TabIndex = 0;
             lNombre.Text = "Nombre";
             // 
-            // dataGridView2
-            // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Dock = DockStyle.Fill;
-            dataGridView2.Location = new Point(3, 3);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(776, 0);
-            dataGridView2.TabIndex = 4;
-            // 
             // EmpleadosView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(790, 582);
+            ClientSize = new Size(790, 542);
             Controls.Add(tabControl1);
             Controls.Add(lEmpleados);
             Controls.Add(panel1);
@@ -513,7 +503,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvEmpleado_In).EndInit();
             tpNuevoEmpleado.ResumeLayout(false);
             tpNuevoEmpleado.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -558,6 +547,5 @@
         private Label lPass;
         private TextBox tbPass;
         private Button bCerrar;
-        private DataGridView dataGridView2;
     }
 }

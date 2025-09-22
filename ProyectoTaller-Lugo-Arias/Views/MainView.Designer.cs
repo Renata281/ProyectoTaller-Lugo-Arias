@@ -57,6 +57,7 @@
             // 
             // bSalir
             // 
+            bSalir.Anchor = AnchorStyles.Left;
             bSalir.BackColor = Color.Teal;
             bSalir.FlatAppearance.BorderSize = 0;
             bSalir.FlatStyle = FlatStyle.Flat;

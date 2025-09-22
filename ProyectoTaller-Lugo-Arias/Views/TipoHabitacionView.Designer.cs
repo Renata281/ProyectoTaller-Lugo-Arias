@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            bBuscar = new Button();
             lBuscarTipoHabit = new Label();
             tbBuscarTipoHabit = new TextBox();
             lTipoHabit = new Label();
@@ -73,7 +74,6 @@
             lDescripcion = new Label();
             label2 = new Label();
             label1 = new Label();
-            bBuscar = new Button();
             panel1.SuspendLayout();
             tNuevaHabitación.SuspendLayout();
             tTodos.SuspendLayout();
@@ -95,8 +95,17 @@
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(759, 84);
+            panel1.Size = new Size(790, 84);
             panel1.TabIndex = 0;
+            // 
+            // bBuscar
+            // 
+            bBuscar.Location = new Point(640, 44);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 3;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
             // 
             // lBuscarTipoHabit
             // 
@@ -127,20 +136,21 @@
             lTipoHabit.Size = new Size(255, 32);
             lTipoHabit.TabIndex = 2;
             lTipoHabit.Text = "Tipo de Habitaciones";
+            lTipoHabit.TextAlign = ContentAlignment.TopCenter;
             // 
             // tNuevaHabitación
             // 
+            tNuevaHabitación.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tNuevaHabitación.Controls.Add(tTodos);
             tNuevaHabitación.Controls.Add(tabPage2);
             tNuevaHabitación.Controls.Add(tDoble);
             tNuevaHabitación.Controls.Add(tSuite);
             tNuevaHabitación.Controls.Add(tNuevaHabit);
-            tNuevaHabitación.Dock = DockStyle.Bottom;
             tNuevaHabitación.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tNuevaHabitación.Location = new Point(0, 155);
+            tNuevaHabitación.Location = new Point(0, 171);
             tNuevaHabitación.Name = "tNuevaHabitación";
             tNuevaHabitación.SelectedIndex = 0;
-            tNuevaHabitación.Size = new Size(759, 463);
+            tNuevaHabitación.Size = new Size(790, 371);
             tNuevaHabitación.TabIndex = 3;
             // 
             // tTodos
@@ -151,20 +161,20 @@
             tTodos.Location = new Point(4, 30);
             tTodos.Name = "tTodos";
             tTodos.Padding = new Padding(3);
-            tTodos.Size = new Size(751, 429);
+            tTodos.Size = new Size(782, 337);
             tTodos.TabIndex = 0;
             tTodos.Text = "Todos";
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumnaTipo, ColumnaCamas, ColumnaDescripcion, ColumnaEditar, ColumnaEliminar });
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 72);
+            dataGridView1.Location = new Point(3, 73);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(745, 354);
+            dataGridView1.Size = new Size(783, 261);
             dataGridView1.TabIndex = 2;
             // 
             // ColumnaTipo
@@ -210,21 +220,21 @@
             tabPage2.Location = new Point(4, 30);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(751, 429);
+            tabPage2.Size = new Size(782, 349);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Individual";
             tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridView2
             // 
+            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView2.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView2.BorderStyle = BorderStyle.None;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewButtonColumn1, dataGridViewButtonColumn2 });
-            dataGridView2.Dock = DockStyle.Bottom;
-            dataGridView2.Location = new Point(3, 81);
+            dataGridView2.Location = new Point(3, 80);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(745, 345);
+            dataGridView2.Size = new Size(783, 266);
             dataGridView2.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -271,20 +281,20 @@
             tDoble.Location = new Point(4, 30);
             tDoble.Name = "tDoble";
             tDoble.Padding = new Padding(3);
-            tDoble.Size = new Size(751, 429);
+            tDoble.Size = new Size(782, 349);
             tDoble.TabIndex = 2;
             tDoble.Text = "Doble";
             // 
             // dataGridView3
             // 
+            dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView3.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn6, dataGridViewButtonColumn3, dataGridViewButtonColumn4 });
-            dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 76);
+            dataGridView3.Location = new Point(0, 93);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(745, 350);
+            dataGridView3.Size = new Size(786, 260);
             dataGridView3.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn4
@@ -330,21 +340,21 @@
             tSuite.Location = new Point(4, 30);
             tSuite.Name = "tSuite";
             tSuite.Padding = new Padding(3);
-            tSuite.Size = new Size(751, 429);
+            tSuite.Size = new Size(782, 349);
             tSuite.TabIndex = 3;
             tSuite.Text = "Suite";
             tSuite.UseVisualStyleBackColor = true;
             // 
             // dataGridView4
             // 
+            dataGridView4.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView4.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView4.BorderStyle = BorderStyle.None;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView4.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewButtonColumn5, dataGridViewButtonColumn6 });
-            dataGridView4.Dock = DockStyle.Bottom;
-            dataGridView4.Location = new Point(3, 75);
+            dataGridView4.Location = new Point(3, 77);
             dataGridView4.Name = "dataGridView4";
-            dataGridView4.Size = new Size(745, 351);
+            dataGridView4.Size = new Size(779, 269);
             dataGridView4.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn7
@@ -396,7 +406,7 @@
             tNuevaHabit.Location = new Point(4, 30);
             tNuevaHabit.Name = "tNuevaHabit";
             tNuevaHabit.Padding = new Padding(3);
-            tNuevaHabit.Size = new Size(751, 429);
+            tNuevaHabit.Size = new Size(782, 349);
             tNuevaHabit.TabIndex = 4;
             tNuevaHabit.Text = "Nueva habitación";
             // 
@@ -476,21 +486,12 @@
             label1.TabIndex = 0;
             label1.Text = "Detalles";
             // 
-            // bBuscar
-            // 
-            bBuscar.Location = new Point(640, 44);
-            bBuscar.Name = "bBuscar";
-            bBuscar.Size = new Size(75, 23);
-            bBuscar.TabIndex = 3;
-            bBuscar.Text = "Buscar";
-            bBuscar.UseVisualStyleBackColor = true;
-            // 
             // TipoHabitacionView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(759, 618);
+            ClientSize = new Size(790, 542);
             Controls.Add(tNuevaHabitación);
             Controls.Add(lTipoHabit);
             Controls.Add(panel1);

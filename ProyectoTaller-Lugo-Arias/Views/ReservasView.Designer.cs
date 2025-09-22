@@ -31,7 +31,7 @@
             panel1 = new Panel();
             textBox4 = new TextBox();
             lMotorEmpleados = new Label();
-            label1 = new Label();
+            lReservas = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
             dataGridView3 = new DataGridView();
@@ -86,6 +86,7 @@
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
+            bBuscar = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -101,12 +102,13 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
+            panel1.Controls.Add(bBuscar);
             panel1.Controls.Add(textBox4);
             panel1.Controls.Add(lMotorEmpleados);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(785, 69);
+            panel1.Size = new Size(790, 69);
             panel1.TabIndex = 0;
             // 
             // textBox4
@@ -129,29 +131,30 @@
             lMotorEmpleados.TabIndex = 1;
             lMotorEmpleados.Text = "Buscar Reserva";
             // 
-            // label1
+            // lReservas
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = Color.DarkSlateGray;
-            label1.Location = new Point(330, 72);
-            label1.Name = "label1";
-            label1.Size = new Size(114, 32);
-            label1.TabIndex = 0;
-            label1.Text = "Reservas";
+            lReservas.AutoSize = true;
+            lReservas.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lReservas.ForeColor = Color.DarkSlateGray;
+            lReservas.Location = new Point(332, 83);
+            lReservas.Name = "lReservas";
+            lReservas.Size = new Size(114, 32);
+            lReservas.TabIndex = 0;
+            lReservas.Text = "Reservas";
+            lReservas.TextAlign = ContentAlignment.TopCenter;
             // 
             // tabControl1
             // 
+            tabControl1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tabControl1.Controls.Add(tpTodos);
             tabControl1.Controls.Add(tpActivos);
             tabControl1.Controls.Add(tpFinalizados);
             tabControl1.Controls.Add(tpNuevaReserva);
-            tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 111);
+            tabControl1.Location = new Point(0, 136);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(785, 508);
+            tabControl1.Size = new Size(785, 406);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -162,20 +165,20 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(777, 474);
+            tpTodos.Size = new Size(777, 372);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
             // dataGridView3
             // 
+            dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView3.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4, dataGridViewTextBoxColumn12 });
-            dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 107);
+            dataGridView3.Location = new Point(-4, 67);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(771, 364);
+            dataGridView3.Size = new Size(785, 366);
             dataGridView3.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn7
@@ -225,7 +228,7 @@
             lReservasTodas.AutoSize = true;
             lReservasTodas.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lReservasTodas.ForeColor = Color.DarkSlateGray;
-            lReservasTodas.Location = new Point(21, 22);
+            lReservasTodas.Location = new Point(37, 24);
             lReservasTodas.Name = "lReservasTodas";
             lReservasTodas.Size = new Size(87, 25);
             lReservasTodas.TabIndex = 2;
@@ -240,7 +243,7 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(775, 474);
+            tpActivos.Size = new Size(777, 372);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -249,7 +252,7 @@
             lReservasAct.AutoSize = true;
             lReservasAct.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lReservasAct.ForeColor = Color.DarkSlateGray;
-            lReservasAct.Location = new Point(3, 22);
+            lReservasAct.Location = new Point(42, 29);
             lReservasAct.Name = "lReservasAct";
             lReservasAct.Size = new Size(154, 25);
             lReservasAct.TabIndex = 4;
@@ -257,14 +260,14 @@
             // 
             // dataGridView2
             // 
+            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView2.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView2.BorderStyle = BorderStyle.None;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1, dataGridViewButtonColumn2, dataGridViewTextBoxColumn6 });
-            dataGridView2.Dock = DockStyle.Bottom;
-            dataGridView2.Location = new Point(3, 101);
+            dataGridView2.Location = new Point(3, 71);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(769, 370);
+            dataGridView2.Size = new Size(769, 290);
             dataGridView2.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
@@ -317,20 +320,20 @@
             tpFinalizados.Location = new Point(4, 30);
             tpFinalizados.Name = "tpFinalizados";
             tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(777, 474);
+            tpFinalizados.Size = new Size(777, 372);
             tpFinalizados.TabIndex = 2;
             tpFinalizados.Text = "Finalizados";
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumnaNroReserva, ColumnaClienteDNI, ColumnaHabitacion, ColumnaIngreso, ColumnaSalida, ColumnaEditar, ColumnaEliminar, ColumnaEstado });
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 112);
+            dataGridView1.Location = new Point(3, 74);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(771, 359);
+            dataGridView1.Size = new Size(771, 295);
             dataGridView1.TabIndex = 2;
             // 
             // ColumnaNroReserva
@@ -380,7 +383,7 @@
             lReservasFin.AutoSize = true;
             lReservasFin.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lReservasFin.ForeColor = Color.DarkSlateGray;
-            lReservasFin.Location = new Point(23, 26);
+            lReservasFin.Location = new Point(44, 28);
             lReservasFin.Name = "lReservasFin";
             lReservasFin.Size = new Size(186, 25);
             lReservasFin.TabIndex = 1;
@@ -407,7 +410,7 @@
             tpNuevaReserva.Location = new Point(4, 30);
             tpNuevaReserva.Name = "tpNuevaReserva";
             tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(777, 474);
+            tpNuevaReserva.Size = new Size(777, 372);
             tpNuevaReserva.TabIndex = 3;
             tpNuevaReserva.Text = "Nueva Reserva";
             // 
@@ -613,13 +616,22 @@
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nueva Reserva";
             // 
+            // bBuscar
+            // 
+            bBuscar.Location = new Point(568, 25);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 3;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
+            // 
             // ReservasView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.InactiveCaption;
-            ClientSize = new Size(785, 619);
-            Controls.Add(label1);
+            ClientSize = new Size(790, 542);
+            Controls.Add(lReservas);
             Controls.Add(tabControl1);
             Controls.Add(panel1);
             Name = "ReservasView";
@@ -647,7 +659,7 @@
         #endregion
 
         private Panel panel1;
-        private Label label1;
+        private Label lReservas;
         private TabControl tabControl1;
         private TabPage tpTodos;
         private TabPage tpActivos;
@@ -704,5 +716,6 @@
         private DataGridViewTextBoxColumn ColumnaEstado;
         private Label lMotorEmpleados;
         private TextBox textBox4;
+        private Button bBuscar;
     }
 }
