@@ -1,6 +1,5 @@
 ﻿using ProyectoTaller_Lugo_Arias.Models;
 using ProyectoTaller_Lugo_Arias.Repositories;
-using ProyectoTaller_Lugo_Arias.utlidades;
 using ProyectoTaller_Lugo_Arias.Views;
 using System;
 using System.Collections.Generic;
