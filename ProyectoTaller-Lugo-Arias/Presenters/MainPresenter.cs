@@ -1,11 +1,12 @@
-﻿using System;
+﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositories;
+using ProyectoTaller_Lugo_Arias.Repositorio;
+using ProyectoTaller_Lugo_Arias.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProyectoTaller_Lugo_Arias.Views;
-using ProyectoTaller_Lugo_Arias.Models;
-using ProyectoTaller_Lugo_Arias.Repositories;
 
 namespace ProyectoTaller_Lugo_Arias.Presenters
 {
@@ -34,7 +35,10 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void OnShowHabitacionesView(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            HabitacionView view = HabitacionView.GetInstance((MainView)mainView);
+            IHabitacionRepositorio repository = new HabitacionRepositorio(sqlConnectionString);
+            new HabitacionPresenter(view, repository);
+        
         }
 
         private void OnShowReservasView(object? sender, EventArgs e)
@@ -51,7 +55,9 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void OnShowClientesView(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            IClienteView view = ClientesView.GetInstance((MainView)mainView);
+            IClienteRepositorio repositorio = new ClienteRepositorio(sqlConnectionString);
+            new ClientePresenter(view, repositorio);
         }
 
         private void OnShowEmpleadosView(object? sender, EventArgs e)
