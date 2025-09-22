@@ -34,7 +34,10 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void OnShowHabitacionesView(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            HabitacionesView view = HabitacionesView.GetInstace((MainView)mainView);
+            HabitacionRepository repository = new habitacionRepository(sqlConnectionString);
+            new habitacionPresenter(view, repository);
+        
         }
 
         private void OnShowReservasView(object? sender, EventArgs e)

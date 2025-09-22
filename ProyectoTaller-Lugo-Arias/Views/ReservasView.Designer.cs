@@ -173,9 +173,9 @@
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4, dataGridViewTextBoxColumn12 });
             dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 107);
+            dataGridView3.Location = new Point(3, 66);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(771, 364);
+            dataGridView3.Size = new Size(771, 405);
             dataGridView3.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn7
@@ -240,7 +240,7 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(775, 474);
+            tpActivos.Size = new Size(777, 474);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -264,7 +264,7 @@
             dataGridView2.Dock = DockStyle.Bottom;
             dataGridView2.Location = new Point(3, 101);
             dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(769, 370);
+            dataGridView2.Size = new Size(771, 370);
             dataGridView2.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1
