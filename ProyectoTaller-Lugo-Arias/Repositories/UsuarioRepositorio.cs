@@ -1,0 +1,289 @@
+﻿using System.Data.SqlClient;
+using ProyectoTaller_Lugo_Arias.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+
+namespace ProyectoTaller_Lugo_Arias.Repositories
+{
+    public class UsuarioRepositorio : BaseRepositorio, IUsuarioRepositorio
+    {
+        //constructor
+        public UsuarioRepositorio(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+
+        //metodos
+        public void Add(UsuarioModel usuario)
+        {
+            using(var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into usuario(nombre, apellido, dni, telefono, email, password, id_cargo) values(@nombre, @apellido, @dni, @telefono, @email, @password, @id_cargo)";
+                command.Parameters.Add("@nombre", SqlDbType.VarChar,50).Value = usuario.Nombre;
+                command.Parameters.Add("@apellido", SqlDbType.VarChar,50).Value = usuario.Apellido;
+                command.Parameters.Add("@dni", SqlDbType.Int).Value = usuario.Dni;
+                command.Parameters.Add("@telefono", SqlDbType.Int).Value = usuario.Telefono;
+                command.Parameters.Add("@email", SqlDbType.VarChar,100).Value = usuario.Email;
+                command.Parameters.Add("@password", SqlDbType.VarBinary,64).Value = usuario.Password;
+                command.Parameters.Add("@id_cargo", SqlDbType.Int).Value = usuario.Id_cargo;
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+        public void Delete(int id)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update usuario
+                                      set estado = @estado
+                                      where id_usuario=@id ";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@estado", SqlDbType.VarChar, 100).Value = "Inactivo";
+                command.ExecuteNonQuery();
+
+            }
+        }
+        public void Edit(UsuarioModel usuario)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+
+                // Construir los campos SET dinámicamente
+                var camposSet = new List<string>
+        {
+            "nombre = @nombre",
+            "apellido = @apellido",
+            "dni = @dni",
+            "telefono = @telefono",
+            "email = @email",
+            "id_cargo = @id_cargo"
+        };
+
+                if (usuario.Password != null)
+                {
+                    camposSet.Add("password = @password");
+                    command.Parameters.Add("@password", SqlDbType.VarBinary, 64).Value = usuario.Password;
+                }
+
+                string query = $"UPDATE usuario SET {string.Join(", ", camposSet)} WHERE id_usuario = @id";
+                command.CommandText = query;
+
+                // Agregar parámetros comunes
+                command.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = usuario.Nombre;
+                command.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = usuario.Apellido;
+                command.Parameters.Add("@dni", SqlDbType.Int).Value = usuario.Dni;
+                command.Parameters.Add("@telefono", SqlDbType.Int).Value = usuario.Telefono;
+                command.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = usuario.Email;
+                command.Parameters.Add("@id_cargo", SqlDbType.Int).Value = usuario.Id_cargo;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = usuario.Id_usuario;
+
+                command.ExecuteNonQuery();
+            }
+        }
+
+
+        public IEnumerable<UsuarioModel> GetAll()
+        {
+            var usuariosList = new List<UsuarioModel>();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                //selecciona todos los usuarios ordenados por id_usuario descendente
+                command.CommandText = "SELECT *, (SELECT TOP 1 c.descripcion FROM cargo c WHERE c.id_cargo = u.id_cargo) AS cargo_descripcion FROM usuario u ORDER BY id_usuario DESC"; 
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var usuarioModel = new UsuarioModel();
+                        usuarioModel.Id_usuario = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
+                        usuarioModel.Nombre = reader["nombre"] as string ?? string.Empty;
+                        usuarioModel.Apellido = reader["apellido"] as string ?? string.Empty;
+                        usuarioModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                        usuarioModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                        usuarioModel.Email = reader["email"] as string ?? string.Empty;
+                        usuarioModel.Id_cargo = reader["id_cargo"] is DBNull ? 0 : (int)reader["id_cargo"];
+                        usuarioModel.Cargo_descripcion = reader["cargo_descripcion"] as string ?? string.Empty;
+                        usuarioModel.Estado = reader["estado"] as string ?? string.Empty;
+                        //agregar a la lista
+                        usuariosList.Add(usuarioModel);
+                    }
+                }
+            }
+            return usuariosList;
+        }
+
+        public UsuarioModel GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<UsuarioModel> GetByValue(string valorBusqueda)
+        {
+            var usuariosList = new List<UsuarioModel>();
+            int usuarioId = int.TryParse(valorBusqueda, out var id) ? id : 0;
+            string usuarioNombre = valorBusqueda;
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"
+            SELECT u.*, 
+                   (SELECT TOP 1 c.descripcion 
+                    FROM cargo c 
+                    WHERE c.id_cargo = u.id_cargo) AS cargo_descripcion
+            FROM usuario u
+            WHERE (u.id_usuario = @id) OR (u.dni = @id) OR (u.telefono = @id)
+              OR (u.nombre like @nombre + '%') OR (u.apellido like @nombre + '%') OR (u.email like @nombre + '%')
+            ORDER BY u.id_usuario DESC";
+
+                command.Parameters.Add("@id", SqlDbType.Int).Value = usuarioId;
+                command.Parameters.Add("@nombre", SqlDbType.NVarChar, 50).Value = usuarioNombre;
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var usuarioModel = new UsuarioModel();
+                        usuarioModel.Id_usuario = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
+                        usuarioModel.Nombre = reader["nombre"] as string ?? string.Empty;
+                        usuarioModel.Apellido = reader["apellido"] as string ?? string.Empty;
+                        usuarioModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                        usuarioModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                        usuarioModel.Email = reader["email"] as string ?? string.Empty;
+                        usuarioModel.Id_cargo = reader["id_cargo"] is DBNull ? 0 : (int)reader["id_cargo"];
+                        usuarioModel.Cargo_descripcion = reader["cargo_descripcion"] as string ?? string.Empty;
+                        usuarioModel.Estado = "Activo";
+                        usuariosList.Add(usuarioModel);
+                    }
+                }
+            }
+            return usuariosList;
+        }
+
+        public IEnumerable<UsuarioModel> GetAllActive()
+        {
+            var usuariosList = new List<UsuarioModel>();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                //selecciona todos los usuarios ordenados por id_usuario descendente
+                command.CommandText = "SELECT *, (SELECT TOP 1 c.descripcion FROM cargo c WHERE c.id_cargo = u.id_cargo) AS cargo_descripcion FROM usuario u WHERE u.estado = 'Activo' ORDER BY id_usuario DESC";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var usuarioModel = new UsuarioModel();
+                        usuarioModel.Id_usuario = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
+                        usuarioModel.Nombre = reader["nombre"] as string ?? string.Empty;
+                        usuarioModel.Apellido = reader["apellido"] as string ?? string.Empty;
+                        usuarioModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                        usuarioModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                        usuarioModel.Email = reader["email"] as string ?? string.Empty;
+                        usuarioModel.Id_cargo = reader["id_cargo"] is DBNull ? 0 : (int)reader["id_cargo"];
+                        usuarioModel.Cargo_descripcion = reader["cargo_descripcion"] as string ?? string.Empty;
+                        usuarioModel.Estado = reader["estado"] as string ?? string.Empty;
+                        //agregar a la lista
+                        usuariosList.Add(usuarioModel);
+                    }
+                }
+            }
+            return usuariosList;
+        }
+
+        public IEnumerable<UsuarioModel> GetAllInactive()
+        {
+            var usuariosList = new List<UsuarioModel>();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                //selecciona todos los usuarios ordenados por id_usuario descendente
+                command.CommandText = "SELECT *, (SELECT TOP 1 c.descripcion FROM cargo c WHERE c.id_cargo = u.id_cargo) AS cargo_descripcion FROM usuario u WHERE u.estado = 'Inactivo' ORDER BY id_usuario DESC";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        var usuarioModel = new UsuarioModel();
+                        usuarioModel.Id_usuario = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
+                        usuarioModel.Nombre = reader["nombre"] as string ?? string.Empty;
+                        usuarioModel.Apellido = reader["apellido"] as string ?? string.Empty;
+                        usuarioModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                        usuarioModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                        usuarioModel.Email = reader["email"] as string ?? string.Empty;
+                        usuarioModel.Id_cargo = reader["id_cargo"] is DBNull ? 0 : (int)reader["id_cargo"];
+                        usuarioModel.Cargo_descripcion = reader["cargo_descripcion"] as string ?? string.Empty;
+                        usuarioModel.Estado = reader["estado"] as string ?? string.Empty;
+                        //agregar a la lista
+                        usuariosList.Add(usuarioModel);
+                    }
+                }
+            }
+            return usuariosList;
+        }
+
+        public UsuarioModel Login(string email, string password)
+        {
+            UsuarioModel user = null;
+            using (var connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                using (SqlCommand command = new SqlCommand("UsuarioLogin", connection))
+                {
+                    command.CommandType = CommandType.StoredProcedure;
+                    command.Parameters.AddWithValue("@email", email);
+                    command.Parameters.AddWithValue("@pass", password);
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        user = new UsuarioModel();
+                        while (reader.Read())
+                        {
+                            user.Id_usuario = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
+                            user.Nombre = reader["nombre"] as string ?? string.Empty;
+                            user.Apellido = reader["apellido"] as string ?? string.Empty;
+                            user.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                            user.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                            user.Email = reader["email"] as string ?? string.Empty;
+                            user.Id_cargo = reader["id_cargo"] is DBNull ? 0 : (int)reader["id_cargo"];
+                            user.Estado = reader["estado"] as string ?? string.Empty;
+                        }
+                        if (user.Estado == "Inactivo")
+                        {
+                            user = null;
+                        }
+                        return user;
+                    }
+                }
+            }
+        }
+
+
+
+                 
+    }
+}
