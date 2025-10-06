@@ -18,9 +18,10 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private string tipo;
         private int id_piso;
         private int id_estado;
+        private string estado_descripcion;
 
         [DisplayName ("Nro_habitacion")]
-        [Required(ErrorMessage = "El numero de habitacion es obligatorio")]
+        [Required(ErrorMessage = "El número de habitación es obligatorio")]
         public int Nro_habitacion
         { 
             get { return nro_habitacion; }  
@@ -28,7 +29,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         }
 
         [DisplayName("Cant_camas")]
-        [Required(ErrorMessage = "El numero de camas es obligatorio")]
+        [Required(ErrorMessage = "El número de camas es obligatorio")]
         public int Cant_camas
         {
             get { return cant_camas; }
@@ -44,9 +45,9 @@ namespace ProyectoTaller_Lugo_Arias.Models
             set { precio_unitario = value; } 
         }
 
-        [DisplayName("Descrpcion")]
+        [DisplayName("Descripcion")]
         [Required(ErrorMessage = "La descripcion de la habitacion es obligatorio")]
-        [StringLength (100, MinimumLength = 4, ErrorMessage = "El campo descripcion es de 4 a 100 caracteres ")]
+        [StringLength (150, MinimumLength = 4, ErrorMessage = "El campo descripcion es de 4 a 150 caracteres ")]
         public string Descripcion 
         {
             get { return  descripcion; } 
@@ -54,8 +55,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         }
 
         [DisplayName("Tipo")]
-        [Required(ErrorMessage = "El de la habitacion es obligatorio")]
-        [StringLength(100, MinimumLength = 4, ErrorMessage = "El campo tipo es de 4 a 100 caracteres ")]
+        [Required(ErrorMessage = "El tipo de habitación es obligatorio")]
         public string Tipo 
         { 
             get { return tipo; }
@@ -63,7 +63,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         }
 
         [DisplayName("Id_piso")]
-        [Required(ErrorMessage = "El numero de piso es obligatorio")]
+        [Required(ErrorMessage = "El número de piso es obligatorio")]
         public int Id_piso 
         {
             get { return id_piso; } 
@@ -76,6 +76,12 @@ namespace ProyectoTaller_Lugo_Arias.Models
         {
             get { return id_estado; } 
             set { id_estado = value; }
+        }
+
+        public string Estado_descripcion 
+        { 
+            get { return estado_descripcion; } 
+            set { estado_descripcion = value; }
         }
     }
 }

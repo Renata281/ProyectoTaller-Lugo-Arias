@@ -35,21 +35,6 @@
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
             dataGridView3 = new DataGridView();
-            lReservasTodas = new Label();
-            tpActivos = new TabPage();
-            lReservasAct = new Label();
-            tpFinalizados = new TabPage();
-            lReservasFin = new Label();
-            tpNuevaReserva = new TabPage();
-            bConfirmar = new Button();
-            textBox3 = new TextBox();
-            label3 = new Label();
-            bCancelar = new Button();
-            textBox1 = new TextBox();
-            lFechaSalida = new Label();
-            lFechaIngreso = new Label();
-            label2 = new Label();
-            lNuevaReserva = new Label();
             dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
@@ -57,6 +42,8 @@
             dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
             dataGridViewButtonColumn3 = new DataGridViewButtonColumn();
             dataGridViewButtonColumn4 = new DataGridViewButtonColumn();
+            lReservasTodas = new Label();
+            tpActivos = new TabPage();
             dataGridView2 = new DataGridView();
             dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
@@ -65,7 +52,8 @@
             dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
             dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
             dataGridViewButtonColumn2 = new DataGridViewButtonColumn();
-            tabPage1 = new TabPage();
+            lReservasAct = new Label();
+            tpFinalizados = new TabPage();
             dataGridView1 = new DataGridView();
             dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
@@ -74,6 +62,25 @@
             dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
             dataGridViewButtonColumn5 = new DataGridViewButtonColumn();
             dataGridViewButtonColumn6 = new DataGridViewButtonColumn();
+            lReservasFin = new Label();
+            tpNuevaReserva = new TabPage();
+            cbPiso = new ComboBox();
+            label6 = new Label();
+            cbTipo = new ComboBox();
+            label5 = new Label();
+            tbDescripcion = new TextBox();
+            tbPrecio = new TextBox();
+            bConfirmar = new Button();
+            tbCamas = new TextBox();
+            label3 = new Label();
+            bCancelar = new Button();
+            tbNro = new TextBox();
+            lFechaSalida = new Label();
+            lFechaIngreso = new Label();
+            label2 = new Label();
+            lNuevaReserva = new Label();
+            tabPage1 = new TabPage();
+            label4 = new Label();
             dataGridView4 = new DataGridView();
             dataGridViewTextBoxColumn16 = new DataGridViewTextBoxColumn();
             dataGridViewTextBoxColumn17 = new DataGridViewTextBoxColumn();
@@ -82,23 +89,18 @@
             dataGridViewTextBoxColumn20 = new DataGridViewTextBoxColumn();
             dataGridViewButtonColumn7 = new DataGridViewButtonColumn();
             dataGridViewButtonColumn8 = new DataGridViewButtonColumn();
-            label4 = new Label();
-            textBox5 = new TextBox();
-            textBox2 = new TextBox();
-            label5 = new Label();
-            comboBox1 = new ComboBox();
-            label6 = new Label();
-            comboBox2 = new ComboBox();
+            lEstado = new Label();
+            cbEstado = new ComboBox();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             tpActivos.SuspendLayout();
-            tpFinalizados.SuspendLayout();
-            tpNuevaReserva.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            tabPage1.SuspendLayout();
+            tpFinalizados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tpNuevaReserva.SuspendLayout();
+            tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             SuspendLayout();
             // 
@@ -183,188 +185,6 @@
             dataGridView3.Size = new Size(952, 304);
             dataGridView3.TabIndex = 4;
             // 
-            // lReservasTodas
-            // 
-            lReservasTodas.AutoSize = true;
-            lReservasTodas.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lReservasTodas.ForeColor = Color.DarkSlateGray;
-            lReservasTodas.Location = new Point(24, 25);
-            lReservasTodas.Name = "lReservasTodas";
-            lReservasTodas.Size = new Size(123, 25);
-            lReservasTodas.TabIndex = 2;
-            lReservasTodas.Text = "Habitaciones";
-            // 
-            // tpActivos
-            // 
-            tpActivos.BackColor = SystemColors.Control;
-            tpActivos.Controls.Add(dataGridView2);
-            tpActivos.Controls.Add(lReservasAct);
-            tpActivos.ForeColor = Color.DarkSlateGray;
-            tpActivos.Location = new Point(4, 30);
-            tpActivos.Name = "tpActivos";
-            tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(958, 381);
-            tpActivos.TabIndex = 1;
-            tpActivos.Text = "Disponible";
-            // 
-            // lReservasAct
-            // 
-            lReservasAct.AutoSize = true;
-            lReservasAct.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lReservasAct.ForeColor = Color.DarkSlateGray;
-            lReservasAct.Location = new Point(6, 25);
-            lReservasAct.Name = "lReservasAct";
-            lReservasAct.Size = new Size(227, 25);
-            lReservasAct.TabIndex = 4;
-            lReservasAct.Text = "Habitaciones Disponibles";
-            // 
-            // tpFinalizados
-            // 
-            tpFinalizados.BackColor = SystemColors.Control;
-            tpFinalizados.Controls.Add(dataGridView1);
-            tpFinalizados.Controls.Add(lReservasFin);
-            tpFinalizados.Location = new Point(4, 30);
-            tpFinalizados.Name = "tpFinalizados";
-            tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(958, 381);
-            tpFinalizados.TabIndex = 2;
-            tpFinalizados.Text = "Ocupadas";
-            // 
-            // lReservasFin
-            // 
-            lReservasFin.AutoSize = true;
-            lReservasFin.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lReservasFin.ForeColor = Color.DarkSlateGray;
-            lReservasFin.Location = new Point(24, 24);
-            lReservasFin.Name = "lReservasFin";
-            lReservasFin.Size = new Size(212, 25);
-            lReservasFin.TabIndex = 1;
-            lReservasFin.Text = "Habitaciones Ocupadas";
-            // 
-            // tpNuevaReserva
-            // 
-            tpNuevaReserva.BackColor = SystemColors.Control;
-            tpNuevaReserva.Controls.Add(comboBox2);
-            tpNuevaReserva.Controls.Add(label6);
-            tpNuevaReserva.Controls.Add(comboBox1);
-            tpNuevaReserva.Controls.Add(label5);
-            tpNuevaReserva.Controls.Add(textBox2);
-            tpNuevaReserva.Controls.Add(textBox5);
-            tpNuevaReserva.Controls.Add(bConfirmar);
-            tpNuevaReserva.Controls.Add(textBox3);
-            tpNuevaReserva.Controls.Add(label3);
-            tpNuevaReserva.Controls.Add(bCancelar);
-            tpNuevaReserva.Controls.Add(textBox1);
-            tpNuevaReserva.Controls.Add(lFechaSalida);
-            tpNuevaReserva.Controls.Add(lFechaIngreso);
-            tpNuevaReserva.Controls.Add(label2);
-            tpNuevaReserva.Controls.Add(lNuevaReserva);
-            tpNuevaReserva.Location = new Point(4, 30);
-            tpNuevaReserva.Name = "tpNuevaReserva";
-            tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(958, 381);
-            tpNuevaReserva.TabIndex = 3;
-            tpNuevaReserva.Text = "Nueva Habitación";
-            // 
-            // bConfirmar
-            // 
-            bConfirmar.BackColor = Color.DarkSlateGray;
-            bConfirmar.FlatAppearance.BorderSize = 0;
-            bConfirmar.FlatStyle = FlatStyle.Flat;
-            bConfirmar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bConfirmar.ForeColor = SystemColors.InactiveBorder;
-            bConfirmar.Location = new Point(308, 329);
-            bConfirmar.Name = "bConfirmar";
-            bConfirmar.Size = new Size(99, 31);
-            bConfirmar.TabIndex = 18;
-            bConfirmar.Text = "Confirmar";
-            bConfirmar.UseVisualStyleBackColor = false;
-            // 
-            // textBox3
-            // 
-            textBox3.BackColor = SystemColors.Control;
-            textBox3.Location = new Point(24, 159);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(254, 29);
-            textBox3.TabIndex = 16;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.DarkSlateGray;
-            label3.Location = new Point(27, 139);
-            label3.Name = "label3";
-            label3.Size = new Size(137, 20);
-            label3.TabIndex = 15;
-            label3.Text = "Cantidad de camas";
-            // 
-            // bCancelar
-            // 
-            bCancelar.BackColor = SystemColors.InactiveCaption;
-            bCancelar.FlatAppearance.BorderSize = 0;
-            bCancelar.FlatStyle = FlatStyle.Flat;
-            bCancelar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bCancelar.ForeColor = Color.DarkSlateGray;
-            bCancelar.Location = new Point(437, 329);
-            bCancelar.Name = "bCancelar";
-            bCancelar.Size = new Size(99, 31);
-            bCancelar.TabIndex = 11;
-            bCancelar.Text = "Cancelar";
-            bCancelar.UseVisualStyleBackColor = false;
-            // 
-            // textBox1
-            // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.Location = new Point(24, 93);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(254, 29);
-            textBox1.TabIndex = 9;
-            // 
-            // lFechaSalida
-            // 
-            lFechaSalida.AutoSize = true;
-            lFechaSalida.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lFechaSalida.ForeColor = Color.DarkSlateGray;
-            lFechaSalida.Location = new Point(627, 70);
-            lFechaSalida.Name = "lFechaSalida";
-            lFechaSalida.Size = new Size(89, 20);
-            lFechaSalida.TabIndex = 3;
-            lFechaSalida.Text = "Descripción";
-            // 
-            // lFechaIngreso
-            // 
-            lFechaIngreso.AutoSize = true;
-            lFechaIngreso.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lFechaIngreso.ForeColor = Color.DarkSlateGray;
-            lFechaIngreso.Location = new Point(27, 201);
-            lFechaIngreso.Name = "lFechaIngreso";
-            lFechaIngreso.Size = new Size(112, 20);
-            lFechaIngreso.TabIndex = 2;
-            lFechaIngreso.Text = "Precio Unitario";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.ForeColor = Color.DarkSlateGray;
-            label2.Location = new Point(24, 70);
-            label2.Name = "label2";
-            label2.Size = new Size(144, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Numero Habitación";
-            // 
-            // lNuevaReserva
-            // 
-            lNuevaReserva.AutoSize = true;
-            lNuevaReserva.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lNuevaReserva.ForeColor = Color.DarkSlateGray;
-            lNuevaReserva.Location = new Point(27, 32);
-            lNuevaReserva.Name = "lNuevaReserva";
-            lNuevaReserva.Size = new Size(166, 25);
-            lNuevaReserva.TabIndex = 0;
-            lNuevaReserva.Text = "Nueva Habitación";
-            // 
             // dataGridViewTextBoxColumn7
             // 
             dataGridViewTextBoxColumn7.HeaderText = "Habitacion";
@@ -401,6 +221,30 @@
             // 
             dataGridViewButtonColumn4.HeaderText = "Estado";
             dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
+            // 
+            // lReservasTodas
+            // 
+            lReservasTodas.AutoSize = true;
+            lReservasTodas.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lReservasTodas.ForeColor = Color.DarkSlateGray;
+            lReservasTodas.Location = new Point(24, 25);
+            lReservasTodas.Name = "lReservasTodas";
+            lReservasTodas.Size = new Size(123, 25);
+            lReservasTodas.TabIndex = 2;
+            lReservasTodas.Text = "Habitaciones";
+            // 
+            // tpActivos
+            // 
+            tpActivos.BackColor = SystemColors.Control;
+            tpActivos.Controls.Add(dataGridView2);
+            tpActivos.Controls.Add(lReservasAct);
+            tpActivos.ForeColor = Color.DarkSlateGray;
+            tpActivos.Location = new Point(4, 30);
+            tpActivos.Name = "tpActivos";
+            tpActivos.Padding = new Padding(3);
+            tpActivos.Size = new Size(958, 381);
+            tpActivos.TabIndex = 1;
+            tpActivos.Text = "Disponible";
             // 
             // dataGridView2
             // 
@@ -451,16 +295,28 @@
             dataGridViewButtonColumn2.HeaderText = "Estado";
             dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
             // 
-            // tabPage1
+            // lReservasAct
             // 
-            tabPage1.BackColor = SystemColors.Control;
-            tabPage1.Controls.Add(label4);
-            tabPage1.Controls.Add(dataGridView4);
-            tabPage1.Location = new Point(4, 30);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(958, 381);
-            tabPage1.TabIndex = 4;
-            tabPage1.Text = "Mantenimiento";
+            lReservasAct.AutoSize = true;
+            lReservasAct.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lReservasAct.ForeColor = Color.DarkSlateGray;
+            lReservasAct.Location = new Point(6, 25);
+            lReservasAct.Name = "lReservasAct";
+            lReservasAct.Size = new Size(227, 25);
+            lReservasAct.TabIndex = 4;
+            lReservasAct.Text = "Habitaciones Disponibles";
+            // 
+            // tpFinalizados
+            // 
+            tpFinalizados.BackColor = SystemColors.Control;
+            tpFinalizados.Controls.Add(dataGridView1);
+            tpFinalizados.Controls.Add(lReservasFin);
+            tpFinalizados.Location = new Point(4, 30);
+            tpFinalizados.Name = "tpFinalizados";
+            tpFinalizados.Padding = new Padding(3);
+            tpFinalizados.Size = new Size(958, 381);
+            tpFinalizados.TabIndex = 2;
+            tpFinalizados.Text = "Ocupadas";
             // 
             // dataGridView1
             // 
@@ -511,6 +367,220 @@
             dataGridViewButtonColumn6.HeaderText = "Estado";
             dataGridViewButtonColumn6.Name = "dataGridViewButtonColumn6";
             // 
+            // lReservasFin
+            // 
+            lReservasFin.AutoSize = true;
+            lReservasFin.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lReservasFin.ForeColor = Color.DarkSlateGray;
+            lReservasFin.Location = new Point(24, 24);
+            lReservasFin.Name = "lReservasFin";
+            lReservasFin.Size = new Size(212, 25);
+            lReservasFin.TabIndex = 1;
+            lReservasFin.Text = "Habitaciones Ocupadas";
+            // 
+            // tpNuevaReserva
+            // 
+            tpNuevaReserva.BackColor = SystemColors.Control;
+            tpNuevaReserva.Controls.Add(cbEstado);
+            tpNuevaReserva.Controls.Add(lEstado);
+            tpNuevaReserva.Controls.Add(cbPiso);
+            tpNuevaReserva.Controls.Add(label6);
+            tpNuevaReserva.Controls.Add(cbTipo);
+            tpNuevaReserva.Controls.Add(label5);
+            tpNuevaReserva.Controls.Add(tbDescripcion);
+            tpNuevaReserva.Controls.Add(tbPrecio);
+            tpNuevaReserva.Controls.Add(bConfirmar);
+            tpNuevaReserva.Controls.Add(tbCamas);
+            tpNuevaReserva.Controls.Add(label3);
+            tpNuevaReserva.Controls.Add(bCancelar);
+            tpNuevaReserva.Controls.Add(tbNro);
+            tpNuevaReserva.Controls.Add(lFechaSalida);
+            tpNuevaReserva.Controls.Add(lFechaIngreso);
+            tpNuevaReserva.Controls.Add(label2);
+            tpNuevaReserva.Controls.Add(lNuevaReserva);
+            tpNuevaReserva.Location = new Point(4, 30);
+            tpNuevaReserva.Name = "tpNuevaReserva";
+            tpNuevaReserva.Padding = new Padding(3);
+            tpNuevaReserva.Size = new Size(958, 381);
+            tpNuevaReserva.TabIndex = 3;
+            tpNuevaReserva.Text = "Nueva Habitación";
+            // 
+            // cbPiso
+            // 
+            cbPiso.FormattingEnabled = true;
+            cbPiso.Location = new Point(317, 159);
+            cbPiso.Name = "cbPiso";
+            cbPiso.Size = new Size(241, 29);
+            cbPiso.TabIndex = 24;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = Color.DarkSlateGray;
+            label6.Location = new Point(317, 139);
+            label6.Name = "label6";
+            label6.Size = new Size(37, 20);
+            label6.TabIndex = 23;
+            label6.Text = "Piso";
+            // 
+            // cbTipo
+            // 
+            cbTipo.FormattingEnabled = true;
+            cbTipo.Location = new Point(317, 93);
+            cbTipo.Name = "cbTipo";
+            cbTipo.Size = new Size(241, 29);
+            cbTipo.TabIndex = 22;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.DarkSlateGray;
+            label5.Location = new Point(317, 70);
+            label5.Name = "label5";
+            label5.Size = new Size(115, 20);
+            label5.TabIndex = 21;
+            label5.Text = "Tipo habitación";
+            // 
+            // tbDescripcion
+            // 
+            tbDescripcion.BackColor = SystemColors.Control;
+            tbDescripcion.Location = new Point(627, 93);
+            tbDescripcion.Multiline = true;
+            tbDescripcion.Name = "tbDescripcion";
+            tbDescripcion.Size = new Size(254, 95);
+            tbDescripcion.TabIndex = 20;
+            // 
+            // tbPrecio
+            // 
+            tbPrecio.BackColor = SystemColors.Control;
+            tbPrecio.Location = new Point(27, 238);
+            tbPrecio.Name = "tbPrecio";
+            tbPrecio.Size = new Size(254, 29);
+            tbPrecio.TabIndex = 19;
+            // 
+            // bConfirmar
+            // 
+            bConfirmar.BackColor = Color.DarkSlateGray;
+            bConfirmar.FlatAppearance.BorderSize = 0;
+            bConfirmar.FlatStyle = FlatStyle.Flat;
+            bConfirmar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bConfirmar.ForeColor = SystemColors.InactiveBorder;
+            bConfirmar.Location = new Point(308, 329);
+            bConfirmar.Name = "bConfirmar";
+            bConfirmar.Size = new Size(99, 31);
+            bConfirmar.TabIndex = 18;
+            bConfirmar.Text = "Confirmar";
+            bConfirmar.UseVisualStyleBackColor = false;
+            // 
+            // tbCamas
+            // 
+            tbCamas.BackColor = SystemColors.Control;
+            tbCamas.Location = new Point(24, 159);
+            tbCamas.Name = "tbCamas";
+            tbCamas.Size = new Size(254, 29);
+            tbCamas.TabIndex = 16;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.DarkSlateGray;
+            label3.Location = new Point(27, 139);
+            label3.Name = "label3";
+            label3.Size = new Size(137, 20);
+            label3.TabIndex = 15;
+            label3.Text = "Cantidad de camas";
+            // 
+            // bCancelar
+            // 
+            bCancelar.BackColor = SystemColors.InactiveCaption;
+            bCancelar.FlatAppearance.BorderSize = 0;
+            bCancelar.FlatStyle = FlatStyle.Flat;
+            bCancelar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bCancelar.ForeColor = Color.DarkSlateGray;
+            bCancelar.Location = new Point(437, 329);
+            bCancelar.Name = "bCancelar";
+            bCancelar.Size = new Size(99, 31);
+            bCancelar.TabIndex = 11;
+            bCancelar.Text = "Cancelar";
+            bCancelar.UseVisualStyleBackColor = false;
+            // 
+            // tbNro
+            // 
+            tbNro.BackColor = SystemColors.Control;
+            tbNro.Location = new Point(24, 93);
+            tbNro.Name = "tbNro";
+            tbNro.Size = new Size(254, 29);
+            tbNro.TabIndex = 9;
+            // 
+            // lFechaSalida
+            // 
+            lFechaSalida.AutoSize = true;
+            lFechaSalida.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lFechaSalida.ForeColor = Color.DarkSlateGray;
+            lFechaSalida.Location = new Point(627, 70);
+            lFechaSalida.Name = "lFechaSalida";
+            lFechaSalida.Size = new Size(89, 20);
+            lFechaSalida.TabIndex = 3;
+            lFechaSalida.Text = "Descripción";
+            // 
+            // lFechaIngreso
+            // 
+            lFechaIngreso.AutoSize = true;
+            lFechaIngreso.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lFechaIngreso.ForeColor = Color.DarkSlateGray;
+            lFechaIngreso.Location = new Point(27, 201);
+            lFechaIngreso.Name = "lFechaIngreso";
+            lFechaIngreso.Size = new Size(112, 20);
+            lFechaIngreso.TabIndex = 2;
+            lFechaIngreso.Text = "Precio Unitario";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.DarkSlateGray;
+            label2.Location = new Point(24, 70);
+            label2.Name = "label2";
+            label2.Size = new Size(144, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Numero Habitación";
+            // 
+            // lNuevaReserva
+            // 
+            lNuevaReserva.AutoSize = true;
+            lNuevaReserva.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lNuevaReserva.ForeColor = Color.DarkSlateGray;
+            lNuevaReserva.Location = new Point(27, 32);
+            lNuevaReserva.Name = "lNuevaReserva";
+            lNuevaReserva.Size = new Size(166, 25);
+            lNuevaReserva.TabIndex = 0;
+            lNuevaReserva.Text = "Nueva Habitación";
+            // 
+            // tabPage1
+            // 
+            tabPage1.BackColor = SystemColors.Control;
+            tabPage1.Controls.Add(label4);
+            tabPage1.Controls.Add(dataGridView4);
+            tabPage1.Location = new Point(4, 30);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Size = new Size(958, 381);
+            tabPage1.TabIndex = 4;
+            tabPage1.Text = "Mantenimiento";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.ForeColor = Color.DarkSlateGray;
+            label4.Location = new Point(24, 26);
+            label4.Name = "label4";
+            label4.Size = new Size(287, 25);
+            label4.TabIndex = 7;
+            label4.Text = "Habitaciones en Mantenimiento";
+            // 
             // dataGridView4
             // 
             dataGridView4.BackgroundColor = SystemColors.InactiveCaption;
@@ -560,71 +630,24 @@
             dataGridViewButtonColumn8.HeaderText = "Estado";
             dataGridViewButtonColumn8.Name = "dataGridViewButtonColumn8";
             // 
-            // label4
+            // lEstado
             // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.ForeColor = Color.DarkSlateGray;
-            label4.Location = new Point(24, 26);
-            label4.Name = "label4";
-            label4.Size = new Size(287, 25);
-            label4.TabIndex = 7;
-            label4.Text = "Habitaciones en Mantenimiento";
+            lEstado.AutoSize = true;
+            lEstado.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lEstado.ForeColor = Color.DarkSlateGray;
+            lEstado.Location = new Point(317, 201);
+            lEstado.Name = "lEstado";
+            lEstado.Size = new Size(54, 20);
+            lEstado.TabIndex = 25;
+            lEstado.Text = "Estado";
             // 
-            // textBox5
+            // cbEstado
             // 
-            textBox5.BackColor = SystemColors.Control;
-            textBox5.Location = new Point(27, 238);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(254, 29);
-            textBox5.TabIndex = 19;
-            // 
-            // textBox2
-            // 
-            textBox2.BackColor = SystemColors.Control;
-            textBox2.Location = new Point(627, 93);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(254, 95);
-            textBox2.TabIndex = 20;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.DarkSlateGray;
-            label5.Location = new Point(317, 70);
-            label5.Name = "label5";
-            label5.Size = new Size(115, 20);
-            label5.TabIndex = 21;
-            label5.Text = "Tipo habitación";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(317, 93);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(241, 29);
-            comboBox1.TabIndex = 22;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label6.ForeColor = Color.DarkSlateGray;
-            label6.Location = new Point(317, 139);
-            label6.Name = "label6";
-            label6.Size = new Size(37, 20);
-            label6.TabIndex = 23;
-            label6.Text = "Piso";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(317, 159);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(241, 29);
-            comboBox2.TabIndex = 24;
+            cbEstado.FormattingEnabled = true;
+            cbEstado.Location = new Point(317, 238);
+            cbEstado.Name = "cbEstado";
+            cbEstado.Size = new Size(241, 29);
+            cbEstado.TabIndex = 26;
             // 
             // HabitacionView
             // 
@@ -645,14 +668,14 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             tpActivos.ResumeLayout(false);
             tpActivos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tpFinalizados.ResumeLayout(false);
             tpFinalizados.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             tpNuevaReserva.ResumeLayout(false);
             tpNuevaReserva.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
             tabPage1.ResumeLayout(false);
             tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -674,10 +697,10 @@
         private Label lReservasFin;
         private TabPage tpNuevaReserva;
         private Button bConfirmar;
-        private TextBox textBox3;
+        private TextBox tbCamas;
         private Label label3;
         private Button bCancelar;
-        private TextBox textBox1;
+        private TextBox tbNro;
         private Label lFechaSalida;
         private Label lFechaIngreso;
         private Label label2;
@@ -715,11 +738,13 @@
         private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
         private DataGridViewButtonColumn dataGridViewButtonColumn7;
         private DataGridViewButtonColumn dataGridViewButtonColumn8;
-        private ComboBox comboBox1;
+        private ComboBox cbTipo;
         private Label label5;
-        private TextBox textBox2;
-        private TextBox textBox5;
-        private ComboBox comboBox2;
+        private TextBox tbDescripcion;
+        private TextBox tbPrecio;
+        private ComboBox cbPiso;
         private Label label6;
+        private ComboBox cbEstado;
+        private Label lEstado;
     }
 }

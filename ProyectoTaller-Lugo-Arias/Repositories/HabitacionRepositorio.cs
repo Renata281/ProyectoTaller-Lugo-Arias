@@ -1,4 +1,4 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using System.Data.SqlClient;
 using ProyectoTaller_Lugo_Arias.Models;
 using ProyectoTaller_Lugo_Arias.Repositories;
 using ProyectoTaller_Lugo_Arias.Views;
@@ -25,51 +25,53 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
         {
             var habList = new List<HabitacionesModels>();
 
-            // Usa _connectionString para crear la conexión
-            using (var connection = new SqlConnection(connectionString))
-            {
-                
-                using (var command = new SqlCommand("seleccionar", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure; // Indica que es un procedimiento almacenado
-                    connection.Open();
+            if (string.IsNullOrWhiteSpace(connectionString))
+                throw new InvalidOperationException("La cadena de conexión (connectionString) no está configurada.");
 
+            try
+            {
+                using (var connection = new SqlConnection(connectionString))
+                using (var command = connection.CreateCommand())
+                {
+                    command.CommandText = "SELECT * FROM habitacion";
+                    command.CommandType = CommandType.Text;
+
+                    connection.Open(); // <-- aquí capturás la excepción si falla
                     using (var reader = command.ExecuteReader())
                     {
-                        // Usa un bucle 'while' para leer cada fila de la base de datos
                         while (reader.Read())
                         {
-                            var habitacion = new HabitacionesModels();
-    
-                            // Lee los datos por nombre de columna, es más seguro y legible
-                              habitacion.Nro_habitacion = (int)reader["Nro_habitacion"];
-                              habitacion.Cant_camas = (int)reader["Cant_camas"];
+                            var habitacion = new HabitacionesModels
+                            {
+                                Nro_habitacion = reader["Nro_habitacion"] != DBNull.Value ? Convert.ToInt32(reader["Nro_habitacion"]) : 0,
+                                Cant_camas = reader["Cant_camas"] != DBNull.Value ? Convert.ToInt32(reader["Cant_camas"]) : 0,
+                                Precio_unitario = reader["Precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["Precio_unitario"]) : 0f,
+                                Descripcion = reader["Descripcion"]?.ToString(),
+                                Tipo = reader["Tipo"]?.ToString(),
+                                Id_piso = reader["Id_piso"] != DBNull.Value ? Convert.ToInt32(reader["Id_piso"]) : 0,
+                                Id_estado = reader["Id_estado"] != DBNull.Value ? Convert.ToInt32(reader["Id_estado"]) : 0
+                            };
 
-                             // Usa una validación para evitar errores de conversión con valores nulos
-                             if (reader["Precio_unitario"] != DBNull.Value)
-                              {
-                              // Si la propiedad es float, usa Convert.ToSingle()
-                              // Si la propiedad es decimal, usa Convert.ToDecimal()
-                               habitacion.Precio_unitario = Convert.ToSingle(reader["Precio_unitario"]);
-                              }
-                                else
-                                {
-                                   // Si el valor es nulo en la base de datos, asigna 0 o el valor por defecto que necesites
-                                    habitacion.Precio_unitario = 0;
-                                    }
-
-                                habitacion.Descripcion = reader["Descripcion"].ToString();
-                                habitacion.Tipo = reader["Tipo"].ToString();
-                                habitacion.Id_piso = (int)reader["Id_piso"];
-                                habitacion.Id_estado = (int)reader["Id_estado"];
-    
-                                habList.Add(habitacion);
+                            habList.Add(habitacion);
                         }
                     }
                 }
             }
-                                return habList;
+            catch (Microsoft.Data.SqlClient.SqlException sqlEx)
+            {
+                // Logueá o inspeccioná sqlEx.Number y sqlEx.Message
+                Debug.WriteLine($"SQL Exception ({sqlEx.Number}): {sqlEx.Message}");
+                throw; // o lanzar nueva excepción más descriptiva
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Exception en GetAll: {ex.GetType().Name} - {ex.Message}");
+                throw;
+            }
+
+            return habList;
         }
+
         public void Add(HabitacionesModels habitacionesModels)
         {
             throw new NotImplementedException();
@@ -134,29 +136,34 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
         public IEnumerable<HabitacionesModels> GetByValue(string value)
         {
             var habList = new List<HabitacionesModels>();
-            int NumeroHabitacion = int.TryParse(value, out _) ? Convert.ToInt32(value) : 0;
-            string tipoHabitacion = value;
+            int NumeroHabitacion = int.TryParse(value, out var id) ? id : 0;
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "seleccionar";
-                command.Parameters.Add("@numero", SqlDbType.Int).Value = NumeroHabitacion;
-                command.Parameters.Add("@tipo", SqlDbType.NVarChar).Value = tipoHabitacion;
+                command.CommandText = "SELECT * FROM habitacion WHERE nro_habitacion = @nro_habitacion";
+                command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = NumeroHabitacion;
 
                 using (var reader = command.ExecuteReader())
                 {
-                    var HabitacionesModels = new HabitacionesModels();
-                    HabitacionesModels.Nro_habitacion = (int)reader[0];
-                    HabitacionesModels.Cant_camas = (int)reader[1];
-                    HabitacionesModels.Precio_unitario = (float)reader[2];
-                    HabitacionesModels.Descripcion = reader[3].ToString();
-                    HabitacionesModels.Tipo = reader[4].ToString();
-                    HabitacionesModels.Id_piso = (int)reader[5];
-                    HabitacionesModels.Id_estado = (int)reader[6];
-                    habList.Add(HabitacionesModels);
+                    while (reader.Read())
+                    {
+                        var habitacion = new HabitacionesModels
+                        {
+                            Nro_habitacion = (int)reader["Nro_habitacion"],
+                            Cant_camas = (int)reader["Cant_camas"],
+                            Precio_unitario = reader["Precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["Precio_unitario"]) : 0,
+                            Descripcion = reader["Descripcion"].ToString(),
+                            Tipo = reader["Tipo"].ToString(),
+                            Id_piso = (int)reader["Id_piso"],
+                            Id_estado = (int)reader["Id_estado"]
+                        };
+
+                        habList.Add(habitacion);
+                    }
                 }
+
             }
             return habList;
         }

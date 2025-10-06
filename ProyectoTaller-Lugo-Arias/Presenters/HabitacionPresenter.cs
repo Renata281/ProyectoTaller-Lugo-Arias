@@ -18,12 +18,23 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private IHabitacionRepositorio repository;
         private BindingSource habitacionesBindingSource;
         private IEnumerable<HabitacionesModels> habList;
+        //
+        private BindingSource habitacionesBindingSourceDisponibles;
+        private IEnumerable<HabitacionesModels> habListDisponibles;
+        private BindingSource habitacionesBindingSourceOcupadas;
+        private IEnumerable<HabitacionesModels> habListOcupadas;
+        private BindingSource habitacionesBindingSourceMantenimiento;
 
-        public HabitacionPresenter(IHabitacionView view, IHabitacionRepositorio repository)
+        public HabitacionPresenter(IHabitacionView view, IHabitacionRepositorio repository, IPisoRepositorio pisoRepositorio, IEstadoHabitacionRepositorio estadoHabitacionRepositorio)
         {
             this.habitacionesBindingSource = new BindingSource();
             this.view = view;
             this.repository = repository;
+            this.habitacionesBindingSourceDisponibles = new BindingSource();
+            this.habitacionesBindingSourceOcupadas = new BindingSource();
+            this.habitacionesBindingSourceMantenimiento = new BindingSource();
+
+
             this.view.SearchEvent += SearchHabitacion;
             this.view.AddNewEvent += AddNewHabitación;
             this.view.EditEvent += LoadSelectedHabitacionToEdit;
@@ -31,7 +42,13 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.view.SaveEvent += SaveHabitacion;
             this.view.CancelEvent += CancelAction;
 
-            this.view.SetListaHabitacionesBindingSourse(habitacionesBindingSource);
+            this.view.SetListaHabitacionBindingSourse(habitacionesBindingSource);
+            this.view.SetListaHabitacionBindingSourseDisponibles(habitacionesBindingSourceDisponibles);
+            this.view.SetListaHabitacionBindingSourseOcupadas(habitacionesBindingSourceOcupadas);
+            this.view.SetListaHabitacionBindingSourseMantenimiento(habitacionesBindingSourceMantenimiento);
+
+            this.view.SetPisosListComboBox(pisoRepositorio.GetAll());
+            this.view.SetEstadoHabitacionListComboBox(estadoHabitacionRepositorio.GetAll());
 
             LoadAllHabitacionesList();
             this.view.Show();

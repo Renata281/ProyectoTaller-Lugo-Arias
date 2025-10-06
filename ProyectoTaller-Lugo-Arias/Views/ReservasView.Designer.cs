@@ -151,17 +151,10 @@
             tabControl1.Controls.Add(tpFinalizados);
             tabControl1.Controls.Add(tpNuevaReserva);
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-<<<<<<< HEAD
-            tabControl1.Location = new Point(0, 136);
-            tabControl1.Name = "tabControl1";
-            tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(785, 406);
-=======
             tabControl1.Location = new Point(0, 137);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(785, 482);
->>>>>>> ada75638ee117256bc6eb2de1874ad2b4187e547
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -172,11 +165,7 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-<<<<<<< HEAD
-            tpTodos.Size = new Size(777, 372);
-=======
             tpTodos.Size = new Size(777, 448);
->>>>>>> ada75638ee117256bc6eb2de1874ad2b4187e547
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
@@ -187,16 +176,10 @@
             dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4, dataGridViewTextBoxColumn12 });
-<<<<<<< HEAD
-            dataGridView3.Location = new Point(-4, 67);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(785, 366);
-=======
             dataGridView3.Dock = DockStyle.Bottom;
             dataGridView3.Location = new Point(3, 70);
             dataGridView3.Name = "dataGridView3";
             dataGridView3.Size = new Size(771, 375);
->>>>>>> ada75638ee117256bc6eb2de1874ad2b4187e547
             dataGridView3.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn7
@@ -261,11 +244,7 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-<<<<<<< HEAD
-            tpActivos.Size = new Size(777, 372);
-=======
             tpActivos.Size = new Size(777, 474);
->>>>>>> ada75638ee117256bc6eb2de1874ad2b4187e547
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -289,11 +268,7 @@
             dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1, dataGridViewButtonColumn2, dataGridViewTextBoxColumn6 });
             dataGridView2.Location = new Point(3, 71);
             dataGridView2.Name = "dataGridView2";
-<<<<<<< HEAD
-            dataGridView2.Size = new Size(769, 290);
-=======
             dataGridView2.Size = new Size(771, 370);
->>>>>>> ada75638ee117256bc6eb2de1874ad2b4187e547
             dataGridView2.TabIndex = 3;
             // 
             // dataGridViewTextBoxColumn1

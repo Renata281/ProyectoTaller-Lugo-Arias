@@ -30,9 +30,15 @@ namespace ProyectoTaller_Lugo_Arias.View
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
+        void SetEstadoHabitacionListComboBox(IEnumerable<EstadoHabitacionModel> enumerable);
+
         //metodos 
-        void SetListaHabitacionesBindingSourse(BindingSource listaHab);
-        void SetListaHabitacionBindingSourse(BindingSource habitacionBindingSource);
+
+        void SetListaHabitacionBindingSourse(BindingSource listaHab);
+        void SetListaHabitacionBindingSourseDisponibles(BindingSource habitacionesBindingSourceDisponibles);
+        void SetListaHabitacionBindingSourseMantenimiento(BindingSource habitacionesBindingSourceMantenimiento);
+        void SetListaHabitacionBindingSourseOcupadas(BindingSource habitacionesBindingSourceOcupadas);
+        void SetPisosListComboBox(IEnumerable<PisoModel> enumerable);
         void Show();
     }
 }

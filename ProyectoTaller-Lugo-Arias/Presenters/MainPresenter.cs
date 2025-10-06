@@ -37,7 +37,9 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             HabitacionView view = HabitacionView.GetInstance((MainView)mainView);
             IHabitacionRepositorio repository = new HabitacionRepositorio(sqlConnectionString);
-            new HabitacionPresenter(view, repository);
+            IPisoRepositorio pisoRepositorio = new PisoRepositorio(sqlConnectionString);
+            IEstadoHabitacionRepositorio estadoHabitacionRepositorio = new EstadoHabitacionRepositorio(sqlConnectionString);
+            new HabitacionPresenter(view, repository, pisoRepositorio, estadoHabitacionRepositorio);
         
         }
 

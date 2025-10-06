@@ -71,16 +71,13 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public event EventHandler SaveEvent;
         public event EventHandler CancelEvent;
 
-        public void SetListaHabitacionBindingSourse(BindingSource habitacionBindingSource)
+        public void SetListaHabitacionBindingSourse(BindingSource listaHab)
         {
-            dataGridView3.DataSource = habitacionBindingSource;
+
+            dataGridView3.DataSource = listaHab;
         }
 
-        public void SetListaHabitacionesBindingSourse(BindingSource listaHab)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         //abre una unica instancia del formulario
         private static HabitacionView instance;
         public static HabitacionView GetInstance(Form parentContainer)
