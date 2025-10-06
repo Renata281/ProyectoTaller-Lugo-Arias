@@ -22,6 +22,9 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private IHabitacionRepositorio repository;
         private BindingSource habitacionesBindingSource;
         private IEnumerable<HabitacionesModels> habList;
+        private IPisoRepositorio pisoRepositorio;
+        private IEstadoHabitacionRepositorio estadoHabitacionRepositorio;
+        private ITipoHabitacionRepositorio tipoHabitacionRepositorio;
         //
         private BindingSource habitacionesBindingSourceDisponibles;
         private IEnumerable<HabitacionesModels> habListDisponibles;
@@ -30,7 +33,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private BindingSource habitacionesBindingSourceMantenimiento;
         private IEnumerable<HabitacionesModels> habListMantenimiento;
 
-        public HabitacionPresenter(IHabitacionView view, IHabitacionRepositorio repository, IPisoRepositorio pisoRepositorio, IEstadoHabitacionRepositorio estadoHabitacionRepositorio)
+        public HabitacionPresenter(IHabitacionView view, IHabitacionRepositorio repository, IPisoRepositorio pisoRepositorio, IEstadoHabitacionRepositorio estadoHabitacionRepositorio, ITipoHabitacionRepositorio tipoHabitacionRepositorio)
         {
             this.habitacionesBindingSource = new BindingSource();
             this.view = view;
@@ -54,10 +57,11 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
             this.view.SetPisosListComboBox(pisoRepositorio.GetAll());
             this.view.SetEstadoHabitacionListComboBox(estadoHabitacionRepositorio.GetAll());
+            this.view.SetTipoHabitacionListComboBox(tipoHabitacionRepositorio.GetAll());
 
             LoadAllHabitacionesList();
             this.view.Show();
-
+            
         }
 
         private void SaveHabitacion(object? sender, EventArgs e)
@@ -102,8 +106,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Precio_unitario = "0";
             view.Descripcion = "";
             view.Tipo = "";
-            view.Id_piso = "0";
-            view.Id_estado = "0";
+            view.Id_piso = "1";
+            view.Id_estado = "1";
         }
 
         //metodo

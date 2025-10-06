@@ -84,27 +84,13 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacion.Cant_camas;
                 command.Parameters.Add("@precio_unitario", SqlDbType.Float).Value = habitacion.Precio_unitario;
                 command.Parameters.Add("@descripcion", SqlDbType.VarChar, 100).Value = habitacion.Descripcion;
-                command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = habitacion.Email;
-                command.Parameters.Add("@password", SqlDbType.VarBinary, 64).Value = habitacion.Password;
-                command.Parameters.Add("@id_cargo", SqlDbType.Int).Value = habitacion.Id_cargo;
+                command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = habitacion.Tipo;
+                command.Parameters.Add("@id_piso", SqlDbType.Int).Value = habitacion.Id_piso;
+                command.Parameters.Add("@id_estado", SqlDbType.Int).Value = habitacion.Id_estado;
                 command.ExecuteNonQuery();
-                /*
-                using (var connection = new SqlConnection(connectionString))
-                {
 
-                    using (var command = new SqlCommand("seleccionar", connection))
-                    {
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.CommandText = "insertar los siguientes valores (@cant_camas, @precio_unitario, @Descripcion, @tipo)";
-                        command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacionesModels.Cant_camas;
-                        command.Parameters.Add("@precio_unitario", SqlDbType.Int).Value = habitacionesModels.Precio_unitario;
-                        command.Parameters.Add("@descripcion" , SqlDbType.NVarChar).Value = habitacionesModels.Descripcion;
-                        command.Parameters.Add("@tipo", SqlDbType.NVarChar).Value = habitacionesModels.Tipo;
-                        command.ExecuteNonQuery();
-                    }
-                }
-                */
             }
+        }
 
         public void Delete(int id)
         {

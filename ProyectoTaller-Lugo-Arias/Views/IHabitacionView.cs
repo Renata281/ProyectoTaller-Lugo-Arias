@@ -17,6 +17,7 @@ namespace ProyectoTaller_Lugo_Arias.View
         String Tipo { get; set; }
         String Id_piso { get; set; }
         String Id_estado { get; set; }
+        String Estado_descripcion { get; set; }
 
         String SearchValue { get; set; }
         bool IsEdit { get; set; }
@@ -41,5 +42,6 @@ namespace ProyectoTaller_Lugo_Arias.View
         void SetListaHabitacionBindingSourseMantenimiento(BindingSource habitacionesBindingSourceMantenimiento);
         void SetListaHabitacionBindingSourseOcupadas(BindingSource habitacionesBindingSourceOcupadas);
         void Show();
+        void SetTipoHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoList);
     }
 }
