@@ -1,9 +1,10 @@
-﻿using System;
+﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProyectoTaller_Lugo_Arias.Models;
 
 namespace ProyectoTaller_Lugo_Arias.View
 {
@@ -30,7 +31,8 @@ namespace ProyectoTaller_Lugo_Arias.View
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
-        void SetEstadoHabitacionListComboBox(IEnumerable<EstadoHabitacionModel> enumerable);
+        void SetPisosListComboBox(IEnumerable<PisoModel> pisoList);
+        void SetEstadoHabitacionListComboBox(IEnumerable<EstadoHabitacionModel> estadoList);
 
         //metodos 
 
@@ -38,7 +40,6 @@ namespace ProyectoTaller_Lugo_Arias.View
         void SetListaHabitacionBindingSourseDisponibles(BindingSource habitacionesBindingSourceDisponibles);
         void SetListaHabitacionBindingSourseMantenimiento(BindingSource habitacionesBindingSourceMantenimiento);
         void SetListaHabitacionBindingSourseOcupadas(BindingSource habitacionesBindingSourceOcupadas);
-        void SetPisosListComboBox(IEnumerable<PisoModel> enumerable);
         void Show();
     }
 }

@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace ProyectoTaller_Lugo_Arias.Models
 {
-    internal class FormaPagoModel
+    public class FormaPagoModel
     {
         private int id_pago;
         private string descripcion;

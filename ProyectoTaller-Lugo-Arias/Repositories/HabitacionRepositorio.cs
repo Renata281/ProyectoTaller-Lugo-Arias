@@ -72,43 +72,53 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             return habList;
         }
 
-        public void Add(HabitacionesModels habitacionesModels)
+        public void Add(HabitacionesModels habitacion)
         {
-            throw new NotImplementedException();
-            /*
             using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
             {
-
-                using (var command = new SqlCommand("seleccionar", connection))
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into habitacion(nro_habitacion, cant_camas, precio_unitario, descripcion, tipo, id_piso, id_estado) values(@nro_habitacion, @cant_camas, @precio_unitario, @descripcion, @tipo, @id_piso, @id_estado)";
+                command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = habitacion.Nro_habitacion;
+                command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacion.Cant_camas;
+                command.Parameters.Add("@precio_unitario", SqlDbType.Float).Value = habitacion.Precio_unitario;
+                command.Parameters.Add("@descripcion", SqlDbType.VarChar, 100).Value = habitacion.Descripcion;
+                command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = habitacion.Email;
+                command.Parameters.Add("@password", SqlDbType.VarBinary, 64).Value = habitacion.Password;
+                command.Parameters.Add("@id_cargo", SqlDbType.Int).Value = habitacion.Id_cargo;
+                command.ExecuteNonQuery();
+                /*
+                using (var connection = new SqlConnection(connectionString))
                 {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "insertar los siguientes valores (@cant_camas, @precio_unitario, @Descripcion, @tipo)";
-                    command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacionesModels.Cant_camas;
-                    command.Parameters.Add("@precio_unitario", SqlDbType.Int).Value = habitacionesModels.Precio_unitario;
-                    command.Parameters.Add("@descripcion" , SqlDbType.NVarChar).Value = habitacionesModels.Descripcion;
-                    command.Parameters.Add("@tipo", SqlDbType.NVarChar).Value = habitacionesModels.Tipo;
-                    command.ExecuteNonQuery();
+
+                    using (var command = new SqlCommand("seleccionar", connection))
+                    {
+                        command.CommandType = CommandType.StoredProcedure;
+                        command.CommandText = "insertar los siguientes valores (@cant_camas, @precio_unitario, @Descripcion, @tipo)";
+                        command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacionesModels.Cant_camas;
+                        command.Parameters.Add("@precio_unitario", SqlDbType.Int).Value = habitacionesModels.Precio_unitario;
+                        command.Parameters.Add("@descripcion" , SqlDbType.NVarChar).Value = habitacionesModels.Descripcion;
+                        command.Parameters.Add("@tipo", SqlDbType.NVarChar).Value = habitacionesModels.Tipo;
+                        command.ExecuteNonQuery();
+                    }
                 }
+                */
             }
-            */
-        }
 
         public void Delete(int id)
         {
-            /*
             using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
             {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"update habitacion
+                                      where id_habitacion=@id ";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id;
+                command.ExecuteNonQuery();
 
-                using (var command = new SqlCommand("seleccionar", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.CommandText = "eliminar nro_habitacion";
-                    command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = id;
-                    command.ExecuteNonQuery();
-                }
             }
-            */
-            throw new NotImplementedException();
         }
 
         public void Edit(HabitacionesModels habitacionesModels)

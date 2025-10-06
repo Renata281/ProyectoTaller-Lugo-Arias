@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller_Lugo_Arias.Models
 {
-    internal interface IEstadoHabitacionRepositorio
+    public interface IEstadoHabitacionRepositorio
     {
         IEnumerable<EstadoHabitacionModel> GetAll();
     }
