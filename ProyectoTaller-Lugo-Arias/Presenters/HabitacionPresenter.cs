@@ -67,27 +67,30 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private void SaveHabitacion(object? sender, EventArgs e)
         {
             var models = new HabitacionesModels();
-            models.Nro_habitacion = Convert.ToInt32(view.Nro_habitacion);
-            models.Cant_camas = Convert.ToInt32(view.Cant_camas);
-            models.Precio_unitario = Convert.ToInt32(view.Precio_unitario);
-            models.Descripcion = view.Descripcion;
-            models.Tipo = view.Tipo;
-            models.Id_piso = Convert.ToInt32(view.Id_piso);
-            models.Id_estado = Convert.ToInt32(view.Id_estado);
+
+            models.Nro_habitacion = string.IsNullOrWhiteSpace(view.Nro_habitacion) ? 0 : Convert.ToInt32(view.Nro_habitacion);
+            models.Cant_camas = string.IsNullOrWhiteSpace(view.Cant_camas) ? 0 : Convert.ToInt32(view.Cant_camas);
+            models.Precio_unitario = string.IsNullOrWhiteSpace(view.Precio_unitario) ? 0f : Convert.ToSingle(view.Precio_unitario);
+            models.Descripcion = view.Descripcion ?? string.Empty;
+            models.Tipo = view.Tipo ?? string.Empty;
+            models.Id_piso = string.IsNullOrWhiteSpace(view.Id_piso) ? 0 : Convert.ToInt32(view.Id_piso);
+            models.Id_estado = string.IsNullOrWhiteSpace(view.Id_estado) ? 0 : Convert.ToInt32(view.Id_estado);
 
             try
             {
                 new Common.ModelDataValidation().Validate(models);
+
                 if (view.IsEdit)
                 {
                     repository.Edit(models);
-                    view.Message = "habitacion editada correctamente";
+                    view.Message = "Habitación editada correctamente.";
                 }
                 else
                 {
                     repository.Add(models);
-                    view.Message = "habitacion añadida correctamente";
+                    view.Message = "Habitación añadida correctamente.";
                 }
+
                 view.IsSuccessful = true;
                 LoadAllHabitacionesList();
                 CleanviewFields();
@@ -99,6 +102,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             }
         }
 
+
         private void CleanviewFields()
         {
             view.Nro_habitacion = "0";
@@ -108,6 +112,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Tipo = "";
             view.Id_piso = "1";
             view.Id_estado = "1";
+            view.Cant_personas = "0";
         }
 
         //metodo

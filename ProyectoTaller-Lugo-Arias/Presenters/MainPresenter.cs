@@ -39,7 +39,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             IHabitacionRepositorio repository = new HabitacionRepositorio(sqlConnectionString);
             IPisoRepositorio pisoRepositorio = new PisoRepositorio(sqlConnectionString);
             IEstadoHabitacionRepositorio estadoHabitacionRepositorio = new EstadoHabitacionRepositorio(sqlConnectionString);
-            new HabitacionPresenter(view, repository, pisoRepositorio, estadoHabitacionRepositorio);
+            ITipoHabitacionRepositorio tipoHabitacionRepositorio = new TipoHabitacionRepositorio(sqlConnectionString);
+            new HabitacionPresenter(view, repository, pisoRepositorio, estadoHabitacionRepositorio, tipoHabitacionRepositorio);
         
         }
 

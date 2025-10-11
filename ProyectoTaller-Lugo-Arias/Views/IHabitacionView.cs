@@ -10,19 +10,20 @@ namespace ProyectoTaller_Lugo_Arias.View
 {
     public interface IHabitacionView 
     {
-        String Nro_habitacion { get; set; }
-        String Cant_camas { get; set; }
-        String Precio_unitario { get; set; }
-        String Descripcion { get; set; }
-        String Tipo { get; set; }
-        String Id_piso { get; set; }
-        String Id_estado { get; set; }
-        String Estado_descripcion { get; set; }
+        string Nro_habitacion { get; set; }
+        string Cant_camas { get; set; }
+        string Precio_unitario { get; set; }
+        string Descripcion { get; set; }
+        string Tipo { get; set; }
+        string Id_piso { get; set; }
+        string Id_estado { get; set; }
+        string Estado_descripcion { get; set; }
 
-        String SearchValue { get; set; }
+        string SearchValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }
-        String Message { get; set; }
+        string Message { get; set; }
+        string Cant_personas { get; set; }
 
         //eventos
         event EventHandler SearchEvent;

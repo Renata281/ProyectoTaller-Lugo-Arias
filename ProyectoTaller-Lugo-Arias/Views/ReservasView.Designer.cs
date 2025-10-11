@@ -29,42 +29,19 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            bBuscar = new Button();
             textBox4 = new TextBox();
             lMotorEmpleados = new Label();
             lReservas = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
-            dataGridView3 = new DataGridView();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn3 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn4 = new DataGridViewButtonColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
+            dgvTodos = new DataGridView();
             lReservasTodas = new Label();
             tpActivos = new TabPage();
             lReservasAct = new Label();
-            dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn2 = new DataGridViewButtonColumn();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
+            dgvActivos = new DataGridView();
             tpFinalizados = new TabPage();
-            dataGridView1 = new DataGridView();
-            ColumnaNroReserva = new DataGridViewTextBoxColumn();
-            ColumnaClienteDNI = new DataGridViewTextBoxColumn();
-            ColumnaHabitacion = new DataGridViewTextBoxColumn();
-            ColumnaIngreso = new DataGridViewTextBoxColumn();
-            ColumnaSalida = new DataGridViewTextBoxColumn();
-            ColumnaEditar = new DataGridViewButtonColumn();
-            ColumnaEliminar = new DataGridViewButtonColumn();
-            ColumnaEstado = new DataGridViewTextBoxColumn();
+            dgvFinalizadas = new DataGridView();
             lReservasFin = new Label();
             tpNuevaReserva = new TabPage();
             bConfirmar = new Button();
@@ -86,15 +63,17 @@
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
-            bBuscar = new Button();
+            bNuevo = new Button();
+            bEditar = new Button();
+            bEliminar = new Button();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTodos).BeginInit();
             tpActivos.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvActivos).BeginInit();
             tpFinalizados.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFinalizadas).BeginInit();
             tpNuevaReserva.SuspendLayout();
             panel2.SuspendLayout();
             SuspendLayout();
@@ -110,6 +89,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(790, 69);
             panel1.TabIndex = 0;
+            // 
+            // bBuscar
+            // 
+            bBuscar.Location = new Point(568, 25);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 3;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
             // 
             // textBox4
             // 
@@ -160,7 +148,10 @@
             // tpTodos
             // 
             tpTodos.BackColor = SystemColors.Control;
-            tpTodos.Controls.Add(dataGridView3);
+            tpTodos.Controls.Add(bEliminar);
+            tpTodos.Controls.Add(bEditar);
+            tpTodos.Controls.Add(bNuevo);
+            tpTodos.Controls.Add(dgvTodos);
             tpTodos.Controls.Add(lReservasTodas);
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
@@ -169,60 +160,16 @@
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
-            // dataGridView3
+            // dgvTodos
             // 
-            dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView3.BackgroundColor = SystemColors.InactiveCaption;
-            dataGridView3.BorderStyle = BorderStyle.None;
-            dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4, dataGridViewTextBoxColumn12 });
-            dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 70);
-            dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(771, 375);
-            dataGridView3.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Nro. Reserva";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.HeaderText = "DNI Cliente";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.HeaderText = "Habitación";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.HeaderText = "Ingreso";
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.HeaderText = "Salida";
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewButtonColumn3
-            // 
-            dataGridViewButtonColumn3.HeaderText = "Editar";
-            dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
-            dataGridViewButtonColumn3.Resizable = DataGridViewTriState.True;
-            dataGridViewButtonColumn3.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn4
-            // 
-            dataGridViewButtonColumn4.HeaderText = "Eliminar";
-            dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.HeaderText = "Estado";
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
+            dgvTodos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvTodos.BackgroundColor = SystemColors.InactiveCaption;
+            dgvTodos.BorderStyle = BorderStyle.None;
+            dgvTodos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvTodos.Location = new Point(3, 70);
+            dgvTodos.Name = "dgvTodos";
+            dgvTodos.Size = new Size(636, 375);
+            dgvTodos.TabIndex = 4;
             // 
             // lReservasTodas
             // 
@@ -239,12 +186,12 @@
             // 
             tpActivos.BackColor = SystemColors.Control;
             tpActivos.Controls.Add(lReservasAct);
-            tpActivos.Controls.Add(dataGridView2);
+            tpActivos.Controls.Add(dgvActivos);
             tpActivos.ForeColor = Color.DarkSlateGray;
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(777, 474);
+            tpActivos.Size = new Size(777, 448);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -259,125 +206,39 @@
             lReservasAct.TabIndex = 4;
             lReservasAct.Text = "Reservas Activas";
             // 
-            // dataGridView2
+            // dgvActivos
             // 
-            dataGridView2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView2.BackgroundColor = SystemColors.InactiveCaption;
-            dataGridView2.BorderStyle = BorderStyle.None;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1, dataGridViewButtonColumn2, dataGridViewTextBoxColumn6 });
-            dataGridView2.Location = new Point(3, 71);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(771, 370);
-            dataGridView2.TabIndex = 3;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Nro. Reserva";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "DNI Cliente";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Habitación";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Ingreso";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Salida";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            dataGridViewButtonColumn1.HeaderText = "Editar";
-            dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            dataGridViewButtonColumn1.Resizable = DataGridViewTriState.True;
-            dataGridViewButtonColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            dataGridViewButtonColumn2.HeaderText = "Eliminar";
-            dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Estado";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            dgvActivos.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvActivos.BackgroundColor = SystemColors.InactiveCaption;
+            dgvActivos.BorderStyle = BorderStyle.None;
+            dgvActivos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvActivos.Location = new Point(3, 71);
+            dgvActivos.Name = "dgvActivos";
+            dgvActivos.Size = new Size(771, 370);
+            dgvActivos.TabIndex = 3;
             // 
             // tpFinalizados
             // 
             tpFinalizados.BackColor = SystemColors.Control;
-            tpFinalizados.Controls.Add(dataGridView1);
+            tpFinalizados.Controls.Add(dgvFinalizadas);
             tpFinalizados.Controls.Add(lReservasFin);
             tpFinalizados.Location = new Point(4, 30);
             tpFinalizados.Name = "tpFinalizados";
             tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(777, 372);
+            tpFinalizados.Size = new Size(777, 448);
             tpFinalizados.TabIndex = 2;
             tpFinalizados.Text = "Finalizados";
             // 
-            // dataGridView1
+            // dgvFinalizadas
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ColumnaNroReserva, ColumnaClienteDNI, ColumnaHabitacion, ColumnaIngreso, ColumnaSalida, ColumnaEditar, ColumnaEliminar, ColumnaEstado });
-            dataGridView1.Location = new Point(3, 74);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(771, 295);
-            dataGridView1.TabIndex = 2;
-            // 
-            // ColumnaNroReserva
-            // 
-            ColumnaNroReserva.HeaderText = "Nro. Reserva";
-            ColumnaNroReserva.Name = "ColumnaNroReserva";
-            // 
-            // ColumnaClienteDNI
-            // 
-            ColumnaClienteDNI.HeaderText = "DNI Cliente";
-            ColumnaClienteDNI.Name = "ColumnaClienteDNI";
-            // 
-            // ColumnaHabitacion
-            // 
-            ColumnaHabitacion.HeaderText = "Habitación";
-            ColumnaHabitacion.Name = "ColumnaHabitacion";
-            // 
-            // ColumnaIngreso
-            // 
-            ColumnaIngreso.HeaderText = "Ingreso";
-            ColumnaIngreso.Name = "ColumnaIngreso";
-            // 
-            // ColumnaSalida
-            // 
-            ColumnaSalida.HeaderText = "Salida";
-            ColumnaSalida.Name = "ColumnaSalida";
-            // 
-            // ColumnaEditar
-            // 
-            ColumnaEditar.HeaderText = "Editar";
-            ColumnaEditar.Name = "ColumnaEditar";
-            ColumnaEditar.Resizable = DataGridViewTriState.True;
-            ColumnaEditar.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // ColumnaEliminar
-            // 
-            ColumnaEliminar.HeaderText = "Eliminar";
-            ColumnaEliminar.Name = "ColumnaEliminar";
-            // 
-            // ColumnaEstado
-            // 
-            ColumnaEstado.HeaderText = "Estado";
-            ColumnaEstado.Name = "ColumnaEstado";
+            dgvFinalizadas.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvFinalizadas.BackgroundColor = SystemColors.InactiveCaption;
+            dgvFinalizadas.BorderStyle = BorderStyle.None;
+            dgvFinalizadas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvFinalizadas.Location = new Point(3, 74);
+            dgvFinalizadas.Name = "dgvFinalizadas";
+            dgvFinalizadas.Size = new Size(771, 295);
+            dgvFinalizadas.TabIndex = 2;
             // 
             // lReservasFin
             // 
@@ -411,7 +272,7 @@
             tpNuevaReserva.Location = new Point(4, 30);
             tpNuevaReserva.Name = "tpNuevaReserva";
             tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(777, 372);
+            tpNuevaReserva.Size = new Size(777, 448);
             tpNuevaReserva.TabIndex = 3;
             tpNuevaReserva.Text = "Nueva Reserva";
             // 
@@ -566,10 +427,11 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.DarkSlateGray;
             label5.Location = new Point(24, 333);
             label5.Name = "label5";
-            label5.Size = new Size(70, 17);
+            label5.Size = new Size(89, 21);
             label5.TabIndex = 4;
             label5.Text = "Habitación";
             // 
@@ -617,14 +479,35 @@
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nueva Reserva";
             // 
-            // bBuscar
+            // bNuevo
             // 
-            bBuscar.Location = new Point(568, 25);
-            bBuscar.Name = "bBuscar";
-            bBuscar.Size = new Size(75, 23);
-            bBuscar.TabIndex = 3;
-            bBuscar.Text = "Buscar";
-            bBuscar.UseVisualStyleBackColor = true;
+            bNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bNuevo.Location = new Point(662, 70);
+            bNuevo.Name = "bNuevo";
+            bNuevo.Size = new Size(99, 31);
+            bNuevo.TabIndex = 6;
+            bNuevo.Text = "Nuevo";
+            bNuevo.UseVisualStyleBackColor = true;
+            // 
+            // bEditar
+            // 
+            bEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEditar.Location = new Point(662, 143);
+            bEditar.Name = "bEditar";
+            bEditar.Size = new Size(99, 31);
+            bEditar.TabIndex = 8;
+            bEditar.Text = "Editar";
+            bEditar.UseVisualStyleBackColor = true;
+            // 
+            // bEliminar
+            // 
+            bEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEliminar.Location = new Point(662, 212);
+            bEliminar.Name = "bEliminar";
+            bEliminar.Size = new Size(99, 31);
+            bEliminar.TabIndex = 9;
+            bEliminar.Text = "Eliminar";
+            bEliminar.UseVisualStyleBackColor = true;
             // 
             // ReservasView
             // 
@@ -642,13 +525,13 @@
             tabControl1.ResumeLayout(false);
             tpTodos.ResumeLayout(false);
             tpTodos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvTodos).EndInit();
             tpActivos.ResumeLayout(false);
             tpActivos.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvActivos).EndInit();
             tpFinalizados.ResumeLayout(false);
             tpFinalizados.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvFinalizadas).EndInit();
             tpNuevaReserva.ResumeLayout(false);
             tpNuevaReserva.PerformLayout();
             panel2.ResumeLayout(false);
@@ -685,38 +568,17 @@
         private Label label3;
         private Button bConfirmar;
         private Panel panel2;
-        private DataGridView dataGridView1;
+        private DataGridView dgvFinalizadas;
         private Label lReservasFin;
-        private DataGridViewTextBoxColumn ColumnaNroReserva;
-        private DataGridViewTextBoxColumn ColumnaClienteDNI;
-        private DataGridViewTextBoxColumn ColumnaHabitacion;
-        private DataGridViewTextBoxColumn ColumnaIngreso;
-        private DataGridViewTextBoxColumn ColumnaSalida;
-        private DataGridViewButtonColumn ColumnaEditar;
-        private DataGridViewButtonColumn ColumnaEliminar;
-        private DataGridView dataGridView3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewButtonColumn dataGridViewButtonColumn3;
-        private DataGridViewButtonColumn dataGridViewButtonColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
+        private DataGridView dgvTodos;
         private Label lReservasTodas;
         private Label lReservasAct;
-        private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private DataGridViewButtonColumn dataGridViewButtonColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn ColumnaEstado;
+        private DataGridView dgvActivos;
         private Label lMotorEmpleados;
         private TextBox textBox4;
         private Button bBuscar;
+        private Button bNuevo;
+        private Button bEditar;
+        private Button bEliminar;
     }
 }

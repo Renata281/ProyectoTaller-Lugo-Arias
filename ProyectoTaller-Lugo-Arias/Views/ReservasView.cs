@@ -22,55 +22,68 @@ namespace ProyectoTaller_Lugo_Arias.Views
             InitializeComponent();
         }
 
-        public string nro_reserva {
+        public string nro_reserva
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public DateTime fecha_ingreso {
+        public DateTime fecha_ingreso
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public DateTime fecha_salida {
+        public DateTime fecha_salida
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public decimal monto_total {
+        public decimal monto_total
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public int id_cliente {
+        public int id_cliente
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public int nro_habitacion {
+        public int nro_habitacion
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public int id_piso {
+        public int id_piso
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public int id_pago {
+        public int id_pago
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public string descripcion {
+        public string descripcion
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public string Buscar { 
+        public string Buscar
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public bool IsEditar {
+        public bool IsEditar
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public bool IsNuevo {
+        public bool IsNuevo
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
-        public string Mensaje {
+        public string Mensaje
+        {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
@@ -111,7 +124,9 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
         public void SetReservaListBindingSource(BindingSource reservasList)
         {
-            dataGridView1.DataSource = reservasList;
+            dgvFinalizadas.DataSource = reservasList;
         }
+
+        
     }
 }
