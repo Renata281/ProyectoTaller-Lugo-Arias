@@ -1,4 +1,6 @@
 ﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositories;
+using ProyectoTaller_Lugo_Arias.Repositorio;
 using ProyectoTaller_Lugo_Arias.View;
 using ProyectoTaller_Lugo_Arias.Views;
 using System;
@@ -7,6 +9,8 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
+
 
 namespace ProyectoTaller_Lugo_Arias.Presenters
 {
@@ -18,14 +22,18 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private IHabitacionRepositorio repository;
         private BindingSource habitacionesBindingSource;
         private IEnumerable<HabitacionesModels> habList;
+        private IPisoRepositorio pisoRepositorio;
+        private IEstadoHabitacionRepositorio estadoHabitacionRepositorio;
+        private ITipoHabitacionRepositorio tipoHabitacionRepositorio;
         //
         private BindingSource habitacionesBindingSourceDisponibles;
         private IEnumerable<HabitacionesModels> habListDisponibles;
         private BindingSource habitacionesBindingSourceOcupadas;
         private IEnumerable<HabitacionesModels> habListOcupadas;
         private BindingSource habitacionesBindingSourceMantenimiento;
+        private IEnumerable<HabitacionesModels> habListMantenimiento;
 
-        public HabitacionPresenter(IHabitacionView view, IHabitacionRepositorio repository, IPisoRepositorio pisoRepositorio, IEstadoHabitacionRepositorio estadoHabitacionRepositorio)
+        public HabitacionPresenter(IHabitacionView view, IHabitacionRepositorio repository, IPisoRepositorio pisoRepositorio, IEstadoHabitacionRepositorio estadoHabitacionRepositorio, ITipoHabitacionRepositorio tipoHabitacionRepositorio)
         {
             this.habitacionesBindingSource = new BindingSource();
             this.view = view;
@@ -49,37 +57,40 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
             this.view.SetPisosListComboBox(pisoRepositorio.GetAll());
             this.view.SetEstadoHabitacionListComboBox(estadoHabitacionRepositorio.GetAll());
+            this.view.SetTipoHabitacionListComboBox(tipoHabitacionRepositorio.GetAll());
 
             LoadAllHabitacionesList();
             this.view.Show();
-
+            
         }
 
         private void SaveHabitacion(object? sender, EventArgs e)
         {
-            /*
             var models = new HabitacionesModels();
-            models.Nro_habitacion = Convert.ToInt32(view.Nro_habitacion);
-            models.Cant_camas = Convert.ToInt32(view.Cant_camas);
-            models.Precio_unitario = Convert.ToInt32(view.Precio_unitario);
-            models.Descripcion = view.Descripcion;
-            models.Tipo = view.Tipo;
-            models.Id_piso = Convert.ToInt32(view.Id_piso);
-            models.Id_estado = Convert.ToInt32(view.Id_estado);
+
+            models.Nro_habitacion = string.IsNullOrWhiteSpace(view.Nro_habitacion) ? 0 : Convert.ToInt32(view.Nro_habitacion);
+            models.Cant_camas = string.IsNullOrWhiteSpace(view.Cant_camas) ? 0 : Convert.ToInt32(view.Cant_camas);
+            models.Precio_unitario = string.IsNullOrWhiteSpace(view.Precio_unitario) ? 0f : Convert.ToSingle(view.Precio_unitario);
+            models.Descripcion = view.Descripcion ?? string.Empty;
+            models.Tipo = view.Tipo ?? string.Empty;
+            models.Id_piso = string.IsNullOrWhiteSpace(view.Id_piso) ? 0 : Convert.ToInt32(view.Id_piso);
+            models.Id_estado = string.IsNullOrWhiteSpace(view.Id_estado) ? 0 : Convert.ToInt32(view.Id_estado);
 
             try
             {
-                new common.ModelDataValidation().Validate(models);
+                new Common.ModelDataValidation().Validate(models);
+
                 if (view.IsEdit)
                 {
                     repository.Edit(models);
-                    view.Message = "habitacion editada correctamente";
+                    view.Message = "Habitación editada correctamente.";
                 }
                 else
                 {
                     repository.Add(models);
-                    view.Message = "habitacion añadida correctamente";
+                    view.Message = "Habitación añadida correctamente.";
                 }
+
                 view.IsSuccessful = true;
                 LoadAllHabitacionesList();
                 CleanviewFields();
@@ -89,21 +100,19 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                 view.IsSuccessful = false;
                 view.Message = ex.Message;
             }
-            */
-            throw new NotImplementedException();
         }
 
+
         private void CleanviewFields()
-        { /*
+        {
             view.Nro_habitacion = "0";
             view.Cant_camas = "0";
             view.Precio_unitario = "0";
             view.Descripcion = "";
             view.Tipo = "";
-            view.Id_piso = "0";
-            view.Id_estado = "0";
-            */
-            throw new NotImplementedException();
+            view.Id_piso = "1";
+            view.Id_estado = "1";
+            view.Cant_personas = "0";
         }
 
         //metodo
@@ -112,39 +121,41 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             habList = repository.GetAll();
             habitacionesBindingSource.DataSource = habList;
 
+            habListDisponibles = repository.GetAll();
+            habitacionesBindingSourceDisponibles.DataSource = habListDisponibles;
+            habListOcupadas = repository.GetAll();
+            habitacionesBindingSourceOcupadas.DataSource = habListOcupadas;
+            habListMantenimiento = repository.GetAll();
+            habitacionesBindingSourceMantenimiento.DataSource = habListMantenimiento;
+
         }
 
         private void CancelAction(object? sender, EventArgs e)
         {
-            /*
             CleanviewFields();
-            */
-            throw new NotImplementedException();
+            
         }
 
         private void DeleteSelectedHabitacion(object? sender, EventArgs e)
         {
-            /*
             try
             {
                 var hab = (HabitacionesModels)habitacionesBindingSource.Current;
                 repository.Delete(hab.Nro_habitacion);
                 view.IsSuccessful = true;
-                view.Message = "habitacion eliminada correctamente";
+                view.Message = "Habitación eliminada correctamente";
                 LoadAllHabitacionesList();
             }
             catch (Exception ex)
             {
                 view.IsSuccessful = false;
-                view.Message = "error";
+                view.Message = "Ocurrio un error, no se puede eliminar la habitación";
             }
-            */
-            throw new NotImplementedException();
+            
         }
 
         private void LoadSelectedHabitacionToEdit(object? sender, EventArgs e)
         {
-            /*
             var hab = (HabitacionesModels)habitacionesBindingSource.Current;
             view.Nro_habitacion = hab.Nro_habitacion.ToString();
             view.Cant_camas = hab.Cant_camas.ToString();
@@ -154,33 +165,29 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Id_piso = hab.Id_piso.ToString();
             view.Id_estado = hab.Id_estado.ToString();
             view.IsEdit = true;
-            */
-            throw new NotImplementedException();
         }
 
         private void AddNewHabitación(object sender, EventArgs e)
         {
-            /*
+            
             view.IsEdit = false;
-            */
-            throw new NotImplementedException();
+            
         }
 
         private void SearchHabitacion(object? sender, EventArgs e)
         {
-            /*
             bool emptyValue = string.IsNullOrWhiteSpace(this.view.SearchValue);
-            if (emptyValue == false)
+
+            if (!emptyValue)
             {
                 habList = repository.GetByValue(this.view.SearchValue);
             }
             else
             {
-                habList = repository.GetByValue();
-                habitacionesBindingSource.DataSource = habList;
+                habList = repository.GetAll();
             }
-            */
-            throw new NotImplementedException();
+
+            habitacionesBindingSource.DataSource = habList;
         }
     }
 }

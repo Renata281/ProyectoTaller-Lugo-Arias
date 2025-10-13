@@ -1,95 +1,116 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
-
-namespace ProyectoTaller_Lugo_Arias.Models
+public class ReservaModel
 {
-    public class ReservaModel
+    private int nro_reserva;
+    private DateTime fecha_ingreso;
+    private DateTime fecha_salida;
+    private float monto_total;
+    private int id_cliente;
+    private int nro_habitacion;
+    private int id_piso;
+    private string estado;
+    private int id_pago;
+    private int cant_personas;
+
+    [DisplayName("ID Reserva")]
+    public int Nro_reserva
     {
-        //campos
-        private int nro_reserva;
-        private DateTime fecha_ingreso;
-        private DateTime fecha_salida;
-        private decimal monto_total;
-        private int id_cliente;
-        private int dni; //cliente dni
-        private int nro_habitacion;
-        private int id_piso;
-        private string estado;
+        get => nro_reserva;
+        set => nro_reserva = value;
+    }
 
-        [DisplayName("ID Reserva")]
-        public int Nro_reserva
-        {
-            get => nro_reserva;
-            set => nro_reserva = value;
-        }
+    [DisplayName("Fecha Ingreso")]
+    [Required(ErrorMessage = "La fecha de ingreso es obligatoria.")]
+    [DataType(DataType.Date)]
+    public DateTime Fecha_ingreso
+    {
+        get => fecha_ingreso;
+        set => fecha_ingreso = value;
+    }
 
-        [DisplayName("Fecha Ingreso")]
-        [Required(ErrorMessage = "La fecha de ingreso es obligatoria.")]
-        [DataType(DataType.Date)]
-        public DateTime Fecha_ingreso
-        {
-            get => fecha_ingreso;
-            set => fecha_ingreso = value;
-        }
+    [DisplayName("Fecha Egreso")]
+    [Required(ErrorMessage = "La fecha de egreso es obligatoria.")]
+    [DataType(DataType.Date)]
+    public DateTime Fecha_salida
+    {
+        get => fecha_salida;
+        set => fecha_salida = value;
+    }
 
-        [DisplayName("Fecha Egreso")]
-        [Required(ErrorMessage = "La fecha de egreso es obligatoria.")]
-        [DataType(DataType.Date)]
-        public DateTime Fecha_salida
-        {
-            get => fecha_salida;
-            set => fecha_salida = value;
-        }
+    [DisplayName("Monto Total")]
+    public float Monto_total
+    {
+        get => monto_total;
+        set => monto_total = value;
+    }
 
-        public decimal Monto_total
-        {
-            get => monto_total;
-            set => monto_total = value;
-        }
+    [DisplayName("ID Habitación")]
+    [Required(ErrorMessage = "El ID de la habitación es obligatorio.")]
+    public int Nro_habitacion
+    {
+        get => nro_habitacion;
+        set => nro_habitacion = value;
+    }
 
-        [DisplayName("ID Habitación")]
-        [Required(ErrorMessage = "El ID de la habitación es obligatorio.")]
-        public int Nro_habitacion
-        {
-            get => nro_habitacion;
-            set => nro_habitacion = value;
-        }
+    public int Id_piso
+    {
+        get => id_piso;
+        set => id_piso = value;
+    }
 
-        public int Id_piso
-        {
-            get => id_piso;
-            set => id_piso = value;
-        }
+    [DisplayName("ID Cliente")]
+    [Required(ErrorMessage = "El ID del cliente es obligatorio.")]
+    public int Id_cliente
+    {
+        get => id_cliente;
+        set => id_cliente = value;
+    }
 
-        [DisplayName("ID Cliente")]
-        [Required(ErrorMessage = "El ID del cliente es obligatorio.")]
-        public int Id_cliente
-        {
-            get => id_cliente;
-            set => id_cliente = value;
-        }
+    [DisplayName("Estado")]
+    public string Estado
+    {
+        get => estado;
+        set => estado = value;
+    }
 
-        public int Dni
-        {
-            get => dni;
-            set => dni = value;
-        }
 
-        [DisplayName("Estado")]
-        [Required(ErrorMessage = "El estado es obligatorio.")]
-        [StringLength(20, MinimumLength = 3, ErrorMessage = "El estado no puede tener más de 20 caracteres ni menos de 3")]
-        public string Estado
-        {
-            get => estado;
-            set => estado = value;
-        }
+    [DisplayName("ID Pago")]
+    public int Id_pago
+    {
+        get => id_pago;
+        set => id_pago = value;
+    }
 
+    [DisplayName("Cantidad de Personas")]
+    [Required(ErrorMessage = "La cantidad de personas es obligatoria.")]
+    [Range(1, 20, ErrorMessage = "La cantidad de personas debe ser entre 1 y 20.")]
+    public int Cant_personas
+    {
+        get => cant_personas;
+        set => cant_personas = value;
+    }
+
+    public void ValidarFechas()
+    {
+        if (Fecha_salida <= Fecha_ingreso)
+            throw new ValidationException("La fecha de salida debe ser posterior a la fecha de ingreso.");
+    }
+
+    public void CalcularEstado()
+    {
+        var hoy = DateTime.Today;
+
+        if (Fecha_salida < hoy)
+            Estado = "Finalizada";
+        else if (Fecha_ingreso <= hoy && Fecha_salida >= hoy)
+            Estado = "Activa";
+        else if (Fecha_ingreso > hoy)
+            Estado = "Pendiente";
+        else
+            Estado = "Desconocida";
     }
 }
+

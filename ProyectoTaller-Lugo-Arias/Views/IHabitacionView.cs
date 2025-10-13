@@ -1,26 +1,29 @@
-﻿using System;
+﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositories;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ProyectoTaller_Lugo_Arias.Models;
 
 namespace ProyectoTaller_Lugo_Arias.View
 {
     public interface IHabitacionView 
     {
-        String Nro_habitacion { get; set; }
-        String Cant_camas { get; set; }
-        String Precio_unitario { get; set; }
-        String Descripcion { get; set; }
-        String Tipo { get; set; }
-        String Id_piso { get; set; }
-        String Id_estado { get; set; }
+        string Nro_habitacion { get; set; }
+        string Cant_camas { get; set; }
+        string Precio_unitario { get; set; }
+        string Descripcion { get; set; }
+        string Tipo { get; set; }
+        string Id_piso { get; set; }
+        string Id_estado { get; set; }
+        string Estado_descripcion { get; set; }
 
-        String SearchValue { get; set; }
+        string SearchValue { get; set; }
         bool IsEdit { get; set; }
         bool IsSuccessful { get; set; }
-        String Message { get; set; }
+        string Message { get; set; }
+        string Cant_personas { get; set; }
 
         //eventos
         event EventHandler SearchEvent;
@@ -30,7 +33,8 @@ namespace ProyectoTaller_Lugo_Arias.View
         event EventHandler SaveEvent;
         event EventHandler CancelEvent;
 
-        void SetEstadoHabitacionListComboBox(IEnumerable<EstadoHabitacionModel> enumerable);
+        void SetPisosListComboBox(IEnumerable<PisoModel> pisoList);
+        void SetEstadoHabitacionListComboBox(IEnumerable<EstadoHabitacionModel> estadoList);
 
         //metodos 
 
@@ -38,7 +42,7 @@ namespace ProyectoTaller_Lugo_Arias.View
         void SetListaHabitacionBindingSourseDisponibles(BindingSource habitacionesBindingSourceDisponibles);
         void SetListaHabitacionBindingSourseMantenimiento(BindingSource habitacionesBindingSourceMantenimiento);
         void SetListaHabitacionBindingSourseOcupadas(BindingSource habitacionesBindingSourceOcupadas);
-        void SetPisosListComboBox(IEnumerable<PisoModel> enumerable);
         void Show();
+        void SetTipoHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoList);
     }
 }

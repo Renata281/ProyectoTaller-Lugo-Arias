@@ -19,6 +19,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private int id_piso;
         private int id_estado;
         private string estado_descripcion;
+        private int cant_personas;
 
         [DisplayName ("Nro_habitacion")]
         [Required(ErrorMessage = "El número de habitación es obligatorio")]
@@ -82,6 +83,12 @@ namespace ProyectoTaller_Lugo_Arias.Models
         { 
             get { return estado_descripcion; } 
             set { estado_descripcion = value; }
+        }
+
+        public int Cant_personas 
+        { 
+            get { return cant_personas; } 
+            set { cant_personas = value; }
         }
     }
 }

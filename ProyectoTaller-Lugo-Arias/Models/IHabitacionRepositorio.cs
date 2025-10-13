@@ -13,5 +13,9 @@ namespace ProyectoTaller_Lugo_Arias.Models
         void Delete(int id);
         IEnumerable<HabitacionesModels> GetAll();
         IEnumerable<HabitacionesModels> GetByValue(string valorBusqueda);
+
+        IEnumerable<HabitacionesModels> GetAllDisponible();
+        IEnumerable<HabitacionesModels> GetAllOcupadas();
+        IEnumerable<HabitacionesModels> GetAllMantenimiento();
     }
 }

@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace ProyectoTaller_Lugo_Arias.Models
 {
-    internal class PisoModel
+    public class PisoModel
     {
         private int id_piso;
         private string descripcion;

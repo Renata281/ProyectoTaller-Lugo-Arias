@@ -29,48 +29,33 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            textBox4 = new TextBox();
+            bBuscar = new Button();
+            txtSearch = new TextBox();
             lMotorEmpleados = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
+            bEliminar = new Button();
+            bEditar = new Button();
+            bNuevo = new Button();
             dataGridView3 = new DataGridView();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn3 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn4 = new DataGridViewButtonColumn();
             lReservasTodas = new Label();
-            tpActivos = new TabPage();
+            tpDisponible = new TabPage();
             dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn1 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn2 = new DataGridViewButtonColumn();
             lReservasAct = new Label();
-            tpFinalizados = new TabPage();
+            tpOcupadas = new TabPage();
             dataGridView1 = new DataGridView();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn5 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn6 = new DataGridViewButtonColumn();
             lReservasFin = new Label();
-            tpNuevaReserva = new TabPage();
+            tpNuevaHabt = new TabPage();
+            cbEstado = new ComboBox();
+            lEstado = new Label();
             cbPiso = new ComboBox();
             label6 = new Label();
             cbTipo = new ComboBox();
             label5 = new Label();
             tbDescripcion = new TextBox();
             tbPrecio = new TextBox();
-            bConfirmar = new Button();
+            bGuardar = new Button();
             tbCamas = new TextBox();
             label3 = new Label();
             bCancelar = new Button();
@@ -79,35 +64,29 @@
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
-            tabPage1 = new TabPage();
+            tpMantenimiento = new TabPage();
             label4 = new Label();
             dataGridView4 = new DataGridView();
-            dataGridViewTextBoxColumn16 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn17 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn18 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn19 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn20 = new DataGridViewTextBoxColumn();
-            dataGridViewButtonColumn7 = new DataGridViewButtonColumn();
-            dataGridViewButtonColumn8 = new DataGridViewButtonColumn();
-            lEstado = new Label();
-            cbEstado = new ComboBox();
+            lMaxPers = new Label();
+            tbMaxPers = new TextBox();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
-            tpActivos.SuspendLayout();
+            tpDisponible.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
-            tpFinalizados.SuspendLayout();
+            tpOcupadas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            tpNuevaReserva.SuspendLayout();
-            tabPage1.SuspendLayout();
+            tpNuevaHabt.SuspendLayout();
+            tpMantenimiento.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
-            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(bBuscar);
+            panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(lMotorEmpleados);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -115,14 +94,23 @@
             panel1.Size = new Size(966, 69);
             panel1.TabIndex = 1;
             // 
-            // textBox4
+            // bBuscar
             // 
-            textBox4.BackColor = SystemColors.Control;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(28, 29);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(534, 16);
-            textBox4.TabIndex = 2;
+            bBuscar.Location = new Point(598, 25);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 3;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = SystemColors.Control;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Location = new Point(28, 29);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(534, 16);
+            txtSearch.TabIndex = 2;
             // 
             // lMotorEmpleados
             // 
@@ -149,10 +137,10 @@
             // tabControl1
             // 
             tabControl1.Controls.Add(tpTodos);
-            tabControl1.Controls.Add(tpActivos);
-            tabControl1.Controls.Add(tpFinalizados);
-            tabControl1.Controls.Add(tpNuevaReserva);
-            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tpDisponible);
+            tabControl1.Controls.Add(tpOcupadas);
+            tabControl1.Controls.Add(tpNuevaHabt);
+            tabControl1.Controls.Add(tpMantenimiento);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabControl1.Location = new Point(0, 136);
@@ -164,6 +152,9 @@
             // tpTodos
             // 
             tpTodos.BackColor = SystemColors.Control;
+            tpTodos.Controls.Add(bEliminar);
+            tpTodos.Controls.Add(bEditar);
+            tpTodos.Controls.Add(bNuevo);
             tpTodos.Controls.Add(dataGridView3);
             tpTodos.Controls.Add(lReservasTodas);
             tpTodos.Location = new Point(4, 30);
@@ -173,54 +164,46 @@
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
+            // bEliminar
+            // 
+            bEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEliminar.Location = new Point(819, 213);
+            bEliminar.Name = "bEliminar";
+            bEliminar.Size = new Size(99, 31);
+            bEliminar.TabIndex = 9;
+            bEliminar.Text = "Eliminar";
+            bEliminar.UseVisualStyleBackColor = true;
+            // 
+            // bEditar
+            // 
+            bEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEditar.Location = new Point(819, 143);
+            bEditar.Name = "bEditar";
+            bEditar.Size = new Size(99, 31);
+            bEditar.TabIndex = 8;
+            bEditar.Text = "Editar";
+            bEditar.UseVisualStyleBackColor = true;
+            // 
+            // bNuevo
+            // 
+            bNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bNuevo.Location = new Point(819, 75);
+            bNuevo.Name = "bNuevo";
+            bNuevo.Size = new Size(99, 31);
+            bNuevo.TabIndex = 6;
+            bNuevo.Text = "Nuevo";
+            bNuevo.UseVisualStyleBackColor = true;
+            // 
             // dataGridView3
             // 
+            dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView3.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11, dataGridViewButtonColumn3, dataGridViewButtonColumn4 });
-            dataGridView3.Dock = DockStyle.Bottom;
-            dataGridView3.Location = new Point(3, 74);
+            dataGridView3.Location = new Point(3, 75);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(952, 304);
+            dataGridView3.Size = new Size(775, 303);
             dataGridView3.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Habitacion";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.HeaderText = "Camas";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.HeaderText = "Precio Unitario";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.HeaderText = "Descripcion";
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.HeaderText = "Tipo";
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridViewButtonColumn3
-            // 
-            dataGridViewButtonColumn3.HeaderText = "Piso";
-            dataGridViewButtonColumn3.Name = "dataGridViewButtonColumn3";
-            dataGridViewButtonColumn3.Resizable = DataGridViewTriState.True;
-            dataGridViewButtonColumn3.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn4
-            // 
-            dataGridViewButtonColumn4.HeaderText = "Estado";
-            dataGridViewButtonColumn4.Name = "dataGridViewButtonColumn4";
             // 
             // lReservasTodas
             // 
@@ -233,67 +216,29 @@
             lReservasTodas.TabIndex = 2;
             lReservasTodas.Text = "Habitaciones";
             // 
-            // tpActivos
+            // tpDisponible
             // 
-            tpActivos.BackColor = SystemColors.Control;
-            tpActivos.Controls.Add(dataGridView2);
-            tpActivos.Controls.Add(lReservasAct);
-            tpActivos.ForeColor = Color.DarkSlateGray;
-            tpActivos.Location = new Point(4, 30);
-            tpActivos.Name = "tpActivos";
-            tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(958, 381);
-            tpActivos.TabIndex = 1;
-            tpActivos.Text = "Disponible";
+            tpDisponible.BackColor = SystemColors.Control;
+            tpDisponible.Controls.Add(dataGridView2);
+            tpDisponible.Controls.Add(lReservasAct);
+            tpDisponible.ForeColor = Color.DarkSlateGray;
+            tpDisponible.Location = new Point(4, 30);
+            tpDisponible.Name = "tpDisponible";
+            tpDisponible.Padding = new Padding(3);
+            tpDisponible.Size = new Size(958, 381);
+            tpDisponible.TabIndex = 1;
+            tpDisponible.Text = "Disponible";
             // 
             // dataGridView2
             // 
             dataGridView2.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView2.BorderStyle = BorderStyle.None;
             dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewButtonColumn1, dataGridViewButtonColumn2 });
             dataGridView2.Dock = DockStyle.Bottom;
             dataGridView2.Location = new Point(3, 76);
             dataGridView2.Name = "dataGridView2";
             dataGridView2.Size = new Size(952, 302);
             dataGridView2.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Habitacion";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Camas";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Precio Unitario";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Descripcion";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Tipo";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewButtonColumn1
-            // 
-            dataGridViewButtonColumn1.HeaderText = "Piso";
-            dataGridViewButtonColumn1.Name = "dataGridViewButtonColumn1";
-            dataGridViewButtonColumn1.Resizable = DataGridViewTriState.True;
-            dataGridViewButtonColumn1.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn2
-            // 
-            dataGridViewButtonColumn2.HeaderText = "Estado";
-            dataGridViewButtonColumn2.Name = "dataGridViewButtonColumn2";
             // 
             // lReservasAct
             // 
@@ -306,66 +251,28 @@
             lReservasAct.TabIndex = 4;
             lReservasAct.Text = "Habitaciones Disponibles";
             // 
-            // tpFinalizados
+            // tpOcupadas
             // 
-            tpFinalizados.BackColor = SystemColors.Control;
-            tpFinalizados.Controls.Add(dataGridView1);
-            tpFinalizados.Controls.Add(lReservasFin);
-            tpFinalizados.Location = new Point(4, 30);
-            tpFinalizados.Name = "tpFinalizados";
-            tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(958, 381);
-            tpFinalizados.TabIndex = 2;
-            tpFinalizados.Text = "Ocupadas";
+            tpOcupadas.BackColor = SystemColors.Control;
+            tpOcupadas.Controls.Add(dataGridView1);
+            tpOcupadas.Controls.Add(lReservasFin);
+            tpOcupadas.Location = new Point(4, 30);
+            tpOcupadas.Name = "tpOcupadas";
+            tpOcupadas.Padding = new Padding(3);
+            tpOcupadas.Size = new Size(958, 381);
+            tpOcupadas.TabIndex = 2;
+            tpOcupadas.Text = "Ocupadas";
             // 
             // dataGridView1
             // 
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn12, dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn15, dataGridViewButtonColumn5, dataGridViewButtonColumn6 });
             dataGridView1.Dock = DockStyle.Bottom;
             dataGridView1.Location = new Point(3, 69);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(952, 309);
             dataGridView1.TabIndex = 6;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Habitacion";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.HeaderText = "Camas";
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            dataGridViewTextBoxColumn13.HeaderText = "Precio Unitario";
-            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            dataGridViewTextBoxColumn14.HeaderText = "Descripcion";
-            dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            dataGridViewTextBoxColumn15.HeaderText = "Tipo";
-            dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewButtonColumn5
-            // 
-            dataGridViewButtonColumn5.HeaderText = "Piso";
-            dataGridViewButtonColumn5.Name = "dataGridViewButtonColumn5";
-            dataGridViewButtonColumn5.Resizable = DataGridViewTriState.True;
-            dataGridViewButtonColumn5.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn6
-            // 
-            dataGridViewButtonColumn6.HeaderText = "Estado";
-            dataGridViewButtonColumn6.Name = "dataGridViewButtonColumn6";
             // 
             // lReservasFin
             // 
@@ -378,32 +285,53 @@
             lReservasFin.TabIndex = 1;
             lReservasFin.Text = "Habitaciones Ocupadas";
             // 
-            // tpNuevaReserva
+            // tpNuevaHabt
             // 
-            tpNuevaReserva.BackColor = SystemColors.Control;
-            tpNuevaReserva.Controls.Add(cbEstado);
-            tpNuevaReserva.Controls.Add(lEstado);
-            tpNuevaReserva.Controls.Add(cbPiso);
-            tpNuevaReserva.Controls.Add(label6);
-            tpNuevaReserva.Controls.Add(cbTipo);
-            tpNuevaReserva.Controls.Add(label5);
-            tpNuevaReserva.Controls.Add(tbDescripcion);
-            tpNuevaReserva.Controls.Add(tbPrecio);
-            tpNuevaReserva.Controls.Add(bConfirmar);
-            tpNuevaReserva.Controls.Add(tbCamas);
-            tpNuevaReserva.Controls.Add(label3);
-            tpNuevaReserva.Controls.Add(bCancelar);
-            tpNuevaReserva.Controls.Add(tbNro);
-            tpNuevaReserva.Controls.Add(lFechaSalida);
-            tpNuevaReserva.Controls.Add(lFechaIngreso);
-            tpNuevaReserva.Controls.Add(label2);
-            tpNuevaReserva.Controls.Add(lNuevaReserva);
-            tpNuevaReserva.Location = new Point(4, 30);
-            tpNuevaReserva.Name = "tpNuevaReserva";
-            tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(958, 381);
-            tpNuevaReserva.TabIndex = 3;
-            tpNuevaReserva.Text = "Nueva Habitación";
+            tpNuevaHabt.BackColor = SystemColors.Control;
+            tpNuevaHabt.Controls.Add(tbMaxPers);
+            tpNuevaHabt.Controls.Add(lMaxPers);
+            tpNuevaHabt.Controls.Add(cbEstado);
+            tpNuevaHabt.Controls.Add(lEstado);
+            tpNuevaHabt.Controls.Add(cbPiso);
+            tpNuevaHabt.Controls.Add(label6);
+            tpNuevaHabt.Controls.Add(cbTipo);
+            tpNuevaHabt.Controls.Add(label5);
+            tpNuevaHabt.Controls.Add(tbDescripcion);
+            tpNuevaHabt.Controls.Add(tbPrecio);
+            tpNuevaHabt.Controls.Add(bGuardar);
+            tpNuevaHabt.Controls.Add(tbCamas);
+            tpNuevaHabt.Controls.Add(label3);
+            tpNuevaHabt.Controls.Add(bCancelar);
+            tpNuevaHabt.Controls.Add(tbNro);
+            tpNuevaHabt.Controls.Add(lFechaSalida);
+            tpNuevaHabt.Controls.Add(lFechaIngreso);
+            tpNuevaHabt.Controls.Add(label2);
+            tpNuevaHabt.Controls.Add(lNuevaReserva);
+            tpNuevaHabt.Location = new Point(4, 30);
+            tpNuevaHabt.Name = "tpNuevaHabt";
+            tpNuevaHabt.Padding = new Padding(3);
+            tpNuevaHabt.Size = new Size(958, 381);
+            tpNuevaHabt.TabIndex = 3;
+            tpNuevaHabt.Text = "Nueva Habitación";
+            // 
+            // cbEstado
+            // 
+            cbEstado.FormattingEnabled = true;
+            cbEstado.Location = new Point(317, 238);
+            cbEstado.Name = "cbEstado";
+            cbEstado.Size = new Size(241, 29);
+            cbEstado.TabIndex = 26;
+            // 
+            // lEstado
+            // 
+            lEstado.AutoSize = true;
+            lEstado.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lEstado.ForeColor = Color.DarkSlateGray;
+            lEstado.Location = new Point(317, 201);
+            lEstado.Name = "lEstado";
+            lEstado.Size = new Size(54, 20);
+            lEstado.TabIndex = 25;
+            lEstado.Text = "Estado";
             // 
             // cbPiso
             // 
@@ -446,7 +374,7 @@
             // tbDescripcion
             // 
             tbDescripcion.BackColor = SystemColors.Control;
-            tbDescripcion.Location = new Point(627, 93);
+            tbDescripcion.Location = new Point(616, 172);
             tbDescripcion.Multiline = true;
             tbDescripcion.Name = "tbDescripcion";
             tbDescripcion.Size = new Size(254, 95);
@@ -460,19 +388,19 @@
             tbPrecio.Size = new Size(254, 29);
             tbPrecio.TabIndex = 19;
             // 
-            // bConfirmar
+            // bGuardar
             // 
-            bConfirmar.BackColor = Color.DarkSlateGray;
-            bConfirmar.FlatAppearance.BorderSize = 0;
-            bConfirmar.FlatStyle = FlatStyle.Flat;
-            bConfirmar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bConfirmar.ForeColor = SystemColors.InactiveBorder;
-            bConfirmar.Location = new Point(308, 329);
-            bConfirmar.Name = "bConfirmar";
-            bConfirmar.Size = new Size(99, 31);
-            bConfirmar.TabIndex = 18;
-            bConfirmar.Text = "Confirmar";
-            bConfirmar.UseVisualStyleBackColor = false;
+            bGuardar.BackColor = Color.DarkSlateGray;
+            bGuardar.FlatAppearance.BorderSize = 0;
+            bGuardar.FlatStyle = FlatStyle.Flat;
+            bGuardar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bGuardar.ForeColor = SystemColors.InactiveBorder;
+            bGuardar.Location = new Point(308, 329);
+            bGuardar.Name = "bGuardar";
+            bGuardar.Size = new Size(99, 31);
+            bGuardar.TabIndex = 18;
+            bGuardar.Text = "Guardar";
+            bGuardar.UseVisualStyleBackColor = false;
             // 
             // tbCamas
             // 
@@ -520,7 +448,7 @@
             lFechaSalida.AutoSize = true;
             lFechaSalida.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lFechaSalida.ForeColor = Color.DarkSlateGray;
-            lFechaSalida.Location = new Point(627, 70);
+            lFechaSalida.Location = new Point(616, 139);
             lFechaSalida.Name = "lFechaSalida";
             lFechaSalida.Size = new Size(89, 20);
             lFechaSalida.TabIndex = 3;
@@ -559,16 +487,16 @@
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nueva Habitación";
             // 
-            // tabPage1
+            // tpMantenimiento
             // 
-            tabPage1.BackColor = SystemColors.Control;
-            tabPage1.Controls.Add(label4);
-            tabPage1.Controls.Add(dataGridView4);
-            tabPage1.Location = new Point(4, 30);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Size = new Size(958, 381);
-            tabPage1.TabIndex = 4;
-            tabPage1.Text = "Mantenimiento";
+            tpMantenimiento.BackColor = SystemColors.Control;
+            tpMantenimiento.Controls.Add(label4);
+            tpMantenimiento.Controls.Add(dataGridView4);
+            tpMantenimiento.Location = new Point(4, 30);
+            tpMantenimiento.Name = "tpMantenimiento";
+            tpMantenimiento.Size = new Size(958, 381);
+            tpMantenimiento.TabIndex = 4;
+            tpMantenimiento.Text = "Mantenimiento";
             // 
             // label4
             // 
@@ -586,68 +514,30 @@
             dataGridView4.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView4.BorderStyle = BorderStyle.None;
             dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn16, dataGridViewTextBoxColumn17, dataGridViewTextBoxColumn18, dataGridViewTextBoxColumn19, dataGridViewTextBoxColumn20, dataGridViewButtonColumn7, dataGridViewButtonColumn8 });
             dataGridView4.Dock = DockStyle.Bottom;
             dataGridView4.Location = new Point(0, 74);
             dataGridView4.Name = "dataGridView4";
             dataGridView4.Size = new Size(958, 307);
             dataGridView4.TabIndex = 6;
             // 
-            // dataGridViewTextBoxColumn16
+            // lMaxPers
             // 
-            dataGridViewTextBoxColumn16.HeaderText = "Habitacion";
-            dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
+            lMaxPers.AutoSize = true;
+            lMaxPers.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lMaxPers.ForeColor = Color.DarkSlateGray;
+            lMaxPers.Location = new Point(616, 70);
+            lMaxPers.Name = "lMaxPers";
+            lMaxPers.Size = new Size(151, 20);
+            lMaxPers.TabIndex = 27;
+            lMaxPers.Text = "Máximo de personas";
             // 
-            // dataGridViewTextBoxColumn17
+            // tbMaxPers
             // 
-            dataGridViewTextBoxColumn17.HeaderText = "Camas";
-            dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
-            // dataGridViewTextBoxColumn18
-            // 
-            dataGridViewTextBoxColumn18.HeaderText = "Precio Unitario";
-            dataGridViewTextBoxColumn18.Name = "dataGridViewTextBoxColumn18";
-            // 
-            // dataGridViewTextBoxColumn19
-            // 
-            dataGridViewTextBoxColumn19.HeaderText = "Descripcion";
-            dataGridViewTextBoxColumn19.Name = "dataGridViewTextBoxColumn19";
-            // 
-            // dataGridViewTextBoxColumn20
-            // 
-            dataGridViewTextBoxColumn20.HeaderText = "Tipo";
-            dataGridViewTextBoxColumn20.Name = "dataGridViewTextBoxColumn20";
-            // 
-            // dataGridViewButtonColumn7
-            // 
-            dataGridViewButtonColumn7.HeaderText = "Piso";
-            dataGridViewButtonColumn7.Name = "dataGridViewButtonColumn7";
-            dataGridViewButtonColumn7.Resizable = DataGridViewTriState.True;
-            dataGridViewButtonColumn7.SortMode = DataGridViewColumnSortMode.Automatic;
-            // 
-            // dataGridViewButtonColumn8
-            // 
-            dataGridViewButtonColumn8.HeaderText = "Estado";
-            dataGridViewButtonColumn8.Name = "dataGridViewButtonColumn8";
-            // 
-            // lEstado
-            // 
-            lEstado.AutoSize = true;
-            lEstado.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lEstado.ForeColor = Color.DarkSlateGray;
-            lEstado.Location = new Point(317, 201);
-            lEstado.Name = "lEstado";
-            lEstado.Size = new Size(54, 20);
-            lEstado.TabIndex = 25;
-            lEstado.Text = "Estado";
-            // 
-            // cbEstado
-            // 
-            cbEstado.FormattingEnabled = true;
-            cbEstado.Location = new Point(317, 238);
-            cbEstado.Name = "cbEstado";
-            cbEstado.Size = new Size(241, 29);
-            cbEstado.TabIndex = 26;
+            tbMaxPers.BackColor = SystemColors.Control;
+            tbMaxPers.Location = new Point(616, 93);
+            tbMaxPers.Name = "tbMaxPers";
+            tbMaxPers.Size = new Size(254, 29);
+            tbMaxPers.TabIndex = 28;
             // 
             // HabitacionView
             // 
@@ -666,16 +556,16 @@
             tpTodos.ResumeLayout(false);
             tpTodos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
-            tpActivos.ResumeLayout(false);
-            tpActivos.PerformLayout();
+            tpDisponible.ResumeLayout(false);
+            tpDisponible.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
-            tpFinalizados.ResumeLayout(false);
-            tpFinalizados.PerformLayout();
+            tpOcupadas.ResumeLayout(false);
+            tpOcupadas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            tpNuevaReserva.ResumeLayout(false);
-            tpNuevaReserva.PerformLayout();
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
+            tpNuevaHabt.ResumeLayout(false);
+            tpNuevaHabt.PerformLayout();
+            tpMantenimiento.ResumeLayout(false);
+            tpMantenimiento.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -684,19 +574,19 @@
         #endregion
 
         private Panel panel1;
-        private TextBox textBox4;
+        private TextBox txtSearch;
         private Label lMotorEmpleados;
         private Label label1;
         private TabControl tabControl1;
         private TabPage tpTodos;
         private DataGridView dataGridView3;
         private Label lReservasTodas;
-        private TabPage tpActivos;
+        private TabPage tpDisponible;
         private Label lReservasAct;
-        private TabPage tpFinalizados;
+        private TabPage tpOcupadas;
         private Label lReservasFin;
-        private TabPage tpNuevaReserva;
-        private Button bConfirmar;
+        private TabPage tpNuevaHabt;
+        private Button bGuardar;
         private TextBox tbCamas;
         private Label label3;
         private Button bCancelar;
@@ -705,39 +595,11 @@
         private Label lFechaIngreso;
         private Label label2;
         private Label lNuevaReserva;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
-        private DataGridViewButtonColumn dataGridViewButtonColumn3;
-        private DataGridViewButtonColumn dataGridViewButtonColumn4;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewButtonColumn dataGridViewButtonColumn1;
-        private DataGridViewButtonColumn dataGridViewButtonColumn2;
-        private TabPage tabPage1;
+        private TabPage tpMantenimiento;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private DataGridViewButtonColumn dataGridViewButtonColumn5;
-        private DataGridViewButtonColumn dataGridViewButtonColumn6;
         private Label label4;
         private DataGridView dataGridView4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn18;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn19;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn20;
-        private DataGridViewButtonColumn dataGridViewButtonColumn7;
-        private DataGridViewButtonColumn dataGridViewButtonColumn8;
         private ComboBox cbTipo;
         private Label label5;
         private TextBox tbDescripcion;
@@ -746,5 +608,11 @@
         private Label label6;
         private ComboBox cbEstado;
         private Label lEstado;
+        private Button bNuevo;
+        private Button bEditar;
+        private Button bEliminar;
+        private Button bBuscar;
+        private TextBox tbMaxPers;
+        private Label lMaxPers;
     }
 }

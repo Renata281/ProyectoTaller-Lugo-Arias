@@ -154,7 +154,7 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(782, 384);
+            tpTodos.Size = new Size(782, 393);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
@@ -204,9 +204,9 @@
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.None;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 3);
+            dataGridView1.Location = new Point(3, 58);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(641, 488);
+            dataGridView1.Size = new Size(641, 433);
             dataGridView1.TabIndex = 4;
             // 
             // lTodosEmpleados
@@ -228,7 +228,7 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(782, 384);
+            tpActivos.Size = new Size(782, 393);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -262,7 +262,7 @@
             tpInactivos.Location = new Point(4, 30);
             tpInactivos.Name = "tpInactivos";
             tpInactivos.Padding = new Padding(3);
-            tpInactivos.Size = new Size(782, 384);
+            tpInactivos.Size = new Size(782, 393);
             tpInactivos.TabIndex = 2;
             tpInactivos.Text = "Inactivos";
             // 

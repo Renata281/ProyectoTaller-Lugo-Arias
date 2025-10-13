@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace ProyectoTaller_Lugo_Arias.Models
 {
-    internal class EstadoHabitacionModel
+    public class EstadoHabitacionModel
     {
         private int id_estado;
         private string descripcion;

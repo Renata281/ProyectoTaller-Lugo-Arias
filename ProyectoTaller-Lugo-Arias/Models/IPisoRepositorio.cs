@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller_Lugo_Arias.Models
 {
-    internal interface IPisoRepositorio
+    public interface IPisoRepositorio
     {
         IEnumerable<PisoModel> GetAll();
     }
