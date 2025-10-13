@@ -17,30 +17,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
             InitializeComponent();
         }
 
-        public int id_cliente {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public string nombre {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public string apellido {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public string email {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public int telefono {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public int dni {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
+       
         public string Buscar {
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
@@ -57,6 +34,12 @@ namespace ProyectoTaller_Lugo_Arias.Views
             get => throw new NotImplementedException();
             set => throw new NotImplementedException();
         }
+        public int Id_cliente { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Nombre { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Apellido { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string Email { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Telefono { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public int Dni { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
 
         public event EventHandler BuscarEvent;
         public event EventHandler AgregarEvent;

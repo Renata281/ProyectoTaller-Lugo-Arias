@@ -16,16 +16,23 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private string tipo;
         private string descripcion;
 
+
+        [DisplayName("Tipo")]
+        [Required(ErrorMessage = "Es obligatorio el tipo")]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "El tipo no puede tener mas de 15 caracteres ni menos de 3")]
         public string Tipo
         {
             get => tipo;
             set => tipo = value;
         }
 
+        [DisplayName("Descripcion")]
+        [Required(ErrorMessage = "Es obligatorio la descripcion")]
         public string Descripcion
         {
             get => descripcion;
             set => descripcion = value;
         }
+
     }
 }

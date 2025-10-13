@@ -19,36 +19,48 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private int telefono;
         private int dni;
 
+        [DisplayName("Id_cliente")]
         public int Id_cliente
         {
             get => id_cliente;
             set => id_cliente = value;
         }
 
+        [DisplayName("Nombre")]
+        [Required(ErrorMessage = "Es obligatorio el nombre")]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "El nombre no puede tener más de 15 caracteres ni menos de 3")]
         public string Nombre
         {
             get => nombre;
             set => nombre = value;
         }
 
+        [DisplayName("Apellido")]
+        [Required(ErrorMessage = "Es obligatorio el apellido")]
+        [StringLength(15, MinimumLength = 3, ErrorMessage = "El apellido no puede tener más de 15 caracteres ni menos de 3")]
         public string Apellido
         {
             get => apellido;
             set => apellido = value;
         }
 
+        [Required(ErrorMessage = "El email es obligatorio.")]
+        [EmailAddress(ErrorMessage = "El formato del email no es válido.")]
         public string Email
         {
             get => email;
             set => email = value;
         }
 
+        [Required(ErrorMessage = "El teléfono es obligatorio.")]
         public int Telefono
         {
             get => telefono;
             set => telefono = value;
         }
 
+        [Required(ErrorMessage = "El DNI es obligatorio.")]
+        [Range(1000000, 99999999, ErrorMessage = "El DNI debe tener entre 7 y 8 dígitos.")]
         public int Dni
         {
             get => dni;

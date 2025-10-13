@@ -10,12 +10,12 @@ namespace ProyectoTaller_Lugo_Arias.Views
     public interface IClienteView
     {
         //campos
-        int id_cliente { get; set; }
-        string nombre { get; set; }
-        string apellido { get; set; }
-        string email { get; set; }
-        int telefono { get; set; }
-        int dni { get; set; }
+        int Id_cliente { get; set; }
+        string Nombre { get; set; }
+        string Apellido { get; set; }
+        string Email { get; set; }
+        int Telefono { get; set; }
+        int Dni { get; set; }
 
         string Buscar { get; set; }
         bool IsEditar { get; set; }
