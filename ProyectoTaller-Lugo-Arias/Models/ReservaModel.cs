@@ -7,14 +7,12 @@ public class ReservaModel
     private int nro_reserva;
     private DateTime fecha_ingreso;
     private DateTime fecha_salida;
-    private decimal monto_total;
+    private float monto_total;
     private int id_cliente;
-    private int dni;
     private int nro_habitacion;
     private int id_piso;
     private string estado;
     private int id_pago;
-    private string pago_descripcion;
     private int cant_personas;
 
     [DisplayName("ID Reserva")]
@@ -43,7 +41,7 @@ public class ReservaModel
     }
 
     [DisplayName("Monto Total")]
-    public decimal Monto_total
+    public float Monto_total
     {
         get => monto_total;
         set => monto_total = value;
@@ -71,28 +69,10 @@ public class ReservaModel
         set => id_cliente = value;
     }
 
-    public int Dni
-    {
-        get => dni;
-        set => dni = value;
-    }
-
+    [DisplayName("Estado")]
     public string Estado
     {
-        get
-        {
-            if (!string.IsNullOrEmpty(estado))
-                return estado; // Si fue seteado manualmente, respetarlo
-
-            DateTime hoy = DateTime.Now.Date;
-
-            if (hoy < Fecha_ingreso.Date)
-                return "Pendiente";
-            else if (hoy >= Fecha_ingreso.Date && hoy < Fecha_salida.Date)
-                return "Activa";
-            else
-                return "Finalizada";
-        }
+        get => estado;
         set => estado = value;
     }
 
@@ -104,13 +84,9 @@ public class ReservaModel
         set => id_pago = value;
     }
 
-    [DisplayName("Descripción del Pago")]
-    public string Pago_descripcion
-    {
-        get => pago_descripcion;
-        set => pago_descripcion = value;
-    }
-
+    [DisplayName("Cantidad de Personas")]
+    [Required(ErrorMessage = "La cantidad de personas es obligatoria.")]
+    [Range(1, 20, ErrorMessage = "La cantidad de personas debe ser entre 1 y 20.")]
     public int Cant_personas
     {
         get => cant_personas;
@@ -121,6 +97,20 @@ public class ReservaModel
     {
         if (Fecha_salida <= Fecha_ingreso)
             throw new ValidationException("La fecha de salida debe ser posterior a la fecha de ingreso.");
+    }
+
+    public void CalcularEstado()
+    {
+        var hoy = DateTime.Today;
+
+        if (Fecha_salida < hoy)
+            Estado = "Finalizada";
+        else if (Fecha_ingreso <= hoy && Fecha_salida >= hoy)
+            Estado = "Activa";
+        else if (Fecha_ingreso > hoy)
+            Estado = "Pendiente";
+        else
+            Estado = "Desconocida";
     }
 }
 

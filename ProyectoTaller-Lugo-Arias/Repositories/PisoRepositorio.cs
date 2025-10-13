@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ProyectoTaller_Lugo_Arias.Repositories
 {
-    internal class PisoRepositorio : BaseRepositorio, IPisoRepositorio
+    public class PisoRepositorio : BaseRepositorio, IPisoRepositorio
     {
         //constructor
         public PisoRepositorio(string connectionString)

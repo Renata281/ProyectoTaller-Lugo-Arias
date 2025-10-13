@@ -77,7 +77,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 command.Parameters.Add("@descripcion", SqlDbType.VarChar, 100).Value = habitacion.Descripcion;
                 command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = habitacion.Tipo;
                 command.Parameters.Add("@id_piso", SqlDbType.Int).Value = habitacion.Id_piso;
-                command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacionesModels.Id_piso;
+                command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacion.Id_piso;
                 command.Parameters.Add("@id_estado", SqlDbType.Int).Value = habitacion.Id_estado;
                 command.ExecuteNonQuery();
 

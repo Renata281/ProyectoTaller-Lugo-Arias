@@ -48,12 +48,12 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             IReservasView view = ReservasView.GetInstance((MainView) mainView);
             IReservaRepositorio reservaRepositorio = new ReservaRepositorio(sqlConnectionString);
-           /* IClienteRepositorio clienteRepositorio = new ClienteRepositorio(sqlConnectionString);
+            IClienteRepositorio clienteRepositorio = new ClienteRepositorio(sqlConnectionString);
             IHabitacionRepositorio habitacionRepositorio = new HabitacionRepositorio(sqlConnectionString);
-            IPagoRepositorio pagoRepositorio = new PagoRepositorio(sqlConnectionString);
-            new ReservaPresenter(view, reservaRepositorio, clienteRepositorio, habitacionRepositorio, pagoRepositorio);
-           */
-            new ReservaPresenter(view, reservaRepositorio);
+            IFormaPagoRepositorio pagoRepositorio = new FormaPagoRepositorio(sqlConnectionString);
+            ITipoHabitacionRepositorio tipoHabitacionRepositorio = new TipoHabitacionRepositorio( sqlConnectionString);
+            new ReservaPresenter(view, reservaRepositorio, pagoRepositorio, tipoHabitacionRepositorio, habitacionRepositorio, clienteRepositorio);
+           
         }
 
         private void OnShowClientesView(object? sender, EventArgs e)

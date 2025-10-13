@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProyectoTaller_Lugo_Arias.Models
 {
-    internal interface IFormaPagoRepositorio
+    public interface IFormaPagoRepositorio
     {
         IEnumerable<FormaPagoModel> GetAll();
     }

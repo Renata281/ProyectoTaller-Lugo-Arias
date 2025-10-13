@@ -35,6 +35,9 @@
             lReservas = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
+            bEliminar = new Button();
+            bEditar = new Button();
+            bNuevo = new Button();
             dgvTodos = new DataGridView();
             lReservasTodas = new Label();
             tpActivos = new TabPage();
@@ -63,9 +66,11 @@
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
-            bNuevo = new Button();
-            bEditar = new Button();
-            bEliminar = new Button();
+            tabPage1 = new TabPage();
+            lTipoHabt = new Label();
+            comboBox3 = new ComboBox();
+            label1 = new Label();
+            dataGridView1 = new DataGridView();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -76,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)dgvFinalizadas).BeginInit();
             tpNuevaReserva.SuspendLayout();
             panel2.SuspendLayout();
+            tabPage1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -124,7 +131,7 @@
             lReservas.AutoSize = true;
             lReservas.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lReservas.ForeColor = Color.DarkSlateGray;
-            lReservas.Location = new Point(332, 83);
+            lReservas.Location = new Point(330, 72);
             lReservas.Name = "lReservas";
             lReservas.Size = new Size(114, 32);
             lReservas.TabIndex = 0;
@@ -138,11 +145,12 @@
             tabControl1.Controls.Add(tpActivos);
             tabControl1.Controls.Add(tpFinalizados);
             tabControl1.Controls.Add(tpNuevaReserva);
+            tabControl1.Controls.Add(tabPage1);
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 137);
+            tabControl1.Location = new Point(0, 107);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(785, 482);
+            tabControl1.Size = new Size(785, 512);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -156,9 +164,39 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(777, 448);
+            tpTodos.Size = new Size(777, 478);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
+            // 
+            // bEliminar
+            // 
+            bEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEliminar.Location = new Point(662, 212);
+            bEliminar.Name = "bEliminar";
+            bEliminar.Size = new Size(99, 31);
+            bEliminar.TabIndex = 9;
+            bEliminar.Text = "Eliminar";
+            bEliminar.UseVisualStyleBackColor = true;
+            // 
+            // bEditar
+            // 
+            bEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEditar.Location = new Point(662, 143);
+            bEditar.Name = "bEditar";
+            bEditar.Size = new Size(99, 31);
+            bEditar.TabIndex = 8;
+            bEditar.Text = "Editar";
+            bEditar.UseVisualStyleBackColor = true;
+            // 
+            // bNuevo
+            // 
+            bNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bNuevo.Location = new Point(662, 70);
+            bNuevo.Name = "bNuevo";
+            bNuevo.Size = new Size(99, 31);
+            bNuevo.TabIndex = 6;
+            bNuevo.Text = "Nuevo";
+            bNuevo.UseVisualStyleBackColor = true;
             // 
             // dgvTodos
             // 
@@ -168,7 +206,7 @@
             dgvTodos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTodos.Location = new Point(3, 70);
             dgvTodos.Name = "dgvTodos";
-            dgvTodos.Size = new Size(636, 375);
+            dgvTodos.Size = new Size(636, 405);
             dgvTodos.TabIndex = 4;
             // 
             // lReservasTodas
@@ -191,7 +229,7 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(777, 448);
+            tpActivos.Size = new Size(777, 478);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -214,7 +252,7 @@
             dgvActivos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvActivos.Location = new Point(3, 71);
             dgvActivos.Name = "dgvActivos";
-            dgvActivos.Size = new Size(771, 370);
+            dgvActivos.Size = new Size(771, 400);
             dgvActivos.TabIndex = 3;
             // 
             // tpFinalizados
@@ -225,7 +263,7 @@
             tpFinalizados.Location = new Point(4, 30);
             tpFinalizados.Name = "tpFinalizados";
             tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(777, 448);
+            tpFinalizados.Size = new Size(777, 478);
             tpFinalizados.TabIndex = 2;
             tpFinalizados.Text = "Finalizados";
             // 
@@ -237,7 +275,7 @@
             dgvFinalizadas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvFinalizadas.Location = new Point(3, 74);
             dgvFinalizadas.Name = "dgvFinalizadas";
-            dgvFinalizadas.Size = new Size(771, 295);
+            dgvFinalizadas.Size = new Size(771, 325);
             dgvFinalizadas.TabIndex = 2;
             // 
             // lReservasFin
@@ -254,6 +292,8 @@
             // tpNuevaReserva
             // 
             tpNuevaReserva.BackColor = SystemColors.Control;
+            tpNuevaReserva.Controls.Add(comboBox3);
+            tpNuevaReserva.Controls.Add(lTipoHabt);
             tpNuevaReserva.Controls.Add(bConfirmar);
             tpNuevaReserva.Controls.Add(panel2);
             tpNuevaReserva.Controls.Add(textBox3);
@@ -272,7 +312,7 @@
             tpNuevaReserva.Location = new Point(4, 30);
             tpNuevaReserva.Name = "tpNuevaReserva";
             tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(777, 448);
+            tpNuevaReserva.Size = new Size(777, 478);
             tpNuevaReserva.TabIndex = 3;
             tpNuevaReserva.Text = "Nueva Reserva";
             // 
@@ -297,7 +337,7 @@
             panel2.Controls.Add(lMetodoPago);
             panel2.Controls.Add(textBox2);
             panel2.Controls.Add(lMontoTotal);
-            panel2.Location = new Point(424, 136);
+            panel2.Location = new Point(424, 159);
             panel2.Name = "panel2";
             panel2.Size = new Size(298, 187);
             panel2.TabIndex = 17;
@@ -400,7 +440,7 @@
             // 
             comboBox1.BackColor = SystemColors.Control;
             comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(24, 353);
+            comboBox1.Location = new Point(424, 93);
             comboBox1.Name = "comboBox1";
             comboBox1.Size = new Size(254, 29);
             comboBox1.TabIndex = 8;
@@ -429,7 +469,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.DarkSlateGray;
-            label5.Location = new Point(24, 333);
+            label5.Location = new Point(424, 72);
             label5.Name = "label5";
             label5.Size = new Size(89, 21);
             label5.TabIndex = 4;
@@ -479,35 +519,59 @@
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nueva Reserva";
             // 
-            // bNuevo
+            // tabPage1
             // 
-            bNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bNuevo.Location = new Point(662, 70);
-            bNuevo.Name = "bNuevo";
-            bNuevo.Size = new Size(99, 31);
-            bNuevo.TabIndex = 6;
-            bNuevo.Text = "Nuevo";
-            bNuevo.UseVisualStyleBackColor = true;
+            tabPage1.BackColor = SystemColors.Control;
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Controls.Add(label1);
+            tabPage1.Location = new Point(4, 30);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(777, 478);
+            tabPage1.TabIndex = 4;
+            tabPage1.Text = "Pendientes";
             // 
-            // bEditar
+            // lTipoHabt
             // 
-            bEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bEditar.Location = new Point(662, 143);
-            bEditar.Name = "bEditar";
-            bEditar.Size = new Size(99, 31);
-            bEditar.TabIndex = 8;
-            bEditar.Text = "Editar";
-            bEditar.UseVisualStyleBackColor = true;
+            lTipoHabt.AutoSize = true;
+            lTipoHabt.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lTipoHabt.ForeColor = Color.DarkSlateGray;
+            lTipoHabt.Location = new Point(24, 337);
+            lTipoHabt.Name = "lTipoHabt";
+            lTipoHabt.Size = new Size(115, 20);
+            lTipoHabt.TabIndex = 19;
+            lTipoHabt.Text = "Tipo habitación";
             // 
-            // bEliminar
+            // comboBox3
             // 
-            bEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            bEliminar.Location = new Point(662, 212);
-            bEliminar.Name = "bEliminar";
-            bEliminar.Size = new Size(99, 31);
-            bEliminar.TabIndex = 9;
-            bEliminar.Text = "Eliminar";
-            bEliminar.UseVisualStyleBackColor = true;
+            comboBox3.BackColor = SystemColors.Control;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Location = new Point(24, 360);
+            comboBox3.Name = "comboBox3";
+            comboBox3.Size = new Size(254, 29);
+            comboBox3.TabIndex = 20;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.DarkSlateGray;
+            label1.Location = new Point(24, 21);
+            label1.Name = "label1";
+            label1.Size = new Size(154, 25);
+            label1.TabIndex = 5;
+            label1.Text = "Reservas Activas";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(3, 77);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(771, 325);
+            dataGridView1.TabIndex = 6;
             // 
             // ReservasView
             // 
@@ -536,6 +600,9 @@
             tpNuevaReserva.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            tabPage1.ResumeLayout(false);
+            tabPage1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -580,5 +647,10 @@
         private Button bNuevo;
         private Button bEditar;
         private Button bEliminar;
+        private ComboBox comboBox3;
+        private Label lTipoHabt;
+        private TabPage tabPage1;
+        private DataGridView dataGridView1;
+        private Label label1;
     }
 }
