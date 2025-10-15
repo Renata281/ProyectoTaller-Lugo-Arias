@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ProyectoTaller_Lugo_Arias.Repositories
 {
-    internal class EstadoHabitacionRepositorio : BaseRepositorio, IEstadoHabitacionRepositorio
+    public class EstadoHabitacionRepositorio : BaseRepositorio, IEstadoHabitacionRepositorio
     {
         //constructor
         public EstadoHabitacionRepositorio(string connectionString)
@@ -27,7 +27,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
                 connection.Open();
                 command.Connection = connection;
                 //selecciona todos los cargos
-                command.CommandText = "SELECT * FROM piso";
+                command.CommandText = "SELECT * FROM estado_habitacion";
 
                 using (var reader = command.ExecuteReader())
                 {

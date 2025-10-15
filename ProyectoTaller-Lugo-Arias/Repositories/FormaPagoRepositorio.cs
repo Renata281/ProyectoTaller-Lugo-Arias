@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace ProyectoTaller_Lugo_Arias.Repositories
 {
-    internal class FormaPagoRepositorio : BaseRepositorio, IFormaPagoRepositorio
+    public class FormaPagoRepositorio : BaseRepositorio, IFormaPagoRepositorio
     {
         //constructor
         public FormaPagoRepositorio(string connectionString)
@@ -27,7 +27,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
                 connection.Open();
                 command.Connection = connection;
                 //selecciona todos los cargos
-                command.CommandText = "SELECT * FROM piso";
+                command.CommandText = "SELECT * FROM forma_pago";
 
                 using (var reader = command.ExecuteReader())
                 {
