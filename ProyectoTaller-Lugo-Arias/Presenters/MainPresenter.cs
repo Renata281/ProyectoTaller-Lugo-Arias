@@ -1,5 +1,5 @@
 ﻿using ProyectoTaller_Lugo_Arias.Models;
-using ProyectoTaller_Lugo_Arias.Repositories;
+using ProyectoTaller_Lugo_Arias.Repositorio;
 using ProyectoTaller_Lugo_Arias.Repositorio;
 using ProyectoTaller_Lugo_Arias.Views;
 using System;

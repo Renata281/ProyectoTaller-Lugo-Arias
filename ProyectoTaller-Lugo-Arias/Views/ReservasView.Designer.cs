@@ -30,7 +30,7 @@
         {
             panel1 = new Panel();
             bBuscar = new Button();
-            textBox4 = new TextBox();
+            txtSearch = new TextBox();
             lMotorEmpleados = new Label();
             lReservas = new Label();
             tabControl1 = new TabControl();
@@ -47,29 +47,28 @@
             dgvFinalizadas = new DataGridView();
             lReservasFin = new Label();
             tpNuevaReserva = new TabPage();
-            comboBox3 = new ComboBox();
+            cbTipoHab = new ComboBox();
             lTipoHabt = new Label();
             bConfirmar = new Button();
             panel2 = new Panel();
-            comboBox2 = new ComboBox();
+            cbFPago = new ComboBox();
             lMetodoPago = new Label();
-            textBox2 = new TextBox();
+            tbMonto = new TextBox();
             lMontoTotal = new Label();
-            textBox3 = new TextBox();
+            tbCantPers = new TextBox();
             label3 = new Label();
             bCancelar = new Button();
-            bCalcularPrecio = new Button();
-            textBox1 = new TextBox();
-            comboBox1 = new ComboBox();
-            dateTimePicker2 = new DateTimePicker();
-            dateTimePicker1 = new DateTimePicker();
+            tbCliente = new TextBox();
+            cbHabitacion = new ComboBox();
+            dtFechaSalida = new DateTimePicker();
+            dtFechaIngreso = new DateTimePicker();
             label5 = new Label();
             lFechaSalida = new Label();
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
-            tabPage1 = new TabPage();
-            dataGridView1 = new DataGridView();
+            tpPendientes = new TabPage();
+            dgvPendientes = new DataGridView();
             label1 = new Label();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
@@ -81,15 +80,15 @@
             ((System.ComponentModel.ISupportInitialize)dgvFinalizadas).BeginInit();
             tpNuevaReserva.SuspendLayout();
             panel2.SuspendLayout();
-            tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tpPendientes.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPendientes).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
             panel1.Controls.Add(bBuscar);
-            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(lMotorEmpleados);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -106,14 +105,14 @@
             bBuscar.Text = "Buscar";
             bBuscar.UseVisualStyleBackColor = true;
             // 
-            // textBox4
+            // txtSearch
             // 
-            textBox4.BackColor = SystemColors.Control;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(28, 29);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(534, 16);
-            textBox4.TabIndex = 2;
+            txtSearch.BackColor = SystemColors.Control;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Location = new Point(28, 29);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(534, 16);
+            txtSearch.TabIndex = 2;
             // 
             // lMotorEmpleados
             // 
@@ -145,12 +144,12 @@
             tabControl1.Controls.Add(tpActivos);
             tabControl1.Controls.Add(tpFinalizados);
             tabControl1.Controls.Add(tpNuevaReserva);
-            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tpPendientes);
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 134);
+            tabControl1.Location = new Point(0, 123);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(785, 485);
+            tabControl1.Size = new Size(785, 496);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -164,7 +163,7 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(777, 451);
+            tpTodos.Size = new Size(777, 462);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
@@ -206,7 +205,7 @@
             dgvTodos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvTodos.Location = new Point(3, 70);
             dgvTodos.Name = "dgvTodos";
-            dgvTodos.Size = new Size(636, 378);
+            dgvTodos.Size = new Size(636, 375);
             dgvTodos.TabIndex = 4;
             // 
             // lReservasTodas
@@ -229,7 +228,7 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(777, 478);
+            tpActivos.Size = new Size(777, 462);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
             // 
@@ -263,7 +262,7 @@
             tpFinalizados.Location = new Point(4, 30);
             tpFinalizados.Name = "tpFinalizados";
             tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(777, 478);
+            tpFinalizados.Size = new Size(777, 462);
             tpFinalizados.TabIndex = 2;
             tpFinalizados.Text = "Finalizados";
             // 
@@ -292,18 +291,17 @@
             // tpNuevaReserva
             // 
             tpNuevaReserva.BackColor = SystemColors.Control;
-            tpNuevaReserva.Controls.Add(comboBox3);
+            tpNuevaReserva.Controls.Add(cbTipoHab);
             tpNuevaReserva.Controls.Add(lTipoHabt);
             tpNuevaReserva.Controls.Add(bConfirmar);
             tpNuevaReserva.Controls.Add(panel2);
-            tpNuevaReserva.Controls.Add(textBox3);
+            tpNuevaReserva.Controls.Add(tbCantPers);
             tpNuevaReserva.Controls.Add(label3);
             tpNuevaReserva.Controls.Add(bCancelar);
-            tpNuevaReserva.Controls.Add(bCalcularPrecio);
-            tpNuevaReserva.Controls.Add(textBox1);
-            tpNuevaReserva.Controls.Add(comboBox1);
-            tpNuevaReserva.Controls.Add(dateTimePicker2);
-            tpNuevaReserva.Controls.Add(dateTimePicker1);
+            tpNuevaReserva.Controls.Add(tbCliente);
+            tpNuevaReserva.Controls.Add(cbHabitacion);
+            tpNuevaReserva.Controls.Add(dtFechaSalida);
+            tpNuevaReserva.Controls.Add(dtFechaIngreso);
             tpNuevaReserva.Controls.Add(label5);
             tpNuevaReserva.Controls.Add(lFechaSalida);
             tpNuevaReserva.Controls.Add(lFechaIngreso);
@@ -312,18 +310,18 @@
             tpNuevaReserva.Location = new Point(4, 30);
             tpNuevaReserva.Name = "tpNuevaReserva";
             tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(777, 451);
+            tpNuevaReserva.Size = new Size(777, 462);
             tpNuevaReserva.TabIndex = 3;
             tpNuevaReserva.Text = "Nueva Reserva";
             // 
-            // comboBox3
+            // cbTipoHab
             // 
-            comboBox3.BackColor = SystemColors.Control;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(24, 360);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(254, 29);
-            comboBox3.TabIndex = 20;
+            cbTipoHab.BackColor = SystemColors.Control;
+            cbTipoHab.FormattingEnabled = true;
+            cbTipoHab.Location = new Point(24, 360);
+            cbTipoHab.Name = "cbTipoHab";
+            cbTipoHab.Size = new Size(254, 29);
+            cbTipoHab.TabIndex = 20;
             // 
             // lTipoHabt
             // 
@@ -353,23 +351,23 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.InactiveCaption;
-            panel2.Controls.Add(comboBox2);
+            panel2.Controls.Add(cbFPago);
             panel2.Controls.Add(lMetodoPago);
-            panel2.Controls.Add(textBox2);
+            panel2.Controls.Add(tbMonto);
             panel2.Controls.Add(lMontoTotal);
             panel2.Location = new Point(424, 159);
             panel2.Name = "panel2";
             panel2.Size = new Size(298, 187);
             panel2.TabIndex = 17;
             // 
-            // comboBox2
+            // cbFPago
             // 
-            comboBox2.BackColor = SystemColors.Control;
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(19, 122);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(263, 29);
-            comboBox2.TabIndex = 13;
+            cbFPago.BackColor = SystemColors.Control;
+            cbFPago.FormattingEnabled = true;
+            cbFPago.Location = new Point(19, 122);
+            cbFPago.Name = "cbFPago";
+            cbFPago.Size = new Size(263, 29);
+            cbFPago.TabIndex = 13;
             // 
             // lMetodoPago
             // 
@@ -382,13 +380,13 @@
             lMetodoPago.TabIndex = 14;
             lMetodoPago.Text = "Método de Pago";
             // 
-            // textBox2
+            // tbMonto
             // 
-            textBox2.BackColor = SystemColors.Control;
-            textBox2.Location = new Point(19, 45);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(263, 29);
-            textBox2.TabIndex = 12;
+            tbMonto.BackColor = SystemColors.Control;
+            tbMonto.Location = new Point(19, 45);
+            tbMonto.Name = "tbMonto";
+            tbMonto.Size = new Size(263, 29);
+            tbMonto.TabIndex = 12;
             // 
             // lMontoTotal
             // 
@@ -401,13 +399,13 @@
             lMontoTotal.TabIndex = 5;
             lMontoTotal.Text = "Monto total";
             // 
-            // textBox3
+            // tbCantPers
             // 
-            textBox3.BackColor = SystemColors.Control;
-            textBox3.Location = new Point(24, 159);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(254, 29);
-            textBox3.TabIndex = 16;
+            tbCantPers.BackColor = SystemColors.Control;
+            tbCantPers.Location = new Point(24, 159);
+            tbCantPers.Name = "tbCantPers";
+            tbCantPers.Size = new Size(254, 29);
+            tbCantPers.TabIndex = 16;
             // 
             // label3
             // 
@@ -434,55 +432,41 @@
             bCancelar.Text = "Cancelar";
             bCancelar.UseVisualStyleBackColor = false;
             // 
-            // bCalcularPrecio
+            // tbCliente
             // 
-            bCalcularPrecio.BackColor = Color.DarkSlateGray;
-            bCalcularPrecio.FlatAppearance.BorderSize = 0;
-            bCalcularPrecio.FlatStyle = FlatStyle.Flat;
-            bCalcularPrecio.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bCalcularPrecio.ForeColor = SystemColors.InactiveBorder;
-            bCalcularPrecio.Location = new Point(77, 409);
-            bCalcularPrecio.Name = "bCalcularPrecio";
-            bCalcularPrecio.Size = new Size(137, 31);
-            bCalcularPrecio.TabIndex = 10;
-            bCalcularPrecio.Text = "Calcular precio";
-            bCalcularPrecio.UseVisualStyleBackColor = false;
+            tbCliente.BackColor = SystemColors.Control;
+            tbCliente.Location = new Point(24, 93);
+            tbCliente.Name = "tbCliente";
+            tbCliente.Size = new Size(254, 29);
+            tbCliente.TabIndex = 9;
             // 
-            // textBox1
+            // cbHabitacion
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.Location = new Point(24, 93);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(254, 29);
-            textBox1.TabIndex = 9;
+            cbHabitacion.BackColor = SystemColors.Control;
+            cbHabitacion.FormattingEnabled = true;
+            cbHabitacion.Location = new Point(424, 93);
+            cbHabitacion.Name = "cbHabitacion";
+            cbHabitacion.Size = new Size(254, 29);
+            cbHabitacion.TabIndex = 8;
             // 
-            // comboBox1
+            // dtFechaSalida
             // 
-            comboBox1.BackColor = SystemColors.Control;
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(424, 93);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(254, 29);
-            comboBox1.TabIndex = 8;
+            dtFechaSalida.CalendarMonthBackground = SystemColors.Control;
+            dtFechaSalida.CalendarTitleBackColor = SystemColors.ButtonShadow;
+            dtFechaSalida.Format = DateTimePickerFormat.Short;
+            dtFechaSalida.Location = new Point(24, 290);
+            dtFechaSalida.Name = "dtFechaSalida";
+            dtFechaSalida.Size = new Size(254, 29);
+            dtFechaSalida.TabIndex = 7;
             // 
-            // dateTimePicker2
+            // dtFechaIngreso
             // 
-            dateTimePicker2.CalendarMonthBackground = SystemColors.Control;
-            dateTimePicker2.CalendarTitleBackColor = SystemColors.ButtonShadow;
-            dateTimePicker2.Format = DateTimePickerFormat.Short;
-            dateTimePicker2.Location = new Point(24, 290);
-            dateTimePicker2.Name = "dateTimePicker2";
-            dateTimePicker2.Size = new Size(254, 29);
-            dateTimePicker2.TabIndex = 7;
-            // 
-            // dateTimePicker1
-            // 
-            dateTimePicker1.CalendarMonthBackground = SystemColors.Control;
-            dateTimePicker1.Format = DateTimePickerFormat.Short;
-            dateTimePicker1.Location = new Point(24, 221);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.Size = new Size(254, 29);
-            dateTimePicker1.TabIndex = 6;
+            dtFechaIngreso.CalendarMonthBackground = SystemColors.Control;
+            dtFechaIngreso.Format = DateTimePickerFormat.Short;
+            dtFechaIngreso.Location = new Point(24, 221);
+            dtFechaIngreso.Name = "dtFechaIngreso";
+            dtFechaIngreso.Size = new Size(254, 29);
+            dtFechaIngreso.TabIndex = 6;
             // 
             // label5
             // 
@@ -539,28 +523,28 @@
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nueva Reserva";
             // 
-            // tabPage1
+            // tpPendientes
             // 
-            tabPage1.BackColor = SystemColors.Control;
-            tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Controls.Add(label1);
-            tabPage1.Location = new Point(4, 30);
-            tabPage1.Name = "tabPage1";
-            tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(777, 478);
-            tabPage1.TabIndex = 4;
-            tabPage1.Text = "Pendientes";
+            tpPendientes.BackColor = SystemColors.Control;
+            tpPendientes.Controls.Add(dgvPendientes);
+            tpPendientes.Controls.Add(label1);
+            tpPendientes.Location = new Point(4, 30);
+            tpPendientes.Name = "tpPendientes";
+            tpPendientes.Padding = new Padding(3);
+            tpPendientes.Size = new Size(777, 462);
+            tpPendientes.TabIndex = 4;
+            tpPendientes.Text = "Pendientes";
             // 
-            // dataGridView1
+            // dgvPendientes
             // 
-            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(3, 77);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(771, 325);
-            dataGridView1.TabIndex = 6;
+            dgvPendientes.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvPendientes.BackgroundColor = SystemColors.InactiveCaption;
+            dgvPendientes.BorderStyle = BorderStyle.None;
+            dgvPendientes.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvPendientes.Location = new Point(3, 77);
+            dgvPendientes.Name = "dgvPendientes";
+            dgvPendientes.Size = new Size(771, 325);
+            dgvPendientes.TabIndex = 6;
             // 
             // label1
             // 
@@ -600,9 +584,9 @@
             tpNuevaReserva.PerformLayout();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            tabPage1.ResumeLayout(false);
-            tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tpPendientes.ResumeLayout(false);
+            tpPendientes.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvPendientes).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -622,16 +606,15 @@
         private Label lFechaIngreso;
         private Label label2;
         private Label lNuevaReserva;
-        private DateTimePicker dateTimePicker2;
-        private DateTimePicker dateTimePicker1;
-        private ComboBox comboBox1;
+        private DateTimePicker dtFechaSalida;
+        private DateTimePicker dtFechaIngreso;
+        private ComboBox cbHabitacion;
         private Button bCancelar;
-        private Button bCalcularPrecio;
-        private TextBox textBox1;
+        private TextBox tbCliente;
         private Label lMetodoPago;
-        private ComboBox comboBox2;
-        private TextBox textBox2;
-        private TextBox textBox3;
+        private ComboBox cbFPago;
+        private TextBox tbMonto;
+        private TextBox tbCantPers;
         private Label label3;
         private Button bConfirmar;
         private Panel panel2;
@@ -642,15 +625,15 @@
         private Label lReservasAct;
         private DataGridView dgvActivos;
         private Label lMotorEmpleados;
-        private TextBox textBox4;
+        private TextBox txtSearch;
         private Button bBuscar;
         private Button bNuevo;
         private Button bEditar;
         private Button bEliminar;
-        private ComboBox comboBox3;
+        private ComboBox cbTipoHab;
         private Label lTipoHabt;
-        private TabPage tabPage1;
-        private DataGridView dataGridView1;
+        private TabPage tpPendientes;
+        private DataGridView dgvPendientes;
         private Label label1;
     }
 }

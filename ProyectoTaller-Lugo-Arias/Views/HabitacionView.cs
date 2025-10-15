@@ -247,10 +247,13 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
         public void SetTipoHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoList)
         {
-            cbTipo.DataSource = null; // Limpia por si ya tenía algo cargado
+            cbTipo.DataBindings.Clear();
+            cbTipo.DataSource = null;
+            cbTipo.Items.Clear();
+
             cbTipo.DataSource = tipoList.ToList();
-            cbTipo.DisplayMember = "Tipo";     // Nombre visible
-            cbTipo.ValueMember = "Tipo";       //se guarda el tipo
+            cbTipo.DisplayMember = "Tipo";         // se muestra el tipo (ej: "Suite")
+            cbTipo.ValueMember = "Descripcion";    // opcionalmente podés guardar la descripción
         }
 
         public void SetPisosListComboBox(IEnumerable<PisoModel> pisoList)

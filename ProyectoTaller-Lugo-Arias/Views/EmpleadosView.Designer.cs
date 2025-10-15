@@ -136,10 +136,10 @@
             tabControl1.Controls.Add(tpInactivos);
             tabControl1.Controls.Add(tpNuevoEmpleado);
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 155);
+            tabControl1.Location = new Point(0, 144);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(790, 427);
+            tabControl1.Size = new Size(790, 438);
             tabControl1.TabIndex = 1;
             // 
             // tpTodos
@@ -154,14 +154,14 @@
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(782, 393);
+            tpTodos.Size = new Size(782, 404);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
             // bCerrar
             // 
             bCerrar.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            bCerrar.Location = new Point(663, 446);
+            bCerrar.Location = new Point(663, 457);
             bCerrar.Name = "bCerrar";
             bCerrar.Size = new Size(99, 31);
             bCerrar.TabIndex = 8;
@@ -206,7 +206,7 @@
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(3, 58);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(641, 433);
+            dataGridView1.Size = new Size(641, 444);
             dataGridView1.TabIndex = 4;
             // 
             // lTodosEmpleados
@@ -310,7 +310,7 @@
             tpNuevoEmpleado.Location = new Point(4, 30);
             tpNuevoEmpleado.Name = "tpNuevoEmpleado";
             tpNuevoEmpleado.Padding = new Padding(3);
-            tpNuevoEmpleado.Size = new Size(782, 393);
+            tpNuevoEmpleado.Size = new Size(782, 404);
             tpNuevoEmpleado.TabIndex = 3;
             tpNuevoEmpleado.Text = "Nuevo Empleado";
             // 
