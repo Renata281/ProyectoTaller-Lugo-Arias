@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace ProyectoTaller_Lugo_Arias.Repositories
+namespace ProyectoTaller_Lugo_Arias.Repositorio
 {
     public class CargoRepositorio : BaseRepositorio, ICargoRepositorio
     {

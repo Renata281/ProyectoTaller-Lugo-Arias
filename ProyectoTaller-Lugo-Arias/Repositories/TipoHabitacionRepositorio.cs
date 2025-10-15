@@ -7,8 +7,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using ProyectoTaller_Lugo_Arias.Repositorio;
 
-namespace ProyectoTaller_Lugo_Arias.Repositories
+
+namespace ProyectoTaller_Lugo_Arias.Repositorio
 {
     public class TipoHabitacionRepositorio : BaseRepositorio, ITipoHabitacionRepositorio
     {
@@ -21,7 +23,17 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
         //metodos
         public void Add(TipoHabitacionModel tipoHabitacion)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = "insert into  tipo de habitacion(descripcion, tipo) values( @descripcion, @tipo)";
+                command.Parameters.Add("@descripcion", SqlDbType.VarChar, 100).Value = tipoHabitacion.Descripcion;
+                command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = tipoHabitacion.Tipo;
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public void Update(TipoHabitacionModel tipoHabitacion)
@@ -31,7 +43,17 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
 
         public void Delete(string tipo)
         {
-            throw new NotImplementedException();
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+                command.CommandText = @"delete from tipo de habitacion
+                                      where tipo=@tipo ";
+                command.Parameters.Add("@tipo", SqlDbType.VarChar, 50).Value = tipo;
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public IEnumerable<TipoHabitacionModel> GetAll()
@@ -59,6 +81,32 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
             }
             return tipoHabitacionList;
         }
+        public void Edit(TipoHabitacionModel tipohabitacionesModels)
+        {
+
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand())
+            {
+                connection.Open();
+                command.Connection = connection;
+
+                var camposSet = new List<string>{
+
+                    "tipo = @tipo",
+                    "descripcion = @descripcion",
+                     };
+
+                string query = $"UPDATE tipo habitacion SET {string.Join(", ", camposSet)} WHERE tipo = @tipo";
+                command.CommandText = query;
+;
+                command.Parameters.Add("@descripcion", SqlDbType.NVarChar, 200).Value = tipohabitacionesModels.Descripcion;
+                command.Parameters.Add("@tipo", SqlDbType.NVarChar, 100).Value = tipohabitacionesModels.Tipo;
+                command.ExecuteNonQuery();
+
+            }
+
+        }
+
 
         public IEnumerable<TipoHabitacionModel> GetByValue(string valorBusqueda)
         {
@@ -91,5 +139,29 @@ namespace ProyectoTaller_Lugo_Arias.Repositories
             return tipoHabitacionList;
         }
 
+        public IEnumerable<ReservaModel> GetAllActivas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ReservaModel> GetAllPendientes()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<ReservaModel> GetAllFinalizadas()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ReservaModel GetById(string tipo)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TipoHabitacionModel> GetHabitacionesDisponibles(string tipo, int cant_personas, DateTime fecha_ingreso, DateTime fecha_salida)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

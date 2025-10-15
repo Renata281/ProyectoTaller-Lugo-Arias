@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ProyectoTaller_Lugo_Arias.Repositories
+namespace ProyectoTaller_Lugo_Arias.Repositorio
 {
     public abstract class BaseRepositorio
     {

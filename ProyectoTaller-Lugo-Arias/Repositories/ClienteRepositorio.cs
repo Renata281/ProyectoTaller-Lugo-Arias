@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Configuration;
 
-namespace ProyectoTaller_Lugo_Arias.Repositories
+namespace ProyectoTaller_Lugo_Arias.Repositorio
 {
     public class ClienteRepositorio : BaseRepositorio, IClienteRepositorio
     {

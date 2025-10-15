@@ -1,11 +1,13 @@
-﻿using System;
+﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.View;
+using ProyectoTaller_Lugo_Arias.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
-using ProyectoTaller_Lugo_Arias.Models;
-using ProyectoTaller_Lugo_Arias.Views;
-using System.Security.Cryptography;
+using ProyectoTaller_Lugo_Arias.Repositorio;
 
 namespace ProyectoTaller_Lugo_Arias.Presenters
 {
@@ -16,6 +18,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private ITipoHabitacionRepositorio tipoHabitacionRepositorio;
         private BindingSource tipoHabitacionBindingSource;
         private IEnumerable<TipoHabitacionModel> tipoHabitacionList;
+
         public TipoHabitacionPresenter(ITipoHabitacionView view, ITipoHabitacionRepositorio tipoHabitacionRepositorio)
         {
             this.tipoHabitacionBindingSource = new BindingSource();
@@ -40,36 +43,104 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             tipoHabitacionList = tipoHabitacionRepositorio.GetAll();
             tipoHabitacionBindingSource.DataSource = tipoHabitacionList; //establece el origen de datos del enlace
+
         }
 
         private void CancelarAction(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            CleanViewFields();
+        }
+
+        private void CleanViewFields()
+        {
+            view.tipo = " ";
+            view.Descripcion = " ";
+            view.tipo = string.Empty;
+            view.Descripcion = string.Empty;
+            view.IsEditar = false;
+            view.IsNuevo = true;
+
         }
 
         private void GuardarTipoHabitacion(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var tipoHabitacion = new TipoHabitacionModel
+                {
+                    
+                    Tipo = view.tipo,
+                    Descripcion = view.Descripcion,
+                    
+                };
+
+                if (view.IsEditar)
+                {
+                    tipoHabitacionRepositorio.Edit(tipoHabitacion);
+                    view.Mensaje = "Tipo de habitacion actualizada correctamente.";
+                }
+                else
+                {
+                    tipoHabitacionRepositorio.Add(tipoHabitacion);
+                    view.Mensaje = "Tipo de habitacion agregada correctamente.";
+                }
+
+                view.IsNuevo = true;
+                LoadAllTipoHabitacionList();
+                CleanViewFields();
+            }
+            catch (Exception ex)
+            {
+                view.IsNuevo = false;
+                view.Mensaje = $"Error al guardar el tipo de habitacion : {ex.Message}";
+            }
         }
 
         private void DeleteSelectedTipoHabitacion(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var tipoHabitacion = (TipoHabitacionModel)tipoHabitacionBindingSource.Current;
+                tipoHabitacionRepositorio.Delete(tipoHabitacion.Tipo);
+                view.IsNuevo = true;
+                view.Mensaje = "Tipo habitacion eliminada correctamente";
+                LoadAllTipoHabitacionList();
+            }
+            catch (Exception ex)
+            {
+                view.IsNuevo = false;
+                view.Mensaje = "Ocurrio un error, no se pudo eliminar el tipo de habitacion ";
+            }
         }
 
         private void LoadSelectedTipoHabitacionToEdit(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            var tipoHabitacion = (TipoHabitacionModel)tipoHabitacionBindingSource.Current;
+
+            view.tipo = tipoHabitacion.Tipo.ToString();
+            view.Descripcion = tipoHabitacion.Descripcion.ToString();
+            view.IsEditar = true;
         }
 
         private void AgregarTipoHabitacion(object? sender, EventArgs e)
-        {
-            throw new NotImplementedException();
+        { 
+            view.IsEditar = false;
         }
 
         private void BuscarTipoHabitacion(object? sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            bool emptyValue = string.IsNullOrWhiteSpace(this.view.Buscar);
+
+            if (!emptyValue)
+            {
+                tipoHabitacionList = tipoHabitacionRepositorio.GetByValue(this.view.Buscar);
+            }
+            else
+            {
+                tipoHabitacionList = tipoHabitacionRepositorio.GetAll();
+            }
+
+            tipoHabitacionBindingSource.DataSource = tipoHabitacionList;
         }
     }
 }
