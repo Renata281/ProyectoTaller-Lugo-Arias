@@ -28,17 +28,12 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into  tipo de habitacion(descripcion, tipo) values( @descripcion, @tipo)";
-                command.Parameters.Add("@descripcion", SqlDbType.VarChar, 100).Value = tipoHabitacion.Descripcion;
+                command.CommandText = "insert into  tipo_habitacion(descripcion, tipo) values( @descripcion, @tipo)";
+                command.Parameters.Add("@descripcion", SqlDbType.VarChar, 300).Value = tipoHabitacion.Descripcion;
                 command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = tipoHabitacion.Tipo;
                 command.ExecuteNonQuery();
 
             }
-        }
-
-        public void Update(TipoHabitacionModel tipoHabitacion)
-        {
-            throw new NotImplementedException();
         }
 
         public void Delete(string tipo)
@@ -48,9 +43,9 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"delete from tipo de habitacion
+                command.CommandText = @"delete from tipo_habitacion
                                       where tipo=@tipo ";
-                command.Parameters.Add("@tipo", SqlDbType.VarChar, 50).Value = tipo;
+                command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = tipo;
                 command.ExecuteNonQuery();
 
             }
@@ -93,13 +88,13 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 var camposSet = new List<string>{
 
                     "tipo = @tipo",
-                    "descripcion = @descripcion",
+                    "descripcion = @descripcion"
                      };
 
-                string query = $"UPDATE tipo habitacion SET {string.Join(", ", camposSet)} WHERE tipo = @tipo";
+                string query = $"UPDATE tipo_habitacion SET {string.Join(", ", camposSet)} WHERE tipo = @tipo";
                 command.CommandText = query;
 ;
-                command.Parameters.Add("@descripcion", SqlDbType.NVarChar, 200).Value = tipohabitacionesModels.Descripcion;
+                command.Parameters.Add("@descripcion", SqlDbType.NVarChar, 300).Value = tipohabitacionesModels.Descripcion;
                 command.Parameters.Add("@tipo", SqlDbType.NVarChar, 100).Value = tipohabitacionesModels.Tipo;
                 command.ExecuteNonQuery();
 
@@ -139,29 +134,5 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             return tipoHabitacionList;
         }
 
-        public IEnumerable<ReservaModel> GetAllActivas()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<ReservaModel> GetAllPendientes()
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<ReservaModel> GetAllFinalizadas()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ReservaModel GetById(string tipo)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<TipoHabitacionModel> GetHabitacionesDisponibles(string tipo, int cant_personas, DateTime fecha_ingreso, DateTime fecha_salida)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

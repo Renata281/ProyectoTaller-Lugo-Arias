@@ -55,33 +55,27 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             view.tipo = " ";
             view.Descripcion = " ";
-            view.tipo = string.Empty;
-            view.Descripcion = string.Empty;
-            view.IsEditar = false;
-            view.IsNuevo = true;
 
         }
 
         private void GuardarTipoHabitacion(object? sender, EventArgs e)
         {
+            var model = new TipoHabitacionModel();
             try
             {
-                var tipoHabitacion = new TipoHabitacionModel
-                {
-                    
-                    Tipo = view.tipo,
-                    Descripcion = view.Descripcion,
-                    
-                };
+
+                model.Tipo = view.tipo;
+                model.Descripcion = view.Descripcion;
+                 
 
                 if (view.IsEditar)
                 {
-                    tipoHabitacionRepositorio.Edit(tipoHabitacion);
+                    tipoHabitacionRepositorio.Edit(model);
                     view.Mensaje = "Tipo de habitacion actualizada correctamente.";
                 }
                 else
                 {
-                    tipoHabitacionRepositorio.Add(tipoHabitacion);
+                    tipoHabitacionRepositorio.Add(model);
                     view.Mensaje = "Tipo de habitacion agregada correctamente.";
                 }
 
@@ -92,7 +86,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             catch (Exception ex)
             {
                 view.IsNuevo = false;
-                view.Mensaje = $"Error al guardar el tipo de habitacion : {ex.Message}";
+                view.Mensaje =ex.Message;
             }
         }
 
@@ -103,13 +97,13 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                 var tipoHabitacion = (TipoHabitacionModel)tipoHabitacionBindingSource.Current;
                 tipoHabitacionRepositorio.Delete(tipoHabitacion.Tipo);
                 view.IsNuevo = true;
-                view.Mensaje = "Tipo habitacion eliminada correctamente";
+                view.Mensaje = "Tipo habitación eliminada correctamente";
                 LoadAllTipoHabitacionList();
             }
             catch (Exception ex)
             {
                 view.IsNuevo = false;
-                view.Mensaje = "Ocurrio un error, no se pudo eliminar el tipo de habitacion ";
+                view.Mensaje = "Ocurrio un error, no se pudo eliminar el tipo de habitación ";
             }
         }
 
@@ -117,8 +111,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             var tipoHabitacion = (TipoHabitacionModel)tipoHabitacionBindingSource.Current;
 
-            view.tipo = tipoHabitacion.Tipo.ToString();
-            view.Descripcion = tipoHabitacion.Descripcion.ToString();
+            view.tipo = tipoHabitacion.Tipo;
+            view.Descripcion = tipoHabitacion.Descripcion;
             view.IsEditar = true;
         }
 
