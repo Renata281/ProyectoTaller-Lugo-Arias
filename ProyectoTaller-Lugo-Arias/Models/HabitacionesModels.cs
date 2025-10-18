@@ -15,17 +15,18 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private int cant_camas;
         private float precio_unitario;
         private string descripcion;
-        private string tipo;
+        private int id_tipo;
         private int id_piso;
         private int id_estado;
         private string estado_descripcion;
         private int cant_personas;
+        private string tipo_descripcion;
 
-        [DisplayName ("Nro_habitacion")]
+        [DisplayName("Nro_habitacion")]
         [Required(ErrorMessage = "El número de habitación es obligatorio")]
         public int Nro_habitacion
-        { 
-            get { return nro_habitacion; }  
+        {
+            get { return nro_habitacion; }
             set { nro_habitacion = value; }
         }
 
@@ -35,60 +36,66 @@ namespace ProyectoTaller_Lugo_Arias.Models
         {
             get { return cant_camas; }
             set { cant_camas = value; }
-        
+
         }
 
         [DisplayName("Precio_unitario")]
         [Required(ErrorMessage = "El precio unitario es obligatorio")]
-        public float Precio_unitario 
+        public float Precio_unitario
         {
             get { return precio_unitario; }
-            set { precio_unitario = value; } 
+            set { precio_unitario = value; }
         }
 
         [DisplayName("Descripcion")]
         [Required(ErrorMessage = "La descripcion de la habitacion es obligatorio")]
-        [StringLength (150, MinimumLength = 4, ErrorMessage = "El campo descripcion es de 4 a 150 caracteres ")]
-        public string Descripcion 
+        [StringLength(150, MinimumLength = 4, ErrorMessage = "El campo descripcion es de 4 a 150 caracteres ")]
+        public string Descripcion
         {
-            get { return  descripcion; } 
-            set { descripcion = value; } 
+            get { return descripcion; }
+            set { descripcion = value; }
         }
 
         [DisplayName("Tipo")]
         [Required(ErrorMessage = "El tipo de habitación es obligatorio")]
-        public string Tipo 
-        { 
-            get { return tipo; }
-            set { tipo = value; } 
+        public int Id_tipo
+        {
+            get { return id_tipo; }
+            set { id_tipo = value; }
         }
 
         [DisplayName("Id_piso")]
         [Required(ErrorMessage = "El número de piso es obligatorio")]
-        public int Id_piso 
+        public int Id_piso
         {
-            get { return id_piso; } 
+            get { return id_piso; }
             set { id_piso = value; }
         }
 
         [DisplayName("Id_estado")]
         [Required(ErrorMessage = "El tipo de estado es obligatorio")]
-        public int Id_estado 
+        public int Id_estado
         {
-            get { return id_estado; } 
+            get { return id_estado; }
             set { id_estado = value; }
         }
 
-        public string Estado_descripcion 
-        { 
-            get { return estado_descripcion; } 
+        public string Estado_descripcion
+        {
+            get { return estado_descripcion; }
             set { estado_descripcion = value; }
         }
 
-        public int Cant_personas 
-        { 
-            get { return cant_personas; } 
+        public int Cant_personas
+        {
+            get { return cant_personas; }
             set { cant_personas = value; }
+        }
+
+        public string Tipo_descripcion
+        {
+            get { return tipo_descripcion; }
+            set { tipo_descripcion = value; }
         }
     }
 }

@@ -14,8 +14,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
         string Nombre { get; set; }
         string Apellido { get; set; }
         string Email { get; set; }
-        int Telefono { get; set; }
-        int Dni { get; set; }
+        long Telefono { get; set; }
+        long Dni { get; set; }
 
         string Buscar { get; set; }
         bool IsEditar { get; set; }

@@ -73,8 +73,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Id_cliente = 0;
             view.Nombre = " ";
             view.Apellido = " ";
-            view.Dni = 0;
-            view.Telefono = 0;
+            view.Dni = 0L;
+            view.Telefono = 0L;
             view.Email = " ";
         }
 
@@ -148,8 +148,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Id_cliente = cliente.Id_cliente;
             view.Nombre = cliente.Nombre;
             view.Apellido = cliente.Apellido;
-            view.Dni = cliente.Dni;
-            view.Telefono = cliente.Telefono;
+            view.Dni = (long)cliente.Dni;
+            view.Telefono = (long)cliente.Telefono;
             view.Email = cliente.Email;
             view.IsEditar = true;
         }

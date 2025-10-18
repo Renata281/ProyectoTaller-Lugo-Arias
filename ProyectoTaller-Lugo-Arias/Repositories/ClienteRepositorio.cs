@@ -29,8 +29,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 command.CommandText = "insert into cliente(nombre, apellido, dni, telefono, email) values(@nombre, @apellido, @dni, @telefono, @email)";
                 command.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = cliente.Nombre;
                 command.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = cliente.Apellido;
-                command.Parameters.Add("@dni", SqlDbType.Int).Value = cliente.Dni;
-                command.Parameters.Add("@telefono", SqlDbType.Int).Value = cliente.Telefono;
+                command.Parameters.Add("@dni", SqlDbType.BigInt).Value = cliente.Dni;
+                command.Parameters.Add("@telefono", SqlDbType.BigInt).Value = cliente.Telefono;
                 command.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = cliente.Email;
                 command.ExecuteNonQuery();
             }
@@ -77,8 +77,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 // Agregar parámetros comunes
                 command.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = cliente.Nombre;
                 command.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = cliente.Apellido;
-                command.Parameters.Add("@dni", SqlDbType.Int).Value = cliente.Dni;
-                command.Parameters.Add("@telefono", SqlDbType.Int).Value = cliente.Telefono;
+                command.Parameters.Add("@dni", SqlDbType.BigInt).Value = cliente.Dni;
+                command.Parameters.Add("@telefono", SqlDbType.BigInt).Value = cliente.Telefono;
                 command.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = cliente.Email;
                 command.Parameters.Add("@id", SqlDbType.Int).Value = cliente.Id_cliente;
 
@@ -103,8 +103,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     {
                         var clienteModel = new ClienteModel();
                         clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
-                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
-                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (long)reader["telefono"];
+                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (long)reader["dni"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
@@ -122,6 +122,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             var clienteList = new List<ClienteModel>();
             int id_cliente = int.TryParse(valorBusqueda, out var Id) ? Id : 0;
             string clienteNombre = valorBusqueda;
+            long dni = long.TryParse(valorBusqueda, out var Dni) ? Dni : 0;
 
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
@@ -129,10 +130,11 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 connection.Open();
                 command.Connection = connection;
                 //selecciona todos los usuarios ordenados por id_cliente descendente
-                command.CommandText = "SELECT c.* FROM cliente c WHERE (c.id_cliente=@id_cliente) OR (c.dni = @id) OR (c.telefono = @id) OR (c.nombre like @nombre + '%') OR (c.apellido like @nombre + '%') OR (c.email like @nombre + '%') ORDER BY u.id_cliente DESC";
+                command.CommandText = "SELECT c.* FROM cliente c WHERE (c.id_cliente=@id_cliente) OR (c.dni = @dni) OR (c.telefono = @dni) OR (c.nombre like @nombre + '%') OR (c.apellido like @nombre + '%') OR (c.email like @nombre + '%') ORDER BY c.id_cliente DESC";
 
                 command.Parameters.Add("@id_cliente", SqlDbType.Int).Value = id_cliente;
                 command.Parameters.Add("@nombre", SqlDbType.NVarChar, 50).Value = clienteNombre;
+                command.Parameters.Add("@dni", SqlDbType.BigInt).Value = dni;
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -140,8 +142,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     {
                         var clienteModel = new ClienteModel();
                         clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
-                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
-                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
+                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (long)reader["telefono"];
+                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (long)reader["dni"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
@@ -173,8 +175,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
-                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
-                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (long)reader["telefono"];
+                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (long)reader["dni"];
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
                         clienteModel.Estado = reader["estado"] as string ?? string.Empty;
                         //agregar a la lista
@@ -204,8 +206,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
-                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
-                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
+                        clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (long)reader["telefono"];
+                        clienteModel.Dni = reader["dni"] is DBNull ? 0 : (long)reader["dni"];
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
                         clienteModel.Estado = reader["estado"] as string ?? string.Empty;
                         //agregar a la lista

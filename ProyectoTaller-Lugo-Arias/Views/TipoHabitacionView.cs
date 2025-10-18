@@ -16,6 +16,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         private string mensaje;
         private bool isNuevo;
         private bool isEditar;
+        private int id_tipo_seleccionado;
 
         public TipoHabitacionView()
         {
@@ -94,13 +95,13 @@ namespace ProyectoTaller_Lugo_Arias.Views
             };
         }
 
-        public string tipo {
+        public string Tipo {
             get { return tbNombre.Text; }
             set { tbNombre.Text = value; }
         }
         public string Descripcion {
             get { return tbDescripcion.Text; }
-            set { tbNombre.Text = value; }
+            set { tbDescripcion.Text = value; }
         }
         public string Buscar
         {
@@ -122,6 +123,11 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
             get { return mensaje; }
             set { mensaje = value; }
+        }
+
+        public int Id_tipo {
+            get { return id_tipo_seleccionado; }
+            set { id_tipo_seleccionado = value; }
         }
 
         public event EventHandler BuscarEvent;

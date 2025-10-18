@@ -194,6 +194,11 @@ namespace ProyectoTaller_Lugo_Arias.Views
             set { tbMaxPers.Text = value; }
         }
 
+        public int Id_tipo {
+            get => throw new NotImplementedException();
+            set => throw new NotImplementedException();
+        }
+
         public event EventHandler SearchEvent;
         public event EventHandler AddNewEvent;
         public event EventHandler EditEvent;
@@ -247,13 +252,18 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
         public void SetTipoHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoList)
         {
-            cbTipo.DataBindings.Clear();
-            cbTipo.DataSource = null;
-            cbTipo.Items.Clear();
+            //limpia el combobox
+            cbEstado.DataSource = null;
+            cbEstado.Items.Clear();
 
-            cbTipo.DataSource = tipoList.ToList();
-            cbTipo.DisplayMember = "Tipo";         // se muestra el tipo (ej: "Suite")
-            cbTipo.ValueMember = "Descripcion";    // opcionalmente podés guardar la descripción
+            //crea una lista de pares clave-valor (id_estado, descripcion), para mostrar la descripcion pero guardar el id
+            var estado = tipoList.Select(e => new KeyValuePair<int, string>(e.Id_tipo, e.Tipo)).ToList();
+
+            //enlazamos la lista al combobox
+            cbEstado.DataSource = new BindingSource(tipoList, null);
+
+            cbTipo.DisplayMember = "Value";         
+            cbTipo.ValueMember = "Key";    
         }
 
         public void SetPisosListComboBox(IEnumerable<PisoModel> pisoList)

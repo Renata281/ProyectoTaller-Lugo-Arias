@@ -36,7 +36,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             }
         }
 
-        public void Delete(string tipo)
+        public void Delete(int id_tipo)
         {
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
@@ -44,8 +44,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = @"delete from tipo_habitacion
-                                      where tipo=@tipo ";
-                command.Parameters.Add("@tipo", SqlDbType.VarChar, 100).Value = tipo;
+                                      where id_tipo=@id_tipo ";
+                command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = id_tipo;
                 command.ExecuteNonQuery();
 
             }
@@ -67,6 +67,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     while (reader.Read())
                     {
                         var tipoHabitacionModel = new TipoHabitacionModel();
+                        tipoHabitacionModel.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         tipoHabitacionModel.Tipo = reader["tipo"] as string ?? string.Empty;
                         tipoHabitacionModel.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         //agregar a la lista
@@ -91,9 +92,9 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     "descripcion = @descripcion"
                      };
 
-                string query = $"UPDATE tipo_habitacion SET {string.Join(", ", camposSet)} WHERE tipo = @tipo";
+                string query = $"UPDATE tipo_habitacion SET {string.Join(", ", camposSet)} WHERE id_tipo = @id_tipo";
                 command.CommandText = query;
-;
+                command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = tipohabitacionesModels.Id_tipo;
                 command.Parameters.Add("@descripcion", SqlDbType.NVarChar, 300).Value = tipohabitacionesModels.Descripcion;
                 command.Parameters.Add("@tipo", SqlDbType.NVarChar, 100).Value = tipohabitacionesModels.Tipo;
                 command.ExecuteNonQuery();
@@ -107,16 +108,19 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
         {
             var tipoHabitacionList = new List<TipoHabitacionModel>();
             string tipoHabitacion = valorBusqueda;
+            int tipoId = int.TryParse(valorBusqueda, out var id) ? id : 0;
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"SELECT tipo, descripcion
-                                        FROM tipo_habitacion
-                                        WHERE tipo like @tipo + '%'";
+                command.CommandText = @"SELECT id_tipo, tipo, descripcion
+                                        FROM tipo_habitacion t
+                                        WHERE (t.id_tipo = @id) OR (t.tipo like @tipo + '%')";
 
-                command.Parameters.Add("@tipo", SqlDbType.NVarChar).Value = tipoHabitacion;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = tipoId;
+                command.Parameters.Add("@tipo", SqlDbType.NVarChar, 100).Value = tipoHabitacion;
 
 
                 using (var reader = command.ExecuteReader())
@@ -124,6 +128,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     while (reader.Read())
                     {
                         var tipoHabitacionModel = new TipoHabitacionModel();
+                        tipoHabitacionModel.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         tipoHabitacionModel.Tipo = reader["tipo"] as string ?? string.Empty;
                         tipoHabitacionModel.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         //agregar a la lista

@@ -146,15 +146,15 @@ namespace ProyectoTaller_Lugo_Arias.Views
             set { tbEmail.Text = value; }
         }
 
-        public int Dni
+        public long Dni
         {
-            get { return int.Parse(tbDni.Text); }
+            get { return long.Parse(tbDni.Text); }
             set { tbDni.Text = value.ToString(); }
         }
 
-        public int Telefono
+        public long Telefono
         {
-            get { return int.Parse(tbTelefono.Text); }
+            get { return long.Parse(tbTelefono.Text); }
             set { tbTelefono.Text = value.ToString(); }
         }
 

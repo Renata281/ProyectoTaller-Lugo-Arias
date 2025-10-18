@@ -10,7 +10,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
     public interface ITipoHabitacionView
     {
         //campos
-        string tipo { get; set; }
+        int Id_tipo { get; set; }
+        string Tipo { get; set; }
         string Descripcion { get; set; }
 
         string Buscar { get; set; }

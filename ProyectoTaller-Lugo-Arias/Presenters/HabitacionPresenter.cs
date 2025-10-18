@@ -108,8 +108,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Nro_habitacion = "0";
             view.Cant_camas = "0";
             view.Precio_unitario = "0";
-            view.Descripcion = "";
-            view.Tipo = "";
+            view.Descripcion = string.Empty;
+            view.Id_tipo = 1;
             view.Id_piso = "1";
             view.Id_estado = "1";
             view.Cant_personas = "0";
@@ -161,7 +161,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Cant_camas = hab.Cant_camas.ToString();
             view.Precio_unitario = hab.Precio_unitario.ToString();
             view.Descripcion = hab.Descripcion;
-            view.Tipo = hab.Tipo;
+            view.Id_tipo = hab.Id_tipo;
             view.Id_piso = hab.Id_piso.ToString();
             view.Id_estado = hab.Id_estado.ToString();
             view.IsEdit = true;

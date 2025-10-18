@@ -53,18 +53,19 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
         private void CleanViewFields()
         {
-            view.tipo = " ";
-            view.Descripcion = " ";
+            view.Tipo = string.Empty;
+            view.Descripcion = string.Empty;
 
         }
 
         private void GuardarTipoHabitacion(object? sender, EventArgs e)
         {
+           
             var model = new TipoHabitacionModel();
             try
             {
-
-                model.Tipo = view.tipo;
+                model.Id_tipo = view.Id_tipo;
+                model.Tipo = view.Tipo;
                 model.Descripcion = view.Descripcion;
                  
 
@@ -97,7 +98,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             try
             {
                 var tipoHabitacion = (TipoHabitacionModel)tipoHabitacionBindingSource.Current;
-                tipoHabitacionRepositorio.Delete(tipoHabitacion.Tipo);
+                tipoHabitacionRepositorio.Delete(tipoHabitacion.Id_tipo);
                 view.IsNuevo = true;
                 view.Mensaje = "Tipo habitación eliminada correctamente";
                 LoadAllTipoHabitacionList();
@@ -113,7 +114,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             var tipoHabitacion = (TipoHabitacionModel)tipoHabitacionBindingSource.Current;
 
-            view.tipo = tipoHabitacion.Tipo;
+            view.Id_tipo = tipoHabitacion.Id_tipo;
+            view.Tipo = tipoHabitacion.Tipo;
             view.Descripcion = tipoHabitacion.Descripcion;
             view.IsEditar = true;
         }

@@ -18,6 +18,7 @@ namespace ProyectoTaller_Lugo_Arias.View
         string Id_piso { get; set; }
         string Id_estado { get; set; }
         string Estado_descripcion { get; set; }
+        int Id_tipo { get; set; }
 
         string SearchValue { get; set; }
         bool IsEdit { get; set; }

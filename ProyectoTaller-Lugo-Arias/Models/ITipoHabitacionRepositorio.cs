@@ -10,7 +10,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
     {
         void Add(TipoHabitacionModel tipoHabitacion);
         void Edit(TipoHabitacionModel tipoHabitacion);
-        void Delete(string tipo);
+        void Delete(int id_tipo);
 
         IEnumerable<TipoHabitacionModel> GetAll();
         IEnumerable<TipoHabitacionModel> GetByValue(string valorBusqueda); //buscador

@@ -13,9 +13,16 @@ namespace ProyectoTaller_Lugo_Arias.Models
     public class TipoHabitacionModel
     {
         //campos
+        private int id_tipo;
         private string tipo;
         private string descripcion;
 
+
+        public int Id_tipo
+        {
+            get => id_tipo;
+            set => id_tipo = value;
+        }
 
         [DisplayName("Tipo")]
         [Required(ErrorMessage = "Es obligatorio el tipo")]
