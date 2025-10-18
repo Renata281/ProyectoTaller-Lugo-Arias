@@ -70,13 +70,15 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
                 if (view.IsEditar)
                 {
+                    new Common.ModelDataValidation().Validate(model);
                     tipoHabitacionRepositorio.Edit(model);
-                    view.Mensaje = "Tipo de habitacion actualizada correctamente.";
+                    view.Mensaje = "Tipo de habitación actualizada correctamente.";
                 }
                 else
                 {
+                    new Common.ModelDataValidation().Validate(model);
                     tipoHabitacionRepositorio.Add(model);
-                    view.Mensaje = "Tipo de habitacion agregada correctamente.";
+                    view.Mensaje = "Tipo de habitación agregada correctamente.";
                 }
 
                 view.IsNuevo = true;

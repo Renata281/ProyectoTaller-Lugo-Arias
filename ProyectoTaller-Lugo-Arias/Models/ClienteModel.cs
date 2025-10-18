@@ -18,6 +18,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private string email;
         private int telefono;
         private int dni;
+        private string estado;
 
         [DisplayName("Id_cliente")]
         public int Id_cliente
@@ -53,6 +54,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         }
 
         [Required(ErrorMessage = "El teléfono es obligatorio.")]
+        [Range(1000000000, 9999999999, ErrorMessage = "El telefono debe tener 10 dígitos.")]
         public int Telefono
         {
             get => telefono;
@@ -65,6 +67,12 @@ namespace ProyectoTaller_Lugo_Arias.Models
         {
             get => dni;
             set => dni = value;
+        }
+
+        public string Estado
+        {
+            get => estado;
+            set => estado = value;
         }
     }
 }

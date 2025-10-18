@@ -17,6 +17,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         //binding source para enlazar datos entre la vista y el modelo
         private BindingSource empleadosBindingSource;
         private IEnumerable<UsuarioModel> empleadosList;
+
         private BindingSource empleadosBindingSourceActived;
         private IEnumerable<UsuarioModel> empleadosListActived;
         private BindingSource empleadosBindingSourceDeleted;

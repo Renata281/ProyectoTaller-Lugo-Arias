@@ -30,8 +30,9 @@ namespace ProyectoTaller_Lugo_Arias.Views
         event EventHandler GuardarEvent;
         event EventHandler CancelarEvent;
 
-        void SetClienteListBindingSource(BindingSource clienteBindingSource);
-        void SetClientesListBindingSource(BindingSource clientesList);
+        void SetClienteListBindingSource(BindingSource clientesList);
+        void SetClientesListBindingSourceActive(BindingSource clientesBindingSourceActived);
+        void SetClientesListBindingSourceInactive(BindingSource clientesBindingSourceDeleted);
         void Show();
     }
 }

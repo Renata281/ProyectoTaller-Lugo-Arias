@@ -17,11 +17,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
         IEnumerable<ClienteModel> GetAllActive();
         IEnumerable<ClienteModel> GetAllInactive();
 
-        //retorna un usuario por su id
-        ClienteModel GetById(int Id);
-
         //retorna un usuario
         IEnumerable<ClienteModel> GetByValue(string valorBusqueda); //buscador
-        ClienteModel Login(string email, string password);
     }
 }

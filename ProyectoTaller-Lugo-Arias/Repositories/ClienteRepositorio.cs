@@ -26,13 +26,12 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into cliente(id_cliente,nombre, apellido, dni, telefono, email,) values(@id_cliente, @nombre, @apellido, @dni, @telefono, @email,)";
+                command.CommandText = "insert into cliente(nombre, apellido, dni, telefono, email) values(@nombre, @apellido, @dni, @telefono, @email)";
                 command.Parameters.Add("@nombre", SqlDbType.VarChar, 50).Value = cliente.Nombre;
                 command.Parameters.Add("@apellido", SqlDbType.VarChar, 50).Value = cliente.Apellido;
                 command.Parameters.Add("@dni", SqlDbType.Int).Value = cliente.Dni;
                 command.Parameters.Add("@telefono", SqlDbType.Int).Value = cliente.Telefono;
                 command.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = cliente.Email;
-                command.Parameters.Add("@id_cliente", SqlDbType.Int).Value = cliente.Id_cliente;
                 command.ExecuteNonQuery();
             }
         }
@@ -44,10 +43,10 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = @"update usuario
+                command.CommandText = @"update cliente
                                       set estado = @estado
-                                      where id_usuario=@id ";
-                command.Parameters.Add("@Id", SqlDbType.Int).Value = id_cliente;
+                                      where id_cliente = @id ";
+                command.Parameters.Add("@id", SqlDbType.Int).Value = id_cliente;
                 command.Parameters.Add("@estado", SqlDbType.VarChar, 100).Value = "Inactivo";
                 command.ExecuteNonQuery();
 
@@ -69,11 +68,10 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             "apellido = @apellido",
             "dni = @dni",
             "telefono = @telefono",
-            "email = @email",
-            "id_cliente = @id_cliente"
+            "email = @email"
         };
 
-                string query = $"UPDATE usuario SET {string.Join(", ", camposSet)} WHERE Id_cliente = @Id";
+                string query = $"UPDATE cliente SET {string.Join(", ", camposSet)} WHERE id_cliente = @id";
                 command.CommandText = query;
 
                 // Agregar parámetros comunes
@@ -82,8 +80,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 command.Parameters.Add("@dni", SqlDbType.Int).Value = cliente.Dni;
                 command.Parameters.Add("@telefono", SqlDbType.Int).Value = cliente.Telefono;
                 command.Parameters.Add("@email", SqlDbType.VarChar, 100).Value = cliente.Email;
-                command.Parameters.Add("@Id_cliente", SqlDbType.Int).Value = cliente.Id_cliente;
-                command.Parameters.Add("@Id", SqlDbType.Int).Value = cliente.Id_cliente;
+                command.Parameters.Add("@id", SqlDbType.Int).Value = cliente.Id_cliente;
 
                 command.ExecuteNonQuery();
             }
@@ -98,7 +95,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 connection.Open();
                 command.Connection = connection;
                 //selecciona todos los usuarios ordenados por id_usuario descendente
-                command.CommandText = "SELECT * FROM cliente";
+                command.CommandText = "SELECT * FROM cliente ORDER BY id_cliente DESC";
 
                 using (var reader = command.ExecuteReader())
                 {
@@ -111,6 +108,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
+                        clienteModel.Estado = reader["estado"] as string ?? string.Empty;
                         //agregar a la lista
                         clienteList.Add(clienteModel);
                     }
@@ -118,15 +116,11 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             }
             return clienteList;
         }
-        public ClienteModel GetById(int Id)
-        {
-            throw new NotImplementedException();
-        }
 
         public IEnumerable<ClienteModel> GetByValue(string valorBusqueda)
         {
             var clienteList = new List<ClienteModel>();
-            int Id_Cliente = int.TryParse(valorBusqueda, out var Id) ? Id : 0;
+            int id_cliente = int.TryParse(valorBusqueda, out var Id) ? Id : 0;
             string clienteNombre = valorBusqueda;
 
             using (var connection = new SqlConnection(connectionString))
@@ -134,10 +128,10 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             {
                 connection.Open();
                 command.Connection = connection;
-                //selecciona todos los usuarios ordenados por id_usuario descendente
-                command.CommandText = "SELECT * FROM cliente WHERE id_cliente=@id_cliente";
+                //selecciona todos los usuarios ordenados por id_cliente descendente
+                command.CommandText = "SELECT c.* FROM cliente c WHERE (c.id_cliente=@id_cliente) OR (c.dni = @id) OR (c.telefono = @id) OR (c.nombre like @nombre + '%') OR (c.apellido like @nombre + '%') OR (c.email like @nombre + '%') ORDER BY u.id_cliente DESC";
 
-                command.Parameters.Add("@Id_cliente", SqlDbType.Int).Value = Id_Cliente;
+                command.Parameters.Add("@id_cliente", SqlDbType.Int).Value = id_cliente;
                 command.Parameters.Add("@nombre", SqlDbType.NVarChar, 50).Value = clienteNombre;
 
                 using (var reader = command.ExecuteReader())
@@ -145,12 +139,13 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     while (reader.Read())
                     {
                         var clienteModel = new ClienteModel();
-                        clienteModel.Id_cliente = reader["Id_cliente"] is DBNull ? 0 : (int)reader["Id_cliente"];
+                        clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
                         clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
                         clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
+                        clienteModel.Estado = "Activo";
                         //agregar a la lista
                         clienteList.Add(clienteModel);
                     }
@@ -168,19 +163,20 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 connection.Open();
                 command.Connection = connection;
                 //selecciona todos los clientes ordenados por Id_cliente descendente
-                command.CommandText = "SELECT *, (SELECT TOP 1 c.descripcion FROM cargo c WHERE c.Id_cliente = u.Id_cliente) AS cargo_descripcion FROM usuario u WHERE u.estado = 'Activo' ORDER BY id_usuario DESC";
+                command.CommandText = "SELECT * FROM cliente c WHERE c.estado = 'Activo' ORDER BY id_cliente DESC";
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         var clienteModel = new ClienteModel();
-                        clienteModel.Id_cliente = reader["Id_cliente"] is DBNull ? 0 : (int)reader["Id_cliente"];
+                        clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
                         clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
                         clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
+                        clienteModel.Estado = reader["estado"] as string ?? string.Empty;
                         //agregar a la lista
                         clienteList.Add(clienteModel);
                     }
@@ -191,62 +187,36 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
         public IEnumerable<ClienteModel> GetAllInactive()
         {
-            var clientesList = new List<ClienteModel>();
+            var clienteList = new List<ClienteModel>();
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                //selecciona todos los usuarios ordenados por id_usuario descendente
-                command.CommandText = "SELECT *, (SELECT TOP 1 c.descripcion FROM cargo c WHERE c.Id_cliente = u.Id_cliente) AS cargo_descripcion FROM usuario u WHERE u.estado = 'Inactivo' ORDER BY id_usuario DESC";
+                //selecciona todos los clientes ordenados por Id_cliente descendente
+                command.CommandText = "SELECT * FROM cliente c WHERE c.estado = 'Inactivo' ORDER BY id_cliente DESC";
 
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
                     {
                         var clienteModel = new ClienteModel();
-                        clienteModel.Id_cliente = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
+                        clienteModel.Id_cliente = reader["id_cliente"] is DBNull ? 0 : (int)reader["id_cliente"];
                         clienteModel.Nombre = reader["nombre"] as string ?? string.Empty;
                         clienteModel.Apellido = reader["apellido"] as string ?? string.Empty;
                         clienteModel.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
                         clienteModel.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
                         clienteModel.Email = reader["email"] as string ?? string.Empty;
+                        clienteModel.Estado = reader["estado"] as string ?? string.Empty;
                         //agregar a la lista
-                        clientesList.Add(clienteModel);
+                        clienteList.Add(clienteModel);
                     }
                 }
             }
-            return clientesList;
+            return clienteList;
         }
 
-        public ClienteModel Login(string email, string password)
-        {
-            ClienteModel user = null;
-            using (var connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-                using (SqlCommand command = new SqlCommand("ClienteLogin", connection))
-                {
-                    command.CommandType = CommandType.StoredProcedure;
-                    command.Parameters.AddWithValue("@email", email);
-                    command.Parameters.AddWithValue("@pass", password);
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        user = new ClienteModel();
-                        while (reader.Read())
-                        {
-                            user.Id_cliente = reader["id_usuario"] is DBNull ? 0 : (int)reader["id_usuario"];
-                            user.Nombre = reader["nombre"] as string ?? string.Empty;
-                            user.Apellido = reader["apellido"] as string ?? string.Empty;
-                            user.Dni = reader["dni"] is DBNull ? 0 : (int)reader["dni"];
-                            user.Telefono = reader["telefono"] is DBNull ? 0 : (int)reader["telefono"];
-                            user.Email = reader["email"] as string ?? string.Empty;
-                        }
-                        return user;
-                    }
 
-                }
-            }
-        }
-    }
-}
+     }
+ }
+        

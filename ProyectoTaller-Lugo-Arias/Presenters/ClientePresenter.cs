@@ -16,22 +16,20 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private IClienteRepositorio clienteRepositorio;
         private BindingSource clientesBindingSource;
         private IEnumerable<ClienteModel> clientesList;
+
         private BindingSource clientesBindingSourceActived;
         private BindingSource clientesBindingSourceDeleted;
-
         private IEnumerable<ClienteModel> clientesListActived;
         private IEnumerable<ClienteModel> clientesListDeleted;
-        private IEnumerable<ClienteModel> clientesListActive;
-       
-
-
-
+  
 
         public ClientePresenter(IClienteView view, IClienteRepositorio clienteRepositorio)
         {
             this.view = view;
             this.clientesBindingSource = new BindingSource();
             this.clienteRepositorio = clienteRepositorio;
+            this.clientesBindingSourceActived = new BindingSource();
+            this.clientesBindingSourceDeleted = new BindingSource();
 
             //cargar datos de la tabla empleados
             LoadAllClientesList();
@@ -44,6 +42,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.view.CancelarEvent += CancelarAction;
 
             this.view.SetClienteListBindingSource(this.clientesBindingSource);
+            this.view.SetClientesListBindingSourceActive(this.clientesBindingSourceActived);
+            this.view.SetClientesListBindingSourceInactive(this.clientesBindingSourceDeleted);
 
 
             //mostrar la vista
@@ -55,7 +55,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             clientesList = clienteRepositorio.GetAll();
             clientesBindingSource.DataSource = clientesList;
-            clientesListActive = clienteRepositorio.GetAllActive();
+
+            clientesListActived = clienteRepositorio.GetAllActive();
             clientesBindingSourceActived.DataSource = clientesListActived;
 
             clientesListDeleted = clienteRepositorio.GetAllInactive();
@@ -66,6 +67,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             CleanViewFields();
         }
+
         private void CleanViewFields()
         {
             view.Id_cliente = 0;
@@ -98,7 +100,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
                     // Llama al repositorio para editar.
                     clienteRepositorio.Edit(model);
-                    view.Mensaje = "Empleado editado correctamente";
+                    view.Mensaje = "Cliente editado correctamente";
                 }
                 else // Lógica de Nuevo Empleado
                 {
@@ -126,16 +128,16 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             try
             {
-                var cliente = (UsuarioModel)clientesBindingSource.Current;
-                clienteRepositorio.Delete(cliente.Id_usuario);
+                var cliente = (ClienteModel)clientesBindingSource.Current;
+                clienteRepositorio.Delete(cliente.Id_cliente);
                 view.IsNuevo = true;
-                view.Mensaje = "Empleado eliminado correctamente";
+                view.Mensaje = "Cliente eliminado correctamente";
                 LoadAllClientesList();
             }
             catch (Exception ex)
             {
                 view.IsNuevo = false;
-                view.Mensaje = "Ocurrio un error, no se pudo eliminar al empleado";
+                view.Mensaje = "Ocurrio un error, no se pudo eliminar al cliente";
             }
         }
 

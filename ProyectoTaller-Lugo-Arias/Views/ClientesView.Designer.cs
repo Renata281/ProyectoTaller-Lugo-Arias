@@ -29,66 +29,53 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            textBox4 = new TextBox();
+            bBuscar = new Button();
+            txtSearch = new TextBox();
             lMotorEmpleados = new Label();
             label1 = new Label();
             tabControl1 = new TabControl();
             tpTodos = new TabPage();
+            bEliminar = new Button();
+            bEditar = new Button();
+            bNuevo = new Button();
             dataGridView3 = new DataGridView();
             lReservasTodas = new Label();
             tpActivos = new TabPage();
+            dataGridView2 = new DataGridView();
             lReservasAct = new Label();
-            tpFinalizados = new TabPage();
+            tpInactivos = new TabPage();
+            dataGridView1 = new DataGridView();
             lReservasFin = new Label();
-            tpNuevaReserva = new TabPage();
+            tpNuevoCliente = new TabPage();
+            tbTelefono = new TextBox();
+            tbEmail = new TextBox();
             label6 = new Label();
             label5 = new Label();
-            textBox5 = new TextBox();
-            bConfirmar = new Button();
-            textBox3 = new TextBox();
+            tbDni = new TextBox();
+            bGuardar = new Button();
+            tbApellido = new TextBox();
             label3 = new Label();
             bCancelar = new Button();
-            textBox1 = new TextBox();
+            tbNombre = new TextBox();
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
-            textBox6 = new TextBox();
-            textBox7 = new TextBox();
-            dataGridViewTextBoxColumn7 = new DataGridViewTextBoxColumn();
-            Column1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn8 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn9 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn10 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn11 = new DataGridViewTextBoxColumn();
-            dataGridView2 = new DataGridView();
-            dataGridViewTextBoxColumn1 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn2 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn3 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn4 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn5 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn16 = new DataGridViewTextBoxColumn();
-            dataGridView1 = new DataGridView();
-            dataGridViewTextBoxColumn6 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn12 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn13 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn14 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn15 = new DataGridViewTextBoxColumn();
-            dataGridViewTextBoxColumn17 = new DataGridViewTextBoxColumn();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView3).BeginInit();
             tpActivos.SuspendLayout();
-            tpFinalizados.SuspendLayout();
-            tpNuevaReserva.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            tpInactivos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            tpNuevoCliente.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = SystemColors.InactiveCaption;
-            panel1.Controls.Add(textBox4);
+            panel1.Controls.Add(bBuscar);
+            panel1.Controls.Add(txtSearch);
             panel1.Controls.Add(lMotorEmpleados);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(0, 0);
@@ -96,14 +83,23 @@
             panel1.Size = new Size(869, 69);
             panel1.TabIndex = 2;
             // 
-            // textBox4
+            // bBuscar
             // 
-            textBox4.BackColor = SystemColors.Control;
-            textBox4.BorderStyle = BorderStyle.None;
-            textBox4.Location = new Point(28, 29);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(534, 16);
-            textBox4.TabIndex = 2;
+            bBuscar.Location = new Point(599, 25);
+            bBuscar.Name = "bBuscar";
+            bBuscar.Size = new Size(75, 23);
+            bBuscar.TabIndex = 4;
+            bBuscar.Text = "Buscar";
+            bBuscar.UseVisualStyleBackColor = true;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = SystemColors.Control;
+            txtSearch.BorderStyle = BorderStyle.None;
+            txtSearch.Location = new Point(28, 29);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(534, 16);
+            txtSearch.TabIndex = 2;
             // 
             // lMotorEmpleados
             // 
@@ -131,38 +127,70 @@
             // 
             tabControl1.Controls.Add(tpTodos);
             tabControl1.Controls.Add(tpActivos);
-            tabControl1.Controls.Add(tpFinalizados);
-            tabControl1.Controls.Add(tpNuevaReserva);
+            tabControl1.Controls.Add(tpInactivos);
+            tabControl1.Controls.Add(tpNuevoCliente);
             tabControl1.Dock = DockStyle.Bottom;
             tabControl1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl1.Location = new Point(0, 180);
+            tabControl1.Location = new Point(0, 164);
             tabControl1.Name = "tabControl1";
             tabControl1.SelectedIndex = 0;
-            tabControl1.Size = new Size(869, 368);
+            tabControl1.Size = new Size(869, 384);
             tabControl1.TabIndex = 4;
             // 
             // tpTodos
             // 
             tpTodos.BackColor = SystemColors.Control;
+            tpTodos.Controls.Add(bEliminar);
+            tpTodos.Controls.Add(bEditar);
+            tpTodos.Controls.Add(bNuevo);
             tpTodos.Controls.Add(dataGridView3);
             tpTodos.Controls.Add(lReservasTodas);
             tpTodos.Location = new Point(4, 30);
             tpTodos.Name = "tpTodos";
             tpTodos.Padding = new Padding(3);
-            tpTodos.Size = new Size(861, 334);
+            tpTodos.Size = new Size(861, 350);
             tpTodos.TabIndex = 0;
             tpTodos.Text = "Todos";
             // 
+            // bEliminar
+            // 
+            bEliminar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEliminar.Location = new Point(740, 200);
+            bEliminar.Name = "bEliminar";
+            bEliminar.Size = new Size(99, 31);
+            bEliminar.TabIndex = 11;
+            bEliminar.Text = "Eliminar";
+            bEliminar.UseVisualStyleBackColor = true;
+            // 
+            // bEditar
+            // 
+            bEditar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bEditar.Location = new Point(740, 141);
+            bEditar.Name = "bEditar";
+            bEditar.Size = new Size(99, 31);
+            bEditar.TabIndex = 10;
+            bEditar.Text = "Editar";
+            bEditar.UseVisualStyleBackColor = true;
+            // 
+            // bNuevo
+            // 
+            bNuevo.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            bNuevo.Location = new Point(740, 79);
+            bNuevo.Name = "bNuevo";
+            bNuevo.Size = new Size(99, 31);
+            bNuevo.TabIndex = 8;
+            bNuevo.Text = "Nuevo";
+            bNuevo.UseVisualStyleBackColor = true;
+            // 
             // dataGridView3
             // 
+            dataGridView3.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView3.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView3.BorderStyle = BorderStyle.None;
             dataGridView3.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView3.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn7, Column1, dataGridViewTextBoxColumn8, dataGridViewTextBoxColumn9, dataGridViewTextBoxColumn10, dataGridViewTextBoxColumn11 });
-            dataGridView3.Dock = DockStyle.Bottom;
             dataGridView3.Location = new Point(3, 79);
             dataGridView3.Name = "dataGridView3";
-            dataGridView3.Size = new Size(855, 252);
+            dataGridView3.Size = new Size(718, 275);
             dataGridView3.TabIndex = 4;
             // 
             // lReservasTodas
@@ -185,9 +213,20 @@
             tpActivos.Location = new Point(4, 30);
             tpActivos.Name = "tpActivos";
             tpActivos.Padding = new Padding(3);
-            tpActivos.Size = new Size(861, 334);
+            tpActivos.Size = new Size(861, 350);
             tpActivos.TabIndex = 1;
             tpActivos.Text = "Activos";
+            // 
+            // dataGridView2
+            // 
+            dataGridView2.BackgroundColor = SystemColors.InactiveCaption;
+            dataGridView2.BorderStyle = BorderStyle.None;
+            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView2.Dock = DockStyle.Bottom;
+            dataGridView2.Location = new Point(3, 95);
+            dataGridView2.Name = "dataGridView2";
+            dataGridView2.Size = new Size(855, 252);
+            dataGridView2.TabIndex = 5;
             // 
             // lReservasAct
             // 
@@ -200,17 +239,28 @@
             lReservasAct.TabIndex = 4;
             lReservasAct.Text = "Clientes Activos";
             // 
-            // tpFinalizados
+            // tpInactivos
             // 
-            tpFinalizados.BackColor = SystemColors.Control;
-            tpFinalizados.Controls.Add(dataGridView1);
-            tpFinalizados.Controls.Add(lReservasFin);
-            tpFinalizados.Location = new Point(4, 30);
-            tpFinalizados.Name = "tpFinalizados";
-            tpFinalizados.Padding = new Padding(3);
-            tpFinalizados.Size = new Size(861, 334);
-            tpFinalizados.TabIndex = 2;
-            tpFinalizados.Text = "Inactivos";
+            tpInactivos.BackColor = SystemColors.Control;
+            tpInactivos.Controls.Add(dataGridView1);
+            tpInactivos.Controls.Add(lReservasFin);
+            tpInactivos.Location = new Point(4, 30);
+            tpInactivos.Name = "tpInactivos";
+            tpInactivos.Padding = new Padding(3);
+            tpInactivos.Size = new Size(861, 350);
+            tpInactivos.TabIndex = 2;
+            tpInactivos.Text = "Inactivos";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
+            dataGridView1.BorderStyle = BorderStyle.None;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Bottom;
+            dataGridView1.Location = new Point(3, 95);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(855, 252);
+            dataGridView1.TabIndex = 5;
             // 
             // lReservasFin
             // 
@@ -223,28 +273,44 @@
             lReservasFin.TabIndex = 1;
             lReservasFin.Text = "Clientes Inactivos";
             // 
-            // tpNuevaReserva
+            // tpNuevoCliente
             // 
-            tpNuevaReserva.BackColor = SystemColors.Control;
-            tpNuevaReserva.Controls.Add(textBox7);
-            tpNuevaReserva.Controls.Add(textBox6);
-            tpNuevaReserva.Controls.Add(label6);
-            tpNuevaReserva.Controls.Add(label5);
-            tpNuevaReserva.Controls.Add(textBox5);
-            tpNuevaReserva.Controls.Add(bConfirmar);
-            tpNuevaReserva.Controls.Add(textBox3);
-            tpNuevaReserva.Controls.Add(label3);
-            tpNuevaReserva.Controls.Add(bCancelar);
-            tpNuevaReserva.Controls.Add(textBox1);
-            tpNuevaReserva.Controls.Add(lFechaIngreso);
-            tpNuevaReserva.Controls.Add(label2);
-            tpNuevaReserva.Controls.Add(lNuevaReserva);
-            tpNuevaReserva.Location = new Point(4, 30);
-            tpNuevaReserva.Name = "tpNuevaReserva";
-            tpNuevaReserva.Padding = new Padding(3);
-            tpNuevaReserva.Size = new Size(861, 334);
-            tpNuevaReserva.TabIndex = 3;
-            tpNuevaReserva.Text = "Nuevo Cliente";
+            tpNuevoCliente.BackColor = SystemColors.Control;
+            tpNuevoCliente.Controls.Add(tbTelefono);
+            tpNuevoCliente.Controls.Add(tbEmail);
+            tpNuevoCliente.Controls.Add(label6);
+            tpNuevoCliente.Controls.Add(label5);
+            tpNuevoCliente.Controls.Add(tbDni);
+            tpNuevoCliente.Controls.Add(bGuardar);
+            tpNuevoCliente.Controls.Add(tbApellido);
+            tpNuevoCliente.Controls.Add(label3);
+            tpNuevoCliente.Controls.Add(bCancelar);
+            tpNuevoCliente.Controls.Add(tbNombre);
+            tpNuevoCliente.Controls.Add(lFechaIngreso);
+            tpNuevoCliente.Controls.Add(label2);
+            tpNuevoCliente.Controls.Add(lNuevaReserva);
+            tpNuevoCliente.Location = new Point(4, 30);
+            tpNuevoCliente.Name = "tpNuevoCliente";
+            tpNuevoCliente.Padding = new Padding(3);
+            tpNuevoCliente.Size = new Size(861, 350);
+            tpNuevoCliente.TabIndex = 3;
+            tpNuevoCliente.Text = "Nuevo Cliente";
+            // 
+            // tbTelefono
+            // 
+            tbTelefono.BackColor = SystemColors.Control;
+            tbTelefono.Location = new Point(334, 165);
+            tbTelefono.Name = "tbTelefono";
+            tbTelefono.Size = new Size(254, 29);
+            tbTelefono.TabIndex = 25;
+            // 
+            // tbEmail
+            // 
+            tbEmail.BackColor = SystemColors.Control;
+            tbEmail.Location = new Point(334, 96);
+            tbEmail.Name = "tbEmail";
+            tbEmail.Size = new Size(254, 29);
+            tbEmail.TabIndex = 24;
             // 
             // label6
             // 
@@ -268,35 +334,35 @@
             label5.TabIndex = 21;
             label5.Text = "Email";
             // 
-            // textBox5
+            // tbDni
             // 
-            textBox5.BackColor = SystemColors.Control;
-            textBox5.Location = new Point(27, 238);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(254, 29);
-            textBox5.TabIndex = 19;
+            tbDni.BackColor = SystemColors.Control;
+            tbDni.Location = new Point(27, 227);
+            tbDni.Name = "tbDni";
+            tbDni.Size = new Size(254, 29);
+            tbDni.TabIndex = 19;
             // 
-            // bConfirmar
+            // bGuardar
             // 
-            bConfirmar.BackColor = Color.DarkSlateGray;
-            bConfirmar.FlatAppearance.BorderSize = 0;
-            bConfirmar.FlatStyle = FlatStyle.Flat;
-            bConfirmar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bConfirmar.ForeColor = SystemColors.InactiveBorder;
-            bConfirmar.Location = new Point(281, 297);
-            bConfirmar.Name = "bConfirmar";
-            bConfirmar.Size = new Size(99, 31);
-            bConfirmar.TabIndex = 18;
-            bConfirmar.Text = "Confirmar";
-            bConfirmar.UseVisualStyleBackColor = false;
+            bGuardar.BackColor = Color.DarkSlateGray;
+            bGuardar.FlatAppearance.BorderSize = 0;
+            bGuardar.FlatStyle = FlatStyle.Flat;
+            bGuardar.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bGuardar.ForeColor = SystemColors.InactiveBorder;
+            bGuardar.Location = new Point(281, 297);
+            bGuardar.Name = "bGuardar";
+            bGuardar.Size = new Size(99, 31);
+            bGuardar.TabIndex = 18;
+            bGuardar.Text = "Guardar";
+            bGuardar.UseVisualStyleBackColor = false;
             // 
-            // textBox3
+            // tbApellido
             // 
-            textBox3.BackColor = SystemColors.Control;
-            textBox3.Location = new Point(24, 159);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(254, 29);
-            textBox3.TabIndex = 16;
+            tbApellido.BackColor = SystemColors.Control;
+            tbApellido.Location = new Point(24, 165);
+            tbApellido.Name = "tbApellido";
+            tbApellido.Size = new Size(254, 29);
+            tbApellido.TabIndex = 16;
             // 
             // label3
             // 
@@ -323,13 +389,13 @@
             bCancelar.Text = "Cancelar";
             bCancelar.UseVisualStyleBackColor = false;
             // 
-            // textBox1
+            // tbNombre
             // 
-            textBox1.BackColor = SystemColors.Control;
-            textBox1.Location = new Point(24, 93);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(254, 29);
-            textBox1.TabIndex = 9;
+            tbNombre.BackColor = SystemColors.Control;
+            tbNombre.Location = new Point(24, 93);
+            tbNombre.Name = "tbNombre";
+            tbNombre.Size = new Size(254, 29);
+            tbNombre.TabIndex = 9;
             // 
             // lFechaIngreso
             // 
@@ -364,136 +430,6 @@
             lNuevaReserva.TabIndex = 0;
             lNuevaReserva.Text = "Nuevo Cliente";
             // 
-            // textBox6
-            // 
-            textBox6.BackColor = SystemColors.Control;
-            textBox6.Location = new Point(334, 96);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(254, 29);
-            textBox6.TabIndex = 24;
-            // 
-            // textBox7
-            // 
-            textBox7.BackColor = SystemColors.Control;
-            textBox7.Location = new Point(334, 165);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(254, 29);
-            textBox7.TabIndex = 25;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            dataGridViewTextBoxColumn7.HeaderText = "Id Cliente";
-            dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            // 
-            // Column1
-            // 
-            Column1.HeaderText = "Nombre";
-            Column1.Name = "Column1";
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            dataGridViewTextBoxColumn8.HeaderText = "Apellido";
-            dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            dataGridViewTextBoxColumn9.HeaderText = "Email";
-            dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            // 
-            // dataGridViewTextBoxColumn10
-            // 
-            dataGridViewTextBoxColumn10.HeaderText = "Teléfono";
-            dataGridViewTextBoxColumn10.Name = "dataGridViewTextBoxColumn10";
-            // 
-            // dataGridViewTextBoxColumn11
-            // 
-            dataGridViewTextBoxColumn11.HeaderText = "DNI";
-            dataGridViewTextBoxColumn11.Name = "dataGridViewTextBoxColumn11";
-            // 
-            // dataGridView2
-            // 
-            dataGridView2.BackgroundColor = SystemColors.InactiveCaption;
-            dataGridView2.BorderStyle = BorderStyle.None;
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn1, dataGridViewTextBoxColumn2, dataGridViewTextBoxColumn3, dataGridViewTextBoxColumn4, dataGridViewTextBoxColumn5, dataGridViewTextBoxColumn16 });
-            dataGridView2.Dock = DockStyle.Bottom;
-            dataGridView2.Location = new Point(3, 79);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.Size = new Size(855, 252);
-            dataGridView2.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            dataGridViewTextBoxColumn1.HeaderText = "Id Cliente";
-            dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            dataGridViewTextBoxColumn2.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            dataGridViewTextBoxColumn3.HeaderText = "Apellido";
-            dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            dataGridViewTextBoxColumn4.HeaderText = "Email";
-            dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            dataGridViewTextBoxColumn5.HeaderText = "Teléfono";
-            dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            // 
-            // dataGridViewTextBoxColumn16
-            // 
-            dataGridViewTextBoxColumn16.HeaderText = "DNI";
-            dataGridViewTextBoxColumn16.Name = "dataGridViewTextBoxColumn16";
-            // 
-            // dataGridView1
-            // 
-            dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
-            dataGridView1.BorderStyle = BorderStyle.None;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Columns.AddRange(new DataGridViewColumn[] { dataGridViewTextBoxColumn6, dataGridViewTextBoxColumn12, dataGridViewTextBoxColumn13, dataGridViewTextBoxColumn14, dataGridViewTextBoxColumn15, dataGridViewTextBoxColumn17 });
-            dataGridView1.Dock = DockStyle.Bottom;
-            dataGridView1.Location = new Point(3, 79);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(855, 252);
-            dataGridView1.TabIndex = 5;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            dataGridViewTextBoxColumn6.HeaderText = "Id Cliente";
-            dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            // 
-            // dataGridViewTextBoxColumn12
-            // 
-            dataGridViewTextBoxColumn12.HeaderText = "Nombre";
-            dataGridViewTextBoxColumn12.Name = "dataGridViewTextBoxColumn12";
-            // 
-            // dataGridViewTextBoxColumn13
-            // 
-            dataGridViewTextBoxColumn13.HeaderText = "Apellido";
-            dataGridViewTextBoxColumn13.Name = "dataGridViewTextBoxColumn13";
-            // 
-            // dataGridViewTextBoxColumn14
-            // 
-            dataGridViewTextBoxColumn14.HeaderText = "Email";
-            dataGridViewTextBoxColumn14.Name = "dataGridViewTextBoxColumn14";
-            // 
-            // dataGridViewTextBoxColumn15
-            // 
-            dataGridViewTextBoxColumn15.HeaderText = "Teléfono";
-            dataGridViewTextBoxColumn15.Name = "dataGridViewTextBoxColumn15";
-            // 
-            // dataGridViewTextBoxColumn17
-            // 
-            dataGridViewTextBoxColumn17.HeaderText = "DNI";
-            dataGridViewTextBoxColumn17.Name = "dataGridViewTextBoxColumn17";
-            // 
             // ClientesView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -513,12 +449,12 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView3).EndInit();
             tpActivos.ResumeLayout(false);
             tpActivos.PerformLayout();
-            tpFinalizados.ResumeLayout(false);
-            tpFinalizados.PerformLayout();
-            tpNuevaReserva.ResumeLayout(false);
-            tpNuevaReserva.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            tpInactivos.ResumeLayout(false);
+            tpInactivos.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            tpNuevoCliente.ResumeLayout(false);
+            tpNuevoCliente.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -526,7 +462,7 @@
         #endregion
 
         private Panel panel1;
-        private TextBox textBox4;
+        private TextBox txtSearch;
         private Label lMotorEmpleados;
         private Label label1;
         private TabControl tabControl1;
@@ -535,41 +471,27 @@
         private Label lReservasTodas;
         private TabPage tpActivos;
         private Label lReservasAct;
-        private TabPage tpFinalizados;
+        private TabPage tpInactivos;
         private Label lReservasFin;
-        private TabPage tpNuevaReserva;
+        private TabPage tpNuevoCliente;
         private Label label6;
         private Label label5;
-        private TextBox textBox5;
-        private Button bConfirmar;
-        private TextBox textBox3;
+        private TextBox tbDni;
+        private Button bGuardar;
+        private TextBox tbApellido;
         private Label label3;
         private Button bCancelar;
-        private TextBox textBox1;
+        private TextBox tbNombre;
         private Label lFechaIngreso;
         private Label label2;
         private Label lNuevaReserva;
-        private TextBox textBox7;
-        private TextBox textBox6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn10;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn11;
+        private TextBox tbTelefono;
+        private TextBox tbEmail;
         private DataGridView dataGridView2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn16;
         private DataGridView dataGridView1;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn12;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn13;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn14;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn15;
-        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn17;
+        private Button bBuscar;
+        private Button bNuevo;
+        private Button bEditar;
+        private Button bEliminar;
     }
 }
