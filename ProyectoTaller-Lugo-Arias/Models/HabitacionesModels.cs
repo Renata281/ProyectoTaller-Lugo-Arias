@@ -14,7 +14,6 @@ namespace ProyectoTaller_Lugo_Arias.Models
         private int nro_habitacion;
         private int cant_camas;
         private float precio_unitario;
-        private string descripcion;
         private int id_tipo;
         private int id_piso;
         private int id_estado;
@@ -46,15 +45,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
             get { return precio_unitario; }
             set { precio_unitario = value; }
         }
-
-        [DisplayName("Descripcion")]
-        [Required(ErrorMessage = "La descripcion de la habitacion es obligatorio")]
-        [StringLength(150, MinimumLength = 4, ErrorMessage = "El campo descripcion es de 4 a 150 caracteres ")]
-        public string Descripcion
-        {
-            get { return descripcion; }
-            set { descripcion = value; }
-        }
+        
 
         [DisplayName("Tipo")]
         [Required(ErrorMessage = "El tipo de habitación es obligatorio")]
@@ -97,5 +88,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
             get { return tipo_descripcion; }
             set { tipo_descripcion = value; }
         }
+
+       
     }
 }

@@ -220,7 +220,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         habitaciones.Add(new HabitacionesModels
                         {
                             Nro_habitacion = Convert.ToInt32(reader["nro_habitacion"]),
-                            Tipo = reader["tipo"].ToString(),
+                            Tipo_descripcion = reader["tipo"].ToString(),
                             Cant_personas = Convert.ToInt32(reader["cant_personas"]),
                             Precio_unitario = Convert.ToSingle(reader["precio_unitario"]),
                             Id_piso = Convert.ToInt32(reader["id_piso"])

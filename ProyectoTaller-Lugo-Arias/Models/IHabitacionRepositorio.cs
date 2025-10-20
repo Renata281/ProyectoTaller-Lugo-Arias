@@ -10,7 +10,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
     {
         void Add(HabitacionesModels habitacionesModels);
         void Edit(HabitacionesModels habitacionesModels);
-        void Delete(int id);
+        void Delete(int id, int idPiso);
         IEnumerable<HabitacionesModels> GetAll();
         IEnumerable<HabitacionesModels> GetByValue(string valorBusqueda);
 

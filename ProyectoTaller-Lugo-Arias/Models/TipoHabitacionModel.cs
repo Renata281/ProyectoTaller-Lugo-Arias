@@ -41,5 +41,10 @@ namespace ProyectoTaller_Lugo_Arias.Models
             set => descripcion = value;
         }
 
+        public override string ToString()
+        {
+            return Tipo; // mostrará el tipo directamente en el ComboBox
+        }
+
     }
 }

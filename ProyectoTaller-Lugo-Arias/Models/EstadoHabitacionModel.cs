@@ -25,5 +25,10 @@ namespace ProyectoTaller_Lugo_Arias.Models
             get { return descripcion; }
             set { descripcion = value; }
         }
+
+        public override string ToString()
+        {
+            return Descripcion;
+        }
     }
 }

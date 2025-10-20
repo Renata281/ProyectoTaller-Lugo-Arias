@@ -129,15 +129,21 @@ namespace ProyectoTaller_Lugo_Arias.Views
             get { return tbPrecio.Text; }
             set { tbPrecio.Text = value; }
         }
-        public string Descripcion
-        {
-            get { return tbDescripcion.Text; }
-            set { tbDescripcion.Text = value; }
-        }
+
         public string Tipo
         {
-            get { return cbTipo.SelectedItem?.ToString() ?? string.Empty; }
-            set { cbTipo.SelectedItem = value; }
+            get
+            {
+                if (cbTipo.SelectedItem != null)
+                {
+                    return cbTipo.Text;
+                }
+                return string.Empty;
+            }
+            set
+            {
+                cbTipo.Text = value;
+            }
         }
         
         public string Id_piso
@@ -195,8 +201,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
         }
 
         public int Id_tipo {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get
+            {
+                return (cbTipo.SelectedValue != null) ? (int)cbTipo.SelectedValue : 0;
+            }
+            set
+            {
+                cbTipo.SelectedValue = value;
+            }
         }
 
         public event EventHandler SearchEvent;
@@ -252,18 +264,23 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
         public void SetTipoHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoList)
         {
+            /*
             //limpia el combobox
             cbEstado.DataSource = null;
             cbEstado.Items.Clear();
-
+            */
             //crea una lista de pares clave-valor (id_estado, descripcion), para mostrar la descripcion pero guardar el id
             var estado = tipoList.Select(e => new KeyValuePair<int, string>(e.Id_tipo, e.Tipo)).ToList();
 
             //enlazamos la lista al combobox
-            cbEstado.DataSource = new BindingSource(tipoList, null);
+           // cbEstado.DataSource = new BindingSource(tipoList, null);
 
-            cbTipo.DisplayMember = "Value";         
-            cbTipo.ValueMember = "Key";    
+           // cbTipo.DisplayMember = "Tipo";         
+            //cbTipo.ValueMember = "Id_tipo";  
+            
+            cbTipo.DataSource = tipoList.ToList();
+            cbTipo.DisplayMember = "Tipo";           // o la propiedad visible (por ejemplo: "tipo")
+            cbTipo.ValueMember = "Id_tipo";          // la propiedad clave
         }
 
         public void SetPisosListComboBox(IEnumerable<PisoModel> pisoList)
@@ -276,6 +293,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
         public void SetEstadoHabitacionListComboBox(IEnumerable<EstadoHabitacionModel> estadoList)
         {
+            /*
             //limpia el combobox
             cbEstado.DataSource = null;
             cbEstado.Items.Clear();
@@ -287,9 +305,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
             cbEstado.DataSource = new BindingSource(estado, null);
 
             cbEstado.DataSource = new BindingSource(estado, null);
-            cbEstado.DisplayMember = "Value"; // lo que se muestra en el combobox
-            cbEstado.ValueMember = "Key"; // lo que se guarda (id_estado)
-        }
+            */
+            cbEstado.DataSource = estadoList.ToList();
+            cbEstado.DisplayMember = "estado_descripcion"; // lo que se muestra en el combobox
+            cbEstado.ValueMember = "Id_estado"; // lo que se guarda (id_estado)
+            
+
+
+    }
 
     }
 }

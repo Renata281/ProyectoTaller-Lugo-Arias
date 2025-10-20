@@ -47,28 +47,26 @@
             dataGridView1 = new DataGridView();
             lReservasFin = new Label();
             tpNuevaHabt = new TabPage();
+            tbMaxPers = new TextBox();
+            lMaxPers = new Label();
             cbEstado = new ComboBox();
             lEstado = new Label();
             cbPiso = new ComboBox();
             label6 = new Label();
             cbTipo = new ComboBox();
             label5 = new Label();
-            tbDescripcion = new TextBox();
             tbPrecio = new TextBox();
             bGuardar = new Button();
             tbCamas = new TextBox();
             label3 = new Label();
             bCancelar = new Button();
             tbNro = new TextBox();
-            lFechaSalida = new Label();
             lFechaIngreso = new Label();
             label2 = new Label();
             lNuevaReserva = new Label();
             tpMantenimiento = new TabPage();
             label4 = new Label();
             dataGridView4 = new DataGridView();
-            lMaxPers = new Label();
-            tbMaxPers = new TextBox();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -296,14 +294,12 @@
             tpNuevaHabt.Controls.Add(label6);
             tpNuevaHabt.Controls.Add(cbTipo);
             tpNuevaHabt.Controls.Add(label5);
-            tpNuevaHabt.Controls.Add(tbDescripcion);
             tpNuevaHabt.Controls.Add(tbPrecio);
             tpNuevaHabt.Controls.Add(bGuardar);
             tpNuevaHabt.Controls.Add(tbCamas);
             tpNuevaHabt.Controls.Add(label3);
             tpNuevaHabt.Controls.Add(bCancelar);
             tpNuevaHabt.Controls.Add(tbNro);
-            tpNuevaHabt.Controls.Add(lFechaSalida);
             tpNuevaHabt.Controls.Add(lFechaIngreso);
             tpNuevaHabt.Controls.Add(label2);
             tpNuevaHabt.Controls.Add(lNuevaReserva);
@@ -313,6 +309,25 @@
             tpNuevaHabt.Size = new Size(958, 381);
             tpNuevaHabt.TabIndex = 3;
             tpNuevaHabt.Text = "Nueva Habitación";
+            // 
+            // tbMaxPers
+            // 
+            tbMaxPers.BackColor = SystemColors.Control;
+            tbMaxPers.Location = new Point(616, 93);
+            tbMaxPers.Name = "tbMaxPers";
+            tbMaxPers.Size = new Size(254, 29);
+            tbMaxPers.TabIndex = 28;
+            // 
+            // lMaxPers
+            // 
+            lMaxPers.AutoSize = true;
+            lMaxPers.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lMaxPers.ForeColor = Color.DarkSlateGray;
+            lMaxPers.Location = new Point(616, 70);
+            lMaxPers.Name = "lMaxPers";
+            lMaxPers.Size = new Size(151, 20);
+            lMaxPers.TabIndex = 27;
+            lMaxPers.Text = "Máximo de personas";
             // 
             // cbEstado
             // 
@@ -370,15 +385,6 @@
             label5.Size = new Size(115, 20);
             label5.TabIndex = 21;
             label5.Text = "Tipo habitación";
-            // 
-            // tbDescripcion
-            // 
-            tbDescripcion.BackColor = SystemColors.Control;
-            tbDescripcion.Location = new Point(616, 172);
-            tbDescripcion.Multiline = true;
-            tbDescripcion.Name = "tbDescripcion";
-            tbDescripcion.Size = new Size(254, 95);
-            tbDescripcion.TabIndex = 20;
             // 
             // tbPrecio
             // 
@@ -442,17 +448,6 @@
             tbNro.Name = "tbNro";
             tbNro.Size = new Size(254, 29);
             tbNro.TabIndex = 9;
-            // 
-            // lFechaSalida
-            // 
-            lFechaSalida.AutoSize = true;
-            lFechaSalida.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lFechaSalida.ForeColor = Color.DarkSlateGray;
-            lFechaSalida.Location = new Point(616, 139);
-            lFechaSalida.Name = "lFechaSalida";
-            lFechaSalida.Size = new Size(89, 20);
-            lFechaSalida.TabIndex = 3;
-            lFechaSalida.Text = "Descripción";
             // 
             // lFechaIngreso
             // 
@@ -520,25 +515,6 @@
             dataGridView4.Size = new Size(958, 307);
             dataGridView4.TabIndex = 6;
             // 
-            // lMaxPers
-            // 
-            lMaxPers.AutoSize = true;
-            lMaxPers.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lMaxPers.ForeColor = Color.DarkSlateGray;
-            lMaxPers.Location = new Point(616, 70);
-            lMaxPers.Name = "lMaxPers";
-            lMaxPers.Size = new Size(151, 20);
-            lMaxPers.TabIndex = 27;
-            lMaxPers.Text = "Máximo de personas";
-            // 
-            // tbMaxPers
-            // 
-            tbMaxPers.BackColor = SystemColors.Control;
-            tbMaxPers.Location = new Point(616, 93);
-            tbMaxPers.Name = "tbMaxPers";
-            tbMaxPers.Size = new Size(254, 29);
-            tbMaxPers.TabIndex = 28;
-            // 
             // HabitacionView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -591,7 +567,6 @@
         private Label label3;
         private Button bCancelar;
         private TextBox tbNro;
-        private Label lFechaSalida;
         private Label lFechaIngreso;
         private Label label2;
         private Label lNuevaReserva;
@@ -602,7 +577,6 @@
         private DataGridView dataGridView4;
         private ComboBox cbTipo;
         private Label label5;
-        private TextBox tbDescripcion;
         private TextBox tbPrecio;
         private ComboBox cbPiso;
         private Label label6;

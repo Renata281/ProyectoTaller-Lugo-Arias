@@ -71,10 +71,10 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             models.Nro_habitacion = string.IsNullOrWhiteSpace(view.Nro_habitacion) ? 0 : Convert.ToInt32(view.Nro_habitacion);
             models.Cant_camas = string.IsNullOrWhiteSpace(view.Cant_camas) ? 0 : Convert.ToInt32(view.Cant_camas);
             models.Precio_unitario = string.IsNullOrWhiteSpace(view.Precio_unitario) ? 0f : Convert.ToSingle(view.Precio_unitario);
-            models.Descripcion = view.Descripcion ?? string.Empty;
-            models.Tipo = view.Tipo ?? string.Empty;
+            models.Id_tipo = view.Id_tipo;
             models.Id_piso = string.IsNullOrWhiteSpace(view.Id_piso) ? 0 : Convert.ToInt32(view.Id_piso);
             models.Id_estado = string.IsNullOrWhiteSpace(view.Id_estado) ? 0 : Convert.ToInt32(view.Id_estado);
+            models.Cant_personas = string.IsNullOrWhiteSpace(view.Cant_personas) ? 0 : Convert.ToInt32(view.Cant_personas);
 
             try
             {
@@ -108,7 +108,6 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Nro_habitacion = "0";
             view.Cant_camas = "0";
             view.Precio_unitario = "0";
-            view.Descripcion = string.Empty;
             view.Id_tipo = 1;
             view.Id_piso = "1";
             view.Id_estado = "1";
@@ -141,7 +140,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             try
             {
                 var hab = (HabitacionesModels)habitacionesBindingSource.Current;
-                repository.Delete(hab.Nro_habitacion);
+                repository.Delete(hab.Nro_habitacion, hab.Id_piso);
                 view.IsSuccessful = true;
                 view.Message = "Habitación eliminada correctamente";
                 LoadAllHabitacionesList();
@@ -160,7 +159,6 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Nro_habitacion = hab.Nro_habitacion.ToString();
             view.Cant_camas = hab.Cant_camas.ToString();
             view.Precio_unitario = hab.Precio_unitario.ToString();
-            view.Descripcion = hab.Descripcion;
             view.Id_tipo = hab.Id_tipo;
             view.Id_piso = hab.Id_piso.ToString();
             view.Id_estado = hab.Id_estado.ToString();

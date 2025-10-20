@@ -14,6 +14,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 {
     public class HabitacionRepositorio : BaseRepositorio, IHabitacionRepositorio
     {
+        private int rowsAffected;
 
         //constructor
         public HabitacionRepositorio(string connectionString)
@@ -38,7 +39,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                  INNER JOIN tipo_habitacion t ON t.id_tipo = h.id_tipo
                  INNER JOIN estado_habitacion e ON e.id_estado = h.id_estado
                  INNER JOIN piso p ON p.id_piso = h.id_piso
-                 ORDER BY h.tipo DESC;";
+                 ORDER BY tipo_habitacion DESC;";
                 using (var reader = command.ExecuteReader())
                     {
                         while (reader.Read())
@@ -48,9 +49,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
                         habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
-                        habitacion.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
-                        habitacion.Tipo_descripcion = reader["tipo_descripcion"] as string ?? string.Empty;
+                        habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
                         habitacion.Id_estado = reader["id_estado"] is DBNull ? 0 : (int)reader["id_estado"];
                         habitacion.Cant_personas= reader["cant_personas"] is DBNull ? 0 : (int)reader["cant_personas"];
@@ -66,26 +66,28 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
         public void Add(HabitacionesModels habitacion)
         {
+            if (habitacion.Cant_personas <= 0)
+                throw new Exception("La cantidad de personas debe ser mayor que 0.");
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
             {
                 connection.Open();
                 command.Connection = connection;
-                command.CommandText = "insert into habitacion(nro_habitacion, cant_camas, precio_unitario, descripcion, id_tipo, id_piso, id_estado, cant_personas) values(@nro_habitacion, @cant_camas, @precio_unitario, @descripcion, @id_tipo, @id_piso, @id_estado, @cant_personas)";
+                command.CommandText = "insert into habitacion(nro_habitacion, cant_camas, precio_unitario, id_tipo, id_piso, id_estado, cant_personas) values(@nro_habitacion, @cant_camas, @precio_unitario, @id_tipo, @id_piso, @id_estado, @cant_personas)";
                 command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = habitacion.Nro_habitacion;
                 command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacion.Cant_camas;
                 command.Parameters.Add("@precio_unitario", SqlDbType.Float).Value = habitacion.Precio_unitario;
-                command.Parameters.Add("@descripcion", SqlDbType.VarChar, 100).Value = habitacion.Descripcion;
                 command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = habitacion.Id_tipo;
                 command.Parameters.Add("@id_piso", SqlDbType.Int).Value = habitacion.Id_piso;
-                command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacion.Id_piso;
+                command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacion.Cant_personas;
                 command.Parameters.Add("@id_estado", SqlDbType.Int).Value = habitacion.Id_estado;
                 command.ExecuteNonQuery();
 
             }
         }
 
-        public void Delete(int id)
+        public void Delete(int id, int idPiso)
         {
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
@@ -93,8 +95,9 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 connection.Open();
                 command.Connection = connection;
                 command.CommandText = @"delete from habitacion
-                                      where nro_habitacion=@nro_habitacion ";
+                                      where nro_habitacion=@nro_habitacion AND id_piso = @id_piso";
                 command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = id;
+                command.Parameters.Add("@id_piso", SqlDbType.Int).Value = idPiso;
                 command.ExecuteNonQuery();
 
             }
@@ -102,41 +105,44 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
         public void Edit(HabitacionesModels habitacionesModels)
         {
-           
+            if (habitacionesModels.Cant_personas <= 0)
+                throw new Exception("La cantidad de personas debe ser mayor que 0.");
+
             using (var connection = new SqlConnection(connectionString))
             using (var command = new SqlCommand())
-                {
-                    connection.Open();
-                    command.Connection = connection;
+            {
+                connection.Open();
+                command.Connection = connection;
 
                 var camposSet = new List<string>{
-                
-                    "cant_camas = @cant_camas",
-                    "precio_unitario = @precio_unitario",
-                    "id_tipo = @id_tipo",
-                    "id_piso = @id_piso",
-                    "descripcion = @descripcion",
-                    "id_estado = @id_estado"
-                     };
+            "cant_camas = @cant_camas",
+            "precio_unitario = @precio_unitario",
+            "id_tipo = @id_tipo",
+            "id_estado = @id_estado",
+            "cant_personas = @cant_personas"
+        };
 
-                string query = $"UPDATE habitacion SET {string.Join(", ", camposSet)} WHERE nro_habitacion = @nro_habitacion";
+                string query = $"UPDATE habitacion SET {string.Join(", ", camposSet)} WHERE nro_habitacion = @nro_habitacion AND id_piso = @id_piso";
                 command.CommandText = query;
 
                 command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = habitacionesModels.Nro_habitacion;
                 command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacionesModels.Cant_camas;
                 command.Parameters.Add("@precio_unitario", SqlDbType.Float).Value = habitacionesModels.Precio_unitario;
-                command.Parameters.Add("@descripcion", SqlDbType.NVarChar, 200).Value = habitacionesModels.Descripcion;
                 command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = habitacionesModels.Id_tipo;
                 command.Parameters.Add("@id_piso", SqlDbType.Int).Value = habitacionesModels.Id_piso;
-                command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacionesModels.Id_piso;
+                command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacionesModels.Cant_personas;
                 command.Parameters.Add("@id_estado", SqlDbType.Int).Value = habitacionesModels.Id_estado;
-                command.ExecuteNonQuery();
 
+                int rowsAffected = command.ExecuteNonQuery(); // <- aquí asignamos correctamente
+                if (rowsAffected == 0)
+                {
+                    throw new Exception($"No se encontró la habitación {habitacionesModels.Nro_habitacion} en el piso {habitacionesModels.Id_piso} para actualizar.");
                 }
-            
+            }
         }
 
-      
+
+
         public IEnumerable<HabitacionesModels> GetByValue(string value)
         {
             var habList = new List<HabitacionesModels>();
@@ -168,9 +174,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
                         habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
-                        habitacion.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
-                        habitacion.Tipo_descripcion = reader["tipo_descripcion"] as string ?? string.Empty;
+                        habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
                         habitacion.Id_estado = reader["id_estado"] is DBNull ? 0 : (int)reader["id_estado"];
                         habitacion.Cant_personas = reader["cant_personas"] is DBNull ? 0 : (int)reader["cant_personas"];
@@ -203,7 +208,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                  INNER JOIN estado_habitacion e ON e.id_estado = h.id_estado
                  INNER JOIN piso p ON p.id_piso = h.id_piso
                  WHERE h.id_estado = 1
-                 ORDER BY h.tipo DESC;";
+                 ORDER BY t.tipo DESC;";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -213,9 +218,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
                         habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]): 0f;
-                        habitacion.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
-                        habitacion.Tipo_descripcion = reader["tipo_descripcion"] as string ?? string.Empty;
+                        habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
                         habitacion.Id_estado = reader["id_estado"] is DBNull ? 0 : (int)reader["id_estado"];
                         habitacion.Cant_personas = reader["cant_personas"] is DBNull ? 0 : (int)reader["cant_personas"];
@@ -246,7 +250,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                  INNER JOIN estado_habitacion e ON e.id_estado = h.id_estado
                  INNER JOIN piso p ON p.id_piso = h.id_piso
                  WHERE h.id_estado = 3
-                 ORDER BY h.tipo DESC;";
+                 ORDER BY t.tipo DESC;";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -256,9 +260,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
                         habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
-                        habitacion.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
-                        habitacion.Tipo_descripcion = reader["tipo_descripcion"] as string ?? string.Empty;
+                        habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
                         habitacion.Id_estado = reader["id_estado"] is DBNull ? 0 : (int)reader["id_estado"];
                         habitacion.Cant_personas = reader["cant_personas"] is DBNull ? 0 : (int)reader["cant_personas"];
@@ -289,7 +292,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                  INNER JOIN estado_habitacion e ON e.id_estado = h.id_estado
                  INNER JOIN piso p ON p.id_piso = h.id_piso
                  WHERE h.id_estado = 2
-                 ORDER BY h.tipo DESC;";
+                 ORDER BY t.tipo DESC;";
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -299,9 +302,8 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
                         habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
-                        habitacion.Descripcion = reader["descripcion"] as string ?? string.Empty;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
-                        habitacion.Tipo_descripcion = reader["tipo_descripcion"] as string ?? string.Empty;
+                        habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
                         habitacion.Id_estado = reader["id_estado"] is DBNull ? 0 : (int)reader["id_estado"];
                         habitacion.Cant_personas = reader["cant_personas"] is DBNull ? 0 : (int)reader["cant_personas"];

@@ -13,7 +13,6 @@ namespace ProyectoTaller_Lugo_Arias.View
         string Nro_habitacion { get; set; }
         string Cant_camas { get; set; }
         string Precio_unitario { get; set; }
-        string Descripcion { get; set; }
         string Tipo { get; set; }
         string Id_piso { get; set; }
         string Id_estado { get; set; }
