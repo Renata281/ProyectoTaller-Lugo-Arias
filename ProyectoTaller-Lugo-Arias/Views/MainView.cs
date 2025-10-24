@@ -15,7 +15,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
     public partial class MainView : Form, IMainView
     {
         private UsuarioModel currentUser;
-        public UsuarioModel CurrentUser {
+        public UsuarioModel CurrentUser
+        {
             get { return this.currentUser; }
             set { this.currentUser = value; }
         }
@@ -27,26 +28,28 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public event EventHandler ShowHabitacionesView = delegate { };
         public event EventHandler ShowTipoHabitacionView = delegate { };
         public event EventHandler ShowSalir = delegate { };
+        public event EventHandler ShowBackupView = delegate { };
 
         public MainView(UsuarioModel user)
         {
             InitializeComponent();
             this.currentUser = user;
             RestrictAccessByRole();
-            
+
             bEmpleados.Click += delegate { ShowEmpleadosView?.Invoke(this, EventArgs.Empty); };
             bClientes.Click += delegate { ShowClientesView?.Invoke(this, EventArgs.Empty); };
             bReservas.Click += delegate { ShowReservasView?.Invoke(this, EventArgs.Empty); };
             bHabitaciones.Click += delegate { ShowHabitacionesView?.Invoke(this, EventArgs.Empty); };
             bTipoHabitacion.Click += delegate { ShowTipoHabitacionView?.Invoke(this, EventArgs.Empty); };
-            
+            bBackUp.Click += delegate { ShowBackupView?.Invoke(this, EventArgs.Empty); };
+
             bSalir.Click += delegate { Application.Exit(); };
 
         }
 
         public void RestrictAccessByRole()
         {
-            
+
 
             switch (currentUser.Id_cargo)
             {
@@ -57,6 +60,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bReservas.Visible = true;
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = false;
+                    bBackUp.Visible = false;
                     break;
 
                 case 2:// Gerente
@@ -66,6 +70,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bReservas.Visible = true;
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = true;
+                    bBackUp.Visible = true;
                     break;
 
 
@@ -76,6 +81,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bReservas.Visible = true;
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = true;
+                    bBackUp.Visible = true;
                     break;
 
                 case 4: // Administrador
@@ -85,9 +91,12 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bReservas.Visible = true;
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = true;
+                    bBackUp.Visible = true;
                     break;
 
             }
         }
+
+       
     }
 }

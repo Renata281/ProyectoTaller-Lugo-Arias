@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositories;
 using ProyectoTaller_Lugo_Arias.Repositorio;
 using ProyectoTaller_Lugo_Arias.Repositorio;
 using ProyectoTaller_Lugo_Arias.Views;
@@ -24,6 +25,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.mainView.ShowReservasView += OnShowReservasView;
             this.mainView.ShowHabitacionesView += OnShowHabitacionesView;
             this.mainView.ShowTipoHabitacionView += OnShowTipoHabitacionView;
+            this.mainView.ShowBackupView += OnShowBackupView;
         }
 
         private void OnShowTipoHabitacionView(object? sender, EventArgs e)
@@ -69,6 +71,14 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             ICargoRepositorio cargoRepositorio = new CargoRepositorio(sqlConnectionString);
             IUsuarioRepositorio repositorio = new UsuarioRepositorio(sqlConnectionString);
             new EmpleadoPresenter(view, repositorio, cargoRepositorio);
+        }
+
+        private void OnShowBackupView(object? sender, EventArgs e)
+        {
+            IBackUpView view = BackUpView.GetInstance((MainView) mainView);
+            string mail = this.mainView.CurrentUser.Email;
+            ILogRepositorioHotel logsRepositorio = new LogRepositorioHotel(sqlConnectionString);
+            new BackUpPresenter(view, sqlConnectionString, mail, logsRepositorio);
         }
     }
 }

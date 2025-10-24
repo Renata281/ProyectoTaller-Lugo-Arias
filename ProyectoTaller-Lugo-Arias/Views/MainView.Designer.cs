@@ -36,12 +36,14 @@
             bClientes = new Button();
             lNombreHotel = new Label();
             bEmpleados = new Button();
+            bBackUp = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.DarkSlateGray;
+            panel1.Controls.Add(bBackUp);
             panel1.Controls.Add(bSalir);
             panel1.Controls.Add(bTipoHabitacion);
             panel1.Controls.Add(bHabitaciones);
@@ -77,7 +79,7 @@
             bTipoHabitacion.FlatStyle = FlatStyle.Flat;
             bTipoHabitacion.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bTipoHabitacion.ForeColor = SystemColors.InactiveCaption;
-            bTipoHabitacion.Location = new Point(0, 300);
+            bTipoHabitacion.Location = new Point(0, 240);
             bTipoHabitacion.Name = "bTipoHabitacion";
             bTipoHabitacion.Size = new Size(192, 41);
             bTipoHabitacion.TabIndex = 5;
@@ -91,7 +93,7 @@
             bHabitaciones.FlatStyle = FlatStyle.Flat;
             bHabitaciones.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bHabitaciones.ForeColor = SystemColors.InactiveCaption;
-            bHabitaciones.Location = new Point(0, 241);
+            bHabitaciones.Location = new Point(0, 193);
             bHabitaciones.Name = "bHabitaciones";
             bHabitaciones.Size = new Size(192, 41);
             bHabitaciones.TabIndex = 4;
@@ -105,7 +107,7 @@
             bReservas.FlatStyle = FlatStyle.Flat;
             bReservas.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bReservas.ForeColor = SystemColors.InactiveCaption;
-            bReservas.Location = new Point(0, 180);
+            bReservas.Location = new Point(0, 146);
             bReservas.Name = "bReservas";
             bReservas.Size = new Size(192, 41);
             bReservas.TabIndex = 3;
@@ -119,7 +121,7 @@
             bClientes.FlatStyle = FlatStyle.Flat;
             bClientes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bClientes.ForeColor = SystemColors.InactiveCaption;
-            bClientes.Location = new Point(0, 123);
+            bClientes.Location = new Point(0, 99);
             bClientes.Name = "bClientes";
             bClientes.Size = new Size(192, 41);
             bClientes.TabIndex = 2;
@@ -144,12 +146,26 @@
             bEmpleados.FlatStyle = FlatStyle.Flat;
             bEmpleados.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             bEmpleados.ForeColor = SystemColors.InactiveCaption;
-            bEmpleados.Location = new Point(0, 67);
+            bEmpleados.Location = new Point(0, 52);
             bEmpleados.Name = "bEmpleados";
             bEmpleados.Size = new Size(192, 41);
             bEmpleados.TabIndex = 0;
             bEmpleados.Text = "Empleados";
             bEmpleados.UseVisualStyleBackColor = false;
+            // 
+            // bBackUp
+            // 
+            bBackUp.BackColor = Color.Teal;
+            bBackUp.FlatAppearance.BorderSize = 0;
+            bBackUp.FlatStyle = FlatStyle.Flat;
+            bBackUp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bBackUp.ForeColor = SystemColors.InactiveCaption;
+            bBackUp.Location = new Point(0, 287);
+            bBackUp.Name = "bBackUp";
+            bBackUp.Size = new Size(192, 41);
+            bBackUp.TabIndex = 7;
+            bBackUp.Text = "Backup";
+            bBackUp.UseVisualStyleBackColor = false;
             // 
             // MainView
             // 
@@ -176,5 +192,6 @@
         private Button bHabitaciones;
         private Button bReservas;
         private Button bClientes;
+        private Button bBackUp;
     }
 }

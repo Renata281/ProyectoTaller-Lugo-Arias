@@ -14,6 +14,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         event EventHandler ShowReservasView;
         event EventHandler ShowHabitacionesView;
         event EventHandler ShowTipoHabitacionView;
+        event EventHandler ShowBackupView;
         void Show();
         void Close();
         UsuarioModel CurrentUser { get; set; }
