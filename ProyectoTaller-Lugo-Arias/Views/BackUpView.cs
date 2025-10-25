@@ -32,18 +32,19 @@ namespace ProyectoTaller_Lugo_Arias.Views
             //Restaurar Base de Datos
             BRestore.Click += delegate { RestoreEvent?.Invoke(this, EventArgs.Empty); };
             //Ver historial
-            BLogs.Click += delegate {
+            BLogs.Click += delegate
+            {
                 tabControlSinCabecera1.SelectedTab = tabPage2;
             };
             // hacer back
             BBack.Click += delegate
             {
                 tabControlSinCabecera1.SelectedTab = tabPage1;
-            }; 
+            };
         }
 
         public void SetLogsListBindingSource(BindingSource logsList)
-        { 
+        {
             // Limpiar las columnas existentes (si es necesario)
             dataGridView1.Columns.Clear();
             // Configurar las columnas manualmente
@@ -84,14 +85,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
             // Asignar el DataSource
             //new BindingSource(logsList, null)
             dataGridView1.DataSource = logsList;
-            
+
         }
 
         public event EventHandler SaveEvent;
         public event EventHandler RestoreEvent;
 
         public string SavePath
-        { 
+        {
             get { return TRoute.Text; }
             set { TRoute.Text = value; }
         }
@@ -99,6 +100,29 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
             get { return TBPath.Text; }
             set { TBPath.Text = value; }
+        }
+
+        private static BackUpView instance;
+        public static BackUpView GetInstance(Form parentContainer)
+        {
+
+            if (instance == null || instance.IsDisposed)
+            {
+                instance = new BackUpView();
+                instance.MdiParent = parentContainer;
+                instance.FormBorderStyle = FormBorderStyle.None;
+                instance.Dock = DockStyle.Fill;
+            }
+            else
+            {
+                if (instance.WindowState == FormWindowState.Minimized)
+                    instance.WindowState = FormWindowState.Normal;
+                instance.BringToFront();
+            }
+            instance.tabControlSinCabecera1.SelectedTab = instance.tabPage1;
+            return instance;
+
+
         }
 
         private void BPath1_Click(object sender, EventArgs e)
@@ -122,29 +146,6 @@ namespace ProyectoTaller_Lugo_Arias.Views
             openFile.Filter = "Restore files (*.bak)|*.bak";
             openFile.ShowDialog();
             RestorePath = openFile.FileName;
-        }
-
-        private static BackUpView instance;
-        public static BackUpView GetInstance(Form parentContainer)
-        {
-        
-            if (instance == null || instance.IsDisposed)
-            {
-                instance = new BackUpView();
-                instance.MdiParent = parentContainer;
-                instance.FormBorderStyle = FormBorderStyle.None;
-                instance.Dock = DockStyle.Fill;
-            }
-            else
-            {
-                if (instance.WindowState == FormWindowState.Minimized)
-                    instance.WindowState = FormWindowState.Normal;
-                instance.BringToFront();
-            }
-            instance.tabControlSinCabecera1.SelectedTab = instance.tabPage1;
-            return instance;
-            
-         
         }
     }
 }

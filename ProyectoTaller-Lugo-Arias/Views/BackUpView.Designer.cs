@@ -52,6 +52,7 @@
             // 
             // lBackUp
             // 
+            lBackUp.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             lBackUp.AutoSize = true;
             lBackUp.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lBackUp.ForeColor = Color.DarkSlateGray;
@@ -82,7 +83,6 @@
             // 
             // BSave
             // 
-            BSave.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BSave.BackColor = Color.DarkSlateGray;
             BSave.FlatAppearance.BorderSize = 0;
             BSave.FlatStyle = FlatStyle.Flat;
@@ -97,7 +97,6 @@
             // 
             // BPath1
             // 
-            BPath1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BPath1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BPath1.ForeColor = Color.DarkSlateGray;
             BPath1.Location = new Point(545, 65);
@@ -106,6 +105,7 @@
             BPath1.TabIndex = 12;
             BPath1.Text = "Buscar carpeta...";
             BPath1.UseVisualStyleBackColor = true;
+            BPath1.Click += BPath1_Click;
             // 
             // lblArchivoRestore
             // 
@@ -128,7 +128,6 @@
             // 
             // BPath2
             // 
-            BPath2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BPath2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BPath2.ForeColor = Color.DarkSlateGray;
             BPath2.Location = new Point(545, 213);
@@ -137,10 +136,10 @@
             BPath2.TabIndex = 15;
             BPath2.Text = "Buscar archivo...";
             BPath2.UseVisualStyleBackColor = true;
+            BPath2.Click += BPath2_Click;
             // 
             // BRestore
             // 
-            BRestore.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             BRestore.BackColor = Color.DarkSlateGray;
             BRestore.FlatAppearance.BorderSize = 0;
             BRestore.FlatStyle = FlatStyle.Flat;
@@ -166,6 +165,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.InactiveCaption;
             dataGridView1.BorderStyle = BorderStyle.Fixed3D;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -180,10 +180,10 @@
             tabControlSinCabecera1.Controls.Add(tabPage1);
             tabControlSinCabecera1.Controls.Add(tabPage2);
             tabControlSinCabecera1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControlSinCabecera1.Location = new Point(-1, 65);
+            tabControlSinCabecera1.Location = new Point(-1, 100);
             tabControlSinCabecera1.Name = "tabControlSinCabecera1";
             tabControlSinCabecera1.SelectedIndex = 0;
-            tabControlSinCabecera1.Size = new Size(802, 392);
+            tabControlSinCabecera1.Size = new Size(802, 357);
             tabControlSinCabecera1.TabIndex = 19;
             // 
             // tabPage1
@@ -202,7 +202,7 @@
             tabPage1.Location = new Point(4, 30);
             tabPage1.Name = "tabPage1";
             tabPage1.Padding = new Padding(3);
-            tabPage1.Size = new Size(794, 358);
+            tabPage1.Size = new Size(794, 323);
             tabPage1.TabIndex = 0;
             tabPage1.Text = "BackUp";
             // 
@@ -229,7 +229,7 @@
             tabPage2.Location = new Point(4, 30);
             tabPage2.Name = "tabPage2";
             tabPage2.Padding = new Padding(3);
-            tabPage2.Size = new Size(794, 358);
+            tabPage2.Size = new Size(794, 323);
             tabPage2.TabIndex = 1;
             tabPage2.Text = "Historial";
             // 
