@@ -7,13 +7,14 @@ public class ReservaModel
     private int nro_reserva;
     private DateTime fecha_ingreso;
     private DateTime fecha_salida;
-    private float monto_total;
+    private decimal monto_total;
     private int id_cliente;
     private int nro_habitacion;
     private int id_piso;
     private string estado;
     private int id_pago;
     private int cant_personas;
+    private int id_tipo;
 
     [DisplayName("ID Reserva")]
     public int Nro_reserva
@@ -41,7 +42,7 @@ public class ReservaModel
     }
 
     [DisplayName("Monto Total")]
-    public float Monto_total
+    public decimal Monto_total
     {
         get => monto_total;
         set => monto_total = value;
@@ -111,6 +112,14 @@ public class ReservaModel
             Estado = "Pendiente";
         else
             Estado = "Desconocida";
+    }
+
+    [DisplayName("ID Tipo Habitación")]
+    [Required(ErrorMessage = "El ID del tipo de habitación es obligatorio.")]
+    public int Id_tipo
+    {
+        get => id_tipo;
+        set => id_tipo = value;
     }
 }
 

@@ -24,13 +24,13 @@ namespace ProyectoTaller_Lugo_Arias.Models
 
         // Consultar habitaciones disponibles según criterios
         IEnumerable<HabitacionesModels> GetHabitacionesDisponibles(
-            string tipo,
+            int tipo,
             int cant_personas,
             DateTime fecha_ingreso,
             DateTime fecha_salida
         );
 
         // Calcular monto total (puede usarse para mostrar antes de guardar)
-        float CalcularMontoTotal(int nro_habitacion, DateTime fecha_ingreso, DateTime fecha_salida);
+        decimal CalcularMontoTotal(int nro_habitacion, DateTime fecha_ingreso, DateTime fecha_salida);
     }
 }

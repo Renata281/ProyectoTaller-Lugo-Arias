@@ -13,7 +13,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
     {
         private int nro_habitacion;
         private int cant_camas;
-        private float precio_unitario;
+        private decimal precio_unitario;
         private int id_tipo;
         private int id_piso;
         private int id_estado;
@@ -40,7 +40,7 @@ namespace ProyectoTaller_Lugo_Arias.Models
 
         [DisplayName("Precio_unitario")]
         [Required(ErrorMessage = "El precio unitario es obligatorio")]
-        public float Precio_unitario
+        public decimal Precio_unitario
         {
             get { return precio_unitario; }
             set { precio_unitario = value; }

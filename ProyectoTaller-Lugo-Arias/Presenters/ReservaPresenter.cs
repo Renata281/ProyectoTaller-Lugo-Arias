@@ -4,15 +4,12 @@ using ProyectoTaller_Lugo_Arias.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoTaller_Lugo_Arias.Presenters
 {
     public class ReservaPresenter
     {
-        //campos
         private IReservasView view;
         private IReservaRepositorio reservaRepositorio;
         private BindingSource reservasBindingSource;
@@ -22,7 +19,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private IHabitacionRepositorio habitacionRepositorio;
         private IFormaPagoRepositorio formaPagoRepositorio;
         private ITipoHabitacionRepositorio tipoHabitacionRepositorio;
-        private BindingSource clientesBusquedaBindingSource;
+       // private BindingSource clientesBusquedaBindingSource;
         private BindingSource habitacionesDisponiblesBindingSource;
 
         private BindingSource reservasBindingSourceActivas;
@@ -32,15 +29,15 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private BindingSource reservasBindingSourceFinalizadas;
         private IEnumerable<ReservaModel> reservasListFinalizadas;
 
-
-        public ReservaPresenter(IReservasView view, IReservaRepositorio reservaRepositorio, IFormaPagoRepositorio formaPagoRepositorio, ITipoHabitacionRepositorio tipoHabitacionRepositorio, IHabitacionRepositorio habitacionesRepositorio, IClienteRepositorio clienteRepositorio)
+        public ReservaPresenter(IReservasView view, IReservaRepositorio reservaRepositorio,
+            IFormaPagoRepositorio formaPagoRepositorio, ITipoHabitacionRepositorio tipoHabitacionRepositorio,
+            IHabitacionRepositorio habitacionesRepositorio, IClienteRepositorio clienteRepositorio)
         {
-
             this.reservasBindingSource = new BindingSource();
             this.reservasBindingSourceActivas = new BindingSource();
             this.reservasBindingSourcePendientes = new BindingSource();
             this.reservasBindingSourceFinalizadas = new BindingSource();
-            this.clientesBusquedaBindingSource = new BindingSource();
+           // this.clientesBusquedaBindingSource = new BindingSource();
             this.habitacionesDisponiblesBindingSource = new BindingSource();
 
             this.view = view;
@@ -50,46 +47,51 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.formaPagoRepositorio = formaPagoRepositorio;
             this.tipoHabitacionRepositorio = tipoHabitacionRepositorio;
 
-            // suscribir eventos de la vista a los manejadores de eventos
+            // Suscribir eventos
             this.view.BuscarEvent += BuscarReserva;
             this.view.AgregarEvent += AgregarReserva;
             this.view.EditarEvent += LoadSelectedReservaToEdit;
             this.view.EliminarEvent += DeleteSelectedReserva;
             this.view.GuardarEvent += GuardarReserva;
             this.view.CancelarEvent += CancelarAction;
+            this.view.CriteriosBusquedaHabitacionChanged += LoadHabitacionesDisponibles;
+            this.view.HabitacionSeleccionadaChanged += CalculateMontoTotal;
+            //this.view.ClienteBusquedaChanged += SearchClient;
+            //this.view.ClienteSeleccionadoEvent += AssignSelectedClient;
 
-            //establecer el origen de datos del enlace
+            // Orígenes de datos
             this.view.SetReservaListBindingSource(reservasBindingSource);
             this.view.SetReservasListBindingSourceActivas(reservasBindingSourceActivas);
             this.view.SetReservasListBindingSourcePendientes(reservasBindingSourcePendientes);
             this.view.SetReservasListBindingSourceFinalizadas(reservasBindingSourceFinalizadas);
-            this.view.SetClientesBusquedaBindingSource(clientesBusquedaBindingSource);
+          //  this.view.SetClientesBusquedaBindingSource(clientesBusquedaBindingSource);
             this.view.SetHabitacionesDisponiblesListComboBox(habitacionesDisponiblesBindingSource);
-            //cargar datos de la tabla empleados
-            LoadAllReservasList();
 
+            // Cargar datos
+            LoadAllReservasList();
             this.view.SetPagosListComboBox(formaPagoRepositorio.GetAll());
             this.view.SetTiposHabitacionListComboBox(tipoHabitacionRepositorio.GetAll());
+            this.view.SetClientesListComboBox(clienteRepositorio.GetAll());
 
-            //mostrar la vista
             this.view.Show();
         }
 
         private void LoadAllReservasList()
         {
             reservasList = reservaRepositorio.GetAll();
-            reservasBindingSource.DataSource = reservasList; //establece el origen de datos del enlace
+            reservasBindingSource.DataSource = reservasList;
 
             reservasListActivas = reservaRepositorio.GetAllActivas();
-            reservasBindingSourceActivas.DataSource = reservasListActivas; 
+            reservasBindingSourceActivas.DataSource = reservasListActivas;
+
             reservasListFinalizadas = reservaRepositorio.GetAllFinalizadas();
             reservasBindingSourceFinalizadas.DataSource = reservasListFinalizadas;
+
             reservasListPendientes = reservaRepositorio.GetAllPendientes();
             reservasBindingSourcePendientes.DataSource = reservasListPendientes;
-
         }
 
-        private void CancelarAction(object? sender, EventArgs e)
+        private void CancelarAction(object sender, EventArgs e)
         {
             CleanViewFields();
         }
@@ -98,17 +100,15 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         {
             view.Id_cliente = 0;
             view.Cant_personas = 0;
-            view.Tipo = " ";
-            view.Monto_total = 0;
+            view.Id_tipo = 0;
+            view.Monto_total = 0m;
             view.Id_pago = 1;
-            view.Tipo = string.Empty;
             view.Estado = string.Empty;
             view.IsEditar = false;
             view.IsNuevo = true;
-
         }
 
-        private void GuardarReserva(object? sender, EventArgs e)
+        private void GuardarReserva(object sender, EventArgs e)
         {
             try
             {
@@ -119,11 +119,12 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                     Fecha_salida = view.Fecha_salida,
                     Id_cliente = view.Id_cliente,
                     Nro_habitacion = view.Nro_habitacion,
+                    Id_piso = view.Id_piso,
                     Id_pago = view.Id_pago,
                     Cant_personas = view.Cant_personas,
+                    Id_tipo = view.Id_tipo
                 };
 
-                // Calcular monto y estado
                 reserva.Monto_total = reservaRepositorio.CalcularMontoTotal(reserva.Nro_habitacion, reserva.Fecha_ingreso, reserva.Fecha_salida);
                 reserva.CalcularEstado();
 
@@ -152,7 +153,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             }
         }
 
-        private void DeleteSelectedReserva(object? sender, EventArgs e)
+        private void DeleteSelectedReserva(object sender, EventArgs e)
         {
             try
             {
@@ -165,11 +166,11 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             catch (Exception ex)
             {
                 view.IsNuevo = false;
-                view.Mensaje = "Ocurrio un error, no se pudo eliminar la reserva";
+                view.Mensaje = "Ocurrió un error, no se pudo eliminar la reserva";
             }
         }
 
-        private void LoadSelectedReservaToEdit(object? sender, EventArgs e)
+        private void LoadSelectedReservaToEdit(object sender, EventArgs e)
         {
             var reserva = (ReservaModel)reservasBindingSource.Current;
 
@@ -181,16 +182,17 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Nro_habitacion = reserva.Nro_habitacion;
             view.Id_pago = reserva.Id_pago;
             view.Cant_personas = reserva.Cant_personas;
+            view.Id_tipo = reserva.Id_tipo;
             view.Estado = reserva.Estado;
             view.IsEditar = true;
         }
 
-        private void AgregarReserva(object? sender, EventArgs e)
+        private void AgregarReserva(object sender, EventArgs e)
         {
             view.IsEditar = false;
         }
 
-        private void BuscarReserva(object? sender, EventArgs e)
+        private void BuscarReserva(object sender, EventArgs e)
         {
             bool emptyValue = string.IsNullOrWhiteSpace(this.view.Buscar);
 
@@ -204,94 +206,24 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             }
 
             reservasBindingSource.DataSource = reservasList;
-            
         }
 
-        private void MapReservaToView(ReservaModel reserva)
-        {
-            if (reserva == null) return;
-            this.view.Nro_reserva = reserva.Nro_reserva.ToString();
-            this.view.Fecha_ingreso = reserva.Fecha_ingreso;
-            this.view.Fecha_salida = reserva.Fecha_salida;
-            this.view.Monto_total = reserva.Monto_total;
-            this.view.Id_cliente = reserva.Id_cliente;
-            this.view.Nro_habitacion = reserva.Nro_habitacion;
-            this.view.Id_pago = reserva.Id_pago;
-            this.view.Cant_personas = reserva.Cant_personas;
-            this.view.Estado = reserva.Estado;
-        }
-
-        private ReservaModel MapViewToReserva()
-        {
-            return new ReservaModel
-            {
-                Nro_reserva = int.TryParse(view.Nro_reserva, out int nro) ? nro : 0,
-                Fecha_ingreso = view.Fecha_ingreso,
-                Fecha_salida = view.Fecha_salida,
-                Monto_total = view.Monto_total,
-                Id_cliente = view.Id_cliente,
-                Nro_habitacion = view.Nro_habitacion,
-                Id_pago = view.Id_pago,
-                Cant_personas = view.Cant_personas,
-                Estado = view.Estado
-            };
-        }
-
-             // --- LÓGICA DE CLIENTES ---
-        
-        private void SearchClient(object sender, EventArgs e)
-        {
-            string valorBusqueda = view.ClienteBusqueda;
-            
-            if (!string.IsNullOrWhiteSpace(valorBusqueda) && valorBusqueda.Length >= 3)
-            {
-                try
-                {
-                    var clientes = clienteRepositorio.GetByValue(valorBusqueda); 
-                    clientesBusquedaBindingSource.DataSource = clientes;
-                }
-                catch (Exception ex)
-                {
-                    view.Mensaje = "Error buscando clientes: " + ex.Message;
-                }
-            }
-            else
-            {
-                clientesBusquedaBindingSource.DataSource = null;
-            }
-        }
-
-        private void AssignSelectedClient(object sender, EventArgs e)
-        {
-            // Asume que la vista actualiza view.Id_cliente_Seleccionado al seleccionar un cliente
-            int idSeleccionado = view.Id_cliente_Seleccionado;
-            
-            if (idSeleccionado > 0)
-            {
-                view.Id_cliente = idSeleccionado; 
-                view.Mensaje = $"Cliente ID {idSeleccionado} asignado.";
-                clientesBusquedaBindingSource.DataSource = null; 
-            }
-        }
-
-        // --- LÓGICA DE HABITACIONES Y CÁLCULO ---
-        
+        // --- HABITACIONES Y CÁLCULO ---
         private void LoadHabitacionesDisponibles(object sender, EventArgs e)
         {
             try
             {
                 if (view.Cant_personas > 0 && view.Fecha_salida > view.Fecha_ingreso)
                 {
-                    // Usa el método del repositorio con los criterios de la vista
                     var disponibles = reservaRepositorio.GetHabitacionesDisponibles(
-                        view.Tipo, // Asumo que esta propiedad existe en IReservasView
+                        view.Id_tipo, // <--- ahora usa Id_tipo
                         view.Cant_personas,
                         view.Fecha_ingreso,
                         view.Fecha_salida
                     );
+
                     habitacionesDisponiblesBindingSource.DataSource = disponibles.ToList();
-                    
-                    CalculateMontoTotal(this, EventArgs.Empty); 
+                    CalculateMontoTotal(this, EventArgs.Empty);
                 }
             }
             catch (Exception ex)
@@ -306,7 +238,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             {
                 if (view.Nro_habitacion > 0)
                 {
-                    float monto = reservaRepositorio.CalcularMontoTotal( 
+                    decimal monto = reservaRepositorio.CalcularMontoTotal(
                         view.Nro_habitacion,
                         view.Fecha_ingreso,
                         view.Fecha_salida
@@ -324,7 +256,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                 view.Monto_total = 0;
             }
         }
-        }
     }
+}
 
 

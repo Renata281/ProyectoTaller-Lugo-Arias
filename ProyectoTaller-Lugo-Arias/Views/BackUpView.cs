@@ -29,8 +29,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         {
             //Generar BackUp
             BSave.Click += delegate { SaveEvent?.Invoke(this, EventArgs.Empty); };
-            //Restaurar Base de Datos
-            BRestore.Click += delegate { RestoreEvent?.Invoke(this, EventArgs.Empty); };
+        
             //Ver historial
             BLogs.Click += delegate
             {
@@ -89,19 +88,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
         }
 
         public event EventHandler SaveEvent;
-        public event EventHandler RestoreEvent;
+     
 
         public string SavePath
         {
             get { return TRoute.Text; }
             set { TRoute.Text = value; }
         }
-        public string RestorePath
-        {
-            get { return TBPath.Text; }
-            set { TBPath.Text = value; }
-        }
-
+       
         private static BackUpView instance;
         public static BackUpView GetInstance(Form parentContainer)
         {
@@ -140,13 +134,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 TRoute.Text = selectedFolder;
             }
         }
-
-        private void BPath2_Click(object sender, EventArgs e)
-        {
-            openFile.Filter = "Restore files (*.bak)|*.bak";
-            openFile.ShowDialog();
-            RestorePath = openFile.FileName;
-        }
+        
     }
 }
 

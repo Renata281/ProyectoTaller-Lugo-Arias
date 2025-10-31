@@ -33,10 +33,6 @@
             TRoute = new TextBox();
             BSave = new Button();
             BPath1 = new Button();
-            lblArchivoRestore = new Label();
-            TBPath = new TextBox();
-            BPath2 = new Button();
-            BRestore = new Button();
             label1 = new Label();
             dataGridView1 = new DataGridView();
             tabControlSinCabecera1 = new TabControl();
@@ -67,7 +63,7 @@
             lblRutaBackup.AutoSize = true;
             lblRutaBackup.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblRutaBackup.ForeColor = Color.DarkSlateGray;
-            lblRutaBackup.Location = new Point(222, 26);
+            lblRutaBackup.Location = new Point(236, 92);
             lblRutaBackup.Name = "lblRutaBackup";
             lblRutaBackup.Size = new Size(289, 25);
             lblRutaBackup.TabIndex = 4;
@@ -76,7 +72,7 @@
             // TRoute
             // 
             TRoute.BackColor = SystemColors.Control;
-            TRoute.Location = new Point(222, 66);
+            TRoute.Location = new Point(236, 148);
             TRoute.Name = "TRoute";
             TRoute.Size = new Size(289, 29);
             TRoute.TabIndex = 10;
@@ -88,7 +84,7 @@
             BSave.FlatStyle = FlatStyle.Flat;
             BSave.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BSave.ForeColor = SystemColors.InactiveBorder;
-            BSave.Location = new Point(306, 111);
+            BSave.Location = new Point(311, 200);
             BSave.Name = "BSave";
             BSave.Size = new Size(146, 31);
             BSave.TabIndex = 11;
@@ -99,58 +95,13 @@
             // 
             BPath1.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BPath1.ForeColor = Color.DarkSlateGray;
-            BPath1.Location = new Point(545, 65);
+            BPath1.Location = new Point(584, 146);
             BPath1.Name = "BPath1";
             BPath1.Size = new Size(146, 31);
             BPath1.TabIndex = 12;
             BPath1.Text = "Buscar carpeta...";
             BPath1.UseVisualStyleBackColor = true;
             BPath1.Click += BPath1_Click;
-            // 
-            // lblArchivoRestore
-            // 
-            lblArchivoRestore.AutoSize = true;
-            lblArchivoRestore.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblArchivoRestore.ForeColor = Color.DarkSlateGray;
-            lblArchivoRestore.Location = new Point(222, 171);
-            lblArchivoRestore.Name = "lblArchivoRestore";
-            lblArchivoRestore.Size = new Size(268, 25);
-            lblArchivoRestore.TabIndex = 13;
-            lblArchivoRestore.Text = "SELECCIONAR ARCHIVO .BAK";
-            // 
-            // TBPath
-            // 
-            TBPath.BackColor = SystemColors.Control;
-            TBPath.Location = new Point(222, 214);
-            TBPath.Name = "TBPath";
-            TBPath.Size = new Size(289, 29);
-            TBPath.TabIndex = 14;
-            // 
-            // BPath2
-            // 
-            BPath2.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BPath2.ForeColor = Color.DarkSlateGray;
-            BPath2.Location = new Point(545, 213);
-            BPath2.Name = "BPath2";
-            BPath2.Size = new Size(146, 31);
-            BPath2.TabIndex = 15;
-            BPath2.Text = "Buscar archivo...";
-            BPath2.UseVisualStyleBackColor = true;
-            BPath2.Click += BPath2_Click;
-            // 
-            // BRestore
-            // 
-            BRestore.BackColor = Color.DarkSlateGray;
-            BRestore.FlatAppearance.BorderSize = 0;
-            BRestore.FlatStyle = FlatStyle.Flat;
-            BRestore.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BRestore.ForeColor = SystemColors.InactiveBorder;
-            BRestore.Location = new Point(306, 258);
-            BRestore.Name = "BRestore";
-            BRestore.Size = new Size(146, 31);
-            BRestore.TabIndex = 16;
-            BRestore.Text = "Restaurar";
-            BRestore.UseVisualStyleBackColor = false;
             // 
             // label1
             // 
@@ -191,13 +142,9 @@
             tabPage1.BackColor = SystemColors.Control;
             tabPage1.Controls.Add(BLogs);
             tabPage1.Controls.Add(lblRutaBackup);
-            tabPage1.Controls.Add(BRestore);
             tabPage1.Controls.Add(TRoute);
-            tabPage1.Controls.Add(BPath2);
             tabPage1.Controls.Add(BPath1);
-            tabPage1.Controls.Add(TBPath);
             tabPage1.Controls.Add(BSave);
-            tabPage1.Controls.Add(lblArchivoRestore);
             tabPage1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tabPage1.Location = new Point(4, 30);
             tabPage1.Name = "tabPage1";
@@ -270,10 +217,6 @@
         private TextBox TRoute;
         private Button BSave;
         private Button BPath1;
-        private Label lblArchivoRestore;
-        private TextBox TBPath;
-        private Button BPath2;
-        private Button BRestore;
         private Label label1;
         private DataGridView dataGridView1;
         private TabControl tabControlSinCabecera1;

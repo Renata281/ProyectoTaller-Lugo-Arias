@@ -47,21 +47,20 @@
             dgvFinalizadas = new DataGridView();
             lReservasFin = new Label();
             tpNuevaReserva = new TabPage();
+            comboBoxClientes = new ComboBox();
             cbTipoHab = new ComboBox();
             lTipoHabt = new Label();
             bConfirmar = new Button();
             panel2 = new Panel();
             cbFPago = new ComboBox();
             lMetodoPago = new Label();
-            tbMonto = new TextBox();
+            txtMonto = new TextBox();
             lMontoTotal = new Label();
-            tbCantPers = new TextBox();
             label3 = new Label();
             bCancelar = new Button();
-            tbCliente = new TextBox();
-            cbHabitacion = new ComboBox();
-            dtFechaSalida = new DateTimePicker();
-            dtFechaIngreso = new DateTimePicker();
+            cbHab = new ComboBox();
+            dtpSalida = new DateTimePicker();
+            dtpIngreso = new DateTimePicker();
             label5 = new Label();
             lFechaSalida = new Label();
             lFechaIngreso = new Label();
@@ -70,6 +69,7 @@
             tpPendientes = new TabPage();
             dgvPendientes = new DataGridView();
             label1 = new Label();
+            nudCantPersonas = new NumericUpDown();
             panel1.SuspendLayout();
             tabControl1.SuspendLayout();
             tpTodos.SuspendLayout();
@@ -82,6 +82,7 @@
             panel2.SuspendLayout();
             tpPendientes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPendientes).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)nudCantPersonas).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -291,17 +292,17 @@
             // tpNuevaReserva
             // 
             tpNuevaReserva.BackColor = SystemColors.Control;
+            tpNuevaReserva.Controls.Add(nudCantPersonas);
+            tpNuevaReserva.Controls.Add(comboBoxClientes);
             tpNuevaReserva.Controls.Add(cbTipoHab);
             tpNuevaReserva.Controls.Add(lTipoHabt);
             tpNuevaReserva.Controls.Add(bConfirmar);
             tpNuevaReserva.Controls.Add(panel2);
-            tpNuevaReserva.Controls.Add(tbCantPers);
             tpNuevaReserva.Controls.Add(label3);
             tpNuevaReserva.Controls.Add(bCancelar);
-            tpNuevaReserva.Controls.Add(tbCliente);
-            tpNuevaReserva.Controls.Add(cbHabitacion);
-            tpNuevaReserva.Controls.Add(dtFechaSalida);
-            tpNuevaReserva.Controls.Add(dtFechaIngreso);
+            tpNuevaReserva.Controls.Add(cbHab);
+            tpNuevaReserva.Controls.Add(dtpSalida);
+            tpNuevaReserva.Controls.Add(dtpIngreso);
             tpNuevaReserva.Controls.Add(label5);
             tpNuevaReserva.Controls.Add(lFechaSalida);
             tpNuevaReserva.Controls.Add(lFechaIngreso);
@@ -313,6 +314,15 @@
             tpNuevaReserva.Size = new Size(777, 462);
             tpNuevaReserva.TabIndex = 3;
             tpNuevaReserva.Text = "Nueva Reserva";
+            // 
+            // comboBoxClientes
+            // 
+            comboBoxClientes.BackColor = SystemColors.Control;
+            comboBoxClientes.FormattingEnabled = true;
+            comboBoxClientes.Location = new Point(24, 96);
+            comboBoxClientes.Name = "comboBoxClientes";
+            comboBoxClientes.Size = new Size(254, 29);
+            comboBoxClientes.TabIndex = 21;
             // 
             // cbTipoHab
             // 
@@ -353,7 +363,7 @@
             panel2.BackColor = SystemColors.InactiveCaption;
             panel2.Controls.Add(cbFPago);
             panel2.Controls.Add(lMetodoPago);
-            panel2.Controls.Add(tbMonto);
+            panel2.Controls.Add(txtMonto);
             panel2.Controls.Add(lMontoTotal);
             panel2.Location = new Point(424, 159);
             panel2.Name = "panel2";
@@ -380,13 +390,13 @@
             lMetodoPago.TabIndex = 14;
             lMetodoPago.Text = "Método de Pago";
             // 
-            // tbMonto
+            // txtMonto
             // 
-            tbMonto.BackColor = SystemColors.Control;
-            tbMonto.Location = new Point(19, 45);
-            tbMonto.Name = "tbMonto";
-            tbMonto.Size = new Size(263, 29);
-            tbMonto.TabIndex = 12;
+            txtMonto.BackColor = SystemColors.Control;
+            txtMonto.Location = new Point(19, 45);
+            txtMonto.Name = "txtMonto";
+            txtMonto.Size = new Size(263, 29);
+            txtMonto.TabIndex = 12;
             // 
             // lMontoTotal
             // 
@@ -398,14 +408,6 @@
             lMontoTotal.Size = new Size(90, 20);
             lMontoTotal.TabIndex = 5;
             lMontoTotal.Text = "Monto total";
-            // 
-            // tbCantPers
-            // 
-            tbCantPers.BackColor = SystemColors.Control;
-            tbCantPers.Location = new Point(24, 159);
-            tbCantPers.Name = "tbCantPers";
-            tbCantPers.Size = new Size(254, 29);
-            tbCantPers.TabIndex = 16;
             // 
             // label3
             // 
@@ -432,41 +434,33 @@
             bCancelar.Text = "Cancelar";
             bCancelar.UseVisualStyleBackColor = false;
             // 
-            // tbCliente
+            // cbHab
             // 
-            tbCliente.BackColor = SystemColors.Control;
-            tbCliente.Location = new Point(24, 93);
-            tbCliente.Name = "tbCliente";
-            tbCliente.Size = new Size(254, 29);
-            tbCliente.TabIndex = 9;
+            cbHab.BackColor = SystemColors.Control;
+            cbHab.FormattingEnabled = true;
+            cbHab.Location = new Point(424, 93);
+            cbHab.Name = "cbHab";
+            cbHab.Size = new Size(254, 29);
+            cbHab.TabIndex = 8;
             // 
-            // cbHabitacion
+            // dtpSalida
             // 
-            cbHabitacion.BackColor = SystemColors.Control;
-            cbHabitacion.FormattingEnabled = true;
-            cbHabitacion.Location = new Point(424, 93);
-            cbHabitacion.Name = "cbHabitacion";
-            cbHabitacion.Size = new Size(254, 29);
-            cbHabitacion.TabIndex = 8;
+            dtpSalida.CalendarMonthBackground = SystemColors.Control;
+            dtpSalida.CalendarTitleBackColor = SystemColors.ButtonShadow;
+            dtpSalida.Format = DateTimePickerFormat.Short;
+            dtpSalida.Location = new Point(24, 290);
+            dtpSalida.Name = "dtpSalida";
+            dtpSalida.Size = new Size(254, 29);
+            dtpSalida.TabIndex = 7;
             // 
-            // dtFechaSalida
+            // dtpIngreso
             // 
-            dtFechaSalida.CalendarMonthBackground = SystemColors.Control;
-            dtFechaSalida.CalendarTitleBackColor = SystemColors.ButtonShadow;
-            dtFechaSalida.Format = DateTimePickerFormat.Short;
-            dtFechaSalida.Location = new Point(24, 290);
-            dtFechaSalida.Name = "dtFechaSalida";
-            dtFechaSalida.Size = new Size(254, 29);
-            dtFechaSalida.TabIndex = 7;
-            // 
-            // dtFechaIngreso
-            // 
-            dtFechaIngreso.CalendarMonthBackground = SystemColors.Control;
-            dtFechaIngreso.Format = DateTimePickerFormat.Short;
-            dtFechaIngreso.Location = new Point(24, 221);
-            dtFechaIngreso.Name = "dtFechaIngreso";
-            dtFechaIngreso.Size = new Size(254, 29);
-            dtFechaIngreso.TabIndex = 6;
+            dtpIngreso.CalendarMonthBackground = SystemColors.Control;
+            dtpIngreso.Format = DateTimePickerFormat.Short;
+            dtpIngreso.Location = new Point(24, 221);
+            dtpIngreso.Name = "dtpIngreso";
+            dtpIngreso.Size = new Size(254, 29);
+            dtpIngreso.TabIndex = 6;
             // 
             // label5
             // 
@@ -557,6 +551,13 @@
             label1.TabIndex = 5;
             label1.Text = "Reservas Activas";
             // 
+            // nudCantPersonas
+            // 
+            nudCantPersonas.Location = new Point(29, 159);
+            nudCantPersonas.Name = "nudCantPersonas";
+            nudCantPersonas.Size = new Size(120, 29);
+            nudCantPersonas.TabIndex = 22;
+            // 
             // ReservasView
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -587,6 +588,7 @@
             tpPendientes.ResumeLayout(false);
             tpPendientes.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dgvPendientes).EndInit();
+            ((System.ComponentModel.ISupportInitialize)nudCantPersonas).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -606,15 +608,13 @@
         private Label lFechaIngreso;
         private Label label2;
         private Label lNuevaReserva;
-        private DateTimePicker dtFechaSalida;
-        private DateTimePicker dtFechaIngreso;
-        private ComboBox cbHabitacion;
+        private DateTimePicker dtpSalida;
+        private DateTimePicker dtpIngreso;
+        private ComboBox cbHab;
         private Button bCancelar;
-        private TextBox tbCliente;
         private Label lMetodoPago;
         private ComboBox cbFPago;
-        private TextBox tbMonto;
-        private TextBox tbCantPers;
+        private TextBox txtMonto;
         private Label label3;
         private Button bConfirmar;
         private Panel panel2;
@@ -635,5 +635,7 @@
         private TabPage tpPendientes;
         private DataGridView dgvPendientes;
         private Label label1;
+        private ComboBox comboBoxClientes;
+        private NumericUpDown nudCantPersonas;
     }
 }

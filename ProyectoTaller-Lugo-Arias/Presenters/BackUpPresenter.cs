@@ -35,7 +35,6 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.logsBindingSource = new BindingSource();
             LoadAllLogs();
             this.view.SaveEvent += View_SaveEvent;
-            this.view.RestoreEvent += View_RestoreEvent;
             this.view.SetLogsListBindingSource(logsBindingSource);
             this.view.Show();
         }
@@ -80,45 +79,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                 MessageBox.Show("Seleccione una ruta válida.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
-        private void View_RestoreEvent(object sender, EventArgs e)
-        {
-            string path = view.RestorePath;
-
-            if (!string.IsNullOrEmpty(path))
-            {
-                try
-                {
-                    // Obtener nombre real de la base desde la cadena de conexión
-                    var builder = new SqlConnectionStringBuilder(connectionString);
-                    string dbName = builder.InitialCatalog;
-
-                    string query = $@"
-                USE master;
-                ALTER DATABASE [{dbName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
-                RESTORE DATABASE [{dbName}] FROM DISK = N'{path}' WITH REPLACE;
-                ALTER DATABASE [{dbName}] SET MULTI_USER;";
-
-                    using (var connection = new SqlConnection(connectionString))
-                    using (var command = new SqlCommand(query, connection))
-                    {
-                        connection.Open();
-                        command.ExecuteNonQuery();
-                    }
-
-                    MessageBox.Show($"Base de datos '{dbName}' restaurada desde: {path}", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error al restaurar backup: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un archivo válido.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
-
+        
 
         private void LoadAllLogs()
         {

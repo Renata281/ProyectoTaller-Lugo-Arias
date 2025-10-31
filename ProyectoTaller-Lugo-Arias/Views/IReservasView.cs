@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace ProyectoTaller_Lugo_Arias.Views
 {
@@ -13,14 +14,14 @@ namespace ProyectoTaller_Lugo_Arias.Views
         string Nro_reserva { get; set; }
         DateTime Fecha_ingreso { get; set; }
         DateTime Fecha_salida { get; set; }
-        float Monto_total { get; set; }
+        decimal Monto_total { get; set; }
         int Id_cliente { get; set; }
         int Nro_habitacion { get; set; }
-        int I_piso { get; set; }
+        int Id_piso { get; set; }
         int Id_pago { get; set; }
         int Cant_personas { get; set; } 
         string Estado { get; set; }
-        string Tipo { get; set; }
+        int Id_tipo { get; set; }
 
         string Buscar { get; set; }
         bool IsEditar { get; set; }
@@ -44,6 +45,8 @@ namespace ProyectoTaller_Lugo_Arias.Views
         void SetPagosListComboBox(IEnumerable<FormaPagoModel>pagoList);
         void SetTiposHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoHabitacionList);
 
+        void SetClientesListComboBox(IEnumerable<ClienteModel> clienteList);
+
         // Nuevo evento: Se dispara cuando cambia la selección de la pestaña
         event EventHandler SelectedTabChanged;
 
@@ -54,23 +57,6 @@ namespace ProyectoTaller_Lugo_Arias.Views
         event EventHandler HabitacionSeleccionadaChanged;
         // Propiedad esencial para la lógica de refresco (Índice de Tab Activo)
         int TabIndex { get; }
-
-        // Campo de entrada de texto para la búsqueda
-        string ClienteBusqueda { get; set; }
-
-        // El ID del cliente que será asociado a la reserva (Necesario para el Repositorio)
-        int Id_cliente_Seleccionado { get; set; }
-
-        // Fuente de datos para el control que mostrará los resultados de la búsqueda de clientes
-        void SetClientesBusquedaBindingSource(BindingSource clienteBindingSource);
-
-        // Nuevo evento: Se dispara cuando el usuario cambia el texto en el TextBox de búsqueda
-        event EventHandler ClienteBusquedaChanged;
-
-        // Nuevo evento: Se dispara cuando el usuario selecciona un cliente de la lista de resultados
-        event EventHandler ClienteSeleccionadoEvent;
-
-        // conecta la interfaz de usuario con una fuente de datos
         void Show();
         void SetHabitacionesDisponiblesListComboBox(BindingSource habitacionesDisponiblesBindingSource);
     }

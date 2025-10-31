@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -112,6 +113,22 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 tabControl1.TabPages.Add(tpFinalizados);
                 tabControl1.TabPages.Add(tpPendientes);
             };
+
+            // Eventos adicionales para actualización dinámica
+            nudCantPersonas.ValueChanged += (s, e) => CriteriosBusquedaHabitacionChanged?.Invoke(this, EventArgs.Empty);
+            dtpIngreso.ValueChanged += (s, e) => CriteriosBusquedaHabitacionChanged?.Invoke(this, EventArgs.Empty);
+            dtpSalida.ValueChanged += (s, e) => CriteriosBusquedaHabitacionChanged?.Invoke(this, EventArgs.Empty);
+            cbTipoHab.SelectedIndexChanged += (s, e) => CriteriosBusquedaHabitacionChanged?.Invoke(this, EventArgs.Empty);
+            cbHab.SelectedIndexChanged += (s, e) => {
+                // 1. Obtener el objeto HabitacionesModels seleccionado (asumiendo que es el tipo en el BindingSource)
+                var selectedItem = cbHab.SelectedItem;
+                if (selectedItem is HabitacionesModels habitacion)
+                {
+                    // 2. Asignar el Id_piso a la propiedad de la vista
+                    this.Id_piso = habitacion.Id_piso;
+                }
+                HabitacionSeleccionadaChanged?.Invoke(this, EventArgs.Empty);
+            };
         }
 
         public string Buscar
@@ -141,53 +158,45 @@ namespace ProyectoTaller_Lugo_Arias.Views
             set { nro_reserva_seleccionado = value; }
         }
         public DateTime Fecha_ingreso {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get => dtpIngreso.Value;
+            set => dtpIngreso.Value = value;
         }
         public DateTime Fecha_salida {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get => dtpSalida.Value;
+            set => dtpSalida.Value = value;
         }
-        public float Monto_total {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+        public decimal Monto_total {
+            get
+            {
+                decimal.TryParse(txtMonto.Text, out var monto);
+                return monto;
+            }
+            set => txtMonto.Text = value.ToString("0.00");
         }
-        public int Id_cliente { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+        public int Id_cliente {
+            get => comboBoxClientes.SelectedValue != null ? Convert.ToInt32(comboBoxClientes.SelectedValue) : 0;
+            set => comboBoxClientes.SelectedValue = value;
         }
         public int Nro_habitacion {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+            get => cbHab.SelectedValue != null ? Convert.ToInt32(cbHab.SelectedValue) : 0;
+            set => cbHab.SelectedValue = value;
         }
-        public int I_piso { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+        public int Id_pago {
+            get => cbFPago.SelectedValue != null ? Convert.ToInt32(cbFPago.SelectedValue) : 0;
+            set => cbFPago.SelectedValue = value;
         }
-        public int Id_pago { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+        public int Cant_personas {
+            get => (int)nudCantPersonas.Value;
+            set => nudCantPersonas.Value = value;
         }
-        public int Cant_personas { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
+        public string Estado { get; set; }
+        public int Id_tipo
+        {
+            get => cbTipoHab.SelectedValue != null ? Convert.ToInt32(cbTipoHab.SelectedValue) : 0;
+            set => cbTipoHab.SelectedValue = value;
         }
-        public string Estado { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
-        public string Tipo { 
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException(); 
-        }
-        public string ClienteBusqueda {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException(); 
-        }
-        public int Id_cliente_Seleccionado {
-            get => throw new NotImplementedException();
-            set => throw new NotImplementedException();
-        }
+        public int Id_piso { get; set; }
+    
 
         public event EventHandler BuscarEvent;
         public event EventHandler AgregarEvent;
@@ -198,8 +207,6 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public event EventHandler SelectedTabChanged;
         public event EventHandler CriteriosBusquedaHabitacionChanged;
         public event EventHandler HabitacionSeleccionadaChanged;
-        public event EventHandler ClienteBusquedaChanged;
-        public event EventHandler ClienteSeleccionadoEvent;
 
         //abre una unica instancia del formulario
         private static ReservasView instance;
@@ -267,17 +274,40 @@ namespace ProyectoTaller_Lugo_Arias.Views
 
             cbTipoHab.DataSource = tipoHabitacionList.ToList();
             cbTipoHab.DisplayMember = "Tipo";         // se muestra el tipo (ej: "Suite")
-            cbTipoHab.ValueMember = "Descripcion";    // opcionalmente podés guardar la descripción
+            cbTipoHab.ValueMember = "Id_tipo";    
         }
 
-        public void SetClientesBusquedaBindingSource(BindingSource clienteBindingSource)
-        {
-            throw new NotImplementedException();
-        }
 
         public void SetHabitacionesDisponiblesListComboBox(BindingSource habitacionesDisponiblesBindingSource)
         {
-            throw new NotImplementedException();
+            cbHab.DataSource = habitacionesDisponiblesBindingSource;
+            cbHab.DisplayMember = "Nro_habitacion";
+            cbHab.ValueMember = "Nro_habitacion";
         }
+
+        public void SetClientesListComboBox(IEnumerable<ClienteModel> clienteList)
+        {
+            // Filtrar solo los clientes activos
+            var clientesActivos = clienteList
+                .Where(c => c.Estado == "Activo")
+                .Select(c => new
+                {
+                    Id = c.Id_cliente,
+                    Dni = c.Dni.ToString() // Mostrar el DNI en el combo
+                })
+                .ToList();
+
+            // Limpiar el ComboBox antes de cargar
+            comboBoxClientes.DataSource = null;
+            comboBoxClientes.Items.Clear();
+
+            // Asignar la lista filtrada
+            comboBoxClientes.DataSource = clientesActivos;
+            comboBoxClientes.DisplayMember = "Dni"; // Lo que se muestra
+            comboBoxClientes.ValueMember = "Id";    // Lo que se guarda
+        }
+
+
+
     }
 }

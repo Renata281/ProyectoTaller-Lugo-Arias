@@ -11,9 +11,9 @@ namespace ProyectoTaller_Lugo_Arias.Views
     public interface IBackUpView
     {
             string SavePath { get; set; }
-            string RestorePath { get; set; }
+        
             event EventHandler SaveEvent;
-            event EventHandler RestoreEvent;
+       
             void SetLogsListBindingSource(BindingSource LogsList);
             void Show();
         

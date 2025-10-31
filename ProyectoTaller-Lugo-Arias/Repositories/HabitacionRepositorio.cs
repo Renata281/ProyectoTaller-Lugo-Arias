@@ -48,7 +48,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
-                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
+                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToDecimal(reader["precio_unitario"]) : 0m;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
@@ -77,7 +77,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 command.CommandText = "insert into habitacion(nro_habitacion, cant_camas, precio_unitario, id_tipo, id_piso, id_estado, cant_personas) values(@nro_habitacion, @cant_camas, @precio_unitario, @id_tipo, @id_piso, @id_estado, @cant_personas)";
                 command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = habitacion.Nro_habitacion;
                 command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacion.Cant_camas;
-                command.Parameters.Add("@precio_unitario", SqlDbType.Float).Value = habitacion.Precio_unitario;
+                command.Parameters.Add("@precio_unitario", SqlDbType.Decimal).Value = habitacion.Precio_unitario;
                 command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = habitacion.Id_tipo;
                 command.Parameters.Add("@id_piso", SqlDbType.Int).Value = habitacion.Id_piso;
                 command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacion.Cant_personas;
@@ -127,7 +127,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
                 command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = habitacionesModels.Nro_habitacion;
                 command.Parameters.Add("@cant_camas", SqlDbType.Int).Value = habitacionesModels.Cant_camas;
-                command.Parameters.Add("@precio_unitario", SqlDbType.Float).Value = habitacionesModels.Precio_unitario;
+                command.Parameters.Add("@precio_unitario", SqlDbType.Decimal).Value = habitacionesModels.Precio_unitario;
                 command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = habitacionesModels.Id_tipo;
                 command.Parameters.Add("@id_piso", SqlDbType.Int).Value = habitacionesModels.Id_piso;
                 command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = habitacionesModels.Cant_personas;
@@ -173,7 +173,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                         var habitacion = new HabitacionesModels();
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
-                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
+                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToDecimal(reader["precio_unitario"]) : 0m;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
@@ -217,7 +217,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
-                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]): 0f;
+                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToDecimal(reader["precio_unitario"]) : 0m;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
@@ -259,7 +259,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
-                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
+                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToDecimal(reader["precio_unitario"]) : 0m;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
@@ -301,7 +301,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
 
                         habitacion.Nro_habitacion = reader["nro_habitacion"] is DBNull ? 0 : (int)reader["nro_habitacion"];
                         habitacion.Cant_camas = reader["cant_camas"] is DBNull ? 0 : (int)reader["cant_camas"];
-                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToSingle(reader["precio_unitario"]) : 0f;
+                        habitacion.Precio_unitario = reader["precio_unitario"] != DBNull.Value ? Convert.ToDecimal(reader["precio_unitario"]) : 0m;
                         habitacion.Id_tipo = reader["id_tipo"] is DBNull ? 0 : (int)reader["id_tipo"];
                         habitacion.Tipo_descripcion = reader["tipo_habitacion"] as string ?? string.Empty;
                         habitacion.Id_piso = reader["piso_habitacion"] is DBNull ? 0 : (int)reader["piso_habitacion"];
