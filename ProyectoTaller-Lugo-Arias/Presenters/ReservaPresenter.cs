@@ -107,9 +107,10 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.IsEditar = false;
             view.IsNuevo = true;
         }
+        
 
         private void GuardarReserva(object sender, EventArgs e)
-        {
+        { 
             try
             {
                 var reserva = new ReservaModel
@@ -133,25 +134,37 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
                 if (view.IsEditar)
                 {
+                    // Actualizar reserva existente
                     reservaRepositorio.Edit(reserva);
                     view.Mensaje = "Reserva actualizada correctamente.";
                 }
                 else
                 {
+                    // Agregar nueva reserva
                     reservaRepositorio.Add(reserva);
+
+                    // Cambiar el estado de la habitación a "Ocupada" (id_estado = 3)
+                    habitacionRepositorio.ActualizarEstado(reserva.Nro_habitacion, reserva.Id_piso, 3);
+
                     view.Mensaje = "Reserva agregada correctamente.";
                 }
 
-                view.IsNuevo = true;
+                // Refrescar listas y DataGridViews
                 LoadAllReservasList();
+                // Si tenés un método similar para refrescar habitaciones, llamalo aquí
+                // Por ejemplo: LoadHabitacionesDisponibles(null, EventArgs.Empty);
+
                 CleanViewFields();
+                view.IsNuevo = true;
             }
             catch (Exception ex)
             {
                 view.IsNuevo = false;
                 view.Mensaje = $"Error al guardar la reserva: {ex.Message}";
             }
-        }
+        } 
+        
+        
 
         private void DeleteSelectedReserva(object sender, EventArgs e)
         {
@@ -168,6 +181,8 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                 view.IsNuevo = false;
                 view.Mensaje = "Ocurrió un error, no se pudo eliminar la reserva";
             }
+           
+
         }
 
         private void LoadSelectedReservaToEdit(object sender, EventArgs e)

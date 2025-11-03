@@ -162,6 +162,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Id_tipo = hab.Id_tipo;
             view.Id_piso = hab.Id_piso.ToString();
             view.Id_estado = hab.Id_estado.ToString();
+            view.Cant_personas = hab.Cant_personas.ToString();
             view.IsEdit = true;
         }
 

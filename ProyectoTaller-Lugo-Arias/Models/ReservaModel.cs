@@ -103,15 +103,16 @@ public class ReservaModel
     public void CalcularEstado()
     {
         var hoy = DateTime.Today;
+        var ingreso = Fecha_ingreso.Date;
+        var salida = Fecha_salida.Date;
 
-        if (Fecha_salida < hoy)
-            Estado = "Finalizada";
-        else if (Fecha_ingreso <= hoy && Fecha_salida >= hoy)
-            Estado = "Activa";
-        else if (Fecha_ingreso > hoy)
-            Estado = "Pendiente";
-        else
-            Estado = "Desconocida";
+        Estado = (ingreso, salida) switch
+        {
+            var (i, s) when s < hoy => "Finalizada",
+            var (i, s) when i <= hoy && s >= hoy => "Activa",
+            var (i, s) when i > hoy => "Pendiente",
+            _ => "Desconocida"
+        };
     }
 
     [DisplayName("ID Tipo Habitación")]

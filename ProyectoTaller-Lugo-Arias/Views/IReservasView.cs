@@ -59,6 +59,9 @@ namespace ProyectoTaller_Lugo_Arias.Views
         int TabIndex { get; }
         void Show();
         void SetHabitacionesDisponiblesListComboBox(BindingSource habitacionesDisponiblesBindingSource);
+
+       
+
     }
 
 }

@@ -1,4 +1,5 @@
 ﻿using ProyectoTaller_Lugo_Arias.Models;
+using ProyectoTaller_Lugo_Arias.Repositorio;
 using ProyectoTaller_Lugo_Arias.View;
 using System;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
             //editar
             bEditar.Click += delegate
             {
+                
                 EditEvent?.Invoke(this, EventArgs.Empty);
                 tabControl1.TabPages.Add(tpNuevaHabt); // Muestra la pestaña "Nueva habitacion"
                 tabControl1.TabPages.Remove(tpTodos); // Oculta la pestaña "todos"
@@ -73,6 +75,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                 tabControl1.TabPages.Remove(tpOcupadas); // Oculta la pestaña "Ocupados"
                 tabControl1.TabPages.Remove(tpMantenimiento); // Oculta la pestaña "Mantenimiento"
                 tpNuevaHabt.Text = "Editar habitación";
+
             };
 
             //eliminar

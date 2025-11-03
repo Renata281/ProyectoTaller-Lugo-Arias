@@ -35,7 +35,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                     INSERT INTO reserva
                         (fecha_ingreso, fecha_salida, monto_total, id_cliente, nro_habitacion, id_piso, id_pago, cant_personas, estado, id_tipo)
                     VALUES
-                        (@fecha_ingreso, @fecha_salida, @monto_total, @id_cliente, @nro_habitacion, @id_piso, @id_pago, @cant_personas, 'Pendiente', @id_tipo);"
+                        (@fecha_ingreso, @fecha_salida, @monto_total, @id_cliente, @nro_habitacion, @id_piso, @id_pago, @cant_personas, @estado, @id_tipo);"
             };
 
             command.Parameters.Add("@fecha_ingreso", SqlDbType.Date).Value = reserva.Fecha_ingreso;
@@ -46,6 +46,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             command.Parameters.Add("@id_piso", SqlDbType.Int).Value = reserva.Id_piso;
             command.Parameters.Add("@id_pago", SqlDbType.Int).Value = reserva.Id_pago;
             command.Parameters.Add("@cant_personas", SqlDbType.Int).Value = reserva.Cant_personas;
+            command.Parameters.Add("@estado", SqlDbType.VarChar).Value = reserva.Estado;
             command.Parameters.Add("@id_tipo", SqlDbType.Int).Value = reserva.Id_tipo;
 
             connection.Open();

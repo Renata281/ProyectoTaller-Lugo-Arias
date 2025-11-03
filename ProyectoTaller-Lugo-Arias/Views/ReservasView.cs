@@ -307,7 +307,5 @@ namespace ProyectoTaller_Lugo_Arias.Views
             comboBoxClientes.ValueMember = "Id";    // Lo que se guarda
         }
 
-
-
     }
 }

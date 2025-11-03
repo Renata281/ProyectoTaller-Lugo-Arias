@@ -315,5 +315,22 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             }
             return habList;
         }
-    }
+
+        public void ActualizarEstado(int nroHabitacion, int idPiso, int idEstado)
+        {
+            using (var connection = new SqlConnection(connectionString))
+            using (var command = new SqlCommand(
+                "UPDATE habitacion SET id_estado = @id_estado WHERE nro_habitacion = @nro_habitacion AND id_piso = @id_piso",
+                connection))
+            {
+                command.Parameters.Add("@id_estado", SqlDbType.Int).Value = idEstado;
+                command.Parameters.Add("@nro_habitacion", SqlDbType.Int).Value = nroHabitacion;
+                command.Parameters.Add("@id_piso", SqlDbType.Int).Value = idPiso;
+
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
         }
+
+    }
+}
