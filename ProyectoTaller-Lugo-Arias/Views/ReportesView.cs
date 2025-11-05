@@ -59,6 +59,9 @@ namespace ProyectoTaller_Lugo_Arias.Views
         // Mostrar tabla en el DataGridView
         public void LoadReport(DataTable tabla)
         {
+            dgvReportes.DataSource = null;
+            dgvReportes.Rows.Clear();
+            dgvReportes.Columns.Clear();
             dgvReportes.DataSource = tabla;
         }
 
