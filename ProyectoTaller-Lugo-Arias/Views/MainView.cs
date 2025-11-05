@@ -29,6 +29,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
         public event EventHandler ShowTipoHabitacionView = delegate { };
         public event EventHandler ShowSalir = delegate { };
         public event EventHandler ShowBackupView = delegate { };
+        public event EventHandler ShowReportesView;
 
         public MainView(UsuarioModel user)
         {
@@ -42,6 +43,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
             bHabitaciones.Click += delegate { ShowHabitacionesView?.Invoke(this, EventArgs.Empty); };
             bTipoHabitacion.Click += delegate { ShowTipoHabitacionView?.Invoke(this, EventArgs.Empty); };
             bBackUp.Click += delegate { ShowBackupView?.Invoke(this, EventArgs.Empty); };
+            bReportes.Click += delegate {ShowReportesView?.Invoke(this, EventArgs.Empty); };
 
             bSalir.Click += delegate { Application.Exit(); };
 
@@ -61,6 +63,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = false;
                     bBackUp.Visible = false;
+                    bReportes.Visible = false;
                     break;
 
                 case 2:// Gerente
@@ -71,6 +74,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = true;
                     bBackUp.Visible = true;
+                    bReportes.Visible = true;
                     break;
 
 
@@ -82,6 +86,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = true;
                     bBackUp.Visible = true;
+                    bReportes.Visible = false;
                     break;
 
                 case 4: // Administrador
@@ -92,6 +97,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
                     bHabitaciones.Visible = true;
                     bTipoHabitacion.Visible = true;
                     bBackUp.Visible = true;
+                    bReportes.Visible = true;
                     break;
 
             }
