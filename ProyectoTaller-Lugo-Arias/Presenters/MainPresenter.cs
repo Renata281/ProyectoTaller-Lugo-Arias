@@ -26,6 +26,15 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             this.mainView.ShowHabitacionesView += OnShowHabitacionesView;
             this.mainView.ShowTipoHabitacionView += OnShowTipoHabitacionView;
             this.mainView.ShowBackupView += OnShowBackupView;
+            this.mainView.ShowReportesView += OnShowReportesView;
+        }
+
+        private void OnShowReportesView(object? sender, EventArgs e)
+        {
+            IReporteView view = ReportesView.GetInstance((MainView) mainView);
+            IReporteRepositorio reporteRepositorio = new ReporteRepositorio(sqlConnectionString);
+            new ReportePresenter(view, reporteRepositorio);
+
         }
 
         private void OnShowTipoHabitacionView(object? sender, EventArgs e)

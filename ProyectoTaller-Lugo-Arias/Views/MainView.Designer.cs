@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            bBackUp = new Button();
             bSalir = new Button();
             bTipoHabitacion = new Button();
             bHabitaciones = new Button();
@@ -36,13 +37,14 @@
             bClientes = new Button();
             lNombreHotel = new Label();
             bEmpleados = new Button();
-            bBackUp = new Button();
+            bReportes = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.DarkSlateGray;
+            panel1.Controls.Add(bReportes);
             panel1.Controls.Add(bBackUp);
             panel1.Controls.Add(bSalir);
             panel1.Controls.Add(bTipoHabitacion);
@@ -56,6 +58,20 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(192, 450);
             panel1.TabIndex = 0;
+            // 
+            // bBackUp
+            // 
+            bBackUp.BackColor = Color.Teal;
+            bBackUp.FlatAppearance.BorderSize = 0;
+            bBackUp.FlatStyle = FlatStyle.Flat;
+            bBackUp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bBackUp.ForeColor = SystemColors.InactiveCaption;
+            bBackUp.Location = new Point(0, 287);
+            bBackUp.Name = "bBackUp";
+            bBackUp.Size = new Size(192, 41);
+            bBackUp.TabIndex = 7;
+            bBackUp.Text = "Backup";
+            bBackUp.UseVisualStyleBackColor = false;
             // 
             // bSalir
             // 
@@ -153,19 +169,19 @@
             bEmpleados.Text = "Empleados";
             bEmpleados.UseVisualStyleBackColor = false;
             // 
-            // bBackUp
+            // bReportes
             // 
-            bBackUp.BackColor = Color.Teal;
-            bBackUp.FlatAppearance.BorderSize = 0;
-            bBackUp.FlatStyle = FlatStyle.Flat;
-            bBackUp.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            bBackUp.ForeColor = SystemColors.InactiveCaption;
-            bBackUp.Location = new Point(0, 287);
-            bBackUp.Name = "bBackUp";
-            bBackUp.Size = new Size(192, 41);
-            bBackUp.TabIndex = 7;
-            bBackUp.Text = "Backup";
-            bBackUp.UseVisualStyleBackColor = false;
+            bReportes.BackColor = Color.Teal;
+            bReportes.FlatAppearance.BorderSize = 0;
+            bReportes.FlatStyle = FlatStyle.Flat;
+            bReportes.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            bReportes.ForeColor = SystemColors.InactiveCaption;
+            bReportes.Location = new Point(0, 334);
+            bReportes.Name = "bReportes";
+            bReportes.Size = new Size(192, 41);
+            bReportes.TabIndex = 8;
+            bReportes.Text = "Reportes";
+            bReportes.UseVisualStyleBackColor = false;
             // 
             // MainView
             // 
@@ -193,5 +209,6 @@
         private Button bReservas;
         private Button bClientes;
         private Button bBackUp;
+        private Button bReportes;
     }
 }
