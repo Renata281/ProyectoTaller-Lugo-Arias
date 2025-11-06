@@ -161,7 +161,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
         }
 
         // --- HABITACIONES DISPONIBLES ---
-
+        /*
         public IEnumerable<HabitacionesModels> GetHabitacionesDisponibles(int idTipo, int cantPersonas, DateTime fechaIngreso, DateTime fechaSalida)
         {
             var habitaciones = new List<HabitacionesModels>();
@@ -198,7 +198,7 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
                 });
             }
             return habitaciones;
-        }
+        }*/
 
         public decimal CalcularMontoTotal(int nro_habitacion, DateTime fecha_ingreso, DateTime fecha_salida)
         {

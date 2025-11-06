@@ -18,5 +18,8 @@ namespace ProyectoTaller_Lugo_Arias.Models
         IEnumerable<HabitacionesModels> GetAllOcupadas();
         IEnumerable<HabitacionesModels> GetAllMantenimiento();
         void ActualizarEstado(int nro_habitacion, int id_piso, int v);
+
+        IEnumerable<HabitacionesModels> GetHabitacionesDisponibles(int idTipo, int cantPersonas, DateTime fechaIngreso, DateTime fechaSalida);
+
     }
 }

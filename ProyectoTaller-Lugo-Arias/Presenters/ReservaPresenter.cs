@@ -79,16 +79,34 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
         private void LoadAllReservasList()
         {
             reservasList = reservaRepositorio.GetAll();
-            reservasBindingSource.DataSource = reservasList;
 
-            reservasListActivas = reservaRepositorio.GetAllActivas();
-            reservasBindingSourceActivas.DataSource = reservasListActivas;
+            foreach (var r in reservasList)
+            {
+                string estadoAnterior = r.Estado;
 
-            reservasListFinalizadas = reservaRepositorio.GetAllFinalizadas();
-            reservasBindingSourceFinalizadas.DataSource = reservasListFinalizadas;
+                // Recalcular estado automáticamente
+                r.CalcularEstado();
 
-            reservasListPendientes = reservaRepositorio.GetAllPendientes();
-            reservasBindingSourcePendientes.DataSource = reservasListPendientes;
+                // Si el estado cambió y debe actualizarse en BD
+                if (r.Estado != estadoAnterior)
+                {
+                    reservaRepositorio.Edit(r); // Guardamos el cambio
+
+                    // Si la reserva pasó a Finalizada → la habitación queda Disponible
+                    if (r.Estado == "Finalizada")
+                        habitacionRepositorio.ActualizarEstado(r.Nro_habitacion, r.Id_piso, 1);
+
+                    // Si está activa o pendiente → habitación Ocupada
+                    else if (r.Estado == "Activa" || r.Estado == "Pendiente")
+                        habitacionRepositorio.ActualizarEstado(r.Nro_habitacion, r.Id_piso, 3);
+                }
+            }
+
+            // Refrescar los listados de la vista
+            reservasBindingSource.DataSource = reservaRepositorio.GetAll();
+            reservasBindingSourceActivas.DataSource = reservaRepositorio.GetAllActivas();
+            reservasBindingSourcePendientes.DataSource = reservaRepositorio.GetAllPendientes();
+            reservasBindingSourceFinalizadas.DataSource = reservaRepositorio.GetAllFinalizadas();
         }
 
         private void CancelarAction(object sender, EventArgs e)
@@ -106,6 +124,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             view.Estado = string.Empty;
             view.IsEditar = false;
             view.IsNuevo = true;
+            habitacionesDisponiblesBindingSource.Clear();
         }
         
 
@@ -134,16 +153,21 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
 
                 if (view.IsEditar)
                 {
-                    // Actualizar reserva existente
                     reservaRepositorio.Edit(reserva);
+
+                    // Actualizar estado de habitación según estado de reserva
+                    if (reserva.Estado == "Activa" || reserva.Estado == "Pendiente")
+                        habitacionRepositorio.ActualizarEstado(reserva.Nro_habitacion, reserva.Id_piso, 3); // Ocupada
+                    else if (reserva.Estado == "Finalizada")
+                        habitacionRepositorio.ActualizarEstado(reserva.Nro_habitacion, reserva.Id_piso, 1); // Disponible
+
                     view.Mensaje = "Reserva actualizada correctamente.";
                 }
                 else
                 {
-                    // Agregar nueva reserva
                     reservaRepositorio.Add(reserva);
 
-                    // Cambiar el estado de la habitación a "Ocupada" (id_estado = 3)
+                    // Toda reserva nueva ocupa la habitación
                     habitacionRepositorio.ActualizarEstado(reserva.Nro_habitacion, reserva.Id_piso, 3);
 
                     view.Mensaje = "Reserva agregada correctamente.";
@@ -230,7 +254,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
             {
                 if (view.Cant_personas > 0 && view.Fecha_salida > view.Fecha_ingreso)
                 {
-                    var disponibles = reservaRepositorio.GetHabitacionesDisponibles(
+                    var disponibles = habitacionRepositorio.GetHabitacionesDisponibles(
                         view.Id_tipo, // <--- ahora usa Id_tipo
                         view.Cant_personas,
                         view.Fecha_ingreso,
@@ -238,6 +262,7 @@ namespace ProyectoTaller_Lugo_Arias.Presenters
                     );
 
                     habitacionesDisponiblesBindingSource.DataSource = disponibles.ToList();
+                    habitacionesDisponiblesBindingSource.ResetBindings(false);
                     CalculateMontoTotal(this, EventArgs.Empty);
                 }
             }

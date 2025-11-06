@@ -265,7 +265,7 @@ namespace ProyectoTaller_Lugo_Arias.Views
             cbFPago.DisplayMember = "Value"; // lo que se muestra en el combobox
             cbFPago.ValueMember = "Key"; // lo que se guarda (Id_pago)
         }
-
+        /*
         public void SetTiposHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoHabitacionList)
         {
             cbTipoHab.DataBindings.Clear();
@@ -275,15 +275,54 @@ namespace ProyectoTaller_Lugo_Arias.Views
             cbTipoHab.DataSource = tipoHabitacionList.ToList();
             cbTipoHab.DisplayMember = "Tipo";         // se muestra el tipo (ej: "Suite")
             cbTipoHab.ValueMember = "Id_tipo";    
-        }
-
-
-        public void SetHabitacionesDisponiblesListComboBox(BindingSource habitacionesDisponiblesBindingSource)
+        }*/
+        public void SetTiposHabitacionListComboBox(IEnumerable<TipoHabitacionModel> tipoHabitacionList)
         {
-            cbHab.DataSource = habitacionesDisponiblesBindingSource;
-            cbHab.DisplayMember = "Nro_habitacion";
-            cbHab.ValueMember = "Nro_habitacion";
+            cbTipoHab.DataSource = tipoHabitacionList.ToList();
+            cbTipoHab.DisplayMember = "tipo"; // Nombre que se muestra
+            cbTipoHab.ValueMember = "Id_tipo";       // Valor real
+            cbTipoHab.SelectedIndex = -1;            // Nada seleccionado por defecto
         }
+
+        // Evento para detectar cambio de tipo de habitación
+        private void cbTipoHab_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbTipoHab.SelectedValue != null && int.TryParse(cbTipoHab.SelectedValue.ToString(), out int id))
+            {
+                Id_tipo = id;
+                CriteriosBusquedaHabitacionChanged?.Invoke(sender, EventArgs.Empty); // Llama al presenter
+            }
+        }
+
+        // Método para llenar el ComboBox de habitaciones disponibles
+        public void SetHabitacionesDisponiblesListComboBox(BindingSource binding)
+        {
+            cbHab.DataSource = binding;
+            cbHab.DisplayMember = "Nro_habitacion"; // o el campo que quieras mostrar
+            cbHab.ValueMember = "Nro_habitacion";
+            cbHab.SelectedIndex = -1;
+        }
+
+
+        // Evento para detectar la selección de habitación
+        private void cbHabitaciones_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbHab.SelectedValue != null && int.TryParse(cbHab.SelectedValue.ToString(), out int nro))
+            {
+                Nro_habitacion = nro;
+                HabitacionSeleccionadaChanged?.Invoke(sender, EventArgs.Empty); // Llama al presenter
+            }
+        }
+
+
+
+        /*
+         public void SetHabitacionesDisponiblesListComboBox(BindingSource habitacionesDisponiblesBindingSource)
+         {
+             cbHab.DataSource = habitacionesDisponiblesBindingSource;
+             cbHab.DisplayMember = "Nro_habitacion";
+             cbHab.ValueMember = "Nro_habitacion";
+         }*/
 
         public void SetClientesListComboBox(IEnumerable<ClienteModel> clienteList)
         {

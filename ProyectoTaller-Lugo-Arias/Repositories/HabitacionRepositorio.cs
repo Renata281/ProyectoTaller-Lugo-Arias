@@ -332,5 +332,43 @@ namespace ProyectoTaller_Lugo_Arias.Repositorio
             }
         }
 
+        public IEnumerable<HabitacionesModels> GetHabitacionesDisponibles(int idTipo, int cantPersonas, DateTime fechaIngreso, DateTime fechaSalida)
+        {
+            var habitaciones = new List<HabitacionesModels>();
+            using var connection = new SqlConnection(connectionString);
+            using var command = new SqlCommand(@"
+            SELECT h.nro_habitacion, h.id_tipo, t.tipo, h.cant_personas, h.precio_unitario, h.id_piso
+            FROM habitacion h
+            INNER JOIN tipo_habitacion t ON h.id_tipo = t.id_tipo
+            WHERE h.id_tipo = @idTipo
+              AND h.cant_personas >= @cantPersonas
+              AND h.nro_habitacion NOT IN (
+                    SELECT r.nro_habitacion 
+                    FROM reserva r
+                    WHERE r.fecha_ingreso < @fechaSalida
+                      AND r.fecha_salida > @fechaIngreso
+              )", connection);
+
+            command.Parameters.AddWithValue("@idTipo", idTipo);
+            command.Parameters.AddWithValue("@cantPersonas", cantPersonas);
+            command.Parameters.AddWithValue("@fechaIngreso", fechaIngreso);
+            command.Parameters.AddWithValue("@fechaSalida", fechaSalida);
+
+            connection.Open();
+            using var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                habitaciones.Add(new HabitacionesModels
+                {
+                    Nro_habitacion = Convert.ToInt32(reader["nro_habitacion"]),
+                    Tipo_descripcion = reader["tipo"].ToString(),
+                    Cant_personas = Convert.ToInt32(reader["cant_personas"]),
+                    Precio_unitario = Convert.ToDecimal(reader["precio_unitario"]),
+                    Id_piso = Convert.ToInt32(reader["id_piso"])
+                });
+            }
+            return habitaciones;
+        }
+
     }
 }
